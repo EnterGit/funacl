@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Funacl": {
+    "funacl": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Funacl",
+            "outputPath": "dist/funacl",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Funacl:build"
+            "browserTarget": "funacl:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Funacl:build:production"
+              "browserTarget": "funacl:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Funacl:build"
+            "browserTarget": "funacl:build"
           }
         },
         "test": {
@@ -110,15 +115,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Funacl:serve"
+            "devServerTarget": "funacl:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Funacl:serve:production"
+              "devServerTarget": "funacl:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "Funacl"
+    }
+  },
+  "defaultProject": "funacl",
+  "cli": {
+    "analytics": false
+  }
 }
