@@ -10,7 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 
 
 const routes: Routes= [
-  {path: 'login', component: LoginComponent},
+  {path: 'logines', component: LoginComponent},
   {path: 'mi-componente', component: MiComponenteComponent}
 ];
 
