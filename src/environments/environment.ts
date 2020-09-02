@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+   firebaseConfig : {
+    apiKey: "AIzaSyDAkjBa3703fk9DrAbrjyUXbaEFprRfR2g",
+    authDomain: "funacl.firebaseapp.com",
+    databaseURL: "https://funacl.firebaseio.com",
+    projectId: "funacl",
+    storageBucket: "funacl.appspot.com",
+    messagingSenderId: "957158067827",
+    appId: "1:957158067827:web:90558a77e961262730e406",
+    measurementId: "G-YNTZ2YTEKZ"
+  }
 };
 
 /*
@@ -14,3 +24,5 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
