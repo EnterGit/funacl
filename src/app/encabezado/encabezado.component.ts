@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseUserModel } from '../core/user.model';
+import { Location } from '@angular/common';
+import { UserService } from '../core/user.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-encabezado',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EncabezadoComponent implements OnInit {
 
-  constructor() { }
+  user: FirebaseUserModel = new FirebaseUserModel();
+  
+
+  constructor(
+    public userService: UserService,
+    public authService: AuthService,
+    private location : Location
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.authService.doLogout()
+    .then((res) => {
+      this.location.back();
+    }, (error) => {
+      console.log("Logout error", error);
+    });
   }
 
 }
