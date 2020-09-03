@@ -23,6 +23,8 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ListaComponent } from './components/lista/lista.component';
 import { ListaAddComponent } from './components/lista-add/lista-add.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBan } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -53,7 +55,7 @@ const routes: Routes= [
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    FormsModule
+    FormsModule, FontAwesomeModule
   ],
   providers: [
     EquipoService,
