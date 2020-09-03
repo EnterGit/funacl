@@ -11,7 +11,7 @@ import { ConexionService } from './services/conexion.service'
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 
-//Servicios
+//Servicios II
 import { EquipoService } from './equipo.service';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
