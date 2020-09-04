@@ -35,7 +35,7 @@ import { RegistroComponent } from './registro/registro.component'
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
-  {path: 'inicio', component: NosotrosComponent},
+  {path: 'inicio', component: InicioComponent},
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'registro', component: RegistroComponent, canActivate: [AuthGuard]},

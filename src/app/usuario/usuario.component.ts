@@ -36,7 +36,7 @@ export class UsuarioComponent implements OnInit {
     })
 
     var user = firebase.auth().currentUser;
-    console.log(user);
+    console.log(user.uid);
 
   }
 
