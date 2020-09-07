@@ -39,6 +39,8 @@ const routes: Routes= [
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'registro', component: RegistroComponent, canActivate: [AuthGuard]},
+  {path: 'lista', component: ListaComponent, resolve: {data: UsuarioResolver}},
+
 
   {path: 'equipo/:id', component: EquipoComponent},
   {path: '', component: InicioComponent, pathMatch: 'full'},

@@ -48,7 +48,7 @@ export class RegistroComponent implements OnInit {
     .then(res => {
       console.log(res);
       this.errorMessage = "";
-      this.successMessage = "Your account has been created";
+      this.successMessage = "Cuenta ha sido creada !!";
     }, err => {
       console.log(err);
       this.errorMessage = err.message;

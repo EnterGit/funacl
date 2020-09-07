@@ -1,6 +1,8 @@
 <div class="navbar-dark bg-primary py-4">
   <img width="40" alt="Angular Logo" src="https://image.flaticon.com/icons/svg/765/765037.svg" />
-  <span class="text-light"> Red de Información</span>
+  <span class="text-light"> 
+    <h1>Red de Información</h1>
+  </span>
 </div>
 <div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -19,14 +21,25 @@
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/nosotros']">Nosotros</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/login']">Login</a>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class="nav-link" routerLink="/registro">Registro
+          </a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/usuario']">Usuario</a>
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/usuario">Profile</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/lista">List Books</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class="nav-link" routerLink="/login">Login
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged">
+          <a href="#" class="nav-link" (click)="onLogout()">Logout
+          </a>
         </li>
       </ul>
 
