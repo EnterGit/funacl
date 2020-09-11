@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ConexionService } from './services/conexion.service'
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 //Servicios II
 import { EquipoService } from './equipo.service';
@@ -30,16 +31,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBan } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioResolver} from './usuario/usuario.resolver';
-import { RegistroComponent } from './registro/registro.component'
+import { RegistroComponent } from './registro/registro.component';
+import { GuardiasComponent }  from './publica/guardias/guardias.component'
+import { PostulaComponent }  from './publica/postula/postula.component'
+
 
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'inicio', component: InicioComponent},
-  {path: 'nosotros', component: NosotrosComponent},
+  {path: 'nosotros', component: NosotrosComponent, resolve: {data: UsuarioResolver}},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
+  {path: 'postula', component: PostulaComponent},
+  {path: 'guardias/:id', component: GuardiasComponent},
   {path: 'registro', component: RegistroComponent, canActivate: [AuthGuard]},
   {path: 'lista', component: ListaComponent, resolve: {data: UsuarioResolver}},
+  {path: 'lista-add', component: ListaAddComponent, resolve: {data: UsuarioResolver}},
 
 
   {path: 'equipo/:id', component: EquipoComponent},
@@ -60,7 +67,9 @@ const routes: Routes= [
     ListaComponent,
     ListaAddComponent,
     UsuarioComponent,
-    RegistroComponent
+    RegistroComponent,
+    GuardiasComponent,
+    PostulaComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),
@@ -69,7 +78,7 @@ const routes: Routes= [
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    FormsModule, FontAwesomeModule
+    FormsModule, FontAwesomeModule, NgbModule
   ],
   providers: [
     AuthService,

@@ -3,6 +3,8 @@ import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConexionService } from '../services/conexion.service';
+import * as firebase from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 
@@ -17,16 +19,18 @@ export class RegistroComponent implements OnInit {
   errorMessage: string = '';
   successMessage: string = '';
 
-  item:any = {
-    name:''
+  item: any = {
+    name: '',
+    id: ''
   }
 
   constructor(
     public authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    private service:ConexionService
-  ) { 
+    private service: ConexionService,
+    private afsAuth: AngularFireAuth
+  ) {
     this.createForm();
   }
 
@@ -34,28 +38,44 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
+
   createForm() {
     this.registerForm = this.fb.group({
-      email: ['', Validators.required ],
-      password: ['',Validators.required],
-      name:['']
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      idUsuario: [''],
+      name: [''],
+      direccion: [''],
+      nombre: ['']
     });
   }
 
-  tryRegister(value){
+  tryRegister(value) {
+
+    console.log("REGISTRO " + value);
     this.authService.doRegister(value)
-    .then(res => {
-      console.log(res);
-      this.errorMessage = "";
-      this.successMessage = "Cuenta ha sido creada !!";
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-      this.successMessage = "";
-    });
+      .then(res => {
+        var user = firebase.auth().currentUser;
 
-    this.service.agregarItem(this.item);
-    //this.item.name = '';
+        console.log("RESPUESTA :" + user.uid);
+        this.errorMessage = "";
+        this.successMessage = "Cuenta ha sido creada !!";
+
+        this.item.nombre = value.nombre;
+        this.item.direccion = value.direccion;
+        this.item.idUsuario = user.uid;
+        this.service.agregarItem(this.item);
+        //this.item.name = '';
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+        this.successMessage = "";
+      });
   }
+
+
+  onLogout() {
+    this.afsAuth.auth.signOut();
+  }
+
 }

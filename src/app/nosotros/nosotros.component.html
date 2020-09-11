@@ -1,6 +1,36 @@
-<div class="mt-5">
-<h2>Nosotros</h2>
-<p>La página “Sobre nosotros” o “quiénes somos” es la sección o categoría de una web que resume a modo descriptivo cómo nació el negocio, quiénes forman parte del equipo responsable y, sobre todo, explica la misión, visión y valores de dicho negocio en Internet</p>
+<section id="nosotros">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-11 mx-auto">
+        <h2>Nosotros</h2>
+        <p>La página “Sobre nosotros” o “quiénes somos” es la sección o categoría de una web que resume a modo
+          descriptivo cómo nació el negocio, quiénes forman parte del equipo responsable y, sobre todo, explica la
+          misión, visión y valores de dicho negocio en Internet</p>
+
+            <app-lista></app-lista>
+
+            <app-lista-add></app-lista-add>
+          </div>
+        </div>
+  </div>
+</section>
+<!-- <button type="button" class="btn btn-success" data-toggle="modal"  data-target="#modalRegistro" >Success</button>
+<a href="/registro" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registro</a>
+
+<app-registro></app-registro> -->
+<!-- 
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem>Action - 1</button>
+        <button ngbDropdownItem>Another Action</button>
+        <button ngbDropdownItem>Something else is here</button>
+      </div>
+    </div>
+  </div>
+</div> -->
 
 <!-- <ul class="list-group">
     <li class="list-group-item" *ngFor="let item of equipo, index as i">
@@ -9,14 +39,3 @@
     <a [routerLink]="['/equipo', i]">Leer más...</a>
 </li>
   </ul> -->
-
-  <div class="row">
-    <div class="col-md-6">
-  <app-lista></app-lista>
-    </div>
-    <div class="col-md-6">
-  <app-lista-add></app-lista-add>  
-    </div>
-  </div>
-
-</div>

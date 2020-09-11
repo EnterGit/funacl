@@ -1,3 +1,4 @@
+import { UserService } from './../core/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../core/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -22,6 +23,7 @@ export class EncabezadoComponent implements OnInit {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
         console.log('user logged');
+        console.log();
         this.isLogged = true;
       } else {
         console.log('NOT user logged');

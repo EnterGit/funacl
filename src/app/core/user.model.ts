@@ -4,6 +4,7 @@ export class FirebaseUserModel {
     provider: string;
     direccion: string;
     empresa: string;
+    uid: string;
 
   
     constructor(){
@@ -12,6 +13,6 @@ export class FirebaseUserModel {
       this.provider = "";
       this.direccion = "";
       this.empresa = "";
-
+      this.uid = "";
     }
   }

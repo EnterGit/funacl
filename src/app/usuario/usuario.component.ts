@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../core/user.model';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -18,15 +18,24 @@ export class UsuarioComponent implements OnInit {
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
 
+ 
   constructor(
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
     private location : Location,
     private fb: FormBuilder
-  ) { }
+  ) {}
+
+  public isEmail: any = null;
+  public userUid: string = null;
 
   ngOnInit(): void {
+
+    var user = firebase.auth().currentUser;
+    this.isEmail = user.email;
+
+
     this.route.data.subscribe(routeData => {
       let data = routeData['data'];
       if (data) {
@@ -36,8 +45,7 @@ export class UsuarioComponent implements OnInit {
     })
 
     var user = firebase.auth().currentUser;
-    console.log(user.uid);
-
+    console.log(user.email);
   }
 
   createForm(name) {

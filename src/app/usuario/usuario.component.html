@@ -1,39 +1,40 @@
+<section id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+      
+        <h1 class="header">Perfil Usuario</h1>
+        <h1>Bienvenido {{user.name}}</h1>
+        <h4>{{isEmail}}</h4>
+        <!-- <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+            <div class="card" style="width: 20rem;">
+              <img class="card-img-top image" [src]="user.image" *ngIf="user.image" alt="User image">
+              <img class="card-img-top image" src="https://via.placeholder.com/400x300" *ngIf="!user.image"
+                alt="User image">
+              <div *ngIf='user.provider != "password"' class="card-body">
+                <h3 class="card-title">{{user.name}}</h3>
 
-<div class="row">
-  <div class="col">
-    <span class="float-right"> 
-      <button class="btn btn-outline-danger my-2 my-sm-0 " (click)="logout()"
-        type="submit">Salir</button> 
-      </span>
-  </div>
-</div>
-
-
-
-<h1 class="header">Logged User Page</h1>
-<h1>{{user.name}}</h1>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <div class="card" style="width: 20rem;">
-      <img class="card-img-top image" [src]="user.image" *ngIf="user.image" alt="User image">
-      <img class="card-img-top image" src="https://via.placeholder.com/400x300" *ngIf="!user.image" alt="User image">
-      <div *ngIf='user.provider != "password"' class="card-body">
-        <h4 class="card-title">{{user.name}}</h4>
-        <p class="card-text">This is an example of Social Authentication using Firebase in an Angular 7 web app. </p>
-      </div>
-      <div *ngIf='user.provider == "password"' class="card-body">
-        <form [formGroup]="profileForm">
-          <div class="form-group">
-            <label>Your name</label>
-            <input type="text" formControlName="name" class="form-control" required>
-
-            <h4 class="card-title">{{user.name}}</h4>
-            <h4 class="card-title">{{user.provider}}</h4>
-            <h4 class="card-title">{{user.image}}</h4>
+                <p class="card-text">This is an example of Social Authentication using Firebase in an Angular 7 web app.
+                </p>
+              </div>
+              <div *ngIf='user.provider == "password"' class="card-body">
+                <form [formGroup]="profileForm">
+                  <div class="form-group">
+                    <label>Your name</label>
+                    <input type="text" formControlName="name" class="form-control" required>
+                    <h4 class="card-title">{{user.name}}</h4>
+                    <h4 class="card-title">{{user.provider}}</h4>
+                    <h4 class="card-title">{{user.image}}</h4>
+                  </div>
+                </form>
+                <a (click)="save(profileForm.value)" class="btn btn-primary">Save</a>
+              </div>
+            </div>
           </div>
-        </form>
-        <a (click)="save(profileForm.value)" class="btn btn-primary">Save</a>
+        </div> -->
+
       </div>
     </div>
   </div>
-</div>
+</section>

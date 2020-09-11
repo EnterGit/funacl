@@ -1,4 +1,4 @@
-
+/* 
 /* BASIC */
 
 html {
@@ -29,7 +29,7 @@ html {
   
   
   
-  /* STRUCTURE */
+
   
   .wrapper {
     display: flex;
@@ -66,7 +66,7 @@ html {
   
   
   
-  /* TABS */
+
   
   h2.inactive {
     color: #cccccc;
@@ -79,8 +79,7 @@ html {
   
   
   
-  /* FORM TYPOGRAPHY*/
-  
+
   input[type=button], input[type=submit], input[type=reset]   {
     background-color: #006bf7;
     border: none;
@@ -176,7 +175,7 @@ html {
   }
   
 
-  /* type Password ------*/
+
 
 
   input[type=password] {
@@ -240,9 +239,7 @@ html {
   }
 
 
-  /* ANIMATIONS */
-  
-  /* Simple CSS3 Fade-in-down Animation */
+
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -278,7 +275,7 @@ html {
     }
   }
   
-  /* Simple CSS3 Fade-in Animation */
+
   @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -321,8 +318,7 @@ html {
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
-  
-  /* Simple CSS3 Fade-in Animation */
+
   .underlineHover:after {
     display: block;
     left: 0;
@@ -353,4 +349,3 @@ html {
   #icon {
     width:60%;
   }
-  
