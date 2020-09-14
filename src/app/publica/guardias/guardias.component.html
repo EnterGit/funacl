@@ -1,219 +1,241 @@
-<section id="guardiaPostula">
-   <div class="container px-2 px-md-4 py-2 mx-auto">
-      <div class="card card0 border-0">
-         <div class="row d-flex">
-            <div class="container">
-               <div class="main-body">
-                  <div class="row gutters-sm">
-                     <div class="col-md-4 mb-3">
-                        <div class="card">
-                           <div class="card-body">
-                              <div class="d-flex flex-column align-items-center text-center">
-                                 <img src="{{imagen}}" alt="Admin" class="rounded-circle" width="180" />
-                                 <div class="mt-3">
-                                    <h4>{{titulo}}</h4>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="card mt-4">
-                           <div class="card-header">Educación</div>
-                           <div class="form-group col-md-11">
-                              <div class="">
-                                 <select class=" form-control btn btn-primary dropdown-toggle">
-                                    <option>Seleccione Nivel Educacional</option>
-                                    <option>Basico</option>
-                                    <option>Media</option>
-                                    <option>Superior</option>
-                                 </select>
-                              </div>
-                           </div>
-                           <div class="card-header">Cursos Acreditación <strong>{{curso}}</strong></div>
-                           <br>
-                           <div class="row">
-                              
-                              <div class="form-group col-md-5">                                 
-                                 <div class="custom-control custom-radio custom-control-inline ">
-                                    <input type="radio" id="cursoSi" name="curso" class="custom-control-input">
-                                    <label class="custom-control-label" for="cursoSi">
-                                       SI
-                                    </label>
-                                 </div>
-                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="cursoNo" name="curso" class="custom-control-input">
-                                    <label class="custom-control-label" for="cursoNo">
-                                       NO
-                                    </label>
-                                 </div>
-                              </div>
+<form [formGroup]="formPostulantes">
+   <section id="guardiaPostula">
+      <div class="container py-2 mx-auto">
+         <div class="card card0 border-0">
+            <div class="row d-flex">
+               <div class="container">
+                  <div class="main-body">
+                     <div class="row gutters-sm">
 
-                              <div class="form-group col-md-7">
-                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="inputFechaNac" />
-                                    <div class="input-group-append">
-                                       <span class="input-group-text">
-                                          <fa-icon [icon]="faCalendarAlt" size="lg" [fixedWidth]="true"></fa-icon>
-                                       </span>
+                        <div class="col-md-4 mt-2 ml-2 mb-2">
+
+                           <div class="form-group card mt-2">
+                              <div class="card-body">
+                                 <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="{{imagen}}" alt="Admin" class="rounded-circle" width="180" />
+                                    <div class="mt-3">
+                                       <h4>{{titulo}}</h4>
                                     </div>
                                  </div>
                               </div>
                            </div>
 
-
-                           <div class="card-header">Nivel Computación</div>
-                           <div class="form-group col-md-11">
-                              <select class=" form-control" class="btn btn-primary dropdown-toggle">
-                                 <option>Seleccione Nivel Computacional</option>
-                                 <option>Nulo</option>
-                                 <option>Basico</option>
-                                 <option>Medio</option>
-                                 <option>Alto</option>
+                           <div class="form-group card mt-4">
+                              <div class="card-header">Educación</div>
+                              <select class="form-control" formControlName="educacion">
+                                 <option value="" selected>Seleccione Nivel Educacional</option>
+                                 <option value="basico">Basico</option>
+                                 <option value="media">Media</option>
+                                 <option value="superior">Superior</option>
                               </select>
                            </div>
-                           <div class="card-body"></div>
 
-                           <div class="card-header">Turno</div>
-                           <div class="form-group col-md-11">
-                              <select class=" form-control" class="btn btn-primary dropdown-toggle">
-                                 <option>Seleccione Turno</option>
-                                 <option>Todos</option>
-                                 <option>Mañana</option>
-                                 <option>Tarde</option>
-                                 <option>Noche</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="col-md-8">
-                        <div class="card mb-3">
-                           <div class="card-body">
-                              <div class="form-row">
-                                 <div class="form-group col-md-6">
-                                    <label for="lbltRut">Rut</label>
-                                    <input type="text" class="form-control" id="inputRut" />
+                           <div class="form-group card mt-4">
+                              <div class="card-header">Cursos Acreditación <strong>{{curso}}</strong></div>
+                              <div class="row">
+                                 <div class="col-md-5 ml-1">
+                                    <div class="custom-control custom-radio custom-control-inline ">
+                                       <input type="radio" id="cursoSi" name="cursoAcreditacion" class="custom-control-input" formControlName="cursoAcreditacion" value="SI">
+                                       <label class="custom-control-label" for="cursoSi">
+                                          SI
+                                       </label>
+                                    </div>
+
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                       <input type="radio" id="cursoNo" name="cursoAcreditacion" class="custom-control-input" formControlName="cursoAcreditacion" value="NO">
+                                       <label class="custom-control-label" for="cursoNo">
+                                          NO
+                                       </label>
+                                    </div>
                                  </div>
-                                 <div class="form-group col-md-6">
-                                    <label for="lblNombre">Nombre Completo</label>
-                                    <input type="text" class="form-control" id="inputNombre" />
-                                 </div>
-                              </div>
-                              <div class="form-row">
-                                 <div class="form-group col-md-6">
-                                    <label for="lblFechaNacimiento">Fecha de Nacimiento</label>
-                                    <div class="input-group" data-provide="datepicker">
-                                       <input type="text" class="form-control" id="inputFechaNac" />
-                                       <div class="input-group-append">
+
+                                 <div class="col-md-6">
+                                    <div class="input-group">
+                                       <input type="date" class="form-control" id="fechaAcre" name="fechaAcreditacion"
+                                          formControlName="fechaAcreditacion" />
+                                       <!-- <div class="input-group-append">
                                           <span class="input-group-text">
                                              <fa-icon [icon]="faCalendarAlt" size="lg" [fixedWidth]="true"></fa-icon>
                                           </span>
+                                       </div> -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="form-group card mt-4">
+                              <div class="card-header">Nivel Computación</div>
+                              <select class="form-control" formControlName="nivelComputacion">
+                                 <option value="" selected>Seleccione Nivel Computacional</option>
+                                 <option value="Nulo">Nulo</option>
+                                 <option value="Basico">Basico</option>
+                                 <option value="Medio">Medio</option>
+                                 <option value="Alto">Alto</option>
+                              </select>
+                           </div>
+
+                           <div class="form-group card mt-4">
+                              <div class="card-header">Turno</div>
+                              <select class="form-control" formControlName="turnos">
+                                 <option value="" selected>Seleccione Turno</option>
+                                 <option value="Todos">Todos</option>
+                                 <option value="Mañana">Mañana</option>
+                                 <option value="Tarde">Tarde</option>
+                                 <option value="Noche">Noche</option>
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-md-7 mt-3 ml-3 mb-2">
+
+                           <div class="card mb-1">
+                              <div class="card-body">
+
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                       <label for="lbltRut">Rut</label>
+                                       <input type="text" class="form-control"  placeholder="Ingresa Rut"
+                                          formControlName="rut" />
+                                          <div *ngIf="formPostulantes.get('rut').errors && formPostulantes.get('rut').touched">
+                                             <p *ngIf="formPostulantes.get('rut').hasError('maxlength')"> Maximo 5 caracteres</p>
+                                          </div>
+                                     
+                                    </div> 
+                                    <div class="form-group col-md-6">
+                                       <label for="lblNombre">Nombre Completo</label>
+                                       <input type="text" class="form-control" id="Nombre" formControlName="nombre" />
+                                    </div>
+                                    <!-- </div> -->
+
+                                    <div class="form-group col-md-6">
+                                       <label for="lblFechaNacimiento">Fecha de Nacimiento</label>
+                                       <div class="input-group">
+                                       <input type="date" class="form-control" id="Nombre" formControlName="fechaNacimiento" />
+                                          
+                                       </div>
+                                    </div>
+
+
+                                    <!-- </div> -->
+
+                                    <div class="form-group col-md-6">
+                                       <label for="lblSexo">Sexo</label>
+                                       <br>
+                                       <div class="custom-control custom-radio custom-control-inline ">
+                                          <input type="radio" id="sexoMasculino" name="sexo"
+                                             class="custom-control-input" formControlName="sexo" value="Masculino">
+                                          <label class="custom-control-label" for="sexoMasculino">
+                                             Masculino
+                                          </label>
+                                       </div>
+                                       <div class="custom-control custom-radio custom-control-inline">
+                                          <input type="radio" id="sexoFemenino" name="sexo" class="custom-control-input"
+                                             formControlName="sexo" value="femenino">
+                                          <label class="custom-control-label" for="sexoFemenino">
+                                             Femenino
+                                          </label>
                                        </div>
                                     </div>
                                  </div>
-                                 <div class="form-group col-md-6">
-                                    <label for="lblSexo">Sexo</label>
-                                    <br>
-                                    <div class="custom-control custom-radio custom-control-inline ">
-                                       <input type="radio" id="sexoMasculino" name="sexo" class="custom-control-input">
-                                       <label class="custom-control-label" for="sexoMasculino">
-                                          Masculino
-                                       </label>
+                                 <hr />
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                       <label for="lblDireccion">Dirección</label>
+                                       <input type="text" class="form-control" id="inputDireccion"
+                                          formControlName="direccion" />
                                     </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                       <input type="radio" id="sexoFemenino" name="sexo" class="custom-control-input">
-                                       <label class="custom-control-label" for="sexoFemenino">
-                                          Femenino
-                                       </label>
+                                    <div class="form-group col-md-6">
+                                       <label for="lblComuna">Comuna</label>
+                                       <select class="form-control" formControlName="comuna" formControlName="comuna">
+                                          <option value="" selected>Seleccione Comuna </option>
+                                          <option value="santiago" selected>Santiago</option>
+                                       </select>
                                     </div>
-                                 </div>
-
-                              </div>
-                              <hr />
-                              <div class="form-row">
-                                 <div class="form-group col-md-6">
-                                    <label for="lblComuna">Comuna</label>
-                                    <input type="text" class="form-control" id="inputComuna" />
-                                 </div>
-                                 <div class="form-group col-md-6">
-                                    <label for="lblDireccion">Dirección</label>
-                                    <input type="text" class="form-control" id="inputDireccion" />
-                                 </div>
-                              </div>
-                              <hr />
-                              <div class="form-row">
-                                 <div class="form-group col-md-6">
-                                    <label for="lblTelefono">Telefono</label>
-                                    <input type="numer" class="form-control" id="inputFono" />
-                                 </div>
-                                 <div class="form-group col-md-6">
-                                    <label for="lblCelular">Celular</label>
-                                    <input type="numer" class="form-control" id="inputCelular" />
-                                 </div>
-                              </div>
-                              <hr />
-                              <div class="form-row">
-                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Experiencia Laboral</label>
-                                    <div class="custom-control custom-radio">
-                                       <input type="radio" class="custom-control-input" id="customSwitch1"
-                                          name="experiencia" />
-                                       <label class="custom-control-label" for="customSwitch1">
-                                          0 a 1 años
-                                       </label>
-                                       <br />
+                                    <hr />
+                                    <div class="form-group col-md-6">
+                                       <label for="lblTelefono">Telefono</label>
+                                       <input type="numer" class="form-control" id="inputFono"
+                                          formControlName="telefono" />
                                     </div>
-                                    <div class="custom-control custom-radio">
-                                       <input type="radio" class="custom-control-input" id="customSwitch2"
-                                          name="experiencia" />
-                                       <label class="custom-control-label" for="customSwitch2">
-                                          1 a 3 años
-                                       </label>
-                                       <br /></div>
-
-                                    <div class="custom-control custom-radio">
-                                       <input type="radio" class="custom-control-input" id="customSwitch3"
-                                          name="experiencia" />
-                                       <label class="custom-control-label" for="customSwitch3">
-                                          más de 3 años
-                                       </label>
-                                       <br />
+                                    <div class="form-group col-md-6">
+                                       <label for="lblCelular">Celular</label>
+                                       <input type="numer" class="form-control" id="inputCelular"
+                                          formControlName="celular" />
                                     </div>
 
                                  </div>
-                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Locación</label>
-                                    <div class="custom-control custom-checkbox">
-                                       <input type="checkbox" class="custom-control-input" id="locCondominio" />
-                                       <label class="custom-control-label" for="locCondominio">
-                                          Condominio
-                                       </label>
-                                       <br />
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                       <input type="checkbox" class="custom-control-input" id="locEmpresa" />
-                                       <label class="custom-control-label" for="locEmpresa">
-                                          Empresa
-                                       </label>
-                                       <br /></div>
+                                 <hr />
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                       <label for="inputPassword4">Experiencia Laboral</label>
+                                       <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="customSwitch1"
+                                             name="experiencia" formControlName="experiencia" value="1" />
+                                          <label class="custom-control-label" for="customSwitch1">
+                                             0 a 1 años
+                                          </label>
+                                          <br />
+                                       </div>
+                                       <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="customSwitch2"
+                                             name="experiencia" formControlName="experiencia" value="3" />
+                                          <label class="custom-control-label" for="customSwitch2">
+                                             1 a 3 años
+                                          </label>
+                                          <br /></div>
 
-                                    <div class="custom-control custom-checkbox">
-                                       <input type="checkbox" class="custom-control-input" id="locRetail" />
-                                       <label class="custom-control-label" for="locRetail">
-                                          Retail
-                                       </label>
-                                       <br />
+                                       <div class="custom-control custom-radio">
+                                          <input type="radio" class="custom-control-input" id="customSwitch3"
+                                             name="experiencia" formControlName="experiencia" value="3+" />
+                                          <label class="custom-control-label" for="customSwitch3">
+                                             más de 3 años
+                                          </label>
+                                          <br />
+                                       </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="form-group col-md-6">
+                                       <label for="inputPassword4">Locación</label>
+                                       <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="locCondominio" />
+                                          <label class="custom-control-label" for="locCondominio">
+                                             Condominio
+                                          </label>
+                                          <br />
+                                       </div>
+                                       <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="locEmpresa" />
+                                          <label class="custom-control-label" for="locEmpresa">
+                                             Empresa
+                                          </label>
+                                          <br /></div>
+
+                                       <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="locRetail" />
+                                          <label class="custom-control-label" for="locRetail">
+                                             Retail
+                                          </label>
+                                          <br />
+                                       </div>
                                     </div>
                                  </div>
-                              </div>
-                              <hr />
-                              <div class="form-row">
-                                 <div class="form-group col-md-6">
-                                    <button class="btn btn-primary">Postular</button>
+
+                                 <hr />
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                       <button type="submit" [disabled]="formPostulantes.invalid" (click)="agregaPostulantes(formPostulantes.value)"
+                                          class="btn btn-primary">Postular</button>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                       <button class="btn btn-outline-primary">Limpiar</button>
+                                    </div>
                                  </div>
-                                 <div class="form-group col-md-6">
-                                    <button class="btn btn-outline-primary">Limpiar</button>
-                                 </div>
+
+                                 <p>Form status: {{ formPostulantes.status | json }}</p>
+                              
                               </div>
-                              <hr />
                            </div>
                         </div>
                      </div>
@@ -222,5 +244,8 @@
             </div>
          </div>
       </div>
-   </div>
-</section>
+
+
+   </section>
+</form>
+

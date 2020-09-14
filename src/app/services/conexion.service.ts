@@ -9,6 +9,7 @@ type CollentionPredicate<T> = string | AngularFirestoreCollection;
 type DocumentPredicate<T> = string | AngularFirestoreDocument;
 
 export interface Item { name: string; }
+export interface Postulantes { any; }
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,10 @@ export interface Item { name: string; }
 export class ConexionService {
 
   private itemsCollection: AngularFirestoreCollection<Item>;
+  private postulantesCollection: AngularFirestoreCollection<Postulantes>;
+
   items: Observable<Item[]>;
+  postulantes: Observable<Postulantes[]>;
 
   private itemDoc: AngularFirestoreDocument<Item>;
 
@@ -31,7 +35,18 @@ export class ConexionService {
         return { id, ...data };
       });
     });
+
+    this.postulantesCollection = afs.collection<Postulantes>('postulantes');
+    this.postulantes = this.postulantesCollection.valueChanges();
+    this.postulantes = this.postulantesCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Postulantes;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
    }
+
 
    listaItem(){
      return this.items;
@@ -52,6 +67,17 @@ export class ConexionService {
     this.itemDoc = this.afs.doc<Item>(`items/${item.id}`);
     this.itemDoc.update(item);
   }
+
+  // Postulantes
+
+  agregarPostulantes(postulantes: Postulantes){
+    console.log("SERVICIO");
+    console.log(postulantes);
+    this.postulantesCollection.add(postulantes);
+  }
+
+  // fin Postulantrs
+
 
 
 ///
