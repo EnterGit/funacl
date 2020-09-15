@@ -1,7 +1,7 @@
 import { ConexionService, Item } from './../../services/conexion.service';
 import { Component, OnInit } from '@angular/core';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { FaStackItemSizeDirective } from '@fortawesome/angular-fontawesome';
 

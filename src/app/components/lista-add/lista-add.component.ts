@@ -1,6 +1,6 @@
 import { ConexionService } from './../../services/conexion.service';
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { FirebaseUserModel } from 'src/app/core/user.model';
 import { UserService } from 'src/app/core/user.service';
 import { ActivatedRoute } from '@angular/router';

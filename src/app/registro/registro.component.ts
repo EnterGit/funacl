@@ -3,7 +3,7 @@ import { AuthService } from '../core/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConexionService } from '../services/conexion.service';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 

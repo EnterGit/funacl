@@ -35,14 +35,16 @@
                               <div class="row">
                                  <div class="col-md-5 ml-1">
                                     <div class="custom-control custom-radio custom-control-inline ">
-                                       <input type="radio" id="cursoSi" name="cursoAcreditacion" class="custom-control-input" formControlName="cursoAcreditacion" value="SI">
+                                       <input type="radio" id="cursoSi" name="cursoAcreditacion"
+                                          class="custom-control-input" formControlName="cursoAcreditacion" value="SI">
                                        <label class="custom-control-label" for="cursoSi">
                                           SI
                                        </label>
                                     </div>
 
                                     <div class="custom-control custom-radio custom-control-inline">
-                                       <input type="radio" id="cursoNo" name="cursoAcreditacion" class="custom-control-input" formControlName="cursoAcreditacion" value="NO">
+                                       <input type="radio" id="cursoNo" name="cursoAcreditacion"
+                                          class="custom-control-input" formControlName="cursoAcreditacion" value="NO">
                                        <label class="custom-control-label" for="cursoNo">
                                           NO
                                        </label>
@@ -94,13 +96,17 @@
                                  <div class="form-row">
                                     <div class="form-group col-md-6">
                                        <label for="lbltRut">Rut</label>
-                                       <input type="text" class="form-control"  placeholder="Ingresa Rut"
+                                       <input type="text" class="form-control" placeholder="Ingresa Rut"
                                           formControlName="rut" />
-                                          <div *ngIf="formPostulantes.get('rut').errors && formPostulantes.get('rut').touched">
-                                             <p *ngIf="formPostulantes.get('rut').hasError('maxlength')"> Maximo 5 caracteres</p>
-                                          </div>
-                                     
-                                    </div> 
+
+                                       <div class="alert alert-danger"
+                                          *ngIf="formPostulantes.get('rut').errors && formPostulantes.get('rut').touched">
+                                          <p *ngIf="formPostulantes.get('rut').hasError('maxlength')"> Maximo 5
+                                             caracteres</p>
+                                       </div>
+
+                                       
+                                    </div>
                                     <div class="form-group col-md-6">
                                        <label for="lblNombre">Nombre Completo</label>
                                        <input type="text" class="form-control" id="Nombre" formControlName="nombre" />
@@ -110,8 +116,9 @@
                                     <div class="form-group col-md-6">
                                        <label for="lblFechaNacimiento">Fecha de Nacimiento</label>
                                        <div class="input-group">
-                                       <input type="date" class="form-control" id="Nombre" formControlName="fechaNacimiento" />
-                                          
+                                          <input type="date" class="form-control" id="Nombre"
+                                             formControlName="fechaNacimiento" />
+
                                        </div>
                                     </div>
 
@@ -225,7 +232,8 @@
                                  <hr />
                                  <div class="form-row">
                                     <div class="form-group col-md-6">
-                                       <button type="submit" [disabled]="formPostulantes.invalid" (click)="agregaPostulantes(formPostulantes.value)"
+                                       <button type="submit" [disabled]="formPostulantes.invalid"
+                                          (click)="agregaPostulantes(formPostulantes.value)"
                                           class="btn btn-primary">Postular</button>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -234,7 +242,7 @@
                                  </div>
 
                                  <p>Form status: {{ formPostulantes.status | json }}</p>
-                              
+
                               </div>
                            </div>
                         </div>
@@ -248,4 +256,3 @@
 
    </section>
 </form>
-

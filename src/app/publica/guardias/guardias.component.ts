@@ -31,7 +31,7 @@ export class GuardiasComponent implements OnInit {
 
   formPostulantes: FormGroup;
 
-  postulantes: any = { }
+  postulantes: any = {}
 
   constructor(
     faConfig: FaConfig,
