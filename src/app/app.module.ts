@@ -41,9 +41,11 @@ import { PostulaComponent }  from './publica/postula/postula.component'
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'inicio', component: InicioComponent},
-  {path: 'nosotros', component: NosotrosComponent, resolve: {data: UsuarioResolver}},
+//  {path: 'nosotros', component: NosotrosComponent, resolve: {data: UsuarioResolver}},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'postula', component: PostulaComponent},
+  {path: 'nosotros', component: NosotrosComponent},
+
   {path: 'guardias/:id', component: GuardiasComponent},
   {path: 'registro', component: RegistroComponent, canActivate: [AuthGuard]},
   {path: 'lista', component: ListaComponent, resolve: {data: UsuarioResolver}},
