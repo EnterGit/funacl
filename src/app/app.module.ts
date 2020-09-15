@@ -1,4 +1,3 @@
-
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -29,7 +28,6 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ListaComponent } from './components/lista/lista.component';
 import { ListaAddComponent } from './components/lista-add/lista-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBan } from '@fortawesome/free-solid-svg-icons';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioResolver} from './usuario/usuario.resolver';
 import { RegistroComponent } from './registro/registro.component';
@@ -45,7 +43,7 @@ const routes: Routes= [
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'postula', component: PostulaComponent},
   {path: 'guardias/:id', component: GuardiasComponent},
-  {path: 'registro', component: RegistroComponent, canActivate: [AuthGuard]},
+  {path: 'registro', component: RegistroComponent},
   {path: 'lista', component: ListaComponent, resolve: {data: UsuarioResolver}},
   {path: 'lista-add', component: ListaAddComponent, resolve: {data: UsuarioResolver}},
 

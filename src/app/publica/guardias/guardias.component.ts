@@ -1,9 +1,10 @@
+import { Router } from '@angular/router';
 import { ConexionService, Postulantes } from './../../services/conexion.service';
-import { PostulantesModel } from './../../core/postulantes.model';
+import { PostulantesModel } from '../../core/postulantes.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBellSlash, faHandPaper, faUser } from '@fortawesome/free-regular-svg-icons';
-import { faCoffee, faTrash, faTrashAlt, faPencilAlt, faTh, faCalendar, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faTrash, faTrashAlt, faPencilAlt, faTh, faCalendar, faCalendarAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
@@ -24,6 +25,7 @@ export class GuardiasComponent implements OnInit {
   faTh = faTh;
   faCalendar = faCalendar;
   faCalendarAlt = faCalendarAlt;
+  fainfocircle = faInfoCircle;
 
   titulo: string;
   imagen: string;
@@ -38,7 +40,8 @@ export class GuardiasComponent implements OnInit {
     library: FaIconLibrary,
     private ruta: ActivatedRoute,
     private fb: FormBuilder,
-    private service: ConexionService
+    private service: ConexionService,
+    private router: Router
   ) {
     faConfig.defaultPrefix = 'far';
     library.addIcons(faUser, faHandPaper, faBellSlash);
@@ -76,6 +79,7 @@ export class GuardiasComponent implements OnInit {
           break;
         }
         default: {
+          this.router.navigate(['/inicio']);
           this.titulo = "Guardia de Seguridad";
           break;
         }

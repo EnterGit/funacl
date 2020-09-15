@@ -36,12 +36,12 @@ export class ListaComponent implements OnInit {
 
 
   ngOnInit(): void {
-      // this.conexion.listaItem().subscribe(item=>{
-      // this.items = item;
-      // console.log(this.items);
-      // })
+      this.conexion.listaItem().subscribe(item=>{
+      this.items = item;
+      console.log(this.items);
+      })
 
-    this.search();
+    // this.search();
   }
 
   search() {
@@ -49,7 +49,6 @@ export class ListaComponent implements OnInit {
     this.conexion.col$('items', ref => this.querys(ref, true)).subscribe(item => {
       this.items = item;
       console.log(this.items);
-
     })
   }
 

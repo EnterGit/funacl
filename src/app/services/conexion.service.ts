@@ -45,24 +45,24 @@ export class ConexionService {
         return { id, ...data };
       });
     });
-   }
+  }
 
 
-   listaItem(){
-     return this.items;
-   }
+  listaItem() {
+    return this.items;
+  }
 
-   agregarItem(item: Item) {
+  agregarItem(item: Item) {
     this.itemsCollection.add(item);
   }
 
-  eliminarItem(item){
+  eliminarItem(item) {
     console.log("aqui elimina" + item.id);
     this.itemDoc = this.afs.doc<Item>(`items/${item.id}`);
     this.itemDoc.delete();
   }
 
-  editarItem(item){
+  editarItem(item) {
     console.log("Edita item" + item.id);
     this.itemDoc = this.afs.doc<Item>(`items/${item.id}`);
     this.itemDoc.update(item);
@@ -70,53 +70,58 @@ export class ConexionService {
 
   // Postulantes
 
-  agregarPostulantes(postulantes: Postulantes){
+  agregarPostulantes(postulantes: Postulantes) {
     console.log("SERVICIO");
     console.log(postulantes);
     this.postulantesCollection.add(postulantes);
+
+  }
+
+  listaPostulantes() {
+   this.postulantes;
   }
 
   // fin Postulantrs
 
 
 
-///
+  ///
 
-private col<T>(ref:CollentionPredicate<T>, queryFn?): AngularFirestoreCollection{
-  return typeof ref === "string"? this.afs.collection(ref,queryFn): ref;
-}
+  private col<T>(ref: CollentionPredicate<T>, queryFn?): AngularFirestoreCollection {
+    return typeof ref === "string" ? this.afs.collection(ref, queryFn) : ref;
+  }
 
-private doc<T>(ref:DocumentPredicate<T>): AngularFirestoreDocument{
-  return typeof ref === "string"? this.afs.doc(ref) : ref;
-}
+  private doc<T>(ref: DocumentPredicate<T>): AngularFirestoreDocument {
+    return typeof ref === "string" ? this.afs.doc(ref) : ref;
+  }
 
-add<T>(ref:CollentionPredicate<T>, data){
-  return this.col(ref).add({
-    ...data
-  })
-}
-
-col$<T>(ref:CollentionPredicate<T>, queryFn?):Observable<any[]>{
-  return this.col(ref,queryFn).snapshotChanges().pipe(
-    map(docs => {
-       return docs.map(d => {
-         const data = d.payload.doc.data();
-         const id = d.payload.doc.id;
-         return  { id, ...data}
-       })
+  add<T>(ref: CollentionPredicate<T>, data) {
+    return this.col(ref).add({
+      ...data
     })
-  )
-}
+  }
 
-update<T>(ref:DocumentPredicate<T>, data){
-  return this.doc(ref).update({
-    ...data
-  })
-}
+  col$<T>(ref: CollentionPredicate<T>, queryFn?): Observable<any[]> {
+    return this.col(ref, queryFn).snapshotChanges().pipe(
+      map(docs => {
+        return docs.map(d => {
+          const data = d.payload.doc.data();
+          const id = d.payload.doc.id;
+          return { id, ...data }
+        })
+      })
+    )
+  }
 
-delete<T>(ref:DocumentPredicate<T>){
-  return this.doc(ref).delete();
-}
+  update<T>(ref: DocumentPredicate<T>, data) {
+    return this.doc(ref).update({
+      ...data
+    })
+  }
+
+  delete<T>(ref: DocumentPredicate<T>) {
+    return this.doc(ref).delete();
+  }
 
 
 }
