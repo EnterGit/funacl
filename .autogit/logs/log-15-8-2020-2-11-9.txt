@@ -1,0 +1,64 @@
+-------------------- Auto-Git Log --------------------
+		Tue Sep 15 2020 02:11:09 GMT-0300 (hora de verano de Chile)
+------------------------------------------------------
+
+Modified files:
+* src/assets/img/hero-area.jpg
+
+
+Created files:
+* src/assets/css/animate.min.css
+* src/assets/css/bootstrap.min.css
+* src/assets/css/font-awesome.min.css
+* src/assets/css/icofont.css
+* src/assets/css/magnific-popup.css
+* src/assets/css/responsive.css
+* src/assets/css/slick.css
+* src/assets/css/slicknav.min.css
+* src/assets/css/style.css
+* src/assets/css/switcher-style.css
+* src/assets/fonts/FontAwesome.otf
+* src/assets/fonts/fontawesome-webfont.eot
+* src/assets/fonts/fontawesome-webfont.svg
+* src/assets/fonts/fontawesome-webfont.ttf
+* src/assets/fonts/fontawesome-webfont.woff
+* src/assets/fonts/fontawesome-webfont.woff2
+* src/assets/fonts/glyphicons-halflings-regular.eot
+* src/assets/fonts/glyphicons-halflings-regular.svg
+* src/assets/fonts/glyphicons-halflings-regular.ttf
+* src/assets/fonts/glyphicons-halflings-regular.woff
+* src/assets/fonts/glyphicons-halflings-regular.woff2
+* src/assets/fonts/icofont.eot
+* src/assets/fonts/icofont.svg
+* src/assets/fonts/icofont.ttf
+* src/assets/fonts/icofont.woff
+* src/assets/img/Aseo.jpg
+* src/assets/img/HistorialDOC.jpg
+* src/assets/img/Informacio.jpg
+* src/assets/img/Login.png
+* src/assets/img/Registro.png
+* src/assets/img/Seleccion2.jpg
+* src/assets/img/Seleccion2.jpg_
+* src/assets/img/Trabajo.png
+* src/assets/img/limpieza.jpg
+* src/assets/img/logo.png
+* src/assets/js/bootstrap.min.js
+* src/assets/js/custom-map.js
+* src/assets/js/gmap3.min.js
+* src/assets/js/jquery.counterup.min.js
+* src/assets/js/jquery.magnific-popup.min.js
+* src/assets/js/jquery.mb.YTPlayer.min.js
+* src/assets/js/jquery.min.js
+* src/assets/js/jquery.slicknav.min.js
+* src/assets/js/main.js
+* src/assets/js/owl.carousel.min.js
+* src/assets/js/slick.min.js
+* src/assets/js/switcher.js
+* src/assets/js/waypoints.min.js
+* src/assets/js/wow-1.3.0.min.js
+
+
+Deleted files:
+
+
+Renamed files:
