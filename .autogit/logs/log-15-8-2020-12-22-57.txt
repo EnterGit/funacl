@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Sep 15 2020 12:22:57 GMT-0300 (hora de verano de Chile)
+------------------------------------------------------
+
+Modified files:
+* src/app/registro/registro.component.css
+
+
+Created files:
+* .autogit/logs/log-15-8-2020-2-41-15.txt
+
+
+Deleted files:
+
+
+Renamed files:
