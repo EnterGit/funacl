@@ -25,7 +25,7 @@ export class GuardiasComponent implements OnInit {
   faTh = faTh;
   faCalendar = faCalendar;
   faCalendarAlt = faCalendarAlt;
-  fainfocircle = faInfoCircle;
+  
 
   titulo: string;
   imagen: string;

@@ -1,5 +1,6 @@
+  
 <!-- Page loader -->
-<div id="preloader"></div>
+<!-- <div id="preloader"></div> -->
 <!-- header section start -->
 <header class="header">
   <div class="container">
@@ -8,52 +9,59 @@
     <div class="row flexbox-center">
       <div class="col-lg-2 col-md-3 col-6">
         <div class="logo">
-          <a href="#home"><img src="assets/img/logo.png" alt="logo" /></a>
+          <a href=""><img src="assets/img/logo.png" alt="logo" /></a>
         </div>
       </div>
       <div class="col-lg-10 col-md-9 col-6">
         <div class="responsive-menu"></div>
         <div class="mainmenu">
           <ul id="primary-menu">
-            <li routerLinkActive="active">
-              <a class="nav-link " [routerLink]="['/']">Inicio</a>
-            </li>
-            <li routerLinkActive="active">
-              <a class="nav-link " [routerLink]="['/nosotros']">Nosotros</a>
-            </li>
-            <li routerLinkActive="active">
-              <a class="nav-link " [routerLink]="['/postula']">Postula</a>
-            </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  [routerLink]="['/']">Inicio</a>
+              </li>
+              <!-- <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  [routerLink]="['/nosotros']">Nosotros</a>
+              </li> -->
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  [routerLink]="['/postula']">Postula</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  routerLink="/lista">Empleos</a>
+              </li>
 
-            <li routerLinkActive="active" class="nav-item" *ngIf="!isLogged">
-              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
-                routerLink="/registro">Registro</a>
-            </li>
-            <li class="nav-item" *ngIf="isLogged">
-              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
-                routerLink="/usuario">Perfil</a>
-            </li>
-            <li class="nav-item" *ngIf="isLogged">
-              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
-                routerLink="/lista">Listado</a>
-            </li>
-            <li class="nav-item" *ngIf="!isLogged">
-              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
-                routerLink="/login">Login</a>
-            </li>
-            <li class="nav-item" *ngIf="isLogged">
-              <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/']"
-                (click)="onLogout()">Logout</a>
-            </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  routerLink="/lista">Publicita con nosotros</a>
+              </li>
 
+              <!-- <li routerLinkActive="active" class="nav-item" *ngIf="!isLogged">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  routerLink="/registro">Registro</a>
+              </li> -->
+              <li class="nav-item" *ngIf="isLogged">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  routerLink="/usuario">Perfil</a>
+              </li>
 
-
-
-
-          </ul>
-
+              <li class="nav-item" *ngIf="isLogged">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  routerLink="/listaPostulantes">Listado Personal</a>
+              </li>
+              <li class="nav-item" *ngIf="!isLogged">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+                  routerLink="/login">Ingreso</a>
+              </li>
+              <li class="nav-item" *ngIf="isLogged">
+                <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/']"
+                  (click)="onLogout()">Logout</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </header>

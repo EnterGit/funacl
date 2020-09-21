@@ -78,9 +78,15 @@ export class ConexionService {
   }
 
   listaPostulantes() {
-   this.postulantes;
+   return this.postulantes;
   }
 
+
+  eliminarPostulante(postulante) {
+    console.log("aqui elimina Postulantes  " + postulante);
+    this.itemDoc = this.afs.doc<Item>(`postulantes/${postulante}`);
+    this.itemDoc.delete();
+  }
   // fin Postulantrs
 
 

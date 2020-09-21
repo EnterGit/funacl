@@ -32,14 +32,15 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioResolver} from './usuario/usuario.resolver';
 import { RegistroComponent } from './registro/registro.component';
 import { GuardiasComponent }  from './publica/guardias/guardias.component'
-import { PostulaComponent }  from './publica/postula/postula.component'
+import { PostulaComponent }  from './publica/postula/postula.component';
+import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component'
 
 
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'inicio', component: InicioComponent},
-//  {path: 'nosotros', component: NosotrosComponent, resolve: {data: UsuarioResolver}},
+  {path: 'listaPostulantes', component: ListaPostulantesComponent, resolve: {data: UsuarioResolver}},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'postula', component: PostulaComponent},
   {path: 'nosotros', component: NosotrosComponent},
@@ -70,7 +71,8 @@ const routes: Routes= [
     UsuarioComponent,
     RegistroComponent,
     GuardiasComponent,
-    PostulaComponent
+    PostulaComponent,
+    ListaPostulantesComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),
