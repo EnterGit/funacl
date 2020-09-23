@@ -33,7 +33,8 @@ import { UsuarioResolver} from './usuario/usuario.resolver';
 import { RegistroComponent } from './registro/registro.component';
 import { GuardiasComponent }  from './publica/guardias/guardias.component'
 import { PostulaComponent }  from './publica/postula/postula.component';
-import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component'
+import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component';
+import { PublicidadComponent } from './publica/publicidad/publicidad.component'
 
 
 
@@ -44,6 +45,7 @@ const routes: Routes= [
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'postula', component: PostulaComponent},
   {path: 'nosotros', component: NosotrosComponent},
+  {path: 'publicaaqui', component: PublicidadComponent},
 
   {path: 'guardias/:id', component: GuardiasComponent},
   {path: 'registro', component: RegistroComponent},
@@ -72,7 +74,8 @@ const routes: Routes= [
     RegistroComponent,
     GuardiasComponent,
     PostulaComponent,
-    ListaPostulantesComponent
+    ListaPostulantesComponent,
+    PublicidadComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),

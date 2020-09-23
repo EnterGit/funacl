@@ -353,7 +353,7 @@ input::-webkit-input-placeholder {
 -------- HERO AREA CSS START --------
 ---------------------------------------*/
 .hero-area {
-    padding-top: 140px;
+    padding-top: 10px;
 	z-index: 1;
 	position: relative;
     background-image: url(../img/hero-area.jpg);
@@ -364,7 +364,7 @@ input::-webkit-input-placeholder {
 	overflow: hidden;
 }
 .Selecciona-Personal {
-    padding-top: 140px;
+    padding-top: 10px;
 	z-index: 1;
 	position: relative;
     background-image: url(../img/Seleccion2.jpg);
@@ -408,7 +408,7 @@ input::-webkit-input-placeholder {
 }
 .hero-area-content {
     color: #fff;
-	padding: 80px 0 170px;
+	padding: 10px 0 170px;   /*20200923 corrigue espacio */
 }
 .hero-area-content h1 {
     color: #fff;
@@ -1495,3 +1495,6 @@ h4.post-title a {
 /*--------------------------------------
 --------- BLOG DETAILS CSS CSS END ---------
 ---------------------------------------*/
+.navbar {
+    padding : 0
+}
