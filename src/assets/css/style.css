@@ -28,7 +28,7 @@ h4,
 h5,
 h6,
 p {
-    margin: 0px;
+    margin: 5px;
 }
 h1 {
     font-size: 48px;
@@ -285,14 +285,14 @@ input::-webkit-input-placeholder {
 -------- HEADER AREA CSS START --------
 ---------------------------------------*/
 .header {
-    /* position: fixed;
+    position: relative;
     top: 0;
     left: 0;
 	transition: all 0.4s;
     width: 100%;
     z-index: 99;
     padding: 18px 0;
-    color: #000529; */
+    color: #000529;
     
 
     top: 5;
@@ -301,6 +301,7 @@ input::-webkit-input-placeholder {
     background: -moz-linear-gradient(left, #000529 1%, #002055 24%, #005db5 67%, #0074d9 100%);
     background: -webkit-linear-gradient(left, #000529 1%,#002055 24%,#005db5 67%,#0074d9 100%);
     background: linear-gradient(to right, #000529 1%,#002055 24%,#005db5 67%,#0074d9 100%);
+    
 }
 .mainmenu {
     text-align: right;
@@ -1498,3 +1499,4 @@ h4.post-title a {
 .navbar {
     padding : 0
 }
+
