@@ -14,7 +14,7 @@ export class InicioComponent implements OnInit {
 
   items: Observable<any[]>;
 
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore) {
     // this.items = db.collection('items').valueChanges();
   }
 
@@ -28,9 +28,9 @@ export class InicioComponent implements OnInit {
 
   customOptions: OwlOptions = {
     loop: true,
-    autoplay:true,
+    autoplay: true,
     autoplayTimeout: 2000,
-        mouseDrag: true,
+    mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
     dots: false,
