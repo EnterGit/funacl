@@ -34,8 +34,9 @@ import { RegistroComponent } from './registro/registro.component';
 import { GuardiasComponent }  from './publica/guardias/guardias.component'
 import { PostulaComponent }  from './publica/postula/postula.component';
 import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component'
-
-
+//publicidad
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
@@ -81,7 +82,8 @@ const routes: Routes= [
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    FormsModule, FontAwesomeModule, NgbModule
+    FormsModule, FontAwesomeModule, NgbModule,
+    CarouselModule,BrowserAnimationsModule
   ],
   providers: [
     AuthService,
