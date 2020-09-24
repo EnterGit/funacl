@@ -33,6 +33,7 @@
     "firebase": "^7.20.0",
     "jquery": "^3.5.1",
     "lodash-es": "^4.17.15",
+    "ngx-owl-carousel-o": "^4.0.0",
     "rxjs": "~6.6.3",
     "rxjs-compat": "^6.6.3",
     "tslib": "^2.0.1",
