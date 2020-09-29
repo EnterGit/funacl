@@ -1,3 +1,4 @@
+
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -35,10 +36,15 @@ import { GuardiasComponent }  from './publica/guardias/guardias.component'
 import { PostulaComponent }  from './publica/postula/postula.component';
 import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component'
 import { PublicidadComponent } from './publica/publicidad/publicidad.component'
+import { PortalEmpleoComponent } from './publica/portal-empleo/portal-empleo.component';
 
 //publicidad
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// servicio Api
+import { ApiuserService } from './services/apiuser.service';
+import { HttpClientModule} from '@angular/common/http';
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
@@ -48,6 +54,7 @@ const routes: Routes= [
   {path: 'postula', component: PostulaComponent},
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'publicaaqui', component: PublicidadComponent},
+  {path: 'portal', component: PortalEmpleoComponent},
 
   {path: 'guardias/:id', component: GuardiasComponent},
   {path: 'registro', component: RegistroComponent},
@@ -77,7 +84,8 @@ const routes: Routes= [
     GuardiasComponent,
     PostulaComponent,
     ListaPostulantesComponent,
-    PublicidadComponent
+    PublicidadComponent,
+    PortalEmpleoComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),
@@ -87,7 +95,8 @@ const routes: Routes= [
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     FormsModule, FontAwesomeModule, NgbModule,
-    CarouselModule,BrowserAnimationsModule
+    CarouselModule,BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,
@@ -95,7 +104,8 @@ const routes: Routes= [
     UsuarioResolver,
     AuthGuard,
     EquipoService,
-    ConexionService
+    ConexionService,
+    ApiuserService
   ],
   bootstrap: [AppComponent]
 })
