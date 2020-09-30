@@ -6,8 +6,23 @@ import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBellSlash, faHandPaper, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt, faTh, faCalendar, faCalendarAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+import * as $ from 'jquery';
+
+export const validarQueSeanIguales: ValidatorFn = (
+  control: FormGroup
+): ValidationErrors | null => {
+  const rut = control.get("rut")
+
+  return rut.value.rut()
+    ? null
+    : { noSonIguales: true }
+}
+
+
+declare var $: any;
+declare var jQuery: any;
 
 
 @Component({
@@ -25,7 +40,7 @@ export class GuardiasComponent implements OnInit {
   faTh = faTh;
   faCalendar = faCalendar;
   faCalendarAlt = faCalendarAlt;
-  
+
 
   titulo: string;
   imagen: string;
@@ -53,6 +68,15 @@ export class GuardiasComponent implements OnInit {
 
   ngOnInit(): void {
 
+    $(document).ready(function () {
+      $("input#rut").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () { 
+        $(".rutError").addClass("alert alert-danger")
+        $(".rutError").text("Rut inválido");
+       }).on('rutValido', function () {
+           $(".rutError").removeClass("alert alert-danger ")
+           $(".rutError").empty();
+          });
+    })
   }
 
   seteaPostulante() {
@@ -89,7 +113,7 @@ export class GuardiasComponent implements OnInit {
 
   creaFormPostulantes() {
     this.formPostulantes = this.fb.group({
-      rut: ['', [Validators.required, Validators.maxLength(5)]],
+      rut: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       educacion: ['', [Validators.required]],
       cursoAcreditacion: ['', [Validators.required]],
@@ -102,24 +126,22 @@ export class GuardiasComponent implements OnInit {
       comuna: ['', [Validators.required]],
       telefono: ['', [Validators.required]],
       celular: ['', [Validators.required]],
-      experiencia: ['', [Validators.required]]
-    });
+      experiencia: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]]
+    }
+    );
 
-    // this.formPostulantes.controls["rut"].valueChanges.subscribe(data => {
-    //   console.log(data);
-    // });
-
-    this.formPostulantes.valueChanges
-    .pipe(
-      debounceTime(500)
-    )
-      .subscribe(value => {
-        console.log(value);
-      });
+    // this.formPostulantes.valueChanges
+    //   .pipe(
+    //     debounceTime(500)
+    //   )
+    //   .subscribe(value => {
+    //     console.log(value);
+    //   });
   }
 
   agregaPostulantes(value) {
-    
+
     if (this.formPostulantes.valid) {
 
       console.log(this.formPostulantes.value)
@@ -134,7 +156,9 @@ export class GuardiasComponent implements OnInit {
       this.postulantes.direccion = value.direccion;
       this.postulantes.comuna = value.comuna;
       this.postulantes.telefono = value.telefono;
+      this.postulantes.celular = value.celular;
       this.postulantes.experiencia = value.experiencia;
+      this.postulantes.email = value.email;
 
       this.service.agregarPostulantes(this.postulantes);
 
@@ -143,8 +167,12 @@ export class GuardiasComponent implements OnInit {
       alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
     }
 
+  }
 
 
+  checarSiSonIguales(): boolean {
+    return this.formPostulantes.hasError('noSonIguales') &&
+      this.formPostulantes.get('ruy').dirty;
   }
 
 }

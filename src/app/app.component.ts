@@ -1,8 +1,12 @@
+import { UserService } from './core/user.service';
 import { Component } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { DatabaseService } from './services/database.service';
 import * as firebase from 'firebase/app';
+
+import { ApiuserService } from './services/apiuser.service'
+
 
 @Component({
   selector: 'app-root',
@@ -12,31 +16,41 @@ import * as firebase from 'firebase/app';
 export class AppComponent {
   items: Observable<any[]>;
 
+  title = 'demo131';
+  users: any[] = [];
 
-  constructor(private db: DatabaseService) {
-    // this.items = db.collection('items').valueChanges();
+
+  constructor(
+    private db: DatabaseService,
+    protected ApiuserService: ApiuserService
+    ) {
+   
   }
 
-  // search() {
-  //   this.db.col$('items', ref => this.querys(ref, true)).subscribe(response => console.log(response));
-  // }
+ngOnInit() {
+  this.ApiuserService.getUsers()
+  .subscribe(
+    (data) => {
+      console.log(data)
+      this.users = data['autos'];
+    },
+    (error) => {
+      console.log(error);
+    }
+  )
+}
 
-  // querys(ref, value: boolean) {
-  //   var user = firebase.auth().currentUser;
-  //   if (user) {
-  //     if (value)
-  //       return ref.where('id', '==', user.uid);
-  //     else
-  //       return ref.where('name', '==', 'Test 2');
-  //   } else {
-  //     return ref.where('name', '==', 'Test 2');
-  //   }
-  // }
 
   delete(){
     this.db.delete('items/W9He020gfHLtidH3F1s8')
     .then(() => console.log('Eliminado'))
     .catch(err => console.log(err))
   }
+
+  getRut(rut: string): void {
+    console.log(rut);
+  }
+
+
 
 }
