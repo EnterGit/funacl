@@ -45,9 +45,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // servicio Api
 import { ApiuserService } from './services/apiuser.service';
 import { HttpClientModule} from '@angular/common/http';
+import { LoginPersonaComponent } from './login-persona/login-persona.component';
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
+  {path: 'loginPersona', component: LoginPersonaComponent, canActivate: [AuthGuard]},
   {path: 'inicio', component: InicioComponent},
   {path: 'listaPostulantes', component: ListaPostulantesComponent, resolve: {data: UsuarioResolver}},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
@@ -85,7 +87,8 @@ const routes: Routes= [
     PostulaComponent,
     ListaPostulantesComponent,
     PublicidadComponent,
-    PortalEmpleoComponent
+    PortalEmpleoComponent,
+    LoginPersonaComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),

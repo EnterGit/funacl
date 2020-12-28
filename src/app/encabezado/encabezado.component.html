@@ -105,8 +105,13 @@
         </li>
         <li class="nav-item" *ngIf="!isLogged" routerLinkActive="active">
           <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
-            routerLink="/login">INGRESO</a>
+            routerLink="/loginPersona">INGRESO PERSONA</a>
         </li>
+        <li class="nav-item" *ngIf="!isLogged" routerLinkActive="active">
+          <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"
+            routerLink="/login">INGRESO EMPRESA</a>
+        </li>
+
         <li class="nav-item" *ngIf="isLogged" routerLinkActive="active">
           <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" [routerLink]="['/']"
             (click)="onLogout()">SALIR</a>
