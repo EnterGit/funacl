@@ -32,4 +32,8 @@ export class LoginPersonaComponent implements OnInit {
     })
   }
 
+  btnRegPostulante(){
+    this.router.navigateByUrl('/registroPostulante')
+  }
+
 }

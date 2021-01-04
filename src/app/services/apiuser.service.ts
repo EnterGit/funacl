@@ -11,7 +11,8 @@ export class ApiuserService {
 
   getUsers() {
     // return this.http.get('https://randomuser.me/api/?results=25');
-    return this.http.get('http://localhost:8080/restapi/v1/auto');
+    // return this.http.get('http://localhost:8080/restapi/v1/auto');
+    return this.http.get('http://desarrollos.curin.cl/APIS/restapi/v1/auto');
   }
 
 }

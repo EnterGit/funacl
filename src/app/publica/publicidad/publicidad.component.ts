@@ -21,6 +21,9 @@ export class PublicidadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+
   }
 
 }

@@ -46,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiuserService } from './services/apiuser.service';
 import { HttpClientModule} from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
+import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
@@ -57,6 +58,7 @@ const routes: Routes= [
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'publicaaqui', component: PublicidadComponent},
   {path: 'portal', component: PortalEmpleoComponent},
+  {path: 'registroPostulante', component: RegistoPostulanteComponent},
 
   {path: 'guardias/:id', component: GuardiasComponent},
   {path: 'registro', component: RegistroComponent},
@@ -88,7 +90,8 @@ const routes: Routes= [
     ListaPostulantesComponent,
     PublicidadComponent,
     PortalEmpleoComponent,
-    LoginPersonaComponent
+    LoginPersonaComponent,
+    RegistoPostulanteComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),
