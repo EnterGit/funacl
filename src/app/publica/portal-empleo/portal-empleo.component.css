@@ -639,3 +639,34 @@ button:focus {
 		width: 15%;
 	}
 }
+
+.card-deck .card {
+    -ms-flex: 1 0 0%;
+    flex: 1 0 0%;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.card {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    border: 0;
+	font-weight: 400;
+}
+
+.card-footer.panel-custom {
+    background: #00c851;
+	color: white;
+	font-size: 15px;
+}
+
+
+.recortar {
+	width: 60px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+
+.bodyalto { height: 180px; }

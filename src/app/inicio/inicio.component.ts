@@ -5,6 +5,10 @@ import * as firebase from 'firebase/app'
 //publicidad
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+// servicio
+import { Publicidad } from './../empleos';
+import { EmpleosService } from './../services/empleos.service';
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -12,9 +16,13 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class InicioComponent implements OnInit {
 
+  public publicidades: Publicidad[] = [
+    new Publicidad("1","")
+  ];
+
   items: Observable<any[]>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private empleoService: EmpleosService) {
     // this.items = db.collection('items').valueChanges();
   }
 
@@ -22,9 +30,17 @@ export class InicioComponent implements OnInit {
     // this.db.collection('items').valueChanges()
     // .subscribe(val => console.log(val));
     // this.db.collection('items',ref => ref.where('name','==','test2')).subscribe(Response => console.log(Response));
-
+    this.obtenerEmpleos();
 
   }
+
+  obtenerEmpleos(){
+    return this.empleoService
+    .getPublicidad()
+    .subscribe((publicidad: Publicidad[]) => this.publicidades = publicidad);
+  }
+
+
 
   customOptions: OwlOptions = {
     loop: true,

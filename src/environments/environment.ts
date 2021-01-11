@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  baseUrl : "http://localhost:8080/funaWS",
    firebaseConfig : {
     apiKey: "AIzaSyDAkjBa3703fk9DrAbrjyUXbaEFprRfR2g",
     authDomain: "funacl.firebaseapp.com",

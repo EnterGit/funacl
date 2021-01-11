@@ -11,7 +11,7 @@ import { ConexionService } from './services/conexion.service'
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 //Servicios II
 import { EquipoService } from './equipo.service';
@@ -37,6 +37,8 @@ import { PostulaComponent }  from './publica/postula/postula.component';
 import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component'
 import { PublicidadComponent } from './publica/publicidad/publicidad.component'
 import { PortalEmpleoComponent } from './publica/portal-empleo/portal-empleo.component';
+import { EmpresaComponent } from './privado/empresa/empresa.component';
+
 
 //publicidad
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -47,6 +49,7 @@ import { ApiuserService } from './services/apiuser.service';
 import { HttpClientModule} from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
+
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
@@ -59,6 +62,7 @@ const routes: Routes= [
   {path: 'publicaaqui', component: PublicidadComponent},
   {path: 'portal', component: PortalEmpleoComponent},
   {path: 'registroPostulante', component: RegistoPostulanteComponent},
+  {path: 'empresas', component: EmpresaComponent},
 
   {path: 'guardias/:id', component: GuardiasComponent},
   {path: 'registro', component: RegistroComponent},
@@ -91,7 +95,8 @@ const routes: Routes= [
     PublicidadComponent,
     PortalEmpleoComponent,
     LoginPersonaComponent,
-    RegistoPostulanteComponent
+    RegistoPostulanteComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),
@@ -111,7 +116,8 @@ const routes: Routes= [
     AuthGuard,
     EquipoService,
     ConexionService,
-    ApiuserService
+    ApiuserService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

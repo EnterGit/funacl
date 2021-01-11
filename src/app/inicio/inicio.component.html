@@ -44,18 +44,19 @@
       <div class="col-lg-12 mx-auto">
 
         <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let item of publicidades; index as i"><img
+              src="{{item.imagenUrl}}">{{item.idpublicidad}}</ng-template>
+
+          <!-- <ng-template carouselSlide><img
+              src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg">2</ng-template>
+          <ng-template carouselSlide><img
+              src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg">3</ng-template>
           <ng-template carouselSlide><img
               src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg"></ng-template>
           <ng-template carouselSlide><img
               src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg"></ng-template>
           <ng-template carouselSlide><img
-              src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg"></ng-template>
-          <ng-template carouselSlide><img
-              src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg"></ng-template>
-          <ng-template carouselSlide><img
-              src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg"></ng-template>
-          <ng-template carouselSlide><img
-              src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg"></ng-template>
+              src="https://neetwork.com/wp-content/uploads/2019/02/marketing-vspublicidad.jpg"></ng-template> -->
         </owl-carousel-o>
       </div>
     </div>

@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  baseUrl : "http://desarrollos.curin.cl/funaWS",
   firebaseConfig : {
     apiKey: "AIzaSyDAkjBa3703fk9DrAbrjyUXbaEFprRfR2g",
     authDomain: "funacl.firebaseapp.com",

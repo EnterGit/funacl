@@ -15,17 +15,13 @@ export class ListaPostulantesComponent implements OnInit {
   faTrashAlt = faTrashAlt;
   faPencilAlt = faPencilAlt;
 
-
   items: any;
-
-
 
   editarItem: any = {
     id: '',
     name: ''
   }
 
-    // items: Observable<any[]>;
 
   constructor(
     private conexion: ConexionService) 
