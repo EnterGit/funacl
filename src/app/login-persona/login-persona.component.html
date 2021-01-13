@@ -1,33 +1,35 @@
 <section id="login">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <div class="wrapper fadeInDown">
-            <div id="formContent">
-  
-              <h2>Reddinf - Persona</h2>
-  
-              <div class="fadeIn first">
-                <img width="100" height="100" src="https://image.flaticon.com/icons/svg/2943/2943270.svg" class="loaded">
-              </div>
-  
-              <form [formGroup]="loginForm">
-                <div class="form-group">
-                  <input type="email" id="login" formControlName="email" class="form-control fadeIn second third" name="login"
-                    placeholder="Usuario">
-                </div>
-                <div class="form-group">
-                  <input type="password" id="password" formControlName="password" class="form-control fadeIn third"
-                    name="login" placeholder="Contraseña">
-                  <label class="error">{{errorMessage}}</label>
-                </div>
-                <input type="submit" (click)="tryLogin(loginForm.value)" class="fadeIn fourth" value="Ingresar">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="wrapper fadeInDown">
+          <div id="formContent">
 
-                <input type="submit" (click)="btnRegPostulante()" class="fadeIn fourth" value="Registrar">
-              </form>
+            <h2>Reddinf - Persona</h2>
+
+            <div class="fadeIn first">
+              <img width="100" height="100" src="https://image.flaticon.com/icons/svg/2943/2943270.svg" class="loaded">
             </div>
+
+            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off">
+              <div class="form-group">
+                <input type="email" id="email" name="email" formControlName="email"
+                  class="form-control fadeIn second third" name="login" placeholder="Usuario">
+              </div>
+              <div class="form-group">
+                <input type="password" id="password" name="password" formControlName="password"
+                  class="form-control fadeIn third" name="login" placeholder="Contraseña">
+                <label class="error">{{errorMessage}}</label>
+              </div>
+              <!-- <input type="submit" (click)="tryLogin(loginForm.value)" class="fadeIn fourth" value="Ingresar">
+                <input type="submit" (click)="btnRegPostulante()" class="fadeIn fourth" value="Registrar"> -->
+
+              <button type="submit" class="btn btn-success">Login</button>
+
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

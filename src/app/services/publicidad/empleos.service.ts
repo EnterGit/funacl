@@ -1,5 +1,5 @@
-import { Empleo } from './../empleos';
-import { environment } from './../../environments/environment';
+import { Empleo } from '../../empleos';
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -36,7 +36,7 @@ export class EmpleosService {
   }
 
   getPublicidad() {
-    console.log("RUTA :" + this.baseUrl);
+    // console.log("RUTA :" + this.baseUrl);
     return this.http.get(`${this.baseUrl}/getAllBanner.php`);
   }
 

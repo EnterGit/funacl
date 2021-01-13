@@ -1,5 +1,5 @@
 import { Empleo } from './../../empleos';
-import { EmpleosService } from './../../services/empleos.service';
+import { EmpleosService } from '../../services/publicidad/empleos.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 

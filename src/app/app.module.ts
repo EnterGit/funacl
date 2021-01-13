@@ -8,8 +8,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ConexionService } from './services/conexion.service'
-import { FormsModule } from '@angular/forms'
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -49,15 +48,16 @@ import { ApiuserService } from './services/apiuser.service';
 import { HttpClientModule} from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
+import { AuthguardGuard } from './core/authguard.guard';
 
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'loginPersona', component: LoginPersonaComponent, canActivate: [AuthGuard]},
   {path: 'inicio', component: InicioComponent},
-  {path: 'listaPostulantes', component: ListaPostulantesComponent, resolve: {data: UsuarioResolver}},
+  {path: 'listaPostulantes', component: ListaPostulantesComponent, canActivate: [AuthguardGuard]},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
-  {path: 'postula', component: PostulaComponent},
+  {path: 'postula', component: PostulaComponent, canActivate: [AuthguardGuard]},
   {path: 'nosotros', component: NosotrosComponent},
   {path: 'publicaaqui', component: PublicidadComponent},
   {path: 'portal', component: PortalEmpleoComponent},

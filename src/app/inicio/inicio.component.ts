@@ -7,7 +7,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 // servicio
 import { Publicidad } from './../empleos';
-import { EmpleosService } from './../services/empleos.service';
+import { EmpleosService } from '../services/publicidad/empleos.service';
 
 @Component({
   selector: 'app-inicio',
@@ -30,11 +30,11 @@ export class InicioComponent implements OnInit {
     // this.db.collection('items').valueChanges()
     // .subscribe(val => console.log(val));
     // this.db.collection('items',ref => ref.where('name','==','test2')).subscribe(Response => console.log(Response));
-    this.obtenerEmpleos();
+    this.obtenerPublicidad();
 
   }
 
-  obtenerEmpleos(){
+  obtenerPublicidad(){
     return this.empleoService
     .getPublicidad()
     .subscribe((publicidad: Publicidad[]) => this.publicidades = publicidad);
@@ -52,6 +52,7 @@ export class InicioComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ['<', '>'],
+    margin: 10,
     responsive: {
       0: {
         items: 1

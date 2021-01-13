@@ -5,8 +5,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConexionService } from '../services/conexion.service';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as $ from 'jquery';
 
 
+
+declare var $: any;
+declare var jQuery: any;
 
 @Component({
   selector: 'app-registro',
@@ -15,9 +19,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class RegistroComponent implements OnInit {
 
-  registerForm: FormGroup;
+  formRegEmpresa: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
+
+  titulo: string;
+  imagen: string;
+  curso: string;
+
 
   item: any = {
     name: '',
@@ -31,16 +40,47 @@ export class RegistroComponent implements OnInit {
     private service: ConexionService,
     private afsAuth: AngularFireAuth
   ) {
+
+    this.titulo = "Formulario de Registro Empresa";
+    this.imagen = "https://media.istockphoto.com/vectors/online-registration-form-vector-id1199278357";
+    this.curso = "OS-10";
+
     this.createForm();
   }
 
 
   ngOnInit(): void {
 
+    $(document).ready(function () {
+      $("input#rutempresa").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () { 
+        $(".rutErrorEmp").addClass("alert alert-danger")
+        $(".rutErrorEmp").text("Rut inválido");
+       }).on('rutValido', function () {
+           $(".rutErrorEmp").removeClass("alert alert-danger ")
+           $(".rutErrorEmp").empty();
+          });
+ 
+    $("input#rutRepresentante").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () { 
+      $(".rutErrorRep").addClass("alert alert-danger")
+      $(".rutErrorRep").text("Rut inválido");
+     }).on('rutValido', function () {
+         $(".rutErrorRep").removeClass("alert alert-danger ")
+         $(".rutErrorRep").empty();
+        });
+  })
+
   }
 
   createForm() {
-    this.registerForm = this.fb.group({
+    this.formRegEmpresa = this.fb.group({
+      rutempresa: ['', Validators.required],
+      nombreEmpresa: ['', Validators.required],
+      rutRepresentante : ['', Validators.required],
+      nombreRepresentante: ['', Validators.required],
+      direccionEmp: ['', Validators.required],
+      telefonoEmp: ['', Validators.required],
+      Contrasenia:  ['', Validators.required],
+      RepetirContrasenia:  ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       idUsuario: [''],
@@ -52,8 +92,8 @@ export class RegistroComponent implements OnInit {
 
   tryRegister(value) {
 
-    console.log("REGISTRO " + value);
-    this.authService.doRegister(value)
+    console.log("REGISTRO " + this.formRegEmpresa.value);
+    /* this.authService.doRegister(value)
       .then(res => {
         var user = firebase.auth().currentUser;
 
@@ -69,8 +109,8 @@ export class RegistroComponent implements OnInit {
       }, err => {
         console.log(err);
         this.errorMessage = err.message;
-        this.successMessage = "";
-      });
+        this.successMessage = ""; 
+      });*/
   }
 
 
