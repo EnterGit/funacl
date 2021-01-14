@@ -37,12 +37,10 @@ export class EncabezadoComponent implements OnInit {
 
     this.dataService.getLoggedInName.subscribe(name => this.changeName(name));
     if (this.dataService.isLoggedIn()) {
-      console.log(" aaaaa loggedin");
       this.loginbtn = false;
       this.logoutbtn = true;
     }
     else {
-      console.log(" aaabbbbbbaa loggedin");
       this.loginbtn = true;
       this.logoutbtn = false;
     }  

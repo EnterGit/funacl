@@ -96,11 +96,9 @@ export class RegistroComponent implements OnInit {
     /* this.authService.doRegister(value)
       .then(res => {
         var user = firebase.auth().currentUser;
-
         console.log("RESPUESTA :" + user.uid);
         this.errorMessage = "";
         this.successMessage = "Cuenta ha sido creada !!";
-
         this.item.nombre = value.nombre;
         this.item.direccion = value.direccion;
         this.item.idUsuario = user.uid;

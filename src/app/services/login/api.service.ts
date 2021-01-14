@@ -1,7 +1,9 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Users } from '../../core/users';
+
 
 @Injectable({
     providedIn: 'root'
@@ -9,16 +11,20 @@ import { Users } from '../../core/users';
 
 export class ApiService {
     redirectUrl: string;
-    baseUrl: string = "http://localhost:8080/funaWS/Login/";
+    baseUrl = environment.baseUrl + '/Login/'   
+
+    // baseUrl: string = "http://localhost:8080/funaWS/Login/";
     @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-    constructor(private httpClient: HttpClient) { }
     
+    constructor(private httpClient: HttpClient) { }
+
     public userlogin(username, password) {
-        alert(username)
         return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
             .pipe(map(Users => {
                 this.setToken(Users[0].name);
                 this.getLoggedInName.emit(true);
+
+                console.log (Users);
                 return Users;
             }));
     }

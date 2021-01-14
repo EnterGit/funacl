@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app'
+
+
 //publicidad
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 // servicio
-import { Publicidad } from './../empleos';
+import { Publicidad } from '../core/empleos';
 import { EmpleosService } from '../services/publicidad/empleos.service';
 
 @Component({
@@ -32,6 +34,7 @@ export class InicioComponent implements OnInit {
     // this.db.collection('items',ref => ref.where('name','==','test2')).subscribe(Response => console.log(Response));
     this.obtenerPublicidad();
 
+  
   }
 
   obtenerPublicidad(){

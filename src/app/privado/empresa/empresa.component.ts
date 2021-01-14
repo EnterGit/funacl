@@ -1,4 +1,7 @@
+import { Users } from './../../core/users';
+import { ApiService } from './../../services/login/api.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-empresa',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaComponent implements OnInit {
 
-  constructor() { }
+  constructor(apiservice : ApiService) { }
 
   ngOnInit(): void {
+
+    console.log(localStorage.getItem('token'));
+
+    console.log(Users);
+   
   }
 
 }

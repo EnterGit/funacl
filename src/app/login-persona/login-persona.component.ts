@@ -30,7 +30,7 @@ export class LoginPersonaComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/dashboard';
+          const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/accesoEmpresa';
           this.router.navigate([redirect]);
         },
         error => {

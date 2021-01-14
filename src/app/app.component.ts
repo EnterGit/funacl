@@ -1,3 +1,4 @@
+import { ApiService } from './services/login/api.service';
 import { UserService } from './core/user.service';
 import { Component } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -6,8 +7,6 @@ import { DatabaseService } from './services/database.service';
 import * as firebase from 'firebase/app';
 import { Router, Params } from '@angular/router';
 import { ApiuserService } from './services/apiuser.service'
-
-
 
 @Component({
   selector: 'app-root',
@@ -20,6 +19,8 @@ export class AppComponent {
   title = 'demo131';
   users: any[] = [];
 
+  loginbtn: boolean;
+  logoutbtn: boolean;
 
   constructor(
     private db: DatabaseService,

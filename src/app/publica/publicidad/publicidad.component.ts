@@ -12,7 +12,7 @@ export class PublicidadComponent implements OnInit {
   curso: string;
 
 
-  constructor() { 
+  constructor() {
 
     this.titulo = "Formulario de Contacto";
     this.imagen = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
@@ -21,8 +21,6 @@ export class PublicidadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
 
   }
 

@@ -1,3 +1,6 @@
+import { AccesoAdminModule } from './privado/acceso-admin/acceso-admin.module';
+import { AccesoEmpresaModule } from './privado/acceso-empresa/acceso-empresa.module';
+
 
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,6 +14,7 @@ import { ConexionService } from './services/conexion.service'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 //Servicios II
 import { EquipoService } from './equipo.service';
@@ -30,13 +34,13 @@ import { ListaAddComponent } from './components/lista-add/lista-add.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioResolver} from './usuario/usuario.resolver';
-import { RegistroComponent } from './registro/registro.component';
+// import { RegistroComponent } from './registro/registro.component';
 import { GuardiasComponent }  from './publica/guardias/guardias.component'
 import { PostulaComponent }  from './publica/postula/postula.component';
 import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component'
-import { PublicidadComponent } from './publica/publicidad/publicidad.component'
+// import { PublicidadComponent } from './publica/publicidad/publicidad.component'
 import { PortalEmpleoComponent } from './publica/portal-empleo/portal-empleo.component';
-import { EmpresaComponent } from './privado/empresa/empresa.component';
+// import { EmpresaComponent } from './privado/empresa/empresa.component';
 
 
 //publicidad
@@ -58,14 +62,14 @@ const routes: Routes= [
   {path: 'listaPostulantes', component: ListaPostulantesComponent, canActivate: [AuthguardGuard]},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'postula', component: PostulaComponent, canActivate: [AuthguardGuard]},
-  {path: 'nosotros', component: NosotrosComponent},
-  {path: 'publicaaqui', component: PublicidadComponent},
+  {path: 'nosotros', component: NosotrosComponent, canActivate: [AuthguardGuard]},
+  // {path: 'publicaaqui', component: PublicidadComponent},
   {path: 'portal', component: PortalEmpleoComponent},
   {path: 'registroPostulante', component: RegistoPostulanteComponent},
-  {path: 'empresas', component: EmpresaComponent},
+  // {path: 'empresas', component: EmpresaComponent},
 
-  {path: 'guardias/:id', component: GuardiasComponent},
-  {path: 'registro', component: RegistroComponent},
+  {path: 'guardias/:id', component: GuardiasComponent, canActivate: [AuthguardGuard]},
+  // {path: 'registro', component: RegistroComponent},
   {path: 'lista', component: ListaComponent, resolve: {data: UsuarioResolver}},
   {path: 'lista-add', component: ListaAddComponent, resolve: {data: UsuarioResolver}},
 
@@ -88,15 +92,16 @@ const routes: Routes= [
     ListaComponent,
     ListaAddComponent,
     UsuarioComponent,
-    RegistroComponent,
+    // RegistroComponent,
     GuardiasComponent,
     PostulaComponent,
     ListaPostulantesComponent,
-    PublicidadComponent,
+    // PublicidadComponent,
     PortalEmpleoComponent,
     LoginPersonaComponent,
-    RegistoPostulanteComponent,
-    EmpresaComponent
+    RegistoPostulanteComponent
+    // EmpresaComponent,
+
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes),
@@ -107,7 +112,9 @@ const routes: Routes= [
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     FormsModule, FontAwesomeModule, NgbModule,
     CarouselModule,BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    AccesoEmpresaModule,
+    AccesoAdminModule
   ],
   providers: [
     AuthService,

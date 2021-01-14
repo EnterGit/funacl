@@ -1,4 +1,4 @@
-import { Empleo } from '../../empleos';
+import { Empleo } from '../../core/empleos';
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
