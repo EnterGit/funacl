@@ -12,9 +12,9 @@ import { AccesoEmpresaComponent } from './acceso-empresa.component';
 
 
 const routes: Routes= [
-  {path: 'accesoEmpresa', component: AccesoEmpresaComponent,
+  {path: 'accesoEmpresa', component: AccesoEmpresaComponent, canActivate: [AuthguardGuard],
   children: [
-    {path: 'empresas', component: EmpresaComponent}
+    {path: 'empresas', component: EmpresaComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];
 

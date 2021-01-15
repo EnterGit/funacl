@@ -1,3 +1,5 @@
+import { ApiService } from './services/login/api.service';
+import { Globals } from './globals';
 import { AccesoAdminModule } from './privado/acceso-admin/acceso-admin.module';
 import { AccesoEmpresaModule } from './privado/acceso-empresa/acceso-empresa.module';
 
@@ -124,7 +126,9 @@ const routes: Routes= [
     EquipoService,
     ConexionService,
     ApiuserService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    Globals,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

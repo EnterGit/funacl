@@ -10,7 +10,7 @@
             <div class="fadeIn first">
               <img width="100" height="100" src="https://image.flaticon.com/icons/svg/2943/2943270.svg" class="loaded">
             </div>
-
+            
             <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off">
               <div class="form-group">
                 <input type="email" id="email" name="email" formControlName="email"
@@ -23,9 +23,8 @@
               </div>
               <!-- <input type="submit" (click)="tryLogin(loginForm.value)" class="fadeIn fourth" value="Ingresar">
                 <input type="submit" (click)="btnRegPostulante()" class="fadeIn fourth" value="Registrar"> -->
-
+                {{globals.role}}
               <button type="submit" class="btn btn-success">Login</button>
-
             </form>
           </div>
         </div>
@@ -33,3 +32,4 @@
     </div>
   </div>
 </section>
+

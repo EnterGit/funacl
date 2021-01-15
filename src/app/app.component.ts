@@ -26,11 +26,10 @@ export class AppComponent {
     private db: DatabaseService,
     protected ApiuserService: ApiuserService,
     private router : Router
-  ) {
-
-  }
+  ) { }
 
   ngOnInit() {
+
     // this.ApiuserService.getUsers()
     //   .subscribe(
     //     (data) => {

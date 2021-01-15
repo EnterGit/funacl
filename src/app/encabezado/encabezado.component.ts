@@ -64,8 +64,6 @@ export class EncabezadoComponent implements OnInit {
     this.afsAuth.auth.signOut();
   }
 
-
-
   private changeName(name: boolean): void {
     this.logoutbtn = name;
     this.loginbtn = !name;

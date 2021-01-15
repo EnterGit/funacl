@@ -1,4 +1,7 @@
+import { ApiService } from './../../services/login/api.service';
+import { Globals } from './../../globals';
 import { Component, OnInit } from '@angular/core';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -8,14 +11,28 @@ import * as $ from 'jquery';
 })
 export class AccesoAdminComponent implements OnInit {
 
-  constructor() { }
+  private role: string;
+  
+  constructor(
+    public globals: Globals,
+    public apiservice : ApiService
+    ) {
+    
+    }
 
   ngOnInit(): void {
             //Toggle Click Function
+
+            this.role = this.apiservice.getToken();
+
             $("#menu-toggle").click(function (e) {
               e.preventDefault();
               $("#wrapper").toggleClass("toggled");
             });
+
+            this.globals.role = this.role;
   }
 
+
+  
 }

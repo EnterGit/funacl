@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Users } from '../../core/users';
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -16,15 +15,17 @@ export class ApiService {
     // baseUrl: string = "http://localhost:8080/funaWS/Login/";
     @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
     
+    
+
     constructor(private httpClient: HttpClient) { }
 
     public userlogin(username, password) {
         return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
             .pipe(map(Users => {
                 this.setToken(Users[0].name);
-                this.getLoggedInName.emit(true);
+                this.getLoggedInName.emit(true);    
 
-                console.log (Users);
+                console.log("API SERVICE " + this.getLoggedInName.emit(true));
                 return Users;
             }));
     }
@@ -35,6 +36,7 @@ export class ApiService {
                 return Users;
             }));
     }
+
 
     //token
     setToken(token: string) {

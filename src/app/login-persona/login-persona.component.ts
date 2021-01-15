@@ -1,9 +1,11 @@
+import { Globals } from './../globals';
 import { ApiService } from '../services/login/api.service';
 import { AuthService } from './../core/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, Params } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login-persona',
@@ -15,14 +17,28 @@ export class LoginPersonaComponent implements OnInit {
   angForm: FormGroup;
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private dataService: ApiService, private router: Router) {
+
+
+
+  constructor(
+    private fb: FormBuilder, 
+    private dataService: ApiService, 
+    private router: Router,
+    public globals: Globals
+    ) 
+    {
     this.angForm = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
       password: ['', Validators.required]
     });
+
+
   }
 
   ngOnInit() {
+
+
+    
   }
 
   postdata(angForm1) {
@@ -30,8 +46,10 @@ export class LoginPersonaComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          
           const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/accesoEmpresa';
           this.router.navigate([redirect]);
+         
         },
         error => {
           alert("User name or password is incorrect")

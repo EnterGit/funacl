@@ -2,24 +2,24 @@
   <!-- Sidebar -->
   <div class="bg-light border-right" id="sidebar-wrapper">
 
-
-
-      <div class="sidebar-heading">
-        <div class="profile-card">
-          <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo">
-          <h5><a href="#" class="text-white">Usuario</a></h5>
-          <a href="#" class="text-white"> Administrador</a>
-        </div>
-        Menú Administrador </div>
-      <div class="list-group list-group-flush">
-        <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-          data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/RegistrarEmpresa']">Ingresar Empresa</a>
-        <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-          data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/publica']">Gestión Funa </a>
-        <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-          data-target=".navbar-collapse.show" [routerLink]="['/publicaaqui']">Gestión Publicidad </a>
+    <div class="sidebar-heading">
+      <div class="profile-card">
+        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo">
+        <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
+        <a href="#" class="text-white"> Administrador</a>
       </div>
-    
+
+      <a [routerLink]="['/accesoAdmin']">Menu Administrador</a>
+    </div>
+    <div class="list-group list-group-flush">
+      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+        data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/RegistrarEmpresa']">Ingresar Empresa</a>
+      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+        data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/publica']">Gestión Funa </a>
+      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+        data-target=".navbar-collapse.show" [routerLink]="['/publicaaqui']">Gestión Publicidad </a>
+    </div>
+
   </div>
   <!-- /#sidebar-wrapper -->
   <!-- Page Content -->
@@ -33,12 +33,12 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-
         </ul>
       </div>
     </nav>
     <div class="page-header">
       <h3>Acceso portal Administrador</h3>
+
     </div>
     <div class="container-fluid">
       <router-outlet></router-outlet>
