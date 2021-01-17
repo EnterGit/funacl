@@ -1,7 +1,9 @@
+import { AuthguardGuard } from './../core/authguard.guard';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app'
+import { ApiService } from '../services/login/api.service';
 
 
 //publicidad
@@ -23,18 +25,24 @@ export class InicioComponent implements OnInit {
   ];
 
   items: Observable<any[]>;
+  loginbtn: boolean;
 
-  constructor(private db: AngularFirestore, private empleoService: EmpleosService) {
+  constructor(
+    private db: AngularFirestore, 
+    private empleoService: EmpleosService,
+    protected dataService: ApiService,
+    protected authAcceso: AuthguardGuard
+    ) {
     // this.items = db.collection('items').valueChanges();
   }
 
-  ngOnInit(): void {
-    // this.db.collection('items').valueChanges()
-    // .subscribe(val => console.log(val));
-    // this.db.collection('items',ref => ref.where('name','==','test2')).subscribe(Response => console.log(Response));
-    this.obtenerPublicidad();
+  ngOnInit(): void { 
 
-  
+    if (this.authAcceso.isAuth()){
+      this.loginbtn = true;
+    }
+
+    this.obtenerPublicidad();
   }
 
   obtenerPublicidad(){

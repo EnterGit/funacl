@@ -5,8 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../core/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-
-
 @Component({
   selector: 'app-encabezado',
   templateUrl: './encabezado.component.html',
@@ -22,15 +20,14 @@ export class EncabezadoComponent implements OnInit {
     private afsAuth: AngularFireAuth,
     protected dataService: ApiService,
     private router: Router
-    )
-    {
-   
+  ) {
+
   }
 
   public app_name: string = 'App';
   public isLogged: boolean = false;
 
-  
+
 
   ngOnInit() {
     // this.getCurrentUser();
@@ -43,7 +40,7 @@ export class EncabezadoComponent implements OnInit {
     else {
       this.loginbtn = true;
       this.logoutbtn = false;
-    }  
+    }
 
   }
 
@@ -74,6 +71,7 @@ export class EncabezadoComponent implements OnInit {
     window.location.href = window.location.href;
     this.logoutbtn = false;
     this.loginbtn = true;
+    window.location.reload();
   }
 
 }

@@ -1,4 +1,5 @@
-import { PublicidadComponent } from './../../publica/publicidad/publicidad.component';
+import { GestionarPublicidadComponent } from './../gestionar-publicidad/gestionar-publicidad.component';
+import { AutorizarFunaComponent } from './../autorizar-funa/autorizar-funa.component';
 import { AccesoAdminComponent } from './acceso-admin.component';
 import { RegistroComponent } from './../../registro/registro.component';
 
@@ -13,7 +14,8 @@ const routes: Routes= [
   {path: 'accesoAdmin', component: AccesoAdminComponent,
   children: [
     {path: 'RegistrarEmpresa', component: RegistroComponent},
-    {path: 'publica', component: PublicidadComponent}
+    {path: 'AutorizarFuna', component: AutorizarFunaComponent, canActivate: [AuthguardGuard]},
+    {path: 'GestionarPublicidad', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];
 
@@ -21,7 +23,8 @@ const routes: Routes= [
   declarations: [
     AccesoAdminComponent,
     RegistroComponent,
-    PublicidadComponent
+    AutorizarFunaComponent,
+    GestionarPublicidadComponent
   ],
   imports: [
     CommonModule,

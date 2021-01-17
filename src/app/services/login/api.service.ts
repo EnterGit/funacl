@@ -48,6 +48,8 @@ export class ApiService {
     deleteToken() {
         localStorage.removeItem('token');
     }
+
+    
     isLoggedIn() {
         const usertoken = this.getToken();
         if (usertoken != null) {

@@ -17,7 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
-
 //Servicios II
 import { EquipoService } from './equipo.service';
 import { AuthGuard } from './core/auth.guard';
@@ -40,7 +39,7 @@ import { UsuarioResolver} from './usuario/usuario.resolver';
 import { GuardiasComponent }  from './publica/guardias/guardias.component'
 import { PostulaComponent }  from './publica/postula/postula.component';
 import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component'
-// import { PublicidadComponent } from './publica/publicidad/publicidad.component'
+import { PublicidadComponent } from './publica/publicidad/publicidad.component'
 import { PortalEmpleoComponent } from './publica/portal-empleo/portal-empleo.component';
 // import { EmpresaComponent } from './privado/empresa/empresa.component';
 
@@ -65,7 +64,7 @@ const routes: Routes= [
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
   {path: 'postula', component: PostulaComponent, canActivate: [AuthguardGuard]},
   {path: 'nosotros', component: NosotrosComponent, canActivate: [AuthguardGuard]},
-  // {path: 'publicaaqui', component: PublicidadComponent},
+  {path: 'publicaaqui', component: PublicidadComponent},
   {path: 'portal', component: PortalEmpleoComponent},
   {path: 'registroPostulante', component: RegistoPostulanteComponent},
   // {path: 'empresas', component: EmpresaComponent},
@@ -98,7 +97,7 @@ const routes: Routes= [
     GuardiasComponent,
     PostulaComponent,
     ListaPostulantesComponent,
-    // PublicidadComponent,
+    PublicidadComponent,
     PortalEmpleoComponent,
     LoginPersonaComponent,
     RegistoPostulanteComponent

@@ -20,8 +20,15 @@ export class AuthguardGuard implements CanActivate {
         if (this.dataService.isLoggedIn()) {
             return true;
         }
-
         this.dataService.redirectUrl = routeurl;
         this.router.navigate(['/loginPersona'], { queryParams: { returnUrl: routeurl } });
+    }
+
+
+    isAuth() {
+        if (this.dataService.isLoggedIn()) {
+            console.log("YA AUTORIZADO");
+            return true;
+        }
     }
 }
