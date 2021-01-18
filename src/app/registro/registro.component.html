@@ -52,7 +52,7 @@
                                                     <label for="lbltRut">
                                                         <h6>Rut Empresa</h6>
                                                     </label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control my-1"
                                                         placeholder="Ingrese Rut Empresa" formControlName="rutempresa"
                                                         id="rutempresa" name="rutEmpresa" />
                                                     <p class="rutErrorEmp" id="validacion-live"></p>
@@ -64,7 +64,7 @@
                                                         <h6>Nombre Empresa</h6>
                                                     </label>
                                                     <input type="text" formControlName="nombreEmpresa"
-                                                        id="nombreEmpresa" name="nomEmpresa"
+                                                        id="nombreEmpresa" name="nomEmpresa" class="form-control my-1"
                                                         placeholder="Ingrese Nombre Empresa">
                                                 </div>
 
@@ -73,7 +73,7 @@
                                                         <h6>Rut Representante</h6>
                                                     </label>
                                                     <input type="text" formControlName="rutRepresentante"
-                                                        id="rutRepresentante" name="rutRepresentante"
+                                                        id="rutRepresentante" name="rutRepresentante" class="form-control my-1"
                                                         placeholder="Ingrese Rut Representante">
                                                     <p class="rutErrorRep" id="validacion-live"></p>
                                                 </div>
@@ -83,7 +83,7 @@
                                                         <h6>Nombre Representante</h6>
                                                     </label>
                                                     <input type="text" formControlName="nombreRepresentante"
-                                                        id="nombreRepresentante" name="nombreRepresentante"
+                                                        id="nombreRepresentante" name="nombreRepresentante" class="form-control my-1"
                                                         placeholder="Ingrese Nombre Representante">
                                                 </div>
 
@@ -92,7 +92,7 @@
                                                         <h6>Ingrese Contraseña</h6>
                                                     </label>
                                                     <input type="password" formControlName="Contrasenia"
-                                                        id="Contrasenia" name="Contrasenia"
+                                                        id="Contrasenia" name="Contrasenia" class="form-control my-1"
                                                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
                                                 </div>
 
@@ -101,7 +101,7 @@
                                                         <h6>Repita Contraseña</h6>
                                                     </label>
                                                     <input type="password" formControlName="RepetirContrasenia"
-                                                        id="RepetirContrasenia" name="RepetirContrasenia"
+                                                        id="RepetirContrasenia" name="RepetirContrasenia" class="form-control my-1"
                                                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
                                                 </div>
 
@@ -109,7 +109,7 @@
                                                     <label for="lbltRut">
                                                         <h6>Dirección Empresa</h6>
                                                     </label>
-                                                    <input type="text" formControlName="direccionEmp" id="direccionEmp"
+                                                    <input type="text" formControlName="direccionEmp" id="direccionEmp" class="form-control my-1"
                                                         name="direccionEmp" placeholder="Ingrese Dirección">
                                                 </div>
 
@@ -117,7 +117,7 @@
                                                     <label for="lbltRut">
                                                         <h6>Telefono Empresa</h6>
                                                     </label>
-                                                    <input type="text" formControlName="telefonoEmp" id="telefonoEmp"
+                                                    <input type="text" formControlName="telefonoEmp" id="telefonoEmp" class="form-control my-1"
                                                         name="telefonoEmp" placeholder="Ingrese Telefono">
                                                 </div>
 
@@ -125,25 +125,27 @@
                                                     <label for="lbltRut">
                                                         <h6>Email Empresa</h6>
                                                     </label>
-                                                    <input type="text" formControlName="email" id="email" name="email"
+                                                    <input type="text" formControlName="email" id="email" name="email" class="form-control my-1"
                                                         placeholder="EmailEmpresa@email.com">
                                                 </div>
 
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 text-center" >
+                                                    <button type="submit" [disabled]="formRegEmpresa.valid"
+                                                        (click)="tryRegister(formRegEmpresa.value)"
+                                                        class="btn btn-outline-primary">Postular</button>
+                                                </div>
+                                                <div class="form-group col-md-6 text-center" >
+                                                    <button class="btn btn-outline-primary">Limpiar</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <button type="submit" [disabled]="formRegEmpresa.valid"
-                                                (click)="tryRegister(formRegEmpresa.value)"
-                                                class="btn btn-primary">Postular</button>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <button class="btn btn-outline-primary">Limpiar</button>
-                                        </div>
-                                    </div>
+                                    
 
                                 </div>
                             </div>

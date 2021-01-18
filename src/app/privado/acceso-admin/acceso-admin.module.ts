@@ -1,3 +1,4 @@
+import { GestionarEmpleoComponent } from './../gestionar-empleo/gestionar-empleo.component';
 import { GestionarPublicidadComponent } from './../gestionar-publicidad/gestionar-publicidad.component';
 import { AutorizarFunaComponent } from './../autorizar-funa/autorizar-funa.component';
 import { AccesoAdminComponent } from './acceso-admin.component';
@@ -15,7 +16,8 @@ const routes: Routes= [
   children: [
     {path: 'RegistrarEmpresa', component: RegistroComponent},
     {path: 'AutorizarFuna', component: AutorizarFunaComponent, canActivate: [AuthguardGuard]},
-    {path: 'GestionarPublicidad', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]}
+    {path: 'GestionarPublicidad', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]},
+    {path: 'GestionarEmpleo', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];
 
@@ -24,7 +26,8 @@ const routes: Routes= [
     AccesoAdminComponent,
     RegistroComponent,
     AutorizarFunaComponent,
-    GestionarPublicidadComponent
+    GestionarPublicidadComponent,
+    GestionarEmpleoComponent
   ],
   imports: [
     CommonModule,
