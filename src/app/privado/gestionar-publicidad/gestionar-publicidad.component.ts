@@ -1,3 +1,6 @@
+import { environment } from './../../../environments/environment';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +9,7 @@ import { onErrorResumeNext } from 'rxjs/operators';
 import { onErrorResumeNextStatic } from 'rxjs/internal/operators/onErrorResumeNext';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
+
 @Component({
   selector: 'app-gestionar-publicidad',
   templateUrl: './gestionar-publicidad.component.html',
@@ -13,38 +17,66 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class GestionarPublicidadComponent implements OnInit {
 
-  archivoSeleccionado: File = null;
+
+  formGestionPublicidad : FormGroup;
   file = new FormControl('')
   file_data: any = ''
   imageSrc: string;
 
   titulo: string;
   imagenTitulo: string;
-  curso: string;
-  message: string;
   subirArchivo: string = null;
 
-  stringifiedData: any;
-  parsedJson: any;
 
-  ip = "http://localhost:8080/funaWS/Upload/"
+  mostrarPublicidad: boolean;
+  mostrarFormPublicidad: boolean;
 
-  myForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    file: new FormControl('', [Validators.required]),
-    fileSource: new FormControl('', [Validators.required])
-  });
+  baseUrl = environment.baseUrl + '/Upload/';
 
-  constructor(private http: HttpClient) {
+  // myForm = new FormGroup({
+  //   name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  //   file: new FormControl('', [Validators.required]),
+  //   fileSource: new FormControl('', [Validators.required])
+  // });
+
+  constructor(private http: HttpClient,
+    private ruta: ActivatedRoute,
+    private router: Router) 
+    {
     this.titulo = "Publicar Anuncio";
     this.imagenTitulo = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
-    this.curso = "OS-10";
+
+    this.seteaBloques();
+
+
   }
 
 
   ngOnInit(): void {
   }
 
+  seteaBloques() {
+    this.ruta.params.subscribe(params => {
+      console.log(params['id']);
+
+      switch (params['id']) {
+        case '1': {
+          this.mostrarPublicidad = false;
+          this.mostrarFormPublicidad = true;
+          break;
+        }
+        case '2': {
+          this.mostrarPublicidad = true;
+          this.mostrarFormPublicidad = false;
+          break;
+        }
+        default: {
+          this.router.navigate(['/accesoAdmin']);
+          break;
+        }
+      }
+    })
+  }
 
   fileChange(event) {
     const reader = new FileReader();
@@ -57,9 +89,9 @@ export class GestionarPublicidadComponent implements OnInit {
 
         this.imageSrc = reader.result as string;
 
-        this.myForm.patchValue({
-          fileSource: reader.result
-        });
+        // this.myForm.patchValue({
+        //   fileSource: reader.result
+        // });
       }
     }
 
@@ -92,7 +124,7 @@ export class GestionarPublicidadComponent implements OnInit {
   uploadFile() {
 
     console.log(this.file_data);
-    this.http.post(this.ip + 'upload.php', this.file_data, {
+    this.http.post(this.baseUrl + 'upload.php', this.file_data, {
       reportProgress: true,
       observe: 'events'
     })

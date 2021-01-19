@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="formGestionPublicidad" *ngIf="mostrarFormPublicidad">
     <section id="guardiaPostula">
         <div class="container py-2 mx-auto">
             <div class="card card0 border-0">
@@ -72,11 +72,11 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="lblFecIniPub">Fecha Inicio</label>
-                                                    <input type="date" class="form-control" id="fecIniPub" />
+                                                    <input type="date" class="form-control my-1" id="fecIniPub" />
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="lblFecTerPub">Fecha Termino</label>
-                                                    <input type="date" class="form-control" id="fecTerPub" />
+                                                    <input type="date" class="form-control my-1" id="fecTerPub" />
                                                 </div>
                                             </div>
 
@@ -130,4 +130,64 @@
     </section>
 </form> 
 
+
+
+
+<div *ngIf="mostrarPublicidad" >
+
+    <div class="row flex-lg-nowrap">
+        <div class="col mb-3">
+          <div class="e-panel card">
+            <div class="card-body">
+              <div class="card-title">
+                <h6 class="mr-2"><span>Users</span><small class="px-1">Be a wise leader</small></h6>
+              </div>
+              <div class="e-table">
+                <div class="table-responsive table-lg mt-3">
+                  <div class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th class="align-top">
+                          <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
+                            <input type="checkbox" class="custom-control-input" id="all-items">
+                            <label class="custom-control-label" for="all-items"></label>
+                          </div>
+                        </th>
+                        <th>Photo</th>
+                        <th class="max-width">Name</th>
+                        <th class="sortable">Date</th>
+                        <th> </th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="align-middle">
+                          <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
+                            <input type="checkbox" class="custom-control-input" id="item-1">
+                            <label class="custom-control-label" for="item-1"></label>
+                          </div>
+                        </td>
+                        <td class="align-middle text-center">
+                          <div class="bg-light d-inline-flex justify-content-center align-items-center align-top" style="width: 35px; height: 35px; border-radius: 3px;"><i class="fa fa-fw fa-photo" style="opacity: 0.8;"></i></div>
+                        </td>
+                        <td class="text-nowrap align-middle">Adam Cotter</td>
+                        <td class="text-nowrap align-middle"><span>09 Dec 2017</span></td>
+                        <td class="text-center align-middle"><i class="fa fa-fw text-secondary cursor-pointer fa-toggle-on"></i></td>
+                        <td class="text-center align-middle">
+                          <div class="btn-group align-top">
+                              <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal">Edit</button>
+                              <button class="btn btn-sm btn-outline-secondary badge" type="button"><i class="fa fa-trash"></i></button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                          
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

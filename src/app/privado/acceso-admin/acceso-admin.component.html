@@ -1,29 +1,51 @@
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
   <div class="bg-light border-right" id="sidebar-wrapper">
+    <ul>
+      <div class="sidebar-heading">
+        <div class="profile-card">
+          <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo">
+          <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
 
-    <div class="sidebar-heading">
-      <div class="profile-card">
-        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo">
-        <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
+          <a href="#" class="text-white"> Administrador</a>
+        </div>
 
-        <a href="#" class="text-white"> Administrador</a>
+        <a [routerLink]="['/accesoAdmin']">Menu Administrador</a>
       </div>
-
-      <a [routerLink]="['/accesoAdmin']">Menu Administrador</a>
-    </div>
-    <div class="list-group list-group-flush">
-      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-        data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/RegistrarEmpresa']">Ingresar Empresa</a>
-      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-        data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/AutorizarFuna']">Autorizar Funa </a>
-      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-        data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/GestionarPublicidad']">Gestión Publicidad </a>
-        <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-        data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/GestionarEmpleo']">Gestión Empleo </a>
-    </div>
-
+      <div class="list-group list-group-flush">
+        <li>
+          <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+            data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/RegistrarEmpresa']">Ingresar Empresa</a>
+        </li>
+        <li>
+          <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+            data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/AutorizarFuna']">Autorizar Funa </a>
+        </li>
+        <li clas="fa fa-tachometer-alt" >
+          <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+            data-target=".navbar-collapse.show">Gestión Publicidad
+            <span class="flecha">&#9660;</span>
+          </a>
+          
+          <ul>
+            <li><a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+                data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/GestionarPublicidad/1']">Ingresar
+                Publicidad
+              </a></li>
+            <li><a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+                data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/GestionarPublicidad/2']">Listar
+                Publicidad
+              </a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+            data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/GestionarEmpleo']">Gestión Empleo </a>
+        </li>
+      </div>
+    </ul>
   </div>
+
   <!-- /#sidebar-wrapper -->
   <!-- Page Content -->
   <div id="page-content-wrapper">
@@ -47,3 +69,6 @@
   </div>
   <!-- /#page-content-wrapper -->
 </div>
+
+
+

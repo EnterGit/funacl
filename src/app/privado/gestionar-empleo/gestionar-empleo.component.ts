@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,8 @@ export class GestionarEmpleoComponent implements OnInit {
   titulo: string;
   imagenTitulo: string;
   curso: string;
+
+  formGestionaEmpleos: FormGroup;
 
   constructor() { 
     this.titulo = "Gestión Empleo";

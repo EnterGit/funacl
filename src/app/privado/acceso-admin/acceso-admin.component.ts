@@ -16,6 +16,7 @@ export class AccesoAdminComponent implements OnInit {
   constructor(
     public globals: Globals,
     public apiservice : ApiService
+
     ) {
     
     }
@@ -32,7 +33,5 @@ export class AccesoAdminComponent implements OnInit {
 
             this.globals.role = this.role;
   }
-
-
   
 }

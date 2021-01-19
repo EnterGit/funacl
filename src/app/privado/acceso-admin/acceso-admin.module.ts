@@ -16,7 +16,7 @@ const routes: Routes= [
   children: [
     {path: 'RegistrarEmpresa', component: RegistroComponent},
     {path: 'AutorizarFuna', component: AutorizarFunaComponent, canActivate: [AuthguardGuard]},
-    {path: 'GestionarPublicidad', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]},
+    {path: 'GestionarPublicidad/:id', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]},
     {path: 'GestionarEmpleo', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];
