@@ -1,19 +1,25 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {buscarperfil} from '../../../core/empresa/buscarperfil';
-import {environment} from '../../../../environments/environment';
-import { from } from 'rxjs';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class BuscarempleadoService {
-  
-  baseUrl = environment.baseUrl
-  constructor(private http:HttpClient) { }
+import { BuscarempleadoComponent } from './buscarempleado.component';
 
-  addEvaluacionEmpleado(PerfilBuscado: buscarperfil) {
-    alert("ejecuto por aqui ");
-    return this.http.post(`${this.baseUrl}/getAll.php`, PerfilBuscado);
-  }
-}
+describe('BuscarempleadoComponent', () => {
+  let component: BuscarempleadoComponent;
+  let fixture: ComponentFixture<BuscarempleadoComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ BuscarempleadoComponent ]
+    })
+    .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BuscarempleadoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

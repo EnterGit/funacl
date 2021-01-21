@@ -9,6 +9,7 @@ import { debounceTime } from 'rxjs/operators';
 import * as $ from 'jquery';
 
 
+
 export const validarQueSeanIguales: ValidatorFn = (
   control: FormGroup
 ): ValidationErrors | null => {
@@ -45,7 +46,8 @@ export class ConsultarempleadoComponent implements OnInit {
     private ruta: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-  
+    //private dataSrv:DataService,
+    //private service: RegistroempleadoService,
   ) { 
     faConfig.defaultPrefix = 'far';
     library.addIcons(faUser, faHandPaper, faBellSlash);
