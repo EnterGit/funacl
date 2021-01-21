@@ -54,6 +54,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
 import { AuthguardGuard } from './core/authguard.guard';
+import { EvaluarempleadoComponent } from './privado/empresa/evaluarempleado/evaluarempleado.component';
 
 
 const routes: Routes= [
@@ -100,7 +101,8 @@ const routes: Routes= [
     PublicidadComponent,
     PortalEmpleoComponent,
     LoginPersonaComponent,
-    RegistoPostulanteComponent
+    RegistoPostulanteComponent,
+    EvaluarempleadoComponent
     // EmpresaComponent,
 
   ],
