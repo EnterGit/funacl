@@ -1,1 +1,45 @@
-<p>consultarempleado works!</p>
+<form [formGroup]="formConsultarEmpleado">
+
+    <div class="container">
+    
+        <h3 class="mb-1">Consultar Empleado</h3>
+        <p class="mb-4 text-sm"></p>
+        <div class="row">
+            <div class="col-lg-12 card-margin">
+                <div class="card search-form">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row no-gutters">
+                               
+                                    <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+            
+                                        <input type="text" class="form-control" placeholder="Ingresa Rut Empleado"
+                                        formControlName="rut" id="rut" />
+                                     <div class="alert alert-danger"
+                                        *ngIf="formConsultarEmpleado.get('rut').errors && formConsultarEmpleado.get('rut').touched">
+        
+                                        <p *ngIf="formConsultarEmpleado.get('rut').hasError('maxlength')"> Maximo 5
+                                           caracteres</p>
+                                        <p *ngIf="formConsultarEmpleado.get('rut').hasError('required')"> Campo Requerido
+                                        </p>
+                                     </div>
+                                     <p class="rutError" id="validacion-live" ></p>
+    
+                                    </div>
+                                    <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                        <button type="submit" class="btn btn-base">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    </form>
