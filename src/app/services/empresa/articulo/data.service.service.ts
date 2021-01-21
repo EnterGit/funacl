@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CountryI,CityI} from  '../../core/empresa/model.interface';
+import {CountryI,CityI} from  '../../../core/empresa/model.interface';
 
 import { retry } from 'rxjs/operators';
 

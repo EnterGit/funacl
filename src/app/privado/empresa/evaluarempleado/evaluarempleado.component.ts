@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CountryI, CityI} from '../../../core/empresa/model.interface';
 import {registroempleado} from '../../../core/empresa/registroempleado';
 import {RegistroempleadoService} from '../../../services/empresa/registroempleado/registroempleado.service';
-import{ DataService } from '../../../services/empresa/data.service';
+import{ DataService } from '../../../services/empresa/articulo/data.service.service';
 
  import { Router } from '@angular/router';
  import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
