@@ -11,10 +11,11 @@ import { AuthguardGuard } from './../../core/authguard.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes= [
-  {path: 'accesoAdmin', component: AccesoAdminComponent,
+  {path: 'accesoAdmin', component: AccesoAdminComponent, canActivate: [AuthguardGuard],
   children: [
-    {path: 'RegistrarEmpresa', component: RegistroComponent},
+    {path: 'RegistrarEmpresa', component: RegistroComponent, canActivate: [AuthguardGuard]},
     {path: 'AutorizarFuna', component: AutorizarFunaComponent, canActivate: [AuthguardGuard]},
     {path: 'GestionarPublicidad/:id', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]},
     {path: 'GestionarEmpleo', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]}

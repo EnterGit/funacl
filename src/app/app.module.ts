@@ -62,7 +62,7 @@ const routes: Routes= [
   {path: 'inicio', component: InicioComponent},
   {path: 'listaPostulantes', component: ListaPostulantesComponent, canActivate: [AuthguardGuard]},
   {path: 'usuario', component: UsuarioComponent, resolve: {data: UsuarioResolver}},
-  {path: 'postula', component: PostulaComponent, canActivate: [AuthguardGuard]},
+  {path: 'postula', component: PostulaComponent},
   {path: 'nosotros', component: NosotrosComponent, canActivate: [AuthguardGuard]},
   {path: 'publicaaqui', component: PublicidadComponent},
   {path: 'portal', component: PortalEmpleoComponent},

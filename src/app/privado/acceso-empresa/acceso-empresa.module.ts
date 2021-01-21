@@ -1,4 +1,5 @@
 import { AuthguardGuard } from './../../core/authguard.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -23,7 +24,8 @@ const routes: Routes= [
   ],
   imports: [
     CommonModule,
-    BrowserModule, RouterModule.forRoot(routes)
+    BrowserModule, RouterModule.forRoot(routes),
+    FormsModule, ReactiveFormsModule
   ]
 })
 export class AccesoEmpresaModule { }

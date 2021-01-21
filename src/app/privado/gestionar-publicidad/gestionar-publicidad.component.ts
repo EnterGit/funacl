@@ -4,10 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { onErrorResumeNext } from 'rxjs/operators';
-import { onErrorResumeNextStatic } from 'rxjs/internal/operators/onErrorResumeNext';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -18,7 +15,8 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 export class GestionarPublicidadComponent implements OnInit {
 
 
-  formGestionPublicidad : FormGroup;
+  formGestionPublicidad: FormGroup;
+
   file = new FormControl('')
   file_data: any = ''
   imageSrc: string;
@@ -39,26 +37,42 @@ export class GestionarPublicidadComponent implements OnInit {
   //   fileSource: new FormControl('', [Validators.required])
   // });
 
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     private ruta: ActivatedRoute,
-    private router: Router) 
-    {
-    this.titulo = "Publicar Anuncio";
-    this.imagenTitulo = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
-
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+ 
     this.seteaBloques();
-
-
+    this.createForm();
   }
 
 
   ngOnInit(): void {
+
+    this.titulo = "Publicar Anuncio";
+    this.imagenTitulo = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
+
+  }
+
+
+  createForm() {
+    this.formGestionPublicidad = this.fb.group({
+      rutEmpresa: ['', Validators.required],
+      NombreEmpresa: ['', Validators.required],
+      nomContacto: ['', Validators.required],
+      telefonoContacto: ['', Validators.required],
+      fecIniPub: ['', Validators.required],
+      fecTerPub: ['', Validators.required],
+      email: ['', Validators.required],
+      subirArchivo: ['', Validators.required],
+      descPublicidad: ['', Validators.required]
+    })
   }
 
   seteaBloques() {
     this.ruta.params.subscribe(params => {
-      console.log(params['id']);
-
       switch (params['id']) {
         case '1': {
           this.mostrarPublicidad = false;

@@ -1,121 +1,132 @@
-<form [formGroup]="formGestionPublicidad" *ngIf="mostrarFormPublicidad">
-    <section id="guardiaPostula">
-        <div class="container py-2 mx-auto">
-            <div class="card card0 border-0">
-                <div class="row d-flex">
-                    <div class="container">
-                        <div class="main-body">
-                            <div class="row gutters-sm">
+<div class="formPub" *ngIf="mostrarFormPublicidad">
+    <form [formGroup]="formGestionPublicidad">
+        <section id="guardiaPostula">
+            <div class="container py-2 mx-auto">
+                <div class="card card0 border-0">
+                    <div class="row d-flex">
+                        <div class="container">
+                            <div class="main-body">
+                                <div class="row gutters-sm">
 
-                                <div class="col-md-3 mt-2 ml-2 mr-2 mb-2">
+                                    <div class="col-md-3 mt-2 ml-2 mr-2 mb-2">
 
-                                    <div class="form-group card mt-1">
-                                        <div class="card-body">
-                                            <div class="d-flex flex-column align-items-center text-center">
-                                                <img src="{{imagenTitulo}}" alt="Admin" class="rounded-circle" width="180" />
-                                                <div class="mt-2">
-                                                    <h4>{{titulo}}</h4>
+                                        <div class="form-group card mt-1">
+                                            <div class="card-body">
+                                                <div class="d-flex flex-column align-items-center text-center">
+                                                    <img src="{{this.imagenTitulo}}" alt="Admin" class="rounded-circle"
+                                                        width="180" />
+                                                    <div class="mt-2">
+                                                        <h4>{{this.titulo}}</h4>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group card mt-4 mx-auto">
-                                        <div class="card-header">Descripción
-                                            <span class="float-right" ngbTooltip="Ayuda">
-                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                    class="bi bi-info-circle" fill="currentColor"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                    <path
-                                                        d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                                                    <circle cx="8" cy="4.5" r="1" />
-                                                </svg>
-                                            </span>
+                                        <div class="form-group card mt-4 mx-auto">
+                                            <div class="card-header">Descripción
+                                                <span class="float-right" ngbTooltip="Ayuda">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-info-circle" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                        <path
+                                                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                                        <circle cx="8" cy="4.5" r="1" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <p class="text-justify mx-auto" style="width: 90%;">Lorem ipsum dolor sit
+                                                amet
+                                                consectetur adipisicing elit. Facilis perspiciatis nam quod soluta odit
+                                                voluptatibus dicta a ipsam voluptates, eos at iure sunt tempora debitis
+                                                dignissimos! Quidem, non. Beatae doloribus aperiam ex at eius obcaecati
+                                                soluta voluptas culpa quidem dolor, dolorem sed voluptatum in magnam!
+                                                Sequi
+                                                autem animi non laudantium.</p>
                                         </div>
-                                        <p class="text-justify mx-auto" style="width: 90%;">Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Facilis perspiciatis nam quod soluta odit
-                                            voluptatibus dicta a ipsam voluptates, eos at iure sunt tempora debitis
-                                            dignissimos! Quidem, non. Beatae doloribus aperiam ex at eius obcaecati
-                                            soluta voluptas culpa quidem dolor, dolorem sed voluptatum in magnam! Sequi
-                                            autem animi non laudantium.</p>
                                     </div>
-                                </div>
 
-                                <div class="col-md-8 mt-3 ml-3 mb-2 mr-2">
-                                    <div class="card mb-1">
-                                        <div class="card-body">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="lblRutEmpresa">Rut Empresa </label>
-                                                    <input type="text" class="form-control my-1" id="rutEmpresa" />
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="lblNombreEmpresa">Nombre Empresa</label>
-                                                    <input type="text" class="form-control my-1" id="NombreEmpresa" />
-                                                </div>
-                                            </div>
+                                    <div class="col-md-8 mt-3 ml-3 mb-2 mr-2">
+                                        <div class="card mb-1">
+                                            <div class="card-body">
 
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="lblTelefono">Nombre Contacto</label>
-                                                    <input type="number" class="form-control my-1" id="nomContacto" />
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="lblCelular">Teléfono Contacto</label>
-                                                    <input type="number" class="form-control my-1"
-                                                        id="telefonoContacto" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="lblFecIniPub">Fecha Inicio</label>
-                                                    <input type="date" class="form-control my-1" id="fecIniPub" />
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="lblFecTerPub">Fecha Termino</label>
-                                                    <input type="date" class="form-control my-1" id="fecTerPub" />
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="lblFechaNacimiento">Email</label>
-                                                    <input type="email" class="form-control my-1" id="Nombre" />
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="lblSubirArchivo">Subir Archivo</label>
-                                                    <input type="file" (change)="fileChange($event)"
-                                                        class="form-control my-1" id="subirArchivo" name="subirArchivo" />
-                                                        <button type="button" class="btn btn-outline-primary" (click)="uploadFile()">SUBIR </button>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lblRutEmpresa">Rut Empresa </label>
+                                                        <input type="text" class="form-control my-1" id="rutEmpresa" formControlName="rutEmpresa"/>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lblNombreEmpresa">Nombre Empresa</label>
+                                                        <input type="text" class="form-control my-1" formControlName="NombreEmpresa"
+                                                            id="NombreEmpresa" />
+                                                    </div>
                                                 </div>
 
-                                                <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Descripción de su
-                                                    publicidad</label>
-                                                <textarea class="form-control my-1" id="exampleFormControlTextarea1"
-                                                    rows="2"></textarea>
-                                            </div>
-                                            <hr />
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <button type="submit"
-                                                        class="btn btn-outline-primary">Enviar</button>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lblnomContacto">Nombre Contacto</label>
+                                                        <input type="number" class="form-control my-1" formControlName="nomContacto"
+                                                            id="nomContacto" />
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lblCelular">Teléfono Contacto</label>
+                                                        <input type="number" class="form-control my-1" formControlName="telefonoContacto"
+                                                            id="telefonoContacto" />
+                                                    </div>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <button class="btn btn-outline-primary">Limpiar</button>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lblFecIniPub">Fecha Inicio</label>
+                                                        <input type="date" class="form-control my-1" id="fecIniPub" formControlName="fecIniPub"/>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lblFecTerPub">Fecha Termino</label>
+                                                        <input type="date" class="form-control my-1" id="fecTerPub" formControlName="fecTerPub"/>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="lblFechaNacimiento">Email</label>
+                                                        <input type="email" class="form-control my-1" id="email" formControlName="email"/>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="lblSubirArchivo">Subir Archivo</label>
+                                                        <input type="file" (change)="fileChange($event)" formControlName="subirArchivo"
+                                                            class="form-control my-1" id="subirArchivo"
+                                                            name="subirArchivo" />
+                                                        <button type="button" class="btn btn-outline-primary"
+                                                            (click)="uploadFile()">SUBIR </button>
+                                                    </div>
+
+                                                    <img [src]="imageSrc" *ngIf="imageSrc"
+                                                        style="height: 300px; width:500px">
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="lbldescPublicidad">Descripción de su
+                                                        publicidad</label>
+                                                    <textarea class="form-control my-1" id="descPublicidad"
+                                                        rows="2" formControlName="descPublicidad"></textarea>
+                                                </div>
+                                                <hr />
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <button type="submit"
+                                                            class="btn btn-outline-primary">Enviar</button>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <button class="btn btn-outline-primary">Limpiar</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -126,68 +137,73 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</form> 
+        </section>
+    </form>
+</div>
 
 
 
-
-<div *ngIf="mostrarPublicidad" >
+<div *ngIf="mostrarPublicidad">
 
     <div class="row flex-lg-nowrap">
         <div class="col mb-3">
-          <div class="e-panel card">
-            <div class="card-body">
-              <div class="card-title">
-                <h6 class="mr-2"><span>Users</span><small class="px-1">Be a wise leader</small></h6>
-              </div>
-              <div class="e-table">
-                <div class="table-responsive table-lg mt-3">
-                  <div class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th class="align-top">
-                          <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
-                            <input type="checkbox" class="custom-control-input" id="all-items">
-                            <label class="custom-control-label" for="all-items"></label>
-                          </div>
-                        </th>
-                        <th>Photo</th>
-                        <th class="max-width">Name</th>
-                        <th class="sortable">Date</th>
-                        <th> </th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="align-middle">
-                          <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-                            <input type="checkbox" class="custom-control-input" id="item-1">
-                            <label class="custom-control-label" for="item-1"></label>
-                          </div>
-                        </td>
-                        <td class="align-middle text-center">
-                          <div class="bg-light d-inline-flex justify-content-center align-items-center align-top" style="width: 35px; height: 35px; border-radius: 3px;"><i class="fa fa-fw fa-photo" style="opacity: 0.8;"></i></div>
-                        </td>
-                        <td class="text-nowrap align-middle">Adam Cotter</td>
-                        <td class="text-nowrap align-middle"><span>09 Dec 2017</span></td>
-                        <td class="text-center align-middle"><i class="fa fa-fw text-secondary cursor-pointer fa-toggle-on"></i></td>
-                        <td class="text-center align-middle">
-                          <div class="btn-group align-top">
-                              <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal">Edit</button>
-                              <button class="btn btn-sm btn-outline-secondary badge" type="button"><i class="fa fa-trash"></i></button>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                          
+            <div class="e-panel card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h6 class="mr-2"><span>Users</span><small class="px-1">Be a wise leader</small></h6>
+                    </div>
+                    <div class="e-table">
+                        <div class="table-responsive table-lg mt-3">
+                            <div class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="align-top">
+                                            <div
+                                                class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
+                                                <input type="checkbox" class="custom-control-input" id="all-items">
+                                                <label class="custom-control-label" for="all-items"></label>
+                                            </div>
+                                        </th>
+                                        <th>Photo</th>
+                                        <th class="max-width">Name</th>
+                                        <th class="sortable">Date</th>
+                                        <th> </th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div
+                                                class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
+                                                <input type="checkbox" class="custom-control-input" id="item-1">
+                                                <label class="custom-control-label" for="item-1"></label>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="bg-light d-inline-flex justify-content-center align-items-center align-top"
+                                                style="width: 35px; height: 35px; border-radius: 3px;"><i
+                                                    class="fa fa-fw fa-photo" style="opacity: 0.8;"></i></div>
+                                        </td>
+                                        <td class="text-nowrap align-middle">Adam Cotter</td>
+                                        <td class="text-nowrap align-middle"><span>09 Dec 2017</span></td>
+                                        <td class="text-center align-middle"><i
+                                                class="fa fa-fw text-secondary cursor-pointer fa-toggle-on"></i></td>
+                                        <td class="text-center align-middle">
+                                            <div class="btn-group align-top">
+                                                <button class="btn btn-sm btn-outline-secondary badge" type="button"
+                                                    data-toggle="modal" data-target="#user-form-modal">Edit</button>
+                                                <button class="btn btn-sm btn-outline-secondary badge" type="button"><i
+                                                        class="fa fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
 
 
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-

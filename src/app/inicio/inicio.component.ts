@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app'
 import { ApiService } from '../services/login/api.service';
 
-
 //publicidad
 import { OwlOptions } from 'ngx-owl-carousel-o';
 

@@ -15,12 +15,14 @@ export class GestionarEmpleoComponent implements OnInit {
   formGestionaEmpleos: FormGroup;
 
   constructor() { 
-    this.titulo = "Gestión Empleo";
-    this.imagenTitulo = "https://pyme.emol.com/wp-content/uploads/2020/06/apoyo-al-empleo.jpg";
-    this.curso = "OS-10";
+
   }
 
   ngOnInit(): void {
+
+    this.titulo = "Gestión Empleo";
+    this.imagenTitulo = "https://pyme.emol.com/wp-content/uploads/2020/06/apoyo-al-empleo.jpg";
+    this.curso = "OS-10";
   }
 
 }

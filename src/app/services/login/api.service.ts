@@ -24,7 +24,6 @@ export class ApiService {
             .pipe(map(Users => {
                 this.setToken(Users[0].name);
                 this.getLoggedInName.emit(true);    
-
                 console.log("API SERVICE " + this.getLoggedInName.emit(true));
                 return Users;
             }));
