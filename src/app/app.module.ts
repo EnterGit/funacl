@@ -59,6 +59,7 @@ import { BuscarempleadoComponent } from './privado/empresa/buscarempleado/buscar
 import { ConsultarempleadoComponent } from './privado/empresa/consultarempleado/consultarempleado.component';
 
 
+
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'loginPersona', component: LoginPersonaComponent, canActivate: [AuthGuard]},
