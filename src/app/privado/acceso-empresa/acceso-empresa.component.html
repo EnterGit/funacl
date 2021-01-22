@@ -1,49 +1,50 @@
-  <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-  
-      <div class="sidebar-heading">
-        <div class="profile-card">
-          <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo">
-          <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
-          <a href="#" class="text-white"> Administrador</a>
-        </div>
-  
-        <a [routerLink]="['/accesoEmpresa']">Menu Empresa</a>
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+
+    <div class="sidebar-heading">
+      <div class="profile-card">
+        <img src="https://image.freepik.com/vector-gratis/icono-vector-plano-empresa_9206-336.jpg" alt="user" class="profile-photo">
+        <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
+        <a href="#" class="text-white"> Administrador</a>
       </div>
-      <div class="list-group list-group-flush">
-        <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-          data-target=".navbar-collapse.show" [routerLink]="['/accesoEmpresa/empresas']">Operaciones</a>
-        <!-- <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-          data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/publica']">Autorizar Funa </a>
-        <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-          data-target=".navbar-collapse.show" [routerLink]="['/publicaaqui']">Gestión Publicidad </a> -->
-      </div>
-  
+
+      <a [routerLink]="['/accesoAdmin']">Menú Empresas</a>
     </div>
-    <!-- /#sidebar-wrapper -->
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-  
-  
-        <button class="btn-menu btn btn-success btn-toggle-menu" id="menu-toggle" type="button">
-          <i class="fa fa-bars"></i>
-        </button>
-  
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          </ul>
-        </div>
-      </nav>
-      <div class="page-header">
-        <h3>Acceso portal Empresas</h3>
-        {{this.role}}
-  
-      </div>
-      <div class="container-fluid">
-        <router-outlet></router-outlet>
-      </div>
+    <div class="list-group list-group-flush">
+      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+        data-target=".navbar-collapse.show" [routerLink]="['/accesoEmpresa/ConsultarEmpleado']">Consultar Empleado</a>
+        <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+        data-target=".navbar-collapse.show" [routerLink]="['/accesoEmpresa/EvaluarEmpleado']">Evaluar Empleado</a>
+
+      <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+        data-target=".navbar-collapse.show" [routerLink]="['/accesoEmpresa/BuscarEmpleado']">Buscar Perfil Empleado </a>
     </div>
-    <!-- /#page-content-wrapper -->
+
   </div>
+  <!-- /#sidebar-wrapper -->
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+
+
+      <button class="btn-menu btn btn-success btn-toggle-menu" id="menu-toggle" type="button">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        </ul>
+      </div>
+    </nav>
+    <div class="page-header">
+      <!-- <h3>Acceso portal Empresas</h3> -->
+      {{this.role}}
+
+    </div>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
