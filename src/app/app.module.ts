@@ -54,6 +54,10 @@ import { HttpClientModule} from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
 import { AuthguardGuard } from './core/authguard.guard';
+// import { EvaluarempleadoComponent } from './privado/empresa/evaluarempleado/evaluarempleado.component';
+// import { BuscarempleadoComponent } from './privado/empresa/buscarempleado/buscarempleado.component';
+// import { ConsultarempleadoComponent } from './privado/empresa/consultarempleado/consultarempleado.component';
+
 
 
 const routes: Routes= [
@@ -100,7 +104,10 @@ const routes: Routes= [
     PublicidadComponent,
     PortalEmpleoComponent,
     LoginPersonaComponent,
-    RegistoPostulanteComponent
+    RegistoPostulanteComponent,
+    // EvaluarempleadoComponent,
+    // BuscarempleadoComponent,
+    // ConsultarempleadoComponent
     // EmpresaComponent,
 
   ],

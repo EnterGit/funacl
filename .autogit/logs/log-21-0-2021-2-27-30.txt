@@ -1,0 +1,20 @@
+-------------------- Auto-Git Log --------------------
+		Thu Jan 21 2021 02:27:30 GMT-0300 (hora de verano de Chile)
+------------------------------------------------------
+
+Modified files:
+* src/app/privado/acceso-empresa/acceso-empresa.component.ts
+* src/app/privado/acceso-empresa/acceso-empresa.module.ts
+* src/app/privado/empresa/evaluarempleado/evaluarempleado.component.ts
+
+
+Created files:
+* .autogit/logs/log-21-0-2021-1-57-9.txt
+
+
+Deleted files:
+
+
+Renamed files:
+* [object Object]
+* [object Object]

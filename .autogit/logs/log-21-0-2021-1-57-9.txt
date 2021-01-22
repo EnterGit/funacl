@@ -1,0 +1,33 @@
+-------------------- Auto-Git Log --------------------
+		Thu Jan 21 2021 01:57:09 GMT-0300 (hora de verano de Chile)
+------------------------------------------------------
+
+Modified files:
+* src/app/core/empresa/buscarperfil.ts
+* src/app/core/empresa/consultarempleado.ts
+* src/app/core/empresa/model.interface.ts
+* src/app/core/empresa/registroempleado.ts
+* src/app/privado/acceso-empresa/acceso-empresa.component.html
+* src/app/privado/acceso-empresa/acceso-empresa.module.ts
+* src/app/privado/empresa/buscarempleado/buscarempleado.component.css
+* src/app/privado/empresa/buscarempleado/buscarempleado.component.html
+* src/app/privado/empresa/buscarempleado/buscarempleado.component.ts
+* src/app/privado/empresa/consultarempleado/consultarempleado.component.css
+* src/app/privado/empresa/consultarempleado/consultarempleado.component.html
+* src/app/privado/empresa/consultarempleado/consultarempleado.component.ts
+* src/app/privado/empresa/evaluarempleado/evaluarempleado.component.html
+* src/app/privado/empresa/evaluarempleado/evaluarempleado.component.ts
+
+
+Created files:
+* .autogit/logs/log-21-0-2021-1-26-50.txt
+* src/app/services/empresa/consultarempleado.service.spec.ts
+* src/app/services/empresa/consultarempleado.service.ts
+* src/app/services/empresa/data.service.service.spec.ts
+* src/app/services/empresa/data.service.service.ts
+
+
+Deleted files:
+
+
+Renamed files:
