@@ -6,10 +6,8 @@
         <div class="profile-card">
           <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" class="profile-photo">
           <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
-
           <a href="#" class="text-white"> Administrador</a>
         </div>
-
         <a [routerLink]="['/accesoAdmin']">Menu Administrador</a>
       </div>
       <div class="list-group list-group-flush">
@@ -21,12 +19,12 @@
           <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
             data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/AutorizarFuna']">Autorizar Funa </a>
         </li>
-        <li clas="fa fa-tachometer-alt" >
+        <li clas="fa fa-tachometer-alt">
           <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
             data-target=".navbar-collapse.show">Gestión Publicidad
             <span class="flecha">&#9660;</span>
           </a>
-          
+
           <ul>
             <li><a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
                 data-target=".navbar-collapse.show" [routerLink]="['/accesoAdmin/GestionarPublicidad/1']">Ingresar
@@ -61,14 +59,14 @@
         </ul>
       </div>
     </nav>
-    <div class="page-header">
-    </div>
+
     <div class="container-fluid">
-      <router-outlet></router-outlet>
+      <div class="row">
+        <div class="col-lg-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
   </div>
   <!-- /#page-content-wrapper -->
 </div>
-
-
-

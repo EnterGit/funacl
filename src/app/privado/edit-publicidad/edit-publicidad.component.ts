@@ -11,12 +11,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-gestionar-publicidad',
-  templateUrl: './gestionar-publicidad.component.html',
-  styleUrls: ['./gestionar-publicidad.component.css']
+  selector: 'app-edit-publicidad',
+  templateUrl: './edit-publicidad.component.html',
+  styleUrls: ['./edit-publicidad.component.css']
 })
-export class GestionarPublicidadComponent implements OnInit {
+export class EditPublicidadComponent implements OnInit {
 
+ 
   formGestionPublicidad: FormGroup;
 
   file = new FormControl('')
@@ -43,13 +44,13 @@ export class GestionarPublicidadComponent implements OnInit {
     private fb: FormBuilder,
     private empleoService: EmpleosService
   ) {
-    this.seteaBloques();
+    // this.seteaBloques();
     this.createForm();
   }
 
 
   ngOnInit(): void {
-    this.titulo = "Publicar Anuncio";
+    this.titulo = "Editar Publicidad";
     this.imagenTitulo = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
   }
 
@@ -179,3 +180,4 @@ export class GestionarPublicidadComponent implements OnInit {
 
 
 }
+

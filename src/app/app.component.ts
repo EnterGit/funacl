@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { DatabaseService } from './services/database.service';
 import * as firebase from 'firebase/app';
 import { Router, Params } from '@angular/router';
-import { ApiuserService } from './services/apiuser.service'
+import { ApiuserService } from './services/apiuser.service';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +24,8 @@ export class AppComponent {
 
   constructor(
     private db: DatabaseService,
-    protected ApiuserService: ApiuserService,
-    private router : Router
+    protected apiuserService: ApiuserService,
+    private router: Router
   ) { }
 
   ngOnInit() {

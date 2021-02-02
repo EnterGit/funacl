@@ -4,12 +4,15 @@ import { AutorizarFunaComponent } from './../autorizar-funa/autorizar-funa.compo
 import { AccesoAdminComponent } from './acceso-admin.component';
 import { RegistroComponent } from './../../registro/registro.component';
 
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthguardGuard } from './../../core/authguard.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { EditPublicidadComponent } from '../edit-publicidad/edit-publicidad.component';
+
 
 
 const routes: Routes= [
@@ -18,7 +21,9 @@ const routes: Routes= [
     {path: 'RegistrarEmpresa', component: RegistroComponent, canActivate: [AuthguardGuard]},
     {path: 'AutorizarFuna', component: AutorizarFunaComponent, canActivate: [AuthguardGuard]},
     {path: 'GestionarPublicidad/:id', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]},
-    {path: 'GestionarEmpleo', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]}
+    {path: 'GestionarEmpleo', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]},
+    {path: 'EditPublicidad', component: EditPublicidadComponent, canActivate: [AuthguardGuard]}
+   
   ]}  
 ];
 
@@ -28,7 +33,8 @@ const routes: Routes= [
     RegistroComponent,
     AutorizarFunaComponent,
     GestionarPublicidadComponent,
-    GestionarEmpleoComponent
+    GestionarEmpleoComponent,
+    EditPublicidadComponent 
   ],
   imports: [
     CommonModule,

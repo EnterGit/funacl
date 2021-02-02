@@ -1,4 +1,3 @@
-<div class="formPub" *ngIf="mostrarFormPublicidad">
     <form [formGroup]="formGestionPublicidad" (ngSubmit)="onSubmit()" #formMascota="ngForm">
         <section id="guardiaPostula">
             <div class="container py-2 mx-auto">
@@ -152,57 +151,3 @@
             </div>
         </section>
     </form>
-</div>
-
-
-
-<div *ngIf="mostrarPublicidad">
-
-    <div class="container-fluid py-2 mx-auto">
-        <div class="card card0 border-0">
-            <div class="col-md-11 mt-3 ml-3 mb-2 mr-2">
-                <div class="card mb-1">
-                    <div class="card-body">
-                        <div class="wrapper-editor">
-                            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0"
-                                width="100%">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <!-- <th scope="col">ID</th> -->
-                                        <th scope="col">Rut</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Dirección</th>
-                                        <th scope="col">Telefono</th>
-                                        <th scope="col">Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <tr *ngFor="let item of publicidades; index as i">
-                                        <th scope="row">{{i+1}}</th>
-                                        <!-- <td>{{item.id}}</td>     -->
-                                        <td>{{item.idpublicidad}}</td>
-                                        <td>{{item.empresa}}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="#editEmployeeModal" class="edit mr-2" data-toggle="modal"
-                                                (click)="editar(item)">
-
-                                            </a>
-                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
-                                                (click)="editar(item)">
-
-                                            </a>
-                                        </td>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-

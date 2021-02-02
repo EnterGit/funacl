@@ -20,7 +20,7 @@ export class ListaComponent implements OnInit {
 
   editarItem: any = {
     name: ''
-  }
+  };
 
   constructor(private conexion: ConexionService) {
 
@@ -36,7 +36,7 @@ export class ListaComponent implements OnInit {
 
 
   ngOnInit(): void {
-      this.conexion.listaItem().subscribe(item=>{
+      this.conexion.listaItem().subscribe(item=> {
       this.items = item;
       console.log(this.items);
       })

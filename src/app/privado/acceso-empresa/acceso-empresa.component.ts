@@ -1,8 +1,8 @@
 import { ApiService } from './../../services/login/api.service';
-import { Router } from '@angular/router';
+import { Globals } from './../../globals';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import { Globals } from './../../globals';
+
 
 @Component({
   selector: 'app-acceso-empresa',
@@ -10,31 +10,22 @@ import { Globals } from './../../globals';
   styleUrls: ['./acceso-empresa.component.css']
 })
 export class AccesoEmpresaComponent implements OnInit {
-  public role: string;
-
+  private role: string;
 
   constructor(
-    private router: Router, 
-    private apiservice: ApiService,
-    public globals: Globals
-    ) { }
-
+    public globals: Globals,
+    public apiservice: ApiService
+  ) { }
 
   ngOnInit(): void {
-
+    //Toggle Click Function
     this.role = this.apiservice.getToken();
-
     this.globals.role = this.role;
 
-    console.log("SESSION 22  " + this.role);
-
-    //Toggle Click Function
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
+    $(".btn-toggle-menu").click(function() {
       $("#wrapper").toggleClass("toggled");
-    });
+  });
+
+    
   }
-
-
-
 }

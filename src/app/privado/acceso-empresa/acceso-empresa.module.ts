@@ -12,11 +12,11 @@ import {BuscarempleadoComponent} from '../empresa/buscarempleado/buscarempleado.
 import {ConsultarempleadoComponent} from '../empresa/consultarempleado/consultarempleado.component';
 
 const routes: Routes= [
-  {path: 'accesoEmpresa', component: AccesoEmpresaComponent,
+  {path: 'accesoEmpresa', component: AccesoEmpresaComponent, canActivate: [AuthguardGuard],
   children: [
-    {path: 'BuscarEmpleado', component: BuscarempleadoComponent},
-    {path: 'EvaluarEmpleado', component:EvaluarempleadoComponent},
-    {path: 'ConsultarEmpleado', component: ConsultarempleadoComponent}
+    {path: 'BuscarEmpleado', component: BuscarempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'EvaluarEmpleado', component:EvaluarempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'ConsultarEmpleado', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];
 

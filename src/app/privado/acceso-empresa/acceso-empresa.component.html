@@ -8,8 +8,7 @@
         <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
         <a href="#" class="text-white"> Administrador</a>
       </div>
-
-      <a [routerLink]="['/accesoAdmin']">Menú Empresas</a>
+      <a [routerLink]="['/accesoEmpresa']">Menú Empresas</a>
     </div>
     <div class="list-group list-group-flush">
       <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
@@ -39,8 +38,6 @@
     </nav>
     <div class="page-header">
       <!-- <h3>Acceso portal Empresas</h3> -->
-      {{this.role}}
-
     </div>
     <div class="container-fluid">
       <router-outlet></router-outlet>
