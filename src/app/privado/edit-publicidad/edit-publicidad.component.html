@@ -111,8 +111,8 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="lblSubirArchivo">Subir Archivo</label>
                                                         <input type="file" (change)="fileChange($event)"
-                                                            formControlName="subirArchivo" class="form-control my-1"
-                                                            id="subirArchivo"
+                                                            formControlName="imagenUrl" class="form-control my-1"
+                                                            id="imagenUrl" [(ngModel)]="publicidadModel.imagenUrl"
                                                              />
                                                         <button type="button" class="btn btn-outline-primary"
                                                             (click)="uploadFile()">SUBIR </button>

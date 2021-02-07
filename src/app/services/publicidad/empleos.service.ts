@@ -26,7 +26,7 @@ export class EmpleosService {
   }
 
   addEmpleo(empleo: PostPublicidad) {
-    console.log(PostPublicidad);
+    console.log(empleo);
     return this.http.post(`${this.baseUrl}/post.php`, empleo);
   }
 

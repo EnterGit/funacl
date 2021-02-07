@@ -77,6 +77,7 @@ export class GestionarPublicidadComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.publicidadModel);
     this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
       this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
     })

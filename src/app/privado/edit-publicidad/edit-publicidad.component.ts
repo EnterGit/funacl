@@ -26,7 +26,7 @@ export class EditPublicidadComponent implements OnInit {
   imageSrc_2: string;
   titulo: string;
   imagenTitulo: string;
-  subirArchivo: string = null;
+  imagenUrl: string = null;
   mostrarPublicidad: boolean;
   mostrarFormPublicidad: boolean;
   baseUrl = environment.baseUrl + '/Upload/';
@@ -70,14 +70,14 @@ export class EditPublicidadComponent implements OnInit {
       fecIniPub: ['', Validators.required],
       fecTerPub: ['', Validators.required],
       email: ['', Validators.required],
-      subirArchivo: ['', Validators.required],
+      imagenUrl: ['', Validators.required],
       descPublicidad: ['', Validators.required]
     })
   }
 
   onSubmit() {
 
-    console.log(this.publicidadModel.idpublicidad);
+    console.log(this.publicidadModel.imagenUrl);
 
     this.empleoService.updatePublicidad(this.publicidadModel).subscribe(() => {
       this.volver();
@@ -160,7 +160,7 @@ export class EditPublicidadComponent implements OnInit {
 
           if (event.body['status'] == 0) {
             this.imageSrc = '';
-            this.subirArchivo = '';
+            this.imagenUrl = '';
           }
         }
       });
