@@ -63,7 +63,7 @@ export class ListaPostulantesComponent implements OnInit {
 
   editar(postulante) {
     this.editarItem = postulante;
-    console.log(this.editarItem);
+     console.log(this.editarItem);
   }
 
   agregarItemEditado() {

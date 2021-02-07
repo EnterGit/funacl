@@ -62,7 +62,7 @@
                                                         <label for="lblNombreEmpresa">Nombre Empresa</label>
                                                         <input type="text" class="form-control my-1"
                                                             formControlName="NombreEmpresa"
-                                                            [(ngModel)]="publicidadModel.NombreEmpresa"
+                                                            [(ngModel)]="publicidadModel.nomEmpresa"
                                                             id="NombreEmpresa" />
                                                     </div>
                                                 </div>
@@ -70,8 +70,9 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="lblnomContacto">Nombre Contacto</label>
-                                                        <input type="number" class="form-control my-1"
-                                                            formControlName="nomContacto" id="nomContacto" />
+                                                        <input type="text" class="form-control my-1"
+                                                            formControlName="nomContacto" id="nomContacto"
+                                                            [(ngModel)]="publicidadModel.nomContacto" />
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="lblCelular">Teléfono Contacto</label>
@@ -112,8 +113,7 @@
                                                         <label for="lblSubirArchivo">Subir Archivo</label>
                                                         <input type="file" (change)="fileChange($event)"
                                                             formControlName="subirArchivo" class="form-control my-1"
-                                                            id="subirArchivo"
-                                                            [(ngModel)]="publicidadModel.subirArchivo" />
+                                                            id="subirArchivo" [(ngModel)]="publicidadModel.imagenUrl" />
                                                         <button type="button" class="btn btn-outline-primary"
                                                             (click)="uploadFile()">SUBIR </button>
                                                     </div>
@@ -171,31 +171,37 @@
                                         <th scope="col">#</th>
                                         <!-- <th scope="col">ID</th> -->
                                         <th scope="col">Rut</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Dirección</th>
-                                        <th scope="col">Telefono</th>
-                                        <th scope="col">Acción</th>
+                                        <th scope="col">Nombre Empresa</th>
+                                        <th scope="col">Nombre Encargado</th>
+                                        <th scope="col">Fecha Inicio</th>
+                                        <th scope="col">Fecha Termino</th>
+                                        <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    <tr *ngFor="let item of publicidades; index as i">
+                                    <tr *ngFor="let item of publicidadModel; index as i">
                                         <th scope="row">{{i+1}}</th>
-                                        <!-- <td>{{item.id}}</td>     -->
-                                        <td>{{item.idpublicidad}}</td>
-                                        <td>{{item.empresa}}</td>
-                                        <td></td>
-                                        <td></td>
+                                        <!-- <td>{{item.idpublicidad}}</td> -->
+                                        <td>{{item.rutEmpresa}}</td>
+                                        <td>{{item.nomEmpresa}}</td>
+                                        <td>{{item.nomContacto}}</td>
+                                        <td>{{item.fecIniPub}}</td>
+                                        <td>{{item.fecTerPub}}</td>
                                         <td>
-                                            <a href="#editEmployeeModal" class="edit mr-2" data-toggle="modal"
-                                                (click)="editar(item)">
 
+                                            <a href="#editEmployeeModal" class="edit mr-2" data-toggle="modal"
+                                                [routerLink]="['/accesoAdmin/EditPublicidad', item.idpublicidad]">
+                                                <fa-icon [icon]="faPencilAlt"></fa-icon>
                                             </a>
+
                                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
-                                                (click)="editar(item)">
+                                                (click)="editarPublicidad(item)">
+                                                <fa-icon [icon]="faTrashAlt"></fa-icon>
 
                                             </a>
                                         </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -206,3 +212,48 @@
     </div>
 </div>
 
+
+
+<div id="deleteEmployeeModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar Publicidad N° : {{editarItem.idpublicidad}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está seguro de que desea eliminar estos registros?</p>
+                    <p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="eliminarPublicidad(editarItem.idpublicidad)">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="editEmployeeModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title">Eliminar Publicidad N° : {{editarItem.idpublicidad}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="eliminarPublicidad(editarItem.idpublicidad)">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

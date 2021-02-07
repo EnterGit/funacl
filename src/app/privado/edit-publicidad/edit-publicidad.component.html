@@ -53,24 +53,25 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="lblRutEmpresa">Rut Empresa </label>
-                                                        <input type="text" class="form-control my-1" id="rutEmpresa"
-                                                            formControlName="rutEmpresa"
+                                                        <input type="text" class="form-control my-1"
+                                                            formControlName="rutEmpresa" id="rutEmpresa"
                                                             [(ngModel)]="publicidadModel.rutEmpresa" />
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="lblNombreEmpresa">Nombre Empresa</label>
                                                         <input type="text" class="form-control my-1"
-                                                            formControlName="NombreEmpresa"
-                                                            [(ngModel)]="publicidadModel.NombreEmpresa"
-                                                            id="NombreEmpresa" />
+                                                            formControlName="nomEmpresa" id="nomEmpresa"
+                                                            [(ngModel)]="publicidadModel.nomEmpresa"
+                                                            id="nomEmpresa" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="lblnomContacto">Nombre Contacto</label>
-                                                        <input type="number" class="form-control my-1"
-                                                            formControlName="nomContacto" id="nomContacto" />
+                                                        <input type="text" class="form-control my-1"
+                                                            formControlName="nomContacto" id="nomContacto" 
+                                                            [(ngModel)]="publicidadModel.nomContacto" />
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="lblCelular">Teléfono Contacto</label>
@@ -112,13 +113,14 @@
                                                         <input type="file" (change)="fileChange($event)"
                                                             formControlName="subirArchivo" class="form-control my-1"
                                                             id="subirArchivo"
-                                                            [(ngModel)]="publicidadModel.subirArchivo" />
+                                                             />
                                                         <button type="button" class="btn btn-outline-primary"
                                                             (click)="uploadFile()">SUBIR </button>
                                                     </div>
 
-                                                    <img [src]="imageSrc" *ngIf="imageSrc"
-                                                        style="height: 200px; width:200px">
+                                                    <img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width:200px">
+                                                    <img [src]="publicidadModel.imagenUrl" *ngIf="!imageSrc" style="height: 200px; width:200px">
+                                                    
                                                 </div>
 
 
@@ -134,10 +136,10 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <button type="submit"
-                                                            class="btn btn-outline-primary">Enviar</button>
+                                                            class="btn btn-outline-primary">Actualizar</button>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <button class="btn btn-outline-primary">Limpiar</button>
+                                                        <button class="btn btn-outline-primary" (click)="volver()"> Volver</button>
                                                     </div>
                                                 </div>
                                             </div>

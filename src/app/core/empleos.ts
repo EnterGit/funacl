@@ -12,7 +12,7 @@ export class Empleo {
 
 export class Publicidad {
     constructor(
-        public empresa: string,
+        public nomEmpresa: string,
         public imagenUrl: string,
         public idpublicidad?: number,
     ) { }
@@ -22,14 +22,16 @@ export class Publicidad {
 export class PostPublicidad {
     constructor(
         public rutEmpresa: string,
-        public NombreEmpresa: string,
+        public nomEmpresa: string,
         public nomContacto: string,
         public telefonoContacto: string,
         public fecIniPub: string,
         public fecTerPub: string,
         public email: string,
-        public subirArchivo: string,
-        public descPublicidad: string
+        public imagenUrl: string,
+        public descPublicidad: string,
+        public idpublicidad?: number,
     ){}
+
 }
 

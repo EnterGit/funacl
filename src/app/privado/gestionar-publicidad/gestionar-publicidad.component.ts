@@ -1,14 +1,16 @@
+import { Item } from './../../services/conexion.service';
 import { PostPublicidad } from './../../core/empleos';
 import { Publicidad } from './../../core/empleos';
 import { EmpleosService } from './../../services/publicidad/empleos.service';
 
 import { environment } from './../../../environments/environment';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-gestionar-publicidad',
@@ -16,6 +18,9 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } 
   styleUrls: ['./gestionar-publicidad.component.css']
 })
 export class GestionarPublicidadComponent implements OnInit {
+
+  faTrashAlt = faTrashAlt;
+  faPencilAlt = faPencilAlt;
 
   formGestionPublicidad: FormGroup;
 
@@ -29,12 +34,15 @@ export class GestionarPublicidadComponent implements OnInit {
   mostrarFormPublicidad: boolean;
   baseUrl = environment.baseUrl + '/Upload/';
 
-  public publicidades: Publicidad[] = [
-    new Publicidad("1", "")
-  ];
+  // public publicidades: Publicidad[] = [
+  //   new Publicidad("1", "")
+  // ];
 
-  publicidadModel = new PostPublicidad("", "", "", "", "", "", "", "", "");
+  public publicidadModel: PostPublicidad = new PostPublicidad("", "", "", "", "", "", "", "", "", 0);
 
+  editarItem: any = {
+    idpublicidad: ''
+  }
 
   constructor(
     private http: HttpClient,
@@ -69,7 +77,6 @@ export class GestionarPublicidadComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.publicidadModel);
     this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
       this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
     })
@@ -77,13 +84,22 @@ export class GestionarPublicidadComponent implements OnInit {
 
 
   obtenerPublicidad() {
-    console.log("ENTRo");
-    return this.empleoService
-      .getPublicidad()
-      .subscribe((publicidad: Publicidad[]) => this.publicidades = publicidad);
+    return this.empleoService.getPublicidad().subscribe((publicidadModel: PostPublicidad) => this.publicidadModel = publicidadModel);
   }
 
-  editar(){ 
+  eliminarPublicidad(Item) {
+    this.empleoService
+      .deletePublicidad(Item)
+      .subscribe(() => {
+        this.obtenerPublicidad();
+      });
+
+    // console.log("REGISTRO ELIMINADO " + Item);
+  }
+
+  editarPublicidad(editPubli) {
+    this.editarItem = editPubli;
+    // console.log(this.editarItem);
   }
 
   seteaBloques() {
@@ -94,11 +110,10 @@ export class GestionarPublicidadComponent implements OnInit {
           this.mostrarFormPublicidad = true;
           break;
         }
-        case '2': {      
+        case '2': {
           this.mostrarPublicidad = true;
           this.mostrarFormPublicidad = false;
           this.obtenerPublicidad();
-          console.log(this.publicidades);
           break;
         }
         default: {
@@ -176,6 +191,4 @@ export class GestionarPublicidadComponent implements OnInit {
         }
       });
   }
-
-
 }

@@ -230,3 +230,10 @@ button:focus {
 .container-fluid{
 	width: 90%;
 }
+
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #F44336;
+}

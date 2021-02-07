@@ -40,7 +40,7 @@
                         <td>{{item.telefono}}</td>
                         <td>
                             <a href="#editEmployeeModal" class="edit mr-2" data-toggle="modal" (click)="editar(item)">
-                                <fa-icon [icon]="faPencilAlt"></fa-icon><i  data-toggle="tooltip"
+                                <fa-icon [icon]="faPencilAlt"></fa-icon><i data-toggle="tooltip"
                                     data-target="#editEmployeeModal" title="Edit"></i>
                             </a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" (click)="editar(item)">
@@ -94,7 +94,7 @@
             <div class="modal-content">
                 <form>
                     <div class="modal-header">						
-                        <h4 class="modal-title">Eliminar Postulante Rut : {{editarItem.rut}}</h4>
+                        <h4 class="modal-title">Eliminar Postulante Rut : {{editarItem.nombreCompleto}}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					

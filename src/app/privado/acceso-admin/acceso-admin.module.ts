@@ -3,7 +3,7 @@ import { GestionarPublicidadComponent } from './../gestionar-publicidad/gestiona
 import { AutorizarFunaComponent } from './../autorizar-funa/autorizar-funa.component';
 import { AccesoAdminComponent } from './acceso-admin.component';
 import { RegistroComponent } from './../../registro/registro.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +22,7 @@ const routes: Routes= [
     {path: 'AutorizarFuna', component: AutorizarFunaComponent, canActivate: [AuthguardGuard]},
     {path: 'GestionarPublicidad/:id', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]},
     {path: 'GestionarEmpleo', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]},
-    {path: 'EditPublicidad', component: EditPublicidadComponent, canActivate: [AuthguardGuard]}
+    {path: 'EditPublicidad/:id', component: EditPublicidadComponent, canActivate: [AuthguardGuard]}
    
   ]}  
 ];
@@ -39,7 +39,7 @@ const routes: Routes= [
   imports: [
     CommonModule,
     BrowserModule, RouterModule.forRoot(routes),
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,FontAwesomeModule
   ]
 })
 export class AccesoAdminModule { }

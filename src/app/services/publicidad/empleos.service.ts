@@ -1,5 +1,6 @@
 import { PostPublicidad } from './../../core/empleos';
 import { Empleo } from '../../core/empleos';
+import { Publicidad } from '../../core/empleos';
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -21,25 +22,23 @@ export class EmpleosService {
   }
 
   getEmpleo(id: string | number) {
-    return this.http.get(`${this.baseUrl}/get.php?idEmpleo=${id}`);
+    return this.http.get(`${this.baseUrl}/get.php?idpublicidad=${id}`);
   }
 
   addEmpleo(empleo: PostPublicidad) {
-
     console.log(PostPublicidad);
     return this.http.post(`${this.baseUrl}/post.php`, empleo);
   }
 
-  deleteEmpleo(empleo: Empleo) {
-    return this.http.delete(`${this.baseUrl}/delete.php?idEmpleo=${empleo.idEmpleo}`);
+  deletePublicidad(empleo: Publicidad) {
+    return this.http.delete(`${this.baseUrl}/delete.php?idpublicidad=${empleo}`);
   }
 
-  updateEmpleo(empleo: Empleo) {
+  updatePublicidad(empleo: PostPublicidad) {
     return this.http.put(`${this.baseUrl}/update.php`, empleo);
   }
 
   getPublicidad() {
-     console.log("RUTA :" + this.baseUrl);
     return this.http.get(`${this.baseUrl}/getAllBanner.php`);
   }
 

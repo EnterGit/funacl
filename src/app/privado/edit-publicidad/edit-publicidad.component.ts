@@ -17,12 +17,13 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } 
 })
 export class EditPublicidadComponent implements OnInit {
 
- 
+
   formGestionPublicidad: FormGroup;
 
   file = new FormControl('')
   file_data: any = ''
   imageSrc: string;
+  imageSrc_2: string;
   titulo: string;
   imagenTitulo: string;
   subirArchivo: string = null;
@@ -30,11 +31,12 @@ export class EditPublicidadComponent implements OnInit {
   mostrarFormPublicidad: boolean;
   baseUrl = environment.baseUrl + '/Upload/';
 
-  public publicidades: Publicidad[] = [
-    new Publicidad("1", "")
-  ];
 
-  publicidadModel = new PostPublicidad("", "", "", "", "", "", "", "", "");
+  // public publicidades: Publicidad = new Publicidad("1", "1",1);
+
+ 
+
+  public publicidadModel: PostPublicidad = new PostPublicidad("", "", "", "", "", "", "", "", "");
 
 
   constructor(
@@ -52,13 +54,17 @@ export class EditPublicidadComponent implements OnInit {
   ngOnInit(): void {
     this.titulo = "Editar Publicidad";
     this.imagenTitulo = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
+
+    let idpublicidad = this.ruta.snapshot.paramMap.get("id");
+    this.empleoService.getEmpleo(idpublicidad)
+    .subscribe((publicidadModel: PostPublicidad) => this.publicidadModel = publicidadModel)
   }
 
 
   createForm() {
     this.formGestionPublicidad = this.fb.group({
       rutEmpresa: ['', Validators.required],
-      NombreEmpresa: ['', Validators.required],
+      nomEmpresa: ['', Validators.required],
       nomContacto: ['', Validators.required],
       telefonoContacto: ['', Validators.required],
       fecIniPub: ['', Validators.required],
@@ -70,45 +76,27 @@ export class EditPublicidadComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.publicidadModel);
-    this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
-      this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
-    })
+
+    console.log(this.publicidadModel.idpublicidad);
+
+    this.empleoService.updatePublicidad(this.publicidadModel).subscribe(() => {
+      this.volver();
+    });
+
+    // console.log(this.publicidadModel);
+    // this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
+    //   this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
+    // })
+  }
+
+  volver() {
+    this.router.navigate(['/accesoAdmin/GestionarPublicidad/2']);
   }
 
 
-  obtenerPublicidad() {
-    console.log("ENTRo");
-    return this.empleoService
-      .getPublicidad()
-      .subscribe((publicidad: Publicidad[]) => this.publicidades = publicidad);
+  editar() {
   }
 
-  editar(){ 
-  }
-
-  seteaBloques() {
-    this.ruta.params.subscribe(params => {
-      switch (params['id']) {
-        case '1': {
-          this.mostrarPublicidad = false;
-          this.mostrarFormPublicidad = true;
-          break;
-        }
-        case '2': {      
-          this.mostrarPublicidad = true;
-          this.mostrarFormPublicidad = false;
-          this.obtenerPublicidad();
-          console.log(this.publicidades);
-          break;
-        }
-        default: {
-          this.router.navigate(['/accesoAdmin']);
-          break;
-        }
-      }
-    })
-  }
 
   fileChange(event) {
     const reader = new FileReader();
