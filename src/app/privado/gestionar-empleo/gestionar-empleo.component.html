@@ -12,7 +12,8 @@
                                     <div class="form-group card mt-1">
                                         <div class="card-body">
                                             <div class="d-flex flex-column align-items-center text-center">
-                                                <img src="{{imagenTitulo}}" alt="Admin" class="rounded-circle" width="180" />
+                                                <img src="{{imagenTitulo}}" alt="Admin" class="rounded-circle"
+                                                    width="180" />
                                                 <div class="mt-2">
                                                     <h4>{{titulo}}</h4>
                                                 </div>
@@ -49,7 +50,8 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="lblCargoEmplei">Cargo Empleo </label>
-                                                    <input type="text" class="form-control my-1" id="cargoEmpleo" />
+                                                    <input type="text" class="form-control my-1" id="cargoEmpleo"
+                                                        formControlName="cargoEmpleo" />
                                                 </div>
                                             </div>
 
@@ -57,54 +59,76 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="lblProfesion">Profesión u Oficio</label>
-                                                    <input type="text" class="form-control my-1" id="profesion" />
+                                                    <input type="text" class="form-control my-1" id="profesion"
+                                                        formControlName="profesion" />
                                                 </div>
 
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-3">
                                                     <label for="lblVacantes">Vacantes</label>
-                                                    <input type="number" class="form-control my-1" id="vacantes" />
+                                                    <input type="number" class="form-control my-1" id="vacantes"
+                                                        formControlName="vacantes" />
                                                 </div>
                                                 <div class="form-group col-md-9">
                                                     <label for="lblCelular">Empresa</label>
-                                                    <input type="text" class="form-control my-1" id="empresa" />
+                                                    <input type="text" class="form-control my-1" id="empresa"
+                                                        formControlName="empresa" />
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-6">
                                                     <label for="lblRegion">Región</label>
-                                                    <input type="text" class="form-control my-1" id="region" />
+                                                    <select name="regiones" id="region" class="form-control my-1" ng-model="regiones"
+                                                        (change)="onChangeComuna($event.target.value)" formCon
+                                                        rolName="region">
+                                                        <option value="">Seleccione Región</option>
+                                                        <option *ngFor="let regiones of regionesModel"
+                                                            value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE}}
+                                                        </option>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-6">
                                                     <label for="lblComuna">Comuna</label>
-                                                    <input type="text" class="form-control my-1" id="comuna" />
+                                                    <select name="comuna" id="comuna" class="form-control my-1" ng-model="comuna" 
+                                                        formControlName="comuna">
+                                                        <option value="">Seleccione Comuna</option>
+                                                        <option *ngFor="let comuna of comunaModel"
+                                                            value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE}}
+                                                        </option>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-10">
                                                     <label for="lblDireccion">Dirección</label>
-                                                    <input type="text" class="form-control my-1" id="dirección" />
+                                                    <input type="text" class="form-control my-1" id="dirección"
+                                                        formControlName="dirección" />
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-4">
                                                     <label for="lblFecIniPub">Fecha Postulación</label>
-                                                    <input type="date" class="form-control my-1" id="fecIniPub" />
+                                                    <input type="date" class="form-control my-1" id="fecPostulacion"
+                                                        formControlName="fecPostulacion" />
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblJornada">Jornada</label>
-                                                    <select class="form-control my-1" formControlName="turnos" id="jornada">
+                                                    <select class="form-control my-1" formControlName="jornada"
+                                                        id="jornada">
                                                         <option value="" selected>Seleccione Turno</option>
                                                         <option value="Completa">Completa</option>
                                                         <option value="Mañana">Mañana</option>
                                                         <option value="Tarde">Tarde</option>
                                                         <option value="Noche">Noche</option>
-                                                     </select>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblSueldo">Sueldo</label>
-                                                    <input type="text" class="form-control my-1" id="sueldo" />
+                                                    <input type="text" class="form-control my-1" id="sueldo"
+                                                        formControlName="sueldo" />
                                                 </div>
                                             </div>
 
@@ -116,29 +140,31 @@
                                                         <option value="basico">Basico</option>
                                                         <option value="media">Media</option>
                                                         <option value="superior">Superior</option>
-                                                     </select>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblExperiencia">Experiencia (años)</label>
-                                                    <input type="email" class="form-control my-1" id="Experiencia" />
+                                                    <input type="email" class="form-control my-1" id="experiencia"
+                                                        formControlName="experiencia" />
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblJornada">Tipo Contrato</label>
-                                                    <select class="form-control my-1" formControlName="turnos" id="jornada">
+                                                    <select class="form-control my-1" formControlName="tipoContrato"
+                                                        id="tipoContrato">
                                                         <option value="" selected>Seleccione Tipo Contrato</option>
                                                         <option value="Completa">Contrato a plazo Fijo</option>
                                                         <option value="Mañana">Contrato Indefinido</option>
                                                         <option value="Tarde">Contrato por Obra</option>
 
-                                                     </select>
+                                                    </select>
                                                 </div>
 
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Descripción de Empleo</label>
-                                                <textarea class="form-control my-1" id="exampleFormControlTextarea1"
-                                                    rows="2"></textarea>
+                                                <textarea class="form-control my-1" id="descEmpleo" rows="2"
+                                                    formControlName="descEmpleo"></textarea>
                                             </div>
                                             <hr />
 
@@ -161,6 +187,4 @@
             </div>
         </div>
     </section>
-</form> 
-
-
+</form>

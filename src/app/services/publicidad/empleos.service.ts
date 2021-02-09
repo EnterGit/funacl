@@ -1,6 +1,6 @@
-import { PostPublicidad } from './../../core/empleos';
-import { Empleo } from '../../core/empleos';
-import { Publicidad } from '../../core/empleos';
+import { PostPublicidad } from '../../core/admin/empleos';
+import { Empleo } from '../../core/admin/empleos';
+import { Publicidad } from '../../core/admin/empleos';
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -11,8 +11,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmpleosService {
   baseUrl = environment.baseUrl
-
-
 
   constructor(private http: HttpClient) { }
 

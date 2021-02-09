@@ -9,7 +9,7 @@ import { ApiService } from '../services/login/api.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 // servicio
-import { Publicidad } from '../core/empleos';
+import { Publicidad } from '../core/admin/empleos';
 import { EmpleosService } from '../services/publicidad/empleos.service';
 
 @Component({

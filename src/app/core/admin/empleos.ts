@@ -32,6 +32,20 @@ export class PostPublicidad {
         public descPublicidad: string,
         public idpublicidad?: number,
     ){}
-
 }
 
+
+export class ListPublicidad {
+    constructor(
+        public rutEmpresa: string,
+        public nomEmpresa: string,
+        public nomContacto: string,
+        public telefonoContacto: string,
+        public fecIniPub: string,
+        public fecTerPub: string,
+        public email: string,
+        public imagenUrl: string,
+        public descPublicidad: string,
+        public idpublicidad?: number,
+    ){}
+}

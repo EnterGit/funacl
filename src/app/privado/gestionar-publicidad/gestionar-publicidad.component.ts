@@ -1,8 +1,7 @@
 import { Item } from './../../services/conexion.service';
-import { PostPublicidad } from './../../core/empleos';
-import { Publicidad } from './../../core/empleos';
+import { PostPublicidad, ListPublicidad } from '../../core/admin/empleos';
+// import { Publicidad } from '../../core/admin/empleos';
 import { EmpleosService } from './../../services/publicidad/empleos.service';
-
 import { environment } from './../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -34,11 +33,11 @@ export class GestionarPublicidadComponent implements OnInit {
   mostrarFormPublicidad: boolean;
   baseUrl = environment.baseUrl + '/Upload/';
 
-  // public publicidades: Publicidad[] = [
-  //   new Publicidad("1", "")
-  // ];
 
+  public publicidades: ListPublicidad[] = [new ListPublicidad("", "", "", "", "", "", "", "", "", 0)];
   public publicidadModel: PostPublicidad = new PostPublicidad("", "", "", "", "", "", "", "", "", 0);
+
+
 
   editarItem: any = {
     idpublicidad: ''
@@ -78,14 +77,24 @@ export class GestionarPublicidadComponent implements OnInit {
 
   onSubmit() {
     console.log(this.publicidadModel);
-    this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
-      this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
-    })
+    if (this.formGestionPublicidad.valid) {
+
+      console.log(this.formGestionPublicidad.value)
+
+
+      this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
+        this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
+        this.formGestionPublicidad.reset();
+      })
+    } else
+    {
+      alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
+    }
   }
 
 
   obtenerPublicidad() {
-    return this.empleoService.getPublicidad().subscribe((publicidadModel: PostPublicidad) => this.publicidadModel = publicidadModel);
+    return this.empleoService.getPublicidad().subscribe((publicidades: ListPublicidad[]) => this.publicidades = publicidades);
   }
 
   eliminarPublicidad(Item) {

@@ -1,4 +1,4 @@
-<form [formGroup]="formRegEmpresa">
+<form [formGroup]="formRegEmpresa" (ngSubmit)="onSubmit()">
     <section id="guardiaPostula">
         <div class="container py-2 mx-auto">
             <div class="card card0 border-0">
@@ -53,8 +53,8 @@
                                                         <h6>Rut Empresa</h6>
                                                     </label>
                                                     <input type="text" class="form-control my-1"
-                                                        placeholder="Ingrese Rut Empresa" formControlName="rutempresa"
-                                                        id="rutempresa" name="rutEmpresa" />
+                                                        placeholder="Ingrese Rut Empresa" formControlName="rutEmpresa"
+                                                        id="rutEmpresa" name="rutEmpresa" />
                                                     <p class="rutErrorEmp" id="validacion-live"></p>
                                                 </div>
 
@@ -64,7 +64,8 @@
                                                         <h6>Nombre Empresa</h6>
                                                     </label>
                                                     <input type="text" formControlName="nombreEmpresa"
-                                                        id="nombreEmpresa" name="nomEmpresa" class="form-control my-1"
+                                                        id="nombreEmpresa" name="nomEmpresa"
+                                                        formControlName="nomEmpresa" class="form-control my-1"
                                                         placeholder="Ingrese Nombre Empresa">
                                                 </div>
 
@@ -73,8 +74,10 @@
                                                         <h6>Rut Representante</h6>
                                                     </label>
                                                     <input type="text" formControlName="rutRepresentante"
-                                                        id="rutRepresentante" name="rutRepresentante" class="form-control my-1"
-                                                        placeholder="Ingrese Rut Representante">
+                                                        id="rutRepresentante" name="rutRepresentante"
+                                                        class="form-control my-1"
+                                                        placeholder="Ingrese Rut Representante"
+                                                        formControlName="rutRepresentante">
                                                     <p class="rutErrorRep" id="validacion-live"></p>
                                                 </div>
 
@@ -83,8 +86,10 @@
                                                         <h6>Nombre Representante</h6>
                                                     </label>
                                                     <input type="text" formControlName="nombreRepresentante"
-                                                        id="nombreRepresentante" name="nombreRepresentante" class="form-control my-1"
-                                                        placeholder="Ingrese Nombre Representante">
+                                                        id="nombreRepresentante" name="nombreRepresentante"
+                                                        class="form-control my-1"
+                                                        placeholder="Ingrese Nombre Representante"
+                                                        formControlName="nomRepresentante">
                                                 </div>
 
                                                 <div class="form-group col-md-6">
@@ -93,6 +98,7 @@
                                                     </label>
                                                     <input type="password" formControlName="Contrasenia"
                                                         id="Contrasenia" name="Contrasenia" class="form-control my-1"
+                                                        formControlName="passEmpresa"
                                                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
                                                 </div>
 
@@ -101,7 +107,8 @@
                                                         <h6>Repita Contraseña</h6>
                                                     </label>
                                                     <input type="password" formControlName="RepetirContrasenia"
-                                                        id="RepetirContrasenia" name="RepetirContrasenia" class="form-control my-1"
+                                                        id="RepetirContrasenia" name="RepetirContrasenia"
+                                                        class="form-control my-1" formControlName="passEmpresa1"
                                                         placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
                                                 </div>
 
@@ -109,35 +116,38 @@
                                                     <label for="lbltRut">
                                                         <h6>Dirección Empresa</h6>
                                                     </label>
-                                                    <input type="text" formControlName="direccionEmp" id="direccionEmp" class="form-control my-1"
-                                                        name="direccionEmp" placeholder="Ingrese Dirección">
+                                                    <input type="text" formControlName="dirEmpresa" id="direccionEmp"
+                                                        class="form-control my-1" name="direccionEmp"
+                                                        placeholder="Ingrese Dirección">
                                                 </div>
 
                                                 <div class="form-group col-md-6">
                                                     <label for="lbltRut">
                                                         <h6>Telefono Empresa</h6>
                                                     </label>
-                                                    <input type="text" formControlName="telefonoEmp" id="telefonoEmp" class="form-control my-1"
-                                                        name="telefonoEmp" placeholder="Ingrese Telefono">
+                                                    <input type="text" formControlName="telEmpresa" id="telefonoEmp"
+                                                        class="form-control my-1" name="telefonoEmp"
+                                                        placeholder="Ingrese Telefono">
                                                 </div>
 
                                                 <div class="form-group col-md-12">
                                                     <label for="lbltRut">
                                                         <h6>Email Empresa</h6>
                                                     </label>
-                                                    <input type="text" formControlName="email" id="email" name="email" class="form-control my-1"
+                                                    <input type="text" formControlName="email" id="email" name="email"
+                                                        class="form-control my-1" formControlName="emailEmpresa"
                                                         placeholder="EmailEmpresa@email.com">
                                                 </div>
 
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6 text-center" >
-                                                    <button type="submit" [disabled]="formRegEmpresa.valid"
-                                                        (click)="tryRegister(formRegEmpresa.value)"
-                                                        class="btn btn-outline-primary">Postular</button>
+                                                <div class="form-group col-md-6 text-center">
+                                                    <!-- (click)="tryRegister(formRegEmpresa.value)" [disabled]="formRegEmpresa.invalid"-->
+                                                    <button type="submit" 
+                                                        class="btn btn-outline-primary">Ingresar</button>
                                                 </div>
-                                                <div class="form-group col-md-6 text-center" >
+                                                <div class="form-group col-md-6 text-center">
                                                     <button class="btn btn-outline-primary">Limpiar</button>
                                                 </div>
                                             </div>
@@ -145,7 +155,7 @@
                                     </div>
 
 
-                                    
+
 
                                 </div>
                             </div>

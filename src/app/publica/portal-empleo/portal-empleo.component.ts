@@ -1,4 +1,4 @@
-import { Empleo } from '../../core/empleos';
+import { Empleo } from '../../core/admin/empleos';
 import { EmpleosService } from '../../services/publicidad/empleos.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';

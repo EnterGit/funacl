@@ -1,5 +1,5 @@
-import { PostPublicidad } from './../../core/empleos';
-import { Publicidad } from './../../core/empleos';
+import { PostPublicidad } from '../../core/admin/empleos';
+import { Publicidad } from '../../core/admin/empleos';
 import { EmpleosService } from './../../services/publicidad/empleos.service';
 
 import { environment } from './../../../environments/environment';

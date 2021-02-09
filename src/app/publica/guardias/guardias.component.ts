@@ -161,12 +161,10 @@ export class GuardiasComponent implements OnInit {
       this.postulantes.email = value.email;
 
       this.service.agregarPostulantes(this.postulantes);
-
     }
     else {
       alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
     }
-
   }
 
 
