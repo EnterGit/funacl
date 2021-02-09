@@ -14,7 +14,8 @@ export class RegistroempleadoService {
 
   addEvaluacionEmpleado(EvaluacionEmpleado: registroempleado) {
     alert("ejecuto por aqui ");
-    return this.http.post(`${this.baseUrl}/postEvaluarEmpleado.php`, EvaluacionEmpleado);
+    console.log(EvaluacionEmpleado);
+    return this.http.post(`${this.baseUrl}/Empresa/evaluarEmpleado/postEvaluarEmpleado.php`, EvaluacionEmpleado);
   }
 
 

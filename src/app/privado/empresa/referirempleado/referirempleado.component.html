@@ -1,0 +1,173 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formReferido" #formReferir="ngForm">
+        <div class="container py-2 mx-auto">
+    
+         
+            <section id="Insertar">
+                <div class="row">
+                    <div>
+                        <div class="card2 card border-0 px-4 px-sm-5 py-5">
+    
+    
+                         
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="lbltRut">Rut</label>
+    
+                                    <input type="text" class="form-control" placeholder="Ingresa Rut Empleado"
+                                       formControlName="rutempleado" id="rutempleado" [(ngModel)]="empleadoModel.rutempleado" />        
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lbltNombreEmpleado">Nombre Empleado</label>
+    
+                                    <input type="text" class="form-control" placeholder="Ingresa Nombre Empleado"
+                                       formControlName="nombreempleado" id="nombreEmpleado" [(ngModel)]="empleadoModel.nombreempleado" />      
+    
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="lbltRutEmpresa">Rut Empresa</label>
+    
+                                    <input type="text" class="form-control" placeholder="Ingresa Rut Empresa"
+                                       formControlName="rutempresa" id="rutempresa" [(ngModel)]="empleadoModel.rutempresa" />        
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lbltNombreEmpresa">Nombre Empresa</label>
+    
+                                    <input type="text" class="form-control" placeholder="Ingresa Nombre Empresa"
+                                       formControlName="nombreempresa" id="nombreempresa" [(ngModel)]="empleadoModel.nombreempresa" />      
+                                </div>
+                            </div>
+    
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label for="lbltFechaIngreso">Fecha Ingreso</label>
+    
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" id="fechaingreso"
+                                            formControlName="fechaingreso" [(ngModel)]="empleadoModel.fechaingreso" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lbltFechaTermino">Fecha Termino</label>
+    
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" id="fechatermino"
+                                            formControlName="fechatermino" [(ngModel)]="empleadoModel.fechatermino"/>
+                                    </div>
+
+
+                                      
+
+                                
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <div class="form-group card mt-4">
+                                        <div class="card-header">
+                                            Artículo
+                                            <span class="float-right" ngbTooltip="Ayuda">
+                                                <!-- <fa-icon [icon]="fainfocircle"></fa-icon> -->
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path
+                                                        d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                                    <circle cx="8" cy="4.5" r="1" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                      
+    
+    
+    
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group card mt-4">
+                                        <div class="card-header">
+                                            Inciso
+                                            <span class="float-right" ngbTooltip="Ayuda">
+                                                <!-- <fa-icon [icon]="fainfocircle"></fa-icon> -->
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path
+                                                        d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                                    <circle cx="8" cy="4.5" r="1" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <!-- <select class="form-control" formControlName="cbbInciso">
+                                            <option value="" selected>Seleccione Inciso</option>
+                                            <option *ngFor="let city of cities" value={{city.id}}>
+                                                {{city.name}}
+                                            </option>                                       
+                                        </select> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row px-3">
+                                <label for="lbltObservacion">Observación</label>
+    
+                                <textarea class="form-control" rows="3" id="Observacion" [(ngModel)]="empleadoModel.Observacion"></textarea>
+                            </div>
+    
+                            <div class="row mt-3">
+                                <div class="form-group col-md-6">
+                                    <div class="field">
+                                        <div class="control">
+                                            <label class="checkbox">
+                                                <input id="autorizacion" type="checkbox" name="autorizacion"
+                                                    class="disclaimer" [(ngModel)]="empleadoModel.autorizacion"/>
+                                                Autorizo a Empresa InfoReed, a utilizar la información del despido, para
+                                                fines correspondientes.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group card mt-4">
+                                        <div class="form-group col-md-6">
+                                            <label for="lblRecomienda">¿Recomienda Empleado?</label>
+                                            <br />
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="SI" name="Recomienda"
+                                                    class="custom-control-input" formControlName="Recomienda" value="SI" />
+                                                <label class="custom-control-label" for="RecomiendaSI">
+                                                    SI
+                                                </label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="NO" name="Recomienda"
+                                                    class="custom-control-input" formControlName="sexo" value="NO" />
+                                                <label class="custom-control-label" for="RecomiendaNO">
+                                                    NO
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="row mb-4">
+                                <div class="col-md-6"><button type="submit" class="btn btn-blue text-center mb-1 py-2">Ingresar
+                                        Datos</button></div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </section>
+           
+    
+        </div>
+    </form>
