@@ -80,7 +80,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
-
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'loginPersona', component: LoginPersonaComponent, canActivate: [AuthGuard]},
