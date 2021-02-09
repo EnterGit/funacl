@@ -8,12 +8,13 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class ConsultarempleadoService {
+  rutConsultado;
 
   baseUrl = environment.baseUrl
   constructor(private http:HttpClient) { }
 
-   ConsultarEmpleado(consultarporrut: consultarempleado) {
-   return this.http.get(`${this.baseUrl}/get.php?rut=${consultarporrut}`);
+   ConsultarEmpleado(rutConsultado) {
+   return this.http.get(`${this.baseUrl}/get.php?rut=${rutConsultado}`);
   }
   
 }

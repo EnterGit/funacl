@@ -54,9 +54,30 @@ import { HttpClientModule} from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
 import { AuthguardGuard } from './core/authguard.guard';
+
 // import { EvaluarempleadoComponent } from './privado/empresa/evaluarempleado/evaluarempleado.component';
 // import { BuscarempleadoComponent } from './privado/empresa/buscarempleado/buscarempleado.component';
 // import { ConsultarempleadoComponent } from './privado/empresa/consultarempleado/consultarempleado.component';
+
+//Mensaje
+import { DialogoconfirmacionComponent } from './dialogoconfirmacion/dialogoconfirmacion.component';
+//Material
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+//import { ReferirempleadoComponent } from './privado/empresa/referirempleado/referirempleado.component';
+
 
 
 
@@ -104,7 +125,9 @@ const routes: Routes= [
     PublicidadComponent,
     PortalEmpleoComponent,
     LoginPersonaComponent,
-    RegistoPostulanteComponent
+    RegistoPostulanteComponent,
+    DialogoconfirmacionComponent,
+    //ReferirempleadoComponent
     // EvaluarempleadoComponent,
     // BuscarempleadoComponent,
     // ConsultarempleadoComponent
@@ -122,7 +145,19 @@ const routes: Routes= [
     CarouselModule, BrowserAnimationsModule,
     HttpClientModule,
     AccesoEmpresaModule,
-    AccesoAdminModule
+    AccesoAdminModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatPaginatorModule,
+
   ],
   providers: [
     AuthService,
