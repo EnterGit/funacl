@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryI, CityI } from '../../../core/empresa/model.interface';
-import { registroempleado } from '../../../core/empresa/registroempleado';
-import { RegistroempleadoService } from '../../../services/empresa/registroempleado/registroempleado.service';
+import { HttpClient } from '@angular/common/http';
+
+
 import { DataService } from '../../../services/empresa/articulo/data.service.service';
 
 import { Router } from '@angular/router';
@@ -13,6 +14,13 @@ import {FormBuilder, FormGroup, Validators,  FormControl,ValidationErrors,Valida
 import { debounceTime } from 'rxjs/operators';
 import * as $ from 'jquery';
 import { FormsModule } from '@angular/forms';
+//Modeo
+import { Larticulos,Linciso, Lcausal } from './../../../core/empresa/comboempresa.model';
+import { registroempleado } from '../../../core/empresa/registroempleado';
+//Servicio
+import { RegistroempleadoService } from '../../../services/empresa/registroempleado/registroempleado.service';
+import {ComboempresaService}  from '../../../services/parametros/comboempresa.service';
+//Material
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import {DialogoconfirmacionComponent} from '../../../dialogoconfirmacion/dialogoconfirmacion.component';
@@ -22,6 +30,13 @@ import {DialogoconfirmacionComponent} from '../../../dialogoconfirmacion/dialogo
   styleUrls: ['./referirempleado.component.css'],
 })
 export class ReferirempleadoComponent implements OnInit {
+
+
+//Articulos e Incisos
+public  articulomodel: Larticulos[] = [new Larticulos(0,"aaaaa","aaiiiii articulo")];
+public incisomodel: Linciso[] = [new Linciso(0,"uuuuu","iiii",0)];
+  
+
   public empleadoModel: registroempleado = new registroempleado(
     '',
     '',
@@ -41,7 +56,11 @@ export class ReferirempleadoComponent implements OnInit {
   formReferido: FormGroup;
   constructor(
   private fb:FormBuilder,
+  private http: HttpClient,
+    //Servicio
     private service: RegistroempleadoService,
+    private  articuloService:  ComboempresaService,
+   //Material
     private snackBar: MatSnackBar,
     private dialogo: MatDialog
   ) { 
@@ -50,7 +69,12 @@ export class ReferirempleadoComponent implements OnInit {
 
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    
+    this.ListarArticulos();
+   }
+
+
   crearForm()
   {
     this.formReferido= this.fb.group({
@@ -60,9 +84,9 @@ export class ReferirempleadoComponent implements OnInit {
        nombreempresa: ['', [Validators.required]],
        fechaingreso: ['', [Validators.required]],
        fechatermino: ['', [Validators.required]],
-       idarticulo: ['', [Validators.required]],
+       articulo: ['', [Validators.required]],
        nombrearticulo: ['', [Validators.required]],
-       idinciso: ['', [Validators.required]],
+       inciso: ['', [Validators.required]],
       nombreinciso: ['', [Validators.required]],
        Observacion: ['', [Validators.required]],
        autorizacion: ['', [Validators.required]],
@@ -72,6 +96,18 @@ export class ReferirempleadoComponent implements OnInit {
     })
 
   }
+
+ListarArticulos()
+{
+
+  return this.articuloService.getListaArticulos().subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
+}
+onChangeinciso(value) {
+  console.log("LLAMADO Iniciso........... " + value);
+  return this.articuloService.getListaIncisos(value).subscribe((incisomodel: Linciso[]) => this.incisomodel = incisomodel);
+}
+
+
 
   onSubmit() {
     console.log(this.empleadoModel);
