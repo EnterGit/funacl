@@ -49,3 +49,23 @@ export class ListPublicidad {
         public idpublicidad?: number,
     ){}
 }
+
+
+export class PostEmpleos {
+    constructor(
+      public cargoEmpleo: string,
+      public profesion: string,
+      public vacantes: string,
+      public empresa: string,
+      public region: string,
+      public comuna: string,
+      public direccion: string,
+      public fecPostulacion: string,
+      public jornada: string,
+      public sueldo: string,
+      public educacion: string,
+      public experiencia: string,
+      public tipoContrato: string,
+      public descEmpleo: string,
+    ){ }
+}

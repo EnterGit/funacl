@@ -1,12 +1,12 @@
-import { IngempresaService } from './../services/admin/Ingempresa/ingempresa.service';
-import { PerfilEmpresa } from './../core/admin/perfilempresa';
+import { IngempresaService } from './../../../services/admin/Ingempresa/ingempresa.service';
+import { PerfilEmpresa } from './../../../core/admin/perfilempresa';
 import { Component, OnInit } from '@angular/core';
 // import { AuthService } from '../core/auth.service'
 
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { ConexionService } from '../services/conexion.service';
+import { ConexionService } from './../../../services/conexion.service';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as $ from 'jquery';

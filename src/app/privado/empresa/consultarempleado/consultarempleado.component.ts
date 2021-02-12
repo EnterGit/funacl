@@ -156,8 +156,6 @@ export class ConsultarempleadoComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
-  
     this.obtenerConsultado();
 
     //   $(document).ready(function () {
@@ -171,7 +169,6 @@ export class ConsultarempleadoComponent implements OnInit, AfterViewInit {
     // })
 
   }
-
 
 
 ngAfterViewInit() {
@@ -188,22 +185,20 @@ this.dataSource.paginator = this.paginator;
       this.dataSource.paginator.firstPage();
     }
   }
-}
 
-obtenerConsultado(){
- console.log("Ejecuto" + this.rutConsultado);
- return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
-  subscribe((empleado:consultarempleado[])=> this.empleado = empleado);
 
+// obtenerConsultado(){
+//  console.log("Ejecuto" + this.rutConsultado);
+//  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
+//   subscribe((empleado:consultarempleado[])=> this.empleado = empleado);
+// }
   
 //  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
 
-
-  
+ 
   onSubmit() {
 
   }
-
 
   obtenerConsultado() {
     console.log("Ejecuto" + this.rutConsultado);

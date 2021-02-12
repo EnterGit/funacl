@@ -1,8 +1,8 @@
-import { Item } from './../../services/conexion.service';
-import { PostPublicidad, ListPublicidad } from '../../core/admin/empleos';
+import { environment } from './../../../../environments/environment';
+import { EmpleosService } from './../../../services/publicidad/empleos.service';
+import { Item } from './../../../services/conexion.service';
+import { PostPublicidad, ListPublicidad } from '../../../core/admin/empleos';
 // import { Publicidad } from '../../core/admin/empleos';
-import { EmpleosService } from './../../services/publicidad/empleos.service';
-import { environment } from './../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
@@ -11,12 +11,15 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } 
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 
+
 @Component({
   selector: 'app-gestionar-publicidad',
   templateUrl: './gestionar-publicidad.component.html',
   styleUrls: ['./gestionar-publicidad.component.css']
 })
 export class GestionarPublicidadComponent implements OnInit {
+
+  submitted = false;
 
   faTrashAlt = faTrashAlt;
   faPencilAlt = faPencilAlt;
@@ -29,6 +32,7 @@ export class GestionarPublicidadComponent implements OnInit {
   titulo: string;
   imagenTitulo: string;
   subirArchivo: string = null;
+  public nombreArchivo: string;
   mostrarPublicidad: boolean;
   mostrarFormPublicidad: boolean;
   baseUrl = environment.baseUrl + '/Upload/';
@@ -36,6 +40,7 @@ export class GestionarPublicidadComponent implements OnInit {
 
   public publicidades: ListPublicidad[] = [new ListPublicidad("", "", "", "", "", "", "", "", "", 0)];
   public publicidadModel: PostPublicidad = new PostPublicidad("", "", "", "", "", "", "", "", "", 0);
+
 
 
 
@@ -69,26 +74,69 @@ export class GestionarPublicidadComponent implements OnInit {
       telefonoContacto: ['', Validators.required],
       fecIniPub: ['', Validators.required],
       fecTerPub: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       subirArchivo: ['', Validators.required],
+      imagenUrl: ['', Validators.required],
       descPublicidad: ['', Validators.required]
     })
   }
 
+
+  uploadFile() {
+
+    console.log(this.file_data);
+    this.http.post(this.baseUrl + 'upload.php', this.file_data, {
+      reportProgress: true,
+      observe: 'events'
+    })
+      .subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          console.log("Progreso :" + (event.loaded / event.total) * 100 + "%");
+          
+        }
+        else if (event.type === HttpEventType.Response) {
+          console.log(event)
+          console.log("With Parsed JSON :", event.body);
+          console.log(event.body['message']);
+
+          this.nombreArchivo = event.body['archivo'];
+
+          this.publicidadModel.imagenUrl = event.body['archivo'];
+
+          // alert(event.body['message']);
+
+          if (event.body['status'] == 0) {
+            this.imageSrc = '';
+            this.subirArchivo = '';
+          }
+        }
+      });
+  }
+
+  get f() { return this.formGestionPublicidad.controls; }
+
+
   onSubmit() {
     console.log(this.publicidadModel);
+   
+    this.submitted = true;
+
+  //   if (this.formGestionPublicidad.invalid) {
+  //     return;
+  // }
+
     if (this.formGestionPublicidad.valid) {
-
+      
       console.log(this.formGestionPublicidad.value)
-
 
       this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
         this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
-        this.formGestionPublicidad.reset();
+        // this.formGestionPublicidad.reset();
       })
     } else
-    {
-      alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
+    {    
+      alert("FAVOR COMPLETAR TODOS LOS CAMPOS ");  
+      return;
     }
   }
 
@@ -176,29 +224,5 @@ export class GestionarPublicidadComponent implements OnInit {
     }
   }
 
-  uploadFile() {
-
-    console.log(this.file_data);
-    this.http.post(this.baseUrl + 'upload.php', this.file_data, {
-      reportProgress: true,
-      observe: 'events'
-    })
-      .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          console.log("Progreso :" + (event.loaded / event.total) * 100 + "%");
-        }
-        else if (event.type === HttpEventType.Response) {
-          console.log(event)
-          console.log("With Parsed JSON :", event.body);
-
-          console.log(event.body['message']);
-          alert(event.body['message']);
-
-          if (event.body['status'] == 0) {
-            this.imageSrc = '';
-            this.subirArchivo = '';
-          }
-        }
-      });
-  }
+ 
 }
