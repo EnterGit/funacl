@@ -24,6 +24,11 @@ import {ComboempresaService}  from '../../../services/parametros/comboempresa.se
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import {DialogoconfirmacionComponent} from '../../../dialogoconfirmacion/dialogoconfirmacion.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
+
 @Component({
   selector: 'app-referirempleado',
   templateUrl: './referirempleado.component.html',
@@ -33,9 +38,10 @@ export class ReferirempleadoComponent implements OnInit {
 
 
 //Articulos e Incisos
-public  articulomodel: Larticulos[] = [new Larticulos(0,"aaaaa","aaiiiii articulo")];
-public incisomodel: Linciso[] = [new Linciso(0,"uuuuu","iiii",0)];
-  
+public  articulomodel: Larticulos[] = [new Larticulos(0,"prueba","aaiiiii articulo")];
+public incisomodel: Linciso[] = [new Linciso(0,"prueba","iiii",0)];
+opcion1=true;
+valor1=null;
 
   public empleadoModel: registroempleado = new registroempleado(
     '',
@@ -62,7 +68,8 @@ public incisomodel: Linciso[] = [new Linciso(0,"uuuuu","iiii",0)];
     private  articuloService:  ComboempresaService,
    //Material
     private snackBar: MatSnackBar,
-    private dialogo: MatDialog
+    private dialogo: MatDialog,
+    private router: Router,
   ) { 
     this.crearForm();
   }
@@ -84,9 +91,9 @@ public incisomodel: Linciso[] = [new Linciso(0,"uuuuu","iiii",0)];
        nombreempresa: ['', [Validators.required]],
        fechaingreso: ['', [Validators.required]],
        fechatermino: ['', [Validators.required]],
-       articulo: ['', [Validators.required]],
+       idarticulo: ['', [Validators.required]],
        nombrearticulo: ['', [Validators.required]],
-       inciso: ['', [Validators.required]],
+       idinciso: ['', [Validators.required]],
       nombreinciso: ['', [Validators.required]],
        Observacion: ['', [Validators.required]],
        autorizacion: ['', [Validators.required]],
@@ -103,7 +110,7 @@ ListarArticulos()
   return this.articuloService.getListaArticulos().subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
 }
 onChangeinciso(value) {
-  console.log("LLAMADO Iniciso........... " + value);
+
   return this.articuloService.getListaIncisos(value).subscribe((incisomodel: Linciso[]) => this.incisomodel = incisomodel);
 }
 
@@ -120,8 +127,11 @@ onChangeinciso(value) {
       this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
         duration: 1500,
       });
-      //this.router.navigate(['/mascotas']);
+      this.router.navigate(['/accesoEmpresa/consultarempleado']);
+      this.formReferido.reset();
+    
     });
+
 
     // this.dialogo.open(DialogoconfirmacionComponent, {
     // data: `¿Realmente quieres eliminar ?`,

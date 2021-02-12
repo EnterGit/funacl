@@ -27,6 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 const routes: Routes= [
   {path: 'accesoEmpresa', component: AccesoEmpresaComponent, canActivate: [AuthguardGuard],
@@ -63,6 +65,8 @@ const routes: Routes= [
     MatPaginatorModule,
     ReactiveFormsModule,
     BrowserModule,
+    MatSlideToggleModule,
+    MatButtonToggleModule,
      RouterModule.forRoot(routes),
      MatDatepickerModule
   ]

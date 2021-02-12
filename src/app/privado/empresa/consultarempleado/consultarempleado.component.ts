@@ -103,12 +103,14 @@ const ELEMENT_DATA2: EmpleadoTST[] = [
 
 export class ConsultarempleadoComponent implements OnInit,  AfterViewInit{
   
-  
+
+  public empleado: consultarempleado[] = [new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")];
+ 
 
 public rutConsultado;
-  public empleado: consultarempleado[]= [
-    new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")
-  ];
+  // public empleado: consultarempleado[]= [
+  //   new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")
+  // ];
 
   displayedColumns: string[] = ['id', 'rut', 'nombreCompleto', 'rutEmpresa','nombreEmpresa', 'fechaIngreso','fechaFin','nombreArticulo','nombreInciso', 'observacion' ];
   //dataSource = ELEMENT_DATA2;
@@ -151,6 +153,7 @@ public rutConsultado;
 
   ngOnInit(): void {
   
+    this.obtenerConsultado();
     //   $(document).ready(function () {
     //   $("input#rut").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () { 
     //     $(".rutError").addClass("alert alert-danger")
@@ -162,6 +165,8 @@ public rutConsultado;
     // })
 
 }
+
+
 
 
 ngAfterViewInit() {
@@ -183,8 +188,12 @@ onSubmit() {
 }
 obtenerConsultado(){
  console.log("Ejecuto" + this.rutConsultado);
- return this.servicioConsulta.ConsultarEmpleado(this.rutConsultado).
+ return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
   subscribe((empleado:consultarempleado[])=> this.empleado = empleado);
+
+  
+//  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
+
   }
 
  
