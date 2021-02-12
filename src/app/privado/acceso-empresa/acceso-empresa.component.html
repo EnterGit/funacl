@@ -7,35 +7,34 @@
       <span>
         Gestión Empresas&nbsp;
       </span>
-   
+
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container class="contenido">
     <mat-sidenav style="min-width: 300px;" #cajon mode="side">
       <mat-nav-list>
         <a mat-list-item routerLink="/accesoEmpresa/ReferirEmpleado">
-         
-          Agregar  Evaluación Empresa
+
+          Agregar Evaluación Empresa
         </a>
         <a mat-list-item routerLink="/accesoEmpresa/ConsultarEmpleado">
           <!-- <mat-icon color="accent">pan_tool</mat-icon> -->
-        Consultar Empleado
+          Consultar Empleado
         </a>
         <a mat-list-item routerLink="/accesoEmpresa/BuscarEmpleado">
-     
+
           BuscarEmpleado Nuevo Empleado
         </a>
 
 
-        
 
-   
+
+
       </mat-nav-list>
-   
+
     </mat-sidenav>
     <mat-sidenav-content class="padding-10">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-

@@ -12,7 +12,6 @@ export class ApiService {
     redirectUrl: string;
     baseUrl = environment.baseUrl + '/Login/'   
 
-    // baseUrl: string = "http://localhost:8080/funaWS/Login/";
     @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
     
     
@@ -23,8 +22,10 @@ export class ApiService {
         return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
             .pipe(map(Users => {
                 this.setToken(Users[0].name);
+                
                 this.getLoggedInName.emit(true);    
-                console.log("API SERVICE " + this.getLoggedInName.emit(true));
+                console.log("API SERVICE ");
+                console.log(this.getLoggedInName.emit(true));
                 return Users;
             }));
     }
@@ -41,6 +42,11 @@ export class ApiService {
     setToken(token: string) {
         localStorage.setItem('token', token);
     }
+
+    setCookies(cookie: string){
+        
+    }
+
     getToken() {
         return localStorage.getItem('token');
     }

@@ -11,17 +11,14 @@ import * as $ from 'jquery';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoconfirmacionComponent } from "../../../dialogoconfirmacion/dialogoconfirmacion.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {AfterViewInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
-
-
-
-import {consultarempleado} from '../../../core/empresa/consultarempleado';
-import {ConsultarempleadoService} from '../../../services/empresa/consultarempleado/consultarempleado.service';
+import { consultarempleado } from '../../../core/empresa/consultarempleado';
+import { ConsultarempleadoService } from '../../../services/empresa/consultarempleado/consultarempleado.service';
 
 
 
@@ -44,36 +41,36 @@ export interface PeriodicElement {
   position: number;
   weight: number;
   symbol: string;
-} 
-export interface EmpleadoTST{
-   id: string;
-   rut : string,
-   nombreCompleto : string,
-   rutEmpresa: string,
-   nombreEmpresa : string,
-   fechaIngreso : string,
-   fechaFin: string,
-   idArticulo : string,
-   nombreArticulo : string,
-   idInciso : string,
-   nombreInciso : string,
-   observacion : string,
-   autorizacion : string,
-   recomienda : string
+}
+export interface EmpleadoTST {
+  id: string;
+  rut: string,
+  nombreCompleto: string,
+  rutEmpresa: string,
+  nombreEmpresa: string,
+  fechaIngreso: string,
+  fechaFin: string,
+  idArticulo: string,
+  nombreArticulo: string,
+  idInciso: string,
+  nombreInciso: string,
+  observacion: string,
+  autorizacion: string,
+  recomienda: string
 }
 
 const ELEMENT_DATA2: EmpleadoTST[] = [
-  {id: '1', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '2', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '3', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '4', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '5', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '6', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '7', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '8', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '9', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '10', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
- 
+  { id: '1', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '2', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '3', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '4', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '5', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '6', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '7', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '8', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '9', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+  { id: '10', rut: '1111111-1', nombreCompleto: 'JuanPerez', rutEmpresa: '33333-3', nombreEmpresa: 'empresa 1', fechaIngreso: '2012-11-01', fechaFin: '2013-10.12', idArticulo: '1', nombreArticulo: 'necesidades empresa', idInciso: '1', nombreInciso: 'articulo', observacion: 'Sin obs', autorizacion: 'Si', recomienda: 'Si' },
+
 ];
 
 
@@ -101,18 +98,25 @@ const ELEMENT_DATA2: EmpleadoTST[] = [
 
 
 
-export class ConsultarempleadoComponent implements OnInit,  AfterViewInit{
-  
 
-  public empleado: consultarempleado[] = [new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")];
+//export class ConsultarempleadoComponent implements OnInit,  AfterViewInit{
+
+//public empleado: consultarempleado[] = [new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")];
  
-
-public rutConsultado;
+//public rutConsultado;
   // public empleado: consultarempleado[]= [
   //   new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")
   // ];
 
-  displayedColumns: string[] = ['id', 'rut', 'nombreCompleto', 'rutEmpresa','nombreEmpresa', 'fechaIngreso','fechaFin','nombreArticulo','nombreInciso', 'observacion' ];
+export class ConsultarempleadoComponent implements OnInit, AfterViewInit {
+
+  public rutConsultado;
+  public empleado: consultarempleado[] = [
+    new consultarempleado("1111111-1", "JuanPerez", "33333-3", "empresa 1", "2012-11-01", "2013-10.12", "1", "necesidades empresa", "1", "articulo", "Sin obs", "Si", "Si")
+  ];
+
+
+  displayedColumns: string[] = ['id', 'rut', 'nombreCompleto', 'rutEmpresa', 'nombreEmpresa', 'fechaIngreso', 'fechaFin', 'nombreArticulo', 'nombreInciso', 'observacion'];
   //dataSource = ELEMENT_DATA2;
   dataSource = new MatTableDataSource<EmpleadoTST>(ELEMENT_DATA2);
 
@@ -120,9 +124,9 @@ public rutConsultado;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-//  this.dataSource.paginator = this.paginator;
+  //  this.dataSource.paginator = this.paginator;
   formConsultarEmpleado: FormGroup;
-  
+
   faTrashAlt = faTrashAlt;
   faPencilAlt = faPencilAlt;
   faTrash = faTrash;
@@ -139,21 +143,23 @@ public rutConsultado;
     private ruta: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-    private servicioConsulta:ConsultarempleadoService,
+    private servicioConsulta: ConsultarempleadoService,
     private dialogo: MatDialog,
     private snackBar: MatSnackBar
- 
-  ) { 
+
+  ) {
     faConfig.defaultPrefix = 'far';
     library.addIcons(faUser, faHandPaper, faBellSlash);
     //this.ingresarEvaluacion();
-  
+
 
   }
 
   ngOnInit(): void {
+
   
     this.obtenerConsultado();
+
     //   $(document).ready(function () {
     //   $("input#rut").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () { 
     //     $(".rutError").addClass("alert alert-danger")
@@ -164,8 +170,7 @@ public rutConsultado;
     //       });
     // })
 
-}
-
+  }
 
 
 
@@ -174,18 +179,17 @@ this.dataSource.paginator = this.paginator;
   this.dataSource.sort = this.sort;
 }
 
-applyFilter(event: Event) {
-  const filterValue = (event.target as HTMLInputElement).value;
-  this.dataSource.filter = filterValue.trim().toLowerCase();
 
-  if (this.dataSource.paginator) {
-    this.dataSource.paginator.firstPage();
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
 
-onSubmit() {
-
-}
 obtenerConsultado(){
  console.log("Ejecuto" + this.rutConsultado);
  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
@@ -194,8 +198,16 @@ obtenerConsultado(){
   
 //  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
 
+
+  
+  onSubmit() {
+
   }
 
- 
 
+  obtenerConsultado() {
+    console.log("Ejecuto" + this.rutConsultado);
+    return this.servicioConsulta.ConsultarEmpleado(this.rutConsultado).
+      subscribe((empleado: consultarempleado[]) => this.empleado = empleado);
+  }
 }
