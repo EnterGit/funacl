@@ -13,7 +13,7 @@ export class RegistroempleadoService {
   constructor(private http:HttpClient) { }
 
   addEvaluacionEmpleado(EvaluacionEmpleado: registroempleado) {
-    alert("ejecuto por aqui ");
+ 
     console.log(EvaluacionEmpleado);
     return this.http.post(`${this.baseUrl}/Empresa/evaluarEmpleado/postEvaluarEmpleado.php`, EvaluacionEmpleado);
   }

@@ -26,7 +26,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
+
 
 const routes: Routes = [
   {
@@ -65,8 +70,12 @@ const routes: Routes = [
     MatPaginatorModule,
     ReactiveFormsModule,
     BrowserModule,
-    RouterModule.forRoot(routes),
-    MatDatepickerModule
+
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+     RouterModule.forRoot(routes),
+     MatDatepickerModule
+
   ]
 })
 export class AccesoEmpresaModule { }

@@ -18,7 +18,7 @@ export class GestionarEmpleoComponent implements OnInit {
   formGestionaEmpleos: FormGroup;
 
   public regionesModel: Lregiones[] = [new Lregiones(0, "prueba")];
-  public comunaModel: Lcomuna[] = [new Lcomuna(0, "")];
+  public comunaModel: Lcomuna[] = [new Lcomuna(0, "algo")];
 
 
   constructor(

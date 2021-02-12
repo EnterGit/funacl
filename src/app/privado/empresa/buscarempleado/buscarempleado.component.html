@@ -1,753 +1,219 @@
+<form [formGroup]="formBuscar">
+    <section id="BuscarEmpleado">
+        <div class="container py-2 mx-auto">
+            <div class="card card0 border-0">
+                <div class="row d-flex">
+                    <div class="container">
+                        <div class="row gutters-sm">
+                            <div class="col-md-3 mt-2 ml-2 mr-2 mb-2">
 
-
-        
-            <div class="container py-2 mx-auto">
-        
-              
-                <section id="Buscar">
-                    <div class="row">
-                        <div>
-                            <div class="card2 card border-0 px-4 px-sm-5 py-5">
-        
-        
-                                <h3 class="mb-1">Buscar Perfil Empleado</h3>
-                                <p class="mb-4 text-sm"></p>
-        
-        
-                                <div class="row mt-3">
-                                    <div class="col-md-4">
-                                        <div class="form-group card mt-4">
-                                            <div class="card-header">
-                                                Tipo Cargo
-                                                <span class="float-right" ngbTooltip="Ayuda">
-                                                    <!-- <fa-icon [icon]="fainfocircle"></fa-icon> -->
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path
-                                                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                                                        <circle cx="8" cy="4.5" r="1" />
-                                                    </svg>
-                                                </span>
+                                <div class="form-group card mt-1">
+                                    <div class="card-body">
+                                        
+                                        <div class="d-flex flex-column align-items-center text-center">
+                                            <img src="https://cflvdg.avoz.es/sc/4UkTJCAYrB0wJWd_hd4lLzTr33Y=/x/2017/01/22/00121485107936127344615/Foto/trabajoh.jpg" alt="Admin" class="rounded-circle"
+                                                width="180" />
+                                            <div class="mt-2">
+                                                <h4>{{titulo}}</h4>
                                             </div>
-                                            <select class="form-control" formControlName="educacion">
-                                                <option value="" selected>Seleccione Cargo</option>
-                                                <option value="basico">Supervisor de Guardias</option>
-                                                <option value="media">Supervisor de Aseo</option>
-                                                <option value="superior">Conserje</option>
-                                                <option value="superior">Guardia</option>
-                                                <option value="superior">Personal de Asero</option>
-                                                <option value="superior">Mayor Domo</option>
-                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group card mt-4">
-                                            <div class="card-header">
-                                                Cursos
-                                                <span class="float-right" ngbTooltip="Ayuda">
-                                                    <!-- <fa-icon [icon]="fainfocircle"></fa-icon> -->
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path
-                                                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                                                        <circle cx="8" cy="4.5" r="1" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <select class="form-control" formControlName="educacion">
-                                                <option value="" selected>Seleccione Curso</option>
-                                                <option value="basico">OS-10</option>
-                                                <option value="media">SuperVisor de Guardias</option>
-                                                <option value="superior">Mayordomo</option>
-                                            </select>
-                                        </div>
+                                </div>
+
+                                <div class="form-group card mt-4 mx-auto">
+                                    <div class="card-header">Busqueda Nuevo Empleado
+                                        <span class="float-right" ngbTooltip="Ayuda">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                class="bi bi-info-circle" fill="currentColor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                <path
+                                                    d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                                <circle cx="8" cy="4.5" r="1" />
+                                            </svg>
+                                        </span>
                                     </div>
-        
-                                    <div class="col-md-4">
-                                        <div class="form-group card mt-4">
-                                            <div class="card-header">
-                                                Genero
-                                                <span class="float-right" ngbTooltip="Ayuda">
-                                                    <!-- <fa-icon [icon]="fainfocircle"></fa-icon> -->
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path
-                                                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                                                        <circle cx="8" cy="4.5" r="1" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <select class="form-control" formControlName="educacion">
+                                    <p class="text-justify mx-auto" style="width: 90%;">Mediante este formularios, podrá realizar
+                                        busqueda de nuevo personal, para esto deberá utilizar los filtros, por lo cuales desea segmentar, a los
+                                        posibles candidatos.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-8 mt-3 ml-3 mb-2 mr-2">
+                                <div class="card mb-1">
+                                    <div class="card-body">
+                                    
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="lblSueldo">Seleccione Genero</label>
+                                                <select class="form-control my-1" formControlName="jornada"
+                                                id="jornada">
                                                 <option value="" selected>Seleccione Genero</option>
-                                                <option value="basico">Femenino</option>
-                                                <option value="media">Masculino</option>
+                                                <option value="Completa">Femenino</option>
+                                                <option value="Mañana">Masculino</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div class="row mt-3">
-                                    <div class="col-md-6">
-                                        <div class="form-group card mt-4">
-                                            <div class="card-header">
-                                                Comuna
-                                                <span class="float-right" ngbTooltip="Ayuda">
-                                                    <!-- <fa-icon [icon]="fainfocircle"></fa-icon> -->
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path
-                                                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                                                        <circle cx="8" cy="4.5" r="1" />
-                                                    </svg>
-                                                </span>
                                             </div>
-                                            <select class="form-control" formControlName="educacion">
-                                                <option value="" selected>Seleccione Comuna</option>
-                                                <option value="basico">Santiago</option>
-                                                <option value="media">Estacion Central</option>
-                                                <option value="superior">Las Condes</option>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="lblFecIniPub">Seleccione Región</label>
+                                                <select name="regiones" id="region" class="form-control my-1" ng-model="regiones"
+                                                (change)="onChangeComuna($event.target.value)" formCon
+                                                rolName="region">
+                                                <option value="">Seleccione Región</option>
+                                                <option *ngFor="let regiones of regionesModel"
+                                                    value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE}}
+                                                </option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group card mt-4">
-                                            <div class="card-header">
-                                                Turno
-                                                <span class="float-right" ngbTooltip="Ayuda">
-                                                    <!-- <fa-icon [icon]="fainfocircle"></fa-icon> -->
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path
-                                                            d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
-                                                        <circle cx="8" cy="4.5" r="1" />
-                                                    </svg>
-                                                </span>
                                             </div>
-                                            <select class="form-control" formControlName="educacion">
+                                            <div class="form-group col-md-4">
+                                                <label for="lblJornada">Seleccione Comuna</label>
+                                                <select name="comuna" id="comuna" class="form-control my-1" ng-model="comuna" 
+                                                formControlName="comuna">
+                                                <option value="">Seleccione Comuna</option>
+                                                <option *ngFor="let comuna of comunaModel"
+                                                    value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE}}
+                                                </option>
+                                            </select>
+                                            </div>
+                                          
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="lblFecIniPub">Tipo Cargo</label>
+                                                <select name="regiones" id="region" class="form-control my-1" ng-model="regiones"
+                                                (change)="onChangeComuna($event.target.value)" formCon
+                                                rolName="region">
+                                                <option value="">Seleccione Región</option>
+                                                <option *ngFor="let regiones of regionesModel"
+                                                    value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE}}
+                                                </option>
+                                            </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="lblJornada">Jornada</label>
+                                                <select name="comuna" id="comuna" class="form-control my-1" ng-model="comuna" 
+                                                formControlName="comuna">
+                                                <option value="">Seleccione Comuna</option>
+                                                <option *ngFor="let comuna of comunaModel"
+                                                    value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE}}
+                                                </option>
+                                            </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="lblSueldo">Turno</label>
+                                                <select class="form-control my-1" formControlName="jornada"
+                                                id="jornada">
                                                 <option value="" selected>Seleccione Turno</option>
-                                                <option value="basico">Mañana</option>
-                                                <option value="media">Medio Día</option>
-                                                <option value="superior">Tarde</option>
-                                                <option value="superior">Noche</option>
-                                                <option value="superior">24/7</option>
+                                                <option value="Completa">Completa</option>
+                                                <option value="Mañana">Mañana</option>
+                                                <option value="Tarde">Tarde</option>
+                                                <option value="Noche">Noche</option>
                                             </select>
+                                            </div>
                                         </div>
-                                    </div>
-        
-        
-                                </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                                <div class="row mb-4">
-                                    <div class="col-md-6"><button class="btn btn-blue text-center mb-1 py-2">Buscar
-                                            Personal</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card card-margin">
-                                <div class="card-body">
-                                    <div class="row search-body">
-                                        <div class="col-lg-12">
-                                            <div class="search-result">
-                                                <div class="result-header">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="records">Mostrando: <b>1-20</b> de <b>200</b> resultados
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="result-actions">
-                                                                <div class="result-sorting">
-                                                                    <span>Filtrar Por:</span>
-                                                                    <select class="form-control border-0"
-                                                                        id="exampleOption">
-                                                                        <option value="1">Filtrar por</option>
-                                                                        <option value="2">Nombre (A-Z)</option>
-                                                                        <option value="3">Tipo Cargo</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="result-views">
-                                                                 
-                                                                   
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="result-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table widget-26">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                        
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Senior Software Engineer /
-                                                                                Developer</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">Axiom Corp.</a>
-                                                                                <span class="text-muted time">1 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Full-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">London, UK</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 50/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-base">
-                                                                            <i class="indicator bg-base"></i>
-                                                                            <span>Software Development</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Marketing &amp; Communication
-                                                                                Supervisor</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">AxiomUI Llc.</a>
-                                                                                <span class="text-muted time">2 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">New York, US</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 60/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-warning">
-                                                                            <i class="indicator bg-warning"></i>
-                                                                            <span>Marketing</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Senior Data Analyst / Scientist</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">AxiomUI Inc.</a>
-                                                                                <span class="text-muted time">4 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">New York, US</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 60/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-success">
-                                                                            <i class="indicator bg-success"></i>
-                                                                            <span>Artificial Intelligence</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar4.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">UX Designer &amp; UI Developer</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">AxiomUI Inc.</a>
-                                                                                <span class="text-muted time">5 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">Toronto, CAN</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 35/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-danger">
-                                                                            <i class="indicator bg-danger"></i>
-                                                                            <span>Design</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Information Security Analyst /
-                                                                                Expert</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">Axiom Corp.</a>
-                                                                                <span class="text-muted time">6 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">Mumbai, IN</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 70/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-info">
-                                                                            <i class="indicator bg-info"></i>
-                                                                            <span>Infra Supervision</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star starred">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Senior Software Engineer /
-                                                                                Developer</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">Axiom Corp.</a>
-                                                                                <span class="text-muted time">1 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Full-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">London, UK</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 50/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-base">
-                                                                            <i class="indicator bg-base"></i>
-                                                                            <span>Software Development</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Marketing &amp; Communication
-                                                                                Supervisor</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">AxiomUI Llc.</a>
-                                                                                <span class="text-muted time">2 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">New York, US</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 60/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-warning">
-                                                                            <i class="indicator bg-warning"></i>
-                                                                            <span>Marketing</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Senior Data Analyst / Scientist</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">AxiomUI Inc.</a>
-                                                                                <span class="text-muted time">4 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">New York, US</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 60/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-success">
-                                                                            <i class="indicator bg-success"></i>
-                                                                            <span>Artificial Intelligence</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">UX Designer &amp; UI Developer</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">AxiomUI Inc.</a>
-                                                                                <span class="text-muted time">5 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">Toronto, CAN</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 35/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-danger">
-                                                                            <i class="indicator bg-danger"></i>
-                                                                            <span>Design</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="widget-26-job-emp-img">
-                                                                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                                                                                alt="Company" />
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-title">
-                                                                            <a href="#">Information Security Analyst /
-                                                                                Expert</a>
-                                                                            <p class="m-0"><a href="#"
-                                                                                    class="employer-name">Axiom Corp.</a>
-                                                                                <span class="text-muted time">6 days
-                                                                                    ago</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-info">
-                                                                            <p class="type m-0">Part-Time</p>
-                                                                            <p class="text-muted m-0">in <span
-                                                                                    class="location">Mumbai, IN</span></p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-salary">$ 70/hr</div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-category bg-soft-info">
-                                                                            <i class="indicator bg-info"></i>
-                                                                            <span>Infra Supervision</span>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="widget-26-job-starred">
-                                                                            <a href="#">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                    width="24" height="24"
-                                                                                    viewBox="0 0 24 24" fill="none"
-                                                                                    stroke="currentColor" stroke-width="2"
-                                                                                    stroke-linecap="round"
-                                                                                    stroke-linejoin="round"
-                                                                                    class="feather feather-star starred">
-                                                                                    <polygon
-                                                                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                                                                    </polygon>
-                                                                                </svg>
-                                                                            </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6 text-center">
+                                                <button type="submit"
+                                                    class="btn btn-outline-primary">Buscar</button>
+                                            </div>
+                                            <div class="form-group col-md-6 text-center">
+                                                <button class="btn btn-outline-primary">Limpiar</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <nav class="d-flex justify-content-center">
-                                        <ul class="pagination pagination-base pagination-boxed pagination-square mb-0">
-                                            <li class="page-item">
-                                                <a class="page-link no-border" href="#">
-                                                    <span aria-hidden="true">«</span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                            </li>
-                                            <li class="page-item active"><a class="page-link no-border" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link no-border" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link no-border" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link no-border" href="#">4</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link no-border" href="#">
-                                                    <span aria-hidden="true">»</span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                </section>
-                <div>
-                    <section id="GrillaBusqueda">
-                        <div class="container">
-                         
-                           
-                        </div>
-                    </section>
                 </div>
-               
-        
             </div>
-        
-        
-  
+            <br>
+            <div>
+                <div class="row">
+
+            
+                    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="width:
+                    100%;">
+          
+          
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+          
+                    <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+          
+          
+          
+            <ng-container matColumnDef="rut">
+              <th mat-header-cell *matHeaderCellDef> rut </th>
+              <td mat-cell *matCellDef="let element"> {{element.rut}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="nombreCompleto">
+              <th mat-header-cell *matHeaderCellDef> nombreCompleto </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="rutEmpresa">
+              <th mat-header-cell *matHeaderCellDef> rutEmpresa </th>
+              <td mat-cell *matCellDef="let element"> {{element.rutEmpresa}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="nombreEmpresa">
+              <th mat-header-cell *matHeaderCellDef> nombreEmpresa </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombreEmpresa}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="fechaIngreso">
+              <th mat-header-cell *matHeaderCellDef> fechaIngreso </th>
+              <td mat-cell *matCellDef="let element"> {{element.fechaIngreso}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="fechaFin">
+              <th mat-header-cell *matHeaderCellDef> fechaFin </th>
+              <td mat-cell *matCellDef="let element"> {{element.fechaFin}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="nombreArticulo">
+              <th mat-header-cell *matHeaderCellDef> nombreArticulo </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombreArticulo}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="nombreInciso">
+              <th mat-header-cell *matHeaderCellDef> nombreInciso </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombreInciso}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="observacion">
+              <th mat-header-cell *matHeaderCellDef> observacion </th>
+              <td mat-cell *matCellDef="let element"> {{element.observacion}} </td>
+            </ng-container>
+            
+            
+            
+            
+            
+            
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" style="width:
+           100%;"></mat-paginator> 
+          
+                  </div>
+                          
+            </div>
+        </div>
+
+       
+    </section>
+   
+</form>
+
+

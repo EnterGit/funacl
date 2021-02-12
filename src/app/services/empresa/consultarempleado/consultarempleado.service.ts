@@ -15,6 +15,15 @@ export class ConsultarempleadoService {
 
    ConsultarEmpleado(rutConsultado) {
    return this.http.get(`${this.baseUrl}/get.php?rut=${rutConsultado}`);
+
+   
+  }
+
+  getListaEvaluacionEmpleado(rutEmpleado: string | number) {
+    console.log("Servicio ConsultarEmpleado" + rutEmpleado);
+    return this.http.get(`${this.baseUrl}/Empresa/consultarempleado/getListarEvaluacionEmpleado.php?empleado=${rutEmpleado}`);
+
+    
   }
   
 }
