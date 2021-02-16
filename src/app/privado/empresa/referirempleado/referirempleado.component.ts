@@ -124,10 +124,11 @@ onChangeinciso(value) {
 
    
     this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe(() => {
+       
       this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
         duration: 1500,
       });
-      this.router.navigate(['/accesoEmpresa/consultarempleado']);
+      this.router.navigate(['/accesoEmpresa/ConsultarEmpleado/', this.empleadoModel.rutempleado]);
       this.formReferido.reset();
     
     });

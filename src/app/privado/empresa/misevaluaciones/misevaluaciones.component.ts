@@ -76,33 +76,14 @@ const ELEMENT_DATA2: EmpleadoTST[] = [
  
 ];
 
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, rut: '15259193-4',name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-//   {position: 2, rut: '15259193-4', name: 'Helium', weight: 4.0026, symbol: 'He'},
-//   {position: 3, rut: '15259193-4', name: 'Lithium', weight: 6.941, symbol: 'Li'},
-//   {position: 4, rut: '15259193-4', name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-//   {position: 5, rut: '15259193-4', name: 'Boron', weight: 10.811, symbol: 'B'},
-//   {position: 6, rut: '15259193-4', name: 'Carbon', weight: 12.0107, symbol: 'C'},
-//   {position: 7,rut: '15259193-4',  name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-//   {position: 8,rut: '15259193-4',  name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-//   {position: 9,rut: '15259193-4', name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-//   {position: 10, rut: '15259193-4', name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-// ];
-
-
-
-
 @Component({
-  selector: 'app-consultarempleado',
-  templateUrl: './consultarempleado.component.html',
-  styleUrls: ['./consultarempleado.component.css']
+  selector: 'app-misevaluaciones',
+  templateUrl: './misevaluaciones.component.html',
+  styleUrls: ['./misevaluaciones.component.css']
 })
 
 
-
-export class ConsultarempleadoComponent implements OnInit,  AfterViewInit{
-  
+export class MisevaluacionesComponent implements  OnInit,  AfterViewInit {
 
   public empleado: consultarempleado[] = [new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")];
  
@@ -121,8 +102,10 @@ public rutConsultado;
   @ViewChild(MatSort) sort: MatSort;
 
 //  this.dataSource.paginator = this.paginator;
-  formConsultarEmpleado: FormGroup;
+
+  formMisEvaluaciones: FormGroup;
   
+
   faTrashAlt = faTrashAlt;
   faPencilAlt = faPencilAlt;
   faTrash = faTrash;
@@ -207,6 +190,5 @@ obtenerConsultado(){
 
   }
 
- 
 
 }

@@ -10,7 +10,7 @@ import { AccesoEmpresaComponent } from './acceso-empresa.component';
 import {ReferirempleadoComponent} from '../empresa/referirempleado/referirempleado.component';
 import {BuscarempleadoComponent} from '../empresa/buscarempleado/buscarempleado.component';
 import {ConsultarempleadoComponent} from '../empresa/consultarempleado/consultarempleado.component';
-
+import {MisevaluacionesComponent} from '../empresa/misevaluaciones/misevaluaciones.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,8 @@ const routes: Routes= [
   children: [
     {path: 'BuscarEmpleado', component: BuscarempleadoComponent, canActivate: [AuthguardGuard]},
     {path: 'ReferirEmpleado', component:ReferirempleadoComponent, canActivate: [AuthguardGuard]},
-    {path: 'ConsultarEmpleado', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard]}
+    {path: 'ConsultarEmpleado/:id', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'MisEvaluaciones/:id', component: MisevaluacionesComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];
 
@@ -44,6 +45,7 @@ const routes: Routes= [
     AccesoEmpresaComponent,
     BuscarempleadoComponent,
     ConsultarempleadoComponent,
+    MisevaluacionesComponent,
     ReferirempleadoComponent
   ],
   imports: [

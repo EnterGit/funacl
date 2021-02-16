@@ -76,6 +76,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+//import { MisevaluacionesComponent } from './privado/empresa/misevaluaciones/misevaluaciones.component';
 //import { ReferirempleadoComponent } from './privado/empresa/referirempleado/referirempleado.component';
 
 
@@ -126,6 +127,7 @@ const routes: Routes= [
     LoginPersonaComponent,
     RegistoPostulanteComponent,
     DialogoconfirmacionComponent,
+  //  MisevaluacionesComponent,
     //ReferirempleadoComponent
     // EvaluarempleadoComponent,
     // BuscarempleadoComponent,
