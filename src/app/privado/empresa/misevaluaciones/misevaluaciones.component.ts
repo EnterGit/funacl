@@ -89,6 +89,8 @@ export class MisevaluacionesComponent implements  OnInit,  AfterViewInit {
  
 
 public rutConsultado;
+public rutEmpleado;
+public rutEmpresa;
   // public empleado: consultarempleado[]= [
   //   new consultarempleado("1111111-1","JuanPerez","33333-3","empresa 1", "2012-11-01", "2013-10.12","1","necesidades empresa", "1","articulo","Sin obs", "Si", "Si")
   // ];
@@ -137,14 +139,24 @@ public rutConsultado;
   ngOnInit(): void {
 
   let  rutEmpleadoRe =  this.ruta.snapshot.paramMap.get("id");
-  if (rutEmpleadoRe === "0") {
+
+  let  valorEntrada =  this.ruta.snapshot.paramMap.get("id");
+  let tag = valorEntrada.indexOf("!");
+  //console.log("valor tag:" + tag);
+  this.rutEmpleado =  valorEntrada.substr(0,tag);
+  //console.log("Rutempleado:" + rutempleado)
+  //console.log("ahoroa:" + rutEmpleadoRe);
+  this.rutEmpresa = valorEntrada.substr(tag + 1, valorEntrada.length);
+//console.log("rutempresa:" + rutempresa);
+
+
+  if (valorEntrada === "0") {
     this.rutConsultado = "";
 
   } else {
-    this.rutConsultado = rutEmpleadoRe;
+    this.rutConsultado = this.rutEmpleado;
     //LLAMAR al evento del servicio
   }
-console.log("valor entrada:" +  rutEmpleadoRe);
 
 
     this.obtenerConsultado();
@@ -182,13 +194,23 @@ onSubmit() {
 }
 obtenerConsultado(){
  console.log("Ejecuto" + this.rutConsultado);
- return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
+ return this.servicioConsulta.getEvaluacionEmpresaEmpleado(this.rutEmpleado, this.rutEmpresa).
   subscribe((empleado:consultarempleado[])=> this.empleado = empleado);
-
-  
+ 
 //  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
 
-  }
+}
+
+
+  obtenerTodasMisObservaciones(){
+    console.log("Ejecuto" + this.rutConsultado);
+    return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
+     subscribe((empleado:consultarempleado[])=> this.empleado = empleado);
+   
+     
+   //  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
+   
+ }
 
 
 }

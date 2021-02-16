@@ -118,7 +118,7 @@ onChangeinciso(value) {
 
   onSubmit() {
     console.log(this.empleadoModel);
-
+    let datoenviado;
 
     //this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe();
 
@@ -128,7 +128,8 @@ onChangeinciso(value) {
       this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
         duration: 1500,
       });
-      this.router.navigate(['/accesoEmpresa/ConsultarEmpleado/', this.empleadoModel.rutempleado]);
+      datoenviado = this.empleadoModel.rutempleado +  "!" + this.empleadoModel.rutempresa;
+      this.router.navigate(['/accesoEmpresa/MisEvaluaciones/', datoenviado]);
       this.formReferido.reset();
     
     });

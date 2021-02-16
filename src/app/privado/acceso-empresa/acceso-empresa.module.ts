@@ -35,7 +35,7 @@ const routes: Routes= [
   children: [
     {path: 'BuscarEmpleado', component: BuscarempleadoComponent, canActivate: [AuthguardGuard]},
     {path: 'ReferirEmpleado', component:ReferirempleadoComponent, canActivate: [AuthguardGuard]},
-    {path: 'ConsultarEmpleado/:id', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'ConsultarEmpleado', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard]},
     {path: 'MisEvaluaciones/:id', component: MisevaluacionesComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];

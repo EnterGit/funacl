@@ -205,6 +205,8 @@ obtenerConsultado(){
   
 //  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
 
+
+
   }
 
  
