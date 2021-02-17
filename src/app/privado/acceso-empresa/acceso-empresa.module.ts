@@ -27,9 +27,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 
@@ -73,8 +73,8 @@ const routes: Routes = [
 
     MatSlideToggleModule,
     MatButtonToggleModule,
-     RouterModule.forRoot(routes),
-     MatDatepickerModule
+    RouterModule.forRoot(routes),
+    MatDatepickerModule
 
   ]
 })

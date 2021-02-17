@@ -79,6 +79,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 //import { ReferirempleadoComponent } from './privado/empresa/referirempleado/referirempleado.component';
 
 
+import { CifrarComponent } from './components/cifrar/cifrar.component';
+
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
@@ -97,6 +99,7 @@ const routes: Routes= [
   // {path: 'registro', component: RegistroComponent},
   {path: 'lista', component: ListaComponent, resolve: {data: UsuarioResolver}},
   {path: 'lista-add', component: ListaAddComponent, resolve: {data: UsuarioResolver}},
+  {path: 'cifrar', component: CifrarComponent},
 
 
   {path: 'equipo/:id', component: EquipoComponent},
@@ -126,6 +129,7 @@ const routes: Routes= [
     LoginPersonaComponent,
     RegistoPostulanteComponent,
     DialogoconfirmacionComponent,
+    CifrarComponent
     //ReferirempleadoComponent
     // EvaluarempleadoComponent,
     // BuscarempleadoComponent,

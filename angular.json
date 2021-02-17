@@ -45,7 +45,9 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "src/assets/js/validaRut.js"
+              "src/assets/js/validaRut.js",
+              "node_modules/crypto-js/crypto-js.js"
+
             ]
           },
           "configurations": {

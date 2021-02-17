@@ -15,19 +15,19 @@ import { debounceTime } from 'rxjs/operators';
 import * as $ from 'jquery';
 import { FormsModule } from '@angular/forms';
 //Modeo
-import { Larticulos,Linciso, Lcausal } from './../../../core/empresa/comboempresa.model';
+import { Larticulos, Linciso, Lcausal } from './../../../core/empresa/comboempresa.model';
 import { registroempleado } from '../../../core/empresa/registroempleado';
 //Servicio
 import { RegistroempleadoService } from '../../../services/empresa/registroempleado/registroempleado.service';
-import {ComboempresaService}  from '../../../services/parametros/comboempresa.service';
+import { ComboempresaService } from '../../../services/parametros/comboempresa.service';
 //Material
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 
-import {DialogoconfirmacionComponent} from '../../../dialogoconfirmacion/dialogoconfirmacion.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { DialogoconfirmacionComponent } from '../../../dialogoconfirmacion/dialogoconfirmacion.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 
@@ -40,76 +40,33 @@ export class ReferirempleadoComponent implements OnInit {
 
 
 
-//Articulos e Incisos
-public  articulomodel: Larticulos[] = [new Larticulos(0,"prueba","aaiiiii articulo")];
-public incisomodel: Linciso[] = [new Linciso(0,"prueba","iiii",0)];
-opcion1=true;
-valor1=null;
-
-  public empleadoModel: registroempleado = new registroempleado(
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    "",
-    ""
-  );
-
-  formReferido: FormGroup;
-  constructor(
-  private fb:FormBuilder,
-  private http: HttpClient,
-    //Servicio
+  //Articulos e Incisos
+  public articulomodel: Larticulos[] = [new Larticulos(0, "prueba", "aaiiiii articulo")];
+  public incisomodel: Linciso[] = [new Linciso(0, "prueba", "iiii", 0)];
+  opcion1 = true;
+  valor1 = null;
 
   public empleadoModel: registroempleado = new registroempleado('', '', '', '', '', '', '', '', '', '', '', "", "");
 
   formReferido: FormGroup;
+
   constructor(
     private fb: FormBuilder,
-
     private service: RegistroempleadoService,
-    private  articuloService:  ComboempresaService,
-   //Material
+    private articuloService: ComboempresaService,
+    //Material
     private snackBar: MatSnackBar,
     private dialogo: MatDialog,
     private router: Router,
-  ) { 
-
-
+  ) {
     this.crearForm();
   }
 
 
   ngOnInit(): void {
-    
+
     this.ListarArticulos();
-   }
-
-
-  crearForm()
-  {
-    this.formReferido= this.fb.group({
-       rutempleado: ['', [Validators.required]],
-       nombreempleado: ['', [Validators.required]],
-       rutempresa: ['', [Validators.required]],
-       nombreempresa: ['', [Validators.required]],
-       fechaingreso: ['', [Validators.required]],
-       fechatermino: ['', [Validators.required]],
-       idarticulo: ['', [Validators.required]],
-       nombrearticulo: ['', [Validators.required]],
-       idinciso: ['', [Validators.required]],
-      nombreinciso: ['', [Validators.required]],
-       Observacion: ['', [Validators.required]],
-       autorizacion: ['', [Validators.required]],
-       recomienda: ['', [Validators.required]],
-   
+  }
 
 
   crearForm() {
@@ -126,19 +83,19 @@ valor1=null;
       nombreinciso: ['', [Validators.required]],
       Observacion: ['', [Validators.required]],
       autorizacion: ['', [Validators.required]],
-      recomienda: ['', [Validators.required]],
+      recomienda: ['', [Validators.required]]
     })
   }
 
-ListarArticulos()
-{
 
-  return this.articuloService.getListaArticulos().subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
-}
-onChangeinciso(value) {
+  ListarArticulos() {
+    return this.articuloService.getListaArticulos().subscribe((articulomodel: Larticulos[]) => this.articulomodel = articulomodel);
+  }
 
-  return this.articuloService.getListaIncisos(value).subscribe((incisomodel: Linciso[]) => this.incisomodel = incisomodel);
-}
+  onChangeinciso(value) {
+
+    return this.articuloService.getListaIncisos(value).subscribe((incisomodel: Linciso[]) => this.incisomodel = incisomodel);
+  }
 
 
 
@@ -151,7 +108,7 @@ onChangeinciso(value) {
       });
       this.router.navigate(['/accesoEmpresa/consultarempleado']);
       this.formReferido.reset();
-    
+
     });
 
 

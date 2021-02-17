@@ -41,9 +41,6 @@ export class GestionarPublicidadComponent implements OnInit {
   public publicidades: ListPublicidad[] = [new ListPublicidad("", "", "", "", "", "", "", "", "", 0)];
   public publicidadModel: PostPublicidad = new PostPublicidad("", "", "", "", "", "", "", "", "", 0);
 
-
-
-
   editarItem: any = {
     idpublicidad: ''
   }

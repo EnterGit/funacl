@@ -3,12 +3,13 @@ import { PerfilEmpresa } from './../../../core/admin/perfilempresa';
 import { Component, OnInit } from '@angular/core';
 // import { AuthService } from '../core/auth.service'
 
-import { Router, Params } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { ConexionService } from './../../../services/conexion.service';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 
 
@@ -23,6 +24,7 @@ declare var jQuery: any;
 export class RegistroComponent implements OnInit {
 
   public perfilempresaModel: PerfilEmpresa = new PerfilEmpresa("", "", "", "", "", "", "", "", "", "");
+  public listadoEmpresa: PerfilEmpresa[] = [new PerfilEmpresa("", "", "", "", "", "", "", "", "", "")];
 
   formRegEmpresa: FormGroup;
   errorMessage: string = '';
@@ -32,15 +34,25 @@ export class RegistroComponent implements OnInit {
   imagen: string;
   curso: string;
 
+  faTrashAlt = faTrashAlt;
+  faPencilAlt = faPencilAlt;
+
+  listarRegistro: boolean;
+  mostrarFormEmpleo: boolean;
 
   item: any = {
     name: '',
     id: ''
   }
 
+  eliminaEmpresa: any = {
+    idEmpresa: ''
+  }
+
   constructor(
     // public authService: AuthService,
     public http: HttpClient,
+    private ruta: ActivatedRoute,
     private ingempresaService: IngempresaService,
     private router: Router,
     private fb: FormBuilder,
@@ -75,6 +87,9 @@ export class RegistroComponent implements OnInit {
         $(".rutErrorRep").empty();
       });
     })
+
+    this.seteaBloques();
+  
   }
 
   createForm() {
@@ -99,7 +114,9 @@ export class RegistroComponent implements OnInit {
 
   onSubmit() {
     if (this.formRegEmpresa.valid) {
-      this.ingempresaService.addEmpresa(this.formRegEmpresa.value).subscribe(event => {
+      this.perfilempresaModel.passEmpresa = 'holahola';
+
+      this.ingempresaService.addEmpresa(this.perfilempresaModel).subscribe(event => {
         if (event.type === HttpEventType.Response) {
           console.log("With Parsed JSON :", event.body);
           if (event.body['resultado'] === false) {
@@ -110,43 +127,58 @@ export class RegistroComponent implements OnInit {
         // this.formRegEmpresa.reset();
       })
     }
-    else
-    {
+    else {
       alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
     }
   }
 
+  listadoEmpresas() {
+    return this.ingempresaService.listadoEmpresa().subscribe((listadoEmpresa: PerfilEmpresa[]) => this.listadoEmpresa = listadoEmpresa);
+  }
 
 
-  // tryRegister(value) {
+  deleteEmpresa(Item) {
+    this.ingempresaService
+      .deleteEmpresa(Item)
+      .subscribe(() => {
+        this.listadoEmpresas();
+      });
 
-  //   if (this.formRegEmpresa.valid) {
+    // console.log("REGISTRO ELIMINADO " + Item);
+  }
 
-  //     console.log(this.formRegEmpresa.value)
+  editarEmpresa(idEmpresa) {
+    this.eliminaEmpresa = idEmpresa;
+    console.log(this.eliminaEmpresa);
+  }
 
-  //   }
-  //  console.log("REGISTRO " + this.formRegEmpresa.valid);
-  //   /* this.authService.doRegister(value)
-  //     .then(res => {
-  //        var user = firebase.auth().currentUser;
-  //       console.log("RESPUESTA :" + user.uid);
-  //       this.errorMessage = "";
-  //       this.successMessage = "Cuenta ha sido creada !!";
-  //       this.item.nombre = value.nombre;
-  //       this.item.direccion = value.direccion;
-  //       this.item.idUsuario = user.uid;
-  //       this.service.agregarItem(this.item);
-  //       //this.item.name = '';
-  //     }, err => {
-  //       console.log(err);
-  //       this.errorMessage = err.message;
-  //       this.successMessage = ""; 
-  //     });*/
-  // }
 
 
   onLogout() {
     this.afsAuth.auth.signOut();
+  }
+
+
+  seteaBloques() {
+    this.ruta.params.subscribe(params => {
+      switch (params['id']) {
+        case '1': {
+          this.listarRegistro = false;
+          this.mostrarFormEmpleo = true;
+          break;
+        }
+        case '2': {
+          this.listarRegistro = true;
+          this.mostrarFormEmpleo = false;
+          this.listadoEmpresas();
+          break;
+        }
+        default: {
+          this.router.navigate(['/accesoAdmin']);
+          break;
+        }
+      }
+    })
   }
 
 }

@@ -14,4 +14,15 @@ export class IngempresaService {
   addEmpresa(empresa: PerfilEmpresa) {
     return this.http.post(`${this.baseUrl}/ingEmpresa/postEmpresa.php`, empresa ,{observe: 'events'});
   }
+
+  listadoEmpresa() {
+    console.log("RUTA :" + this.baseUrl);
+    return this.http.get(`${this.baseUrl}/ingEmpresa/getEmpresa.php`);
+  }
+
+  deleteEmpresa(idEmpresa: PerfilEmpresa) {
+    return this.http.delete(`${this.baseUrl}/ingEmpresa/deleteEmpresa.php?idEmpresa=${idEmpresa}`);
+  }
+
+
 }

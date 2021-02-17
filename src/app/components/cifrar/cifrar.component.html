@@ -1,0 +1,41 @@
+<br>
+<div>
+  <div class="row">
+    <div class="col-sm-6">
+      <h1 style="text-align: center;">
+        Encriptar
+      </h1>
+      <br>
+      <div class="form-group">
+        <label>Texto </label>
+        <input type="text" class="form-control" placeholder="Ingresa texto a encriptar" [(ngModel)]="enctexto">
+      </div>
+
+      <div class="form-group">
+        <label for="txtPassword">Clave</label>
+        <input type="password" class="form-control" placeholder="Ingresa llave de encripción" [(ngModel)]="encPass">
+      </div>
+      <textarea class="form-control" readonly rows="3">{{textoEncriptado}}</textarea>
+      <br>
+      <button type="button" class="btn btn-success float-right" (click)="convertirTexto('encriptar')">Encriptar</button>
+    </div>
+    <div class="col-sm-6">
+      <h1 style="text-align: center;">
+        Desencriptar
+      </h1>
+      <br>
+      <div class="form-group">
+        <label >Texto encriptado</label>
+        <input type="text" class="form-control" placeholder="Ingrese el texto que quieres desencriptar" [(ngModel)]="destexto">
+      </div>
+
+      <div class="form-group">
+        <label for="txtPassword">Clave</label>
+        <input type="password" class="form-control" placeholder="Ingrese la llave para desencriptar" [(ngModel)]="desPass">
+      </div>
+      <textarea class="form-control" readonly rows="3">{{textoDesencriptado}}</textarea>
+      <br>
+      <button type="button" class="btn btn-success float-right" (click)="convertirTexto('desencriptar')">Desencriptar</button>
+    </div>
+  </div>
+</div>
