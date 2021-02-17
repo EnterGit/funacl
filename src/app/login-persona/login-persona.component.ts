@@ -46,6 +46,7 @@ export class LoginPersonaComponent implements OnInit {
           alert("User name or password is incorrect")
         });
   }
+
   get email() { return this.angForm.get('email'); }
   get password() { return this.angForm.get('password'); }
 }

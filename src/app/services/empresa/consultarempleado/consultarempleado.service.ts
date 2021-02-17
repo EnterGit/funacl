@@ -24,7 +24,7 @@ getEvaluacionEmpresaEmpleado(rutEmpleado: string | number, rutEmpresa: string | 
   console.log("Servicio MisReferidos, Rut empleado" + rutEmpleado);
   console.log("Servicio MisReferidos, Rut empresa" +  rutEmpresa);
 
-  return this.http.get(`${this.baseUrl}/Empresa/misevaluaciones/getListarMisEvaluacionesEmpleado.php?empleado=${rutEmpleado}+empresa=${rutEmpresa}`);
+  return this.http.get(`${this.baseUrl}/Empresa/misevaluaciones/getListarMisEvaluacionesEmpleado.php?empleado=${rutEmpleado}&empresa=${rutEmpresa}`);
 }
 
   getListaEvaluacionEmpleado(rutEmpleado: string | number) {

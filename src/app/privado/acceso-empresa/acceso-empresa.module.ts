@@ -8,9 +8,11 @@ import { CommonModule } from '@angular/common';
 
 import { AccesoEmpresaComponent } from './acceso-empresa.component';
 import {ReferirempleadoComponent} from '../empresa/referirempleado/referirempleado.component';
-import {BuscarempleadoComponent} from '../empresa/buscarempleado/buscarempleado.component';
 import {ConsultarempleadoComponent} from '../empresa/consultarempleado/consultarempleado.component';
 import {MisevaluacionesComponent} from '../empresa/misevaluaciones/misevaluaciones.component';
+import { BuscarempleadoComponent } from '../empresa/buscarempleado/buscarempleado.component';
+
+
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,8 +26,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -67,10 +70,12 @@ const routes: Routes= [
     MatPaginatorModule,
     ReactiveFormsModule,
     BrowserModule,
+
     MatSlideToggleModule,
     MatButtonToggleModule,
      RouterModule.forRoot(routes),
      MatDatepickerModule
+
   ]
 })
 export class AccesoEmpresaModule { }

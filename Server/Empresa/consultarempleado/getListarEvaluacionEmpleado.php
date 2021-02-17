@@ -8,9 +8,20 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 if (empty($_GET["empleado"])) {
     exit("No hay id de empleado");
 }
+
+ if (empty($_GET["empresa"])) {
+        exit("No hay rut Empresa");
+}
+
 $rutempleado = $_GET["empleado"];
+$rutEmpresa = $_GET["empresa"];
+
+
+
 $bd = include_once "../../bd.php";
-$sentencia = $bd->query("SELECT inciso.nombreincisocorto, idEvaluacion, rutempleado, nombreempleado, rutempresa, nombreempresa, fechaingreso, fechatermino, inciso.idarticulo, articulo.nombrearticulo,  inciso.nombreincisocorto, Observacion, autorizacion, recomienda from evaluacion, inciso, articulo where evaluacion.idinciso = inciso.idinciso and evaluacion.idarticulo = articulo.idarticulo  and rutempleado = $rutempleado");
+$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = $rutempleado and rutempresa= $rutEmpresa");
+//$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado, rutempresa, nombreempresa, fechaingreso, fechatermino, idarticulo, nombrearticulo,   Observacion, autorizacion, recomienda from evaluacion  where  rutempleado = $rutempleado and rutempresa= $rutEmpresa");
+//SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = '12345' and rutempresa= '678910'
 $sentencia->execute();
 $evaluacion = $sentencia->fetchAll(PDO::FETCH_OBJ);
 echo json_encode($evaluacion);

@@ -1,121 +1,86 @@
-
 <!-- <form (ngSubmit)="onSubmit()" [formGroup]="formConsultarEmpleado"> -->
 
     <div class="container">
-    
+
+        <h3 class="mb-1">Consultar Empleado</h3>
         <p class="mb-4 text-sm"></p>
         <div class="row">
-            <div class="col-lg-12 card-margin">
-                <div class="card search-form">
-                    <div class="card-body p-0">
-                      
-                      <div class="row">
-
-                        <div class="col-12">
-                          <div class="row no-gutters">
-                              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                  <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Seleccione</option>
-                                    <option>Todas Mis Evaluaciones</option> 
-                                  </select>
-                              </div>
-                              <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                <input matInput name="rutConsultado" [(ngModel)]="rutConsultado"
-                                type="text"
-                                placeholder="Ingrese Rut del Empleado a Consultar ">
-                              </div>
-                              <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                                <button type="button" class="btn btn-base" (click)="obtenerConsultado()">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                              </button>
-                              </div>
-                          </div>
+          <div class="col-lg-12 card-margin">
+            <div class="card search-form">
+              <div class="card-body p-0">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="row no-gutters">
+      
+      
+                      <div class="col-lg-10 col-md-6 col-sm-12 p-0">
+      
+                        <input matInput name="rutConsultado" [(ngModel)]="rutConsultado" type="text"
+                          placeholder="Ingrese Rut del Empleado a Consultar ">
+      
+      
+      
+      
                       </div>
-                        
-                         
-                        </div>
+                      <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                        <button type="button" class="btn btn-base" (click)="obtenerConsultado()">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-search">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                          </svg>
+                        </button>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
         <div class="row">
-
+      
+            <h2>Listado de empleados</h2>
+            <table mat-table [dataSource]="empleados" class="mat-elevation-z8" style="width:
+                100%;">
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.nombreincisocorto}} </td>
+                </ng-container>
+                <ng-container matColumnDef="raza">
+                    <th mat-header-cell *matHeaderCellDef>Raza</th>
+                    <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.rutempleado}} </td>
+                </ng-container>
+                <ng-container matColumnDef="edad">
+                    <th mat-header-cell *matHeaderCellDef>Edad</th>
+                    <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.nombreempleado}} </td>
+                </ng-container>
+                <ng-container matColumnDef="editar">
+                    <th mat-header-cell *matHeaderCellDef>Editar</th>
+                    <td mat-cell *matCellDef="let consultarempleado">
+                        <a mat-icon-button [routerLink]="['/mascotas/editar', consultarempleado.rutempresa]">
+                            <mat-icon color="primary">edit</mat-icon>
+                        </a>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="eliminar">
+                    <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                    <td mat-cell *matCellDef="let consultarempleado">
+                        <button (click)="eliminarMascota(consultarempleado)" mat-icon-button>
+                            <mat-icon color="warn">delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
             
-          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="width:
-          100%;">
-
-
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-
-          <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
-
-
-
-  <ng-container matColumnDef="rut">
-    <th mat-header-cell *matHeaderCellDef> rut </th>
-    <td mat-cell *matCellDef="let element"> {{element.rut}} </td>
-  </ng-container>
-  
-  <ng-container matColumnDef="nombreCompleto">
-    <th mat-header-cell *matHeaderCellDef> nombreCompleto </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="rutEmpresa">
-    <th mat-header-cell *matHeaderCellDef> rutEmpresa </th>
-    <td mat-cell *matCellDef="let element"> {{element.rutEmpresa}} </td>
-  </ng-container>
-  
-  <ng-container matColumnDef="nombreEmpresa">
-    <th mat-header-cell *matHeaderCellDef> nombreEmpresa </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombreEmpresa}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="fechaIngreso">
-    <th mat-header-cell *matHeaderCellDef> fechaIngreso </th>
-    <td mat-cell *matCellDef="let element"> {{element.fechaIngreso}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="fechaFin">
-    <th mat-header-cell *matHeaderCellDef> fechaFin </th>
-    <td mat-cell *matCellDef="let element"> {{element.fechaFin}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="nombreArticulo">
-    <th mat-header-cell *matHeaderCellDef> nombreArticulo </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombreArticulo}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="nombreInciso">
-    <th mat-header-cell *matHeaderCellDef> nombreInciso </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombreInciso}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="observacion">
-    <th mat-header-cell *matHeaderCellDef> observacion </th>
-    <td mat-cell *matCellDef="let element"> {{element.observacion}} </td>
-  </ng-container>
-  
-  
-  
-  
-  
-  
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" style="width:
- 100%;"></mat-paginator> 
-
+                <tr mat-header-row *matHeaderRowDef="['nombre', 'raza', 'edad', 'editar',
+                    'eliminar']"></tr>
+                <tr mat-row *matRowDef="let fila; columns: ['nombre', 'raza', 'edad',
+                    'editar', 'eliminar'];"></tr>
+            </table>
+         
         </div>
-    
-    </div>
-    
-    <!-- </form> -->
+      
+      </div>
+      
+      <!-- </form> -->

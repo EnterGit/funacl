@@ -103,6 +103,7 @@ valor1=null;
     })
 
   }
+  //get rutempleado(){return this.rutempleado.get('rutempleado')}
 
 ListarArticulos()
 {
@@ -116,27 +117,25 @@ onChangeinciso(value) {
 
 
 
-  onSubmit() {
-    console.log(this.empleadoModel);
-    let datoenviado;
+onSubmit() {
+  console.log(this.empleadoModel);
+  let datoenviado;
 
-    //this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe();
-
-   
-    this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe(() => {
-       
-      this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
-        duration: 1500,
-      });
-      datoenviado = this.empleadoModel.rutempleado +  "!" + this.empleadoModel.rutempresa;
-      this.router.navigate(['/accesoEmpresa/MisEvaluaciones/', datoenviado]);
-      this.formReferido.reset();
-    
+  //this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe();
+  this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe(() => {
+     
+    this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
+      duration: 1500,
     });
+    datoenviado = this.empleadoModel.rutempleado +  "!" + this.empleadoModel.rutempresa;
+    this.router.navigate(['/accesoEmpresa/MisEvaluaciones/', datoenviado]);
+    this.formReferido.reset();
+  
+  });
 
 
-    // this.dialogo.open(DialogoconfirmacionComponent, {
-    // data: `¿Realmente quieres eliminar ?`,
-    // });
-  }
+  // this.dialogo.open(DialogoconfirmacionComponent, {
+  // data: `¿Realmente quieres eliminar ?`,
+  // });
+}
 }

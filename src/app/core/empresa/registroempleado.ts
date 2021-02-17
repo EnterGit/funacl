@@ -14,10 +14,8 @@ export class registroempleado {
     public Observacion: string,
     public autorizacion: string,
     public recomienda: string,
-    public  idEvaluacion?:number
-    )
-  {
-    
+    public idEvaluacion?: number
+  ) {
+
   }
-  }
-  
+}
