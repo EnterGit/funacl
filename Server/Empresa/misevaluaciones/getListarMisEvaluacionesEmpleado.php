@@ -19,12 +19,13 @@ $rutEmpresa = $_GET["empresa"];
 
 
 $bd = include_once "../../bd.php";
-$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = $rutempleado and rutempresa= $rutEmpresa");
+$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso WHERE rutempleado = $rutempleado and rutempresa= $rutEmpresa");
 //$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado, rutempresa, nombreempresa, fechaingreso, fechatermino, idarticulo, nombrearticulo,   Observacion, autorizacion, recomienda from evaluacion  where  rutempleado = $rutempleado and rutempresa= $rutEmpresa");
-//SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = '12345' and rutempresa= '678910'
 $sentencia->execute();
 $evaluacion = $sentencia->fetchAll(PDO::FETCH_OBJ);
 echo json_encode($evaluacion);
 
+
+SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = '12345' and rutempresa= '678910'
 
 

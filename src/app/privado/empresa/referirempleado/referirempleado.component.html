@@ -52,7 +52,8 @@
                                                     <label for="lblCargoEmplei">Rut Empleado </label>
                                                     <input type="text" class="form-control" placeholder="Ingresa Rut Empleado"
                                        formControlName="rutempleado" id="rutempleado" [(ngModel)]="empleadoModel.rutempleado" />  
-                                                </div>
+                                 
+                                    </div>
 
 
                                                 <div class="form-group col-md-6">
@@ -124,12 +125,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="lblNivelEduacional">Autorización Información</label>
-                                                    <label class="checkbox">
-                                                        <input id="autorizacion" type="checkbox" name="autorizacion"
-                                                        class="form-control" formControlName="autorizacion" placeholder="Autorizar" [(ngModel)]="empleadoModel.autorizacion"/>
-                                                        Autorizo a Empresa InfoReed, a utilizar la información del despido, para
-                                                        fines correspondientes.
-                                                    </label>
+                                                  
                                                 </div>
                                                
                                                 
@@ -148,7 +144,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6 text-center">
-                                                    <div class="col-md-6"><button type="submit" class="btn btn-blue text-center mb-1 py-2" [routerLink]="['/accesoEmpresa/consultarempleado', empleadoModel.rutempleado]" >Evaluar</button></div>
+                                                    <div class="col-md-6"><button type="submit" class="btn btn-blue text-center mb-1 py-2" >Evaluar</button></div>
                                                 </div>
                                             
 

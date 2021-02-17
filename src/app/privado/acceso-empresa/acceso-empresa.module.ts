@@ -7,9 +7,11 @@ import { CommonModule } from '@angular/common';
 
 
 import { AccesoEmpresaComponent } from './acceso-empresa.component';
-import { ReferirempleadoComponent } from '../empresa/referirempleado/referirempleado.component';
+import {ReferirempleadoComponent} from '../empresa/referirempleado/referirempleado.component';
+import {ConsultarempleadoComponent} from '../empresa/consultarempleado/consultarempleado.component';
+import {MisevaluacionesComponent} from '../empresa/misevaluaciones/misevaluaciones.component';
 import { BuscarempleadoComponent } from '../empresa/buscarempleado/buscarempleado.component';
-import { ConsultarempleadoComponent } from '../empresa/consultarempleado/consultarempleado.component';
+
 
 
 
@@ -31,17 +33,14 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-
-
-const routes: Routes = [
-  {
-    path: 'accesoEmpresa', component: AccesoEmpresaComponent, canActivate: [AuthguardGuard],
-    children: [
-      { path: 'BuscarEmpleado', component: BuscarempleadoComponent, canActivate: [AuthguardGuard] },
-      { path: 'ReferirEmpleado', component: ReferirempleadoComponent, canActivate: [AuthguardGuard] },
-      { path: 'ConsultarEmpleado', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard] }
-    ]
-  }
+const routes: Routes= [
+  {path: 'accesoEmpresa', component: AccesoEmpresaComponent, canActivate: [AuthguardGuard],
+  children: [
+    {path: 'BuscarEmpleado', component: BuscarempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'ReferirEmpleado', component:ReferirempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'ConsultarEmpleado', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'MisEvaluaciones/:id', component: MisevaluacionesComponent, canActivate: [AuthguardGuard]}
+  ]}  
 ];
 
 @NgModule({
@@ -49,6 +48,7 @@ const routes: Routes = [
     AccesoEmpresaComponent,
     BuscarempleadoComponent,
     ConsultarempleadoComponent,
+    MisevaluacionesComponent,
     ReferirempleadoComponent
   ],
   imports: [
