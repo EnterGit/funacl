@@ -125,16 +125,13 @@ const routes: Routes= [
     LoginPersonaComponent,
     RegistoPostulanteComponent,
     DialogoconfirmacionComponent,
-<<<<<<< HEAD
     CifrarComponent
     //ReferirempleadoComponent
     // EvaluarempleadoComponent,
     // BuscarempleadoComponent,
     // ConsultarempleadoComponent
     // EmpresaComponent,
-=======
     
->>>>>>> e8c0d266f6b26aa426556df0a0fe0aa77d4f8699
 
   ],
   imports: [
@@ -177,3 +174,4 @@ const routes: Routes= [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// ccurin

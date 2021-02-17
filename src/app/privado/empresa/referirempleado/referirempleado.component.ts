@@ -23,18 +23,12 @@ import { ComboempresaService } from '../../../services/parametros/comboempresa.s
 //Material
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-<<<<<<< HEAD
 
-import { DialogoconfirmacionComponent } from '../../../dialogoconfirmacion/dialogoconfirmacion.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-=======
 import {DialogoconfirmacionComponent} from '../../../dialogoconfirmacion/dialogoconfirmacion.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
->>>>>>> e8c0d266f6b26aa426556df0a0fe0aa77d4f8699
+
 
 
 @Component({
@@ -45,21 +39,6 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 export class ReferirempleadoComponent implements OnInit {
 
 
-<<<<<<< HEAD
-
-  //Articulos e Incisos
-  public articulomodel: Larticulos[] = [new Larticulos(0, "prueba", "aaiiiii articulo")];
-  public incisomodel: Linciso[] = [new Linciso(0, "prueba", "iiii", 0)];
-  opcion1 = true;
-  valor1 = null;
-
-  public empleadoModel: registroempleado = new registroempleado('', '', '', '', '', '', '', '', '', '', '', "", "");
-
-  formReferido: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-=======
 //Articulos e Incisos
 public  articulomodel: Larticulos[] = [new Larticulos(0,"prueba","aaiiiii articulo")];
 public incisomodel: Linciso[] = [new Linciso(0,"prueba","iiii",0)];
@@ -87,18 +66,15 @@ valor1=null;
   private fb:FormBuilder,
   private http: HttpClient,
     //Servicio
->>>>>>> e8c0d266f6b26aa426556df0a0fe0aa77d4f8699
     private service: RegistroempleadoService,
     private articuloService: ComboempresaService,
     //Material
     private snackBar: MatSnackBar,
     private dialogo: MatDialog,
     private router: Router,
-<<<<<<< HEAD
-  ) {
-=======
+
   ) { 
->>>>>>> e8c0d266f6b26aa426556df0a0fe0aa77d4f8699
+
     this.crearForm();
   }
 
@@ -109,7 +85,6 @@ valor1=null;
     this.ListarArticulos();
   }
 
-<<<<<<< HEAD
 
   crearForm() {
     this.formReferido = this.fb.group({
@@ -126,8 +101,6 @@ valor1=null;
       Observacion: ['', [Validators.required]],
       autorizacion: ['', [Validators.required]],
       recomienda: ['', [Validators.required]]
-=======
->>>>>>> e8c0d266f6b26aa426556df0a0fe0aa77d4f8699
     })
 
   }
@@ -145,18 +118,6 @@ valor1=null;
 
 
 
-<<<<<<< HEAD
-  onSubmit() {
-    console.log(this.empleadoModel);
-    //this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe();
-    this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe(() => {
-      this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
-        duration: 1500,
-      });
-      this.router.navigate(['/accesoEmpresa/consultarempleado']);
-      this.formReferido.reset();
-
-=======
 onSubmit() {
   console.log(this.empleadoModel);
   let datoenviado;
@@ -166,7 +127,6 @@ onSubmit() {
      
     this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
       duration: 1500,
->>>>>>> e8c0d266f6b26aa426556df0a0fe0aa77d4f8699
     });
     datoenviado = this.empleadoModel.rutempleado +  "!" + this.empleadoModel.rutempresa;
     this.router.navigate(['/accesoEmpresa/MisEvaluaciones/', datoenviado]);
