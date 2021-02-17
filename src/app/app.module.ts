@@ -55,9 +55,6 @@ import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
 import { AuthguardGuard } from './core/authguard.guard';
 
-// import { EvaluarempleadoComponent } from './privado/empresa/evaluarempleado/evaluarempleado.component';
-// import { BuscarempleadoComponent } from './privado/empresa/buscarempleado/buscarempleado.component';
-// import { ConsultarempleadoComponent } from './privado/empresa/consultarempleado/consultarempleado.component';
 
 //Mensaje
 import { DialogoconfirmacionComponent } from './dialogoconfirmacion/dialogoconfirmacion.component';
@@ -76,7 +73,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-//import { ReferirempleadoComponent } from './privado/empresa/referirempleado/referirempleado.component';
 
 
 
@@ -126,11 +122,7 @@ const routes: Routes= [
     LoginPersonaComponent,
     RegistoPostulanteComponent,
     DialogoconfirmacionComponent,
-    //ReferirempleadoComponent
-    // EvaluarempleadoComponent,
-    // BuscarempleadoComponent,
-    // ConsultarempleadoComponent
-    // EmpresaComponent,
+    
 
   ],
   imports: [

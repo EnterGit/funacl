@@ -19,63 +19,56 @@ import {consultarempleado} from '../../../core/empresa/consultarempleado';
 import {ConsultarempleadoService} from '../../../services/empresa/consultarempleado/consultarempleado.service';
 
 
+
 @Component({
-  selector: 'app-consultarempleado',
-  templateUrl: './consultarempleado.component.html',
-  styleUrls: ['./consultarempleado.component.css']
+  selector: 'app-misevaluaciones',
+  templateUrl: './misevaluaciones.component.html',
+  styleUrls: ['./misevaluaciones.component.css']
 })
-export class ConsultarempleadoComponent implements OnInit {
+
+
+export class MisevaluacionesComponent implements  OnInit {
+
   public rutConsultado;
-  public  empleados: consultarempleado[] = [ 
+  public rutEmpleado;
+  public rutEmpresa;
+  public empleados: consultarempleado[] = [ 
     new  consultarempleado ("1111","pruea", "11111", "empresa x", "2021-02-02", "2021-02-02","", "articulo", "","inciso","observacion", "si", "si")
   ];
-  
-  constructor(
+  constructor
+  (
     private ruta: ActivatedRoute,
     private router: Router,
     private servicioConsulta:ConsultarempleadoService,
     private dialogo: MatDialog,
     private snackBar: MatSnackBar
+  ) { 
 
-  ) { }
+  }
 
   ngOnInit(): void {
-    this.obtenerConsultado();
-  }
-
-ngAfterViewInit() {
-this.dataSource.paginator = this.paginator;
-  this.dataSource.sort = this.sort;
-}
-
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-
-// obtenerConsultado(){
-//  console.log("Ejecuto" + this.rutConsultado);
-//  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
-//   subscribe((empleado:consultarempleado[])=> this.empleado = empleado);
-// }
+    let  valorEntrada =  this.ruta.snapshot.paramMap.get("id");
+    let tag = valorEntrada.indexOf("!");
+    this.rutEmpleado =  valorEntrada.substr(0,tag);
+    this.rutEmpresa = valorEntrada.substr(tag + 1, valorEntrada.length);
+    
+    if (valorEntrada === "0") {
+      this.rutConsultado = "";
   
-//  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
+    } else {
+      this.rutConsultado = this.rutEmpleado;
+      //LLAMAR al evento del servicio
+      this.obtenerConsultado();
+    }
 
- 
-  onSubmit() {
-
-  }
-
-  obtenerConsultado() {
-    console.log("Ejecuto" + this.rutConsultado);
-    return this.servicioConsulta.ConsultarEmpleado(this.rutConsultado).
-      subscribe((empleado: consultarempleado[]) => this.empleado = empleado);
-  }
 }
 
+
+obtenerConsultado(){
+  return this.servicioConsulta.getEvaluacionEmpresaEmpleado(this.rutEmpleado, this.rutEmpresa).
+  subscribe((empleados: consultarempleado[]) => this.empleados = empleados);
+  }
+
+
+
+}
