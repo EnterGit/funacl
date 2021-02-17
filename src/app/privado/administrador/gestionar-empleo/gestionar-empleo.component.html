@@ -1,4 +1,4 @@
-<form [formGroup]="formGestionaEmpleos">
+<form [formGroup]="formGestionaEmpleos" (ngSubmit)="onSubmit()">
     <section id="guardiaPostula">
         <div class="container py-2 mx-auto">
             <div class="card card0 border-0">
@@ -50,8 +50,9 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="lblCargoEmplei">Cargo Empleo </label>
-                                                    <input type="text" class="form-control my-1" id="cargoEmpleo"
-                                                        formControlName="cargoEmpleo" />
+                                                    <input type="text" class="form-control my-1"  id="cargoEmpleo"
+                                                        formControlName="cargoEmpleo" [(ngModel)]="empleosModel.cargoEmpleo"
+                                                        (ngModelChange)="empleosModel.cargoEmpleo = $event.toUpperCase()"/>
                                                 </div>
                                             </div>
 
@@ -60,7 +61,7 @@
                                                 <div class="form-group col-md-12">
                                                     <label for="lblProfesion">Profesión u Oficio</label>
                                                     <input type="text" class="form-control my-1" id="profesion"
-                                                        formControlName="profesion" />
+                                                        formControlName="profesion" [(ngModel)]="empleosModel.profesion"/>
                                                 </div>
 
                                             </div>
@@ -68,12 +69,12 @@
                                                 <div class="form-group col-md-3">
                                                     <label for="lblVacantes">Vacantes</label>
                                                     <input type="number" class="form-control my-1" id="vacantes"
-                                                        formControlName="vacantes" />
+                                                        formControlName="vacantes" [(ngModel)]="empleosModel.vacantes"/>
                                                 </div>
                                                 <div class="form-group col-md-9">
                                                     <label for="lblCelular">Empresa</label>
                                                     <input type="text" class="form-control my-1" id="empresa"
-                                                        formControlName="empresa" />
+                                                        formControlName="empresa" [(ngModel)]="empleosModel.empresa"/>
                                                 </div>
                                             </div>
 
@@ -81,21 +82,20 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="lblRegion">Región</label>
                                                     <select name="regiones" id="region" class="form-control my-1" ng-model="regiones"
-                                                        (change)="onChangeComuna($event.target.value)" formCon
-                                                        rolName="region">
+                                                        (change)="onChangeComuna($event.target.value)" formControlName="region" [(ngModel)]="empleosModel.region"> 
                                                         <option value="">Seleccione Región</option>
                                                         <option *ngFor="let regiones of regionesModel"
-                                                            value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE}}
+                                                            value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE | uppercase}}
                                                         </option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="lblComuna">Comuna</label>
-                                                    <select name="comuna" id="comuna" class="form-control my-1" ng-model="comuna" 
-                                                        formControlName="comuna">
+                                                    <select name="comuna" id="comuna" class="form-control my-1 s1" ng-model="comuna" 
+                                                        formControlName="comuna" [(ngModel)]="empleosModel.comuna">
                                                         <option value="">Seleccione Comuna</option>
                                                         <option *ngFor="let comuna of comunaModel"
-                                                            value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE}}
+                                                            value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE | uppercase}} 
                                                         </option>
                                                     </select>
                                                 </div>
@@ -103,8 +103,8 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-10">
                                                     <label for="lblDireccion">Dirección</label>
-                                                    <input type="text" class="form-control my-1" id="dirección"
-                                                        formControlName="dirección" />
+                                                    <input type="text" class="form-control my-1" id="direccion"
+                                                        formControlName="direccion" [(ngModel)]="empleosModel.direccion"/>
                                                 </div>
                                             </div>
 
@@ -112,49 +112,50 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="lblFecIniPub">Fecha Postulación</label>
                                                     <input type="date" class="form-control my-1" id="fecPostulacion"
-                                                        formControlName="fecPostulacion" />
+                                                        formControlName="fecPostulacion" [(ngModel)]="empleosModel.fecPostulacion"/>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblJornada">Jornada</label>
                                                     <select class="form-control my-1" formControlName="jornada"
-                                                        id="jornada">
+                                                        id="jornada" [(ngModel)]="empleosModel.jornada">
                                                         <option value="" selected>Seleccione Turno</option>
-                                                        <option value="Completa">Completa</option>
-                                                        <option value="Mañana">Mañana</option>
-                                                        <option value="Tarde">Tarde</option>
-                                                        <option value="Noche">Noche</option>
+                                                        <option *ngFor="let turnos of parametroTurnos"
+                                                        value="{{turnos.pra_val}}">{{turnos.pra_des}}</option>
+                                                        
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblSueldo">Sueldo</label>
-                                                    <input type="text" class="form-control my-1" id="sueldo"
-                                                        formControlName="sueldo" />
-                                                </div>
+                                                    <input type="number" class="form-control my-1" id="sueldo"
+                                                        formControlName="sueldo" [(ngModel)]="empleosModel.sueldo"
+                                                        />
+                                                </div> 
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-4">
                                                     <label for="lblNivelEduacional">Nivel Educacional</label>
-                                                    <select class="form-control my-1" formControlName="educacion">
+                                                    <select class="form-control my-1" formControlName="educacion" [(ngModel)]="empleosModel.educacion">
                                                         <option value="" selected>Seleccione Nivel Educacional</option>
-                                                        <option value="basico">Basico</option>
-                                                        <option value="media">Media</option>
-                                                        <option value="superior">Superior</option>
+                                                            <option *ngFor="let nivelEdu of parametroModel"
+                                                            value="{{nivelEdu.pra_val}}">{{nivelEdu.pra_des}}
+                                                        </option>
+
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblExperiencia">Experiencia (años)</label>
                                                     <input type="email" class="form-control my-1" id="experiencia"
-                                                        formControlName="experiencia" />
+                                                        formControlName="experiencia" [(ngModel)]="empleosModel.experiencia"/>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="lblJornada">Tipo Contrato</label>
                                                     <select class="form-control my-1" formControlName="tipoContrato"
-                                                        id="tipoContrato">
+                                                        id="tipoContrato" [(ngModel)]="empleosModel.tipoContrato">
                                                         <option value="" selected>Seleccione Tipo Contrato</option>
-                                                        <option value="Completa">Contrato a plazo Fijo</option>
-                                                        <option value="Mañana">Contrato Indefinido</option>
-                                                        <option value="Tarde">Contrato por Obra</option>
+                                                        <option *ngFor="let tipoContrato of parametroTipoContrato"
+                                                        value="{{tipoContrato.pra_val}}">{{tipoContrato.pra_des}}
+                                                    </option>
 
                                                     </select>
                                                 </div>
@@ -164,7 +165,7 @@
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Descripción de Empleo</label>
                                                 <textarea class="form-control my-1" id="descEmpleo" rows="2"
-                                                    formControlName="descEmpleo"></textarea>
+                                                    formControlName="descEmpleo" [(ngModel)]="empleosModel.descEmpleo"></textarea>
                                             </div>
                                             <hr />
 

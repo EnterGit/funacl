@@ -42,11 +42,40 @@ export class ConsultarempleadoComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerConsultado();
   }
-  obtenerConsultado(){
-    console.log("Ejecuto" + this.rutConsultado);
-      return this.servicioConsulta.
-      getListaEvaluacionEmpleado(this.rutConsultado).
-      subscribe((empleados: consultarempleado[]) => this.empleados = empleados);
-    }
 
+ngAfterViewInit() {
+this.dataSource.paginator = this.paginator;
+  this.dataSource.sort = this.sort;
 }
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+
+// obtenerConsultado(){
+//  console.log("Ejecuto" + this.rutConsultado);
+//  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).
+//   subscribe((empleado:consultarempleado[])=> this.empleado = empleado);
+// }
+  
+//  return this.servicioConsulta.getListaEvaluacionEmpleado(this.rutConsultado).subscribe((articulomodel:Larticulos[]) => this.articulomodel = articulomodel);
+
+ 
+  onSubmit() {
+
+  }
+
+  obtenerConsultado() {
+    console.log("Ejecuto" + this.rutConsultado);
+    return this.servicioConsulta.ConsultarEmpleado(this.rutConsultado).
+      subscribe((empleado: consultarempleado[]) => this.empleado = empleado);
+  }
+}
+

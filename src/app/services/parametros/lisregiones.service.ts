@@ -22,5 +22,9 @@ export class LisregionesService {
     return this.http.get(`${this.baseUrl}/parametros/getComunas.php?region=${id}`);
   }
 
+  getParametros(id: string | number) {
+    return this.http.get(`${this.baseUrl}/parametros/getParametros.php?codgrupo=${id}`);
+  }
+
 
 }

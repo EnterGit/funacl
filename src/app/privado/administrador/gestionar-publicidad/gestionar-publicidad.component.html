@@ -1,5 +1,5 @@
 <div class="formPub" *ngIf="mostrarFormPublicidad">
-    <form [formGroup]="formGestionPublicidad" (ngSubmit)="onSubmit()" >
+    <form [formGroup]="formGestionPublicidad" (ngSubmit)="onSubmit()">
         <section id="guardiaPostula">
             <div class="container py-2 mx-auto">
                 <div class="card card0 border-0">
@@ -106,29 +106,56 @@
                                                             formControlName="email" />
                                                     </div>
                                                 </div>
-
+                                                <div class="alert alert-danger"
+                                                    *ngIf="formGestionPublicidad.get('email').errors && formGestionPublicidad.get('email').touched">
+                                                    <p *ngIf="formGestionPublicidad.get('email').hasError('email')">
+                                                        Correo invalido</p>
+                                                    <p *ngIf="formGestionPublicidad.get('email').hasError('required')">
+                                                        Campo Requerido</p>
+                                                </div>
 
                                                 <div class="form-row">
                                                     <div class="form-group col-md-12">
                                                         <label for="lblSubirArchivo">Subir Archivo</label>
                                                         <input type="file" (change)="fileChange($event)"
                                                             formControlName="subirArchivo" class="form-control my-1"
-                                                            id="subirArchivo" [(ngModel)]="publicidadModel.imagenUrl" />
-                                                        <button type="button" class="btn btn-outline-primary"
-                                                            (click)="uploadFile()">SUBIR </button>
+                                                            id="subirArchivo1" />
+
+
+
+                                                        <img [src]="imageSrc" *ngIf="imageSrc"
+                                                            style="height: 300px; width:300px">
+                                                        <div>
+                                                            <button type="button" class="btn btn-outline-primary"
+                                                                (click)="uploadFile()">SUBIR </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <input type="hidden" class="form-control my-1" id="imagenUrl"
+                                                            [(ngModel)]="publicidadModel.imagenUrl"
+                                                            formControlName="imagenUrl"
+                                                            [ngClass]="{ 'is-invalid': submitted && f.imagenUrl.errors }" />
+
+
+                                                        <div *ngIf="submitted && f.imagenUrl.errors">
+                                                            <div class="alert alert-secondary"
+                                                                *ngIf="f.imagenUrl.errors.required">Debe subir archivo
+                                                                antes de enviar formulario
+                                                            </div>
+                                                        </div>
                                                     </div>
 
-                                                    <img [src]="imageSrc" *ngIf="imageSrc"
-                                                        style="height: 200px; width:200px">
                                                 </div>
 
 
-                                                <div class="form-group">
-                                                    <label for="lbldescPublicidad">Descripción de su
-                                                        publicidad</label>
-                                                    <textarea class="form-control my-1" id="descPublicidad" rows="2"
-                                                        formControlName="descPublicidad"
-                                                        [(ngModel)]="publicidadModel.descPublicidad"></textarea>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <label for="lbldescPublicidad">Descripción de su
+                                                            publicidad</label>
+                                                        <textarea class="form-control my-1" id="descPublicidad" rows="2"
+                                                            formControlName="descPublicidad"
+                                                            [(ngModel)]="publicidadModel.descPublicidad"></textarea>
+                                                    </div>
                                                 </div>
                                                 <hr />
 
@@ -159,11 +186,12 @@
 <div *ngIf="mostrarPublicidad">
 
     <div class="container-fluid py-2 mx-auto">
-        <div class="card card0 border-0">
-            <div class="col-md-11 mt-3 ml-3 mb-2 mr-2">
-                <div class="card mb-1">
+        <div class="card card0 border-1">
+            <div class="col-md-12 mt-3 ml-3 mb-2 mr-2">
+                <!-- <div class="card mb-1"> -->
                     <div class="card-body">
                         <div class="wrapper-editor">
+                            <h4>Listado de Publicidad</h4>
                             <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0"
                                 width="100%">
                                 <thead>
@@ -206,7 +234,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
