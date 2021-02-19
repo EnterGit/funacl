@@ -1,138 +1,48 @@
-body {
-	overflow-x: hidden;
-  }
-  #sidebar-wrapper {
-	min-height: 100vh;
-	margin-left: -15rem;
-	-webkit-transition: margin .25s ease-out;
-	-moz-transition: margin .25s ease-out;
-	-o-transition: margin .25s ease-out;
-	transition: margin .25s ease-out;
-  }
-  #sidebar-wrapper .sidebar-heading {
-	padding: 0.875rem 1.25rem;
-	font-size: 1.2rem;
-  }
-  #sidebar-wrapper .list-group {
-	width: 15rem;
-  }
-  #page-content-wrapper {
-	min-width: 100vw;
-  }
-  #wrapper.toggled #sidebar-wrapper {
-	margin-left: 0;
-  }
-  @media (min-width: 768px) {
-	#sidebar-wrapper {
-	  margin-left: 0;
-	}
-	#page-content-wrapper {
-	  min-width: 0;
-	  width: 100%;
-	}
-	#wrapper.toggled #sidebar-wrapper {
-	  margin-left: -15rem;
-	}
-  }
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
 
-
-  #sidebar-wrapper li.active > a:after {
-    border-right: 17px solid #f4f3ef;
-    border-top: 17px solid transparent;
-    border-bottom: 17px solid transparent;
-    content: "";
-    display: inline-block;
-    position: absolute;
-    right: -1px;
+.app-view {
+  height: 100vh;
+  width: 100vw;
 }
-
-.sidebar-brand {
-    border-bottom: 1px solid rgba(102, 97, 91, 0.3);
-}
-
-.sidebar-brand {
-    padding: 18px 0px;
-    margin: 0 20px;
-}
-
-.navbar .navbar-nav > li > a p {
-    display: inline-block;
-    margin: 0;
-}
-p {
-    font-size: 16px;
-    line-height: 1.4em;
-}
-
-.navbar-default {
-    background-color: #f4f3ef;
-    border:0px;
-    border-bottom: 1px solid #DDDDDD;
-}
-
-btn-menu {
-    border-radius: 3px;
-    padding: 4px 12px;
-    margin: 14px 5px 5px 20px;
-    font-size: 14px;
-    float: left;
-}
-
-
-
-
-  .profile-card{
-	background: linear-gradient(to bottom, rgba(11, 224, 171, 0.8), rgba(39, 151, 11, 0.8));
-	background-size: cover;
-	width: 100%;
-	min-height: 90px;
-	border-radius: 4px;
-	padding: 10px 10px;
-	color: #fff;
-	margin-bottom: 20px;
-  }
-  
-  .profile-card img.profile-photo{
-	border: 7px solid #fff;
-	float: left;
-	margin-right: 20px;
-	position: relative;
-	top: -30px;
-	height: 70px;
-	width: 70px;
-	border-radius: 50%;
-  }
-  
-  .profile-card h5 a{
-	font-size: 15px;
-  }
-  
-  .profile-card a{
-	font-size: 12px;
-  }
-
-
-  /* You can add global styles to this file, and also import other style files */
-
-/* header {
-    padding: 156px 0 100px;
-  } */
-  
-  /* section {
-    padding: 100px 0;
-  } */
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-  font-family: Roboto, Arial, sans-serif;
-  margin: 0;
-  padding: 30px;
+  margin: 0 !important;
 }
 
-.version-info {
-  font-size: 8pt;
-  float: right;
-  margin: 8px;
+.full-page{
+  height: 100%;
+  display: flex;
 }
 
+.login-card {
+  margin: auto;
+  width: 300px;
+}
+
+.login-field {
+  width: 100%;
+}
+
+mat-sidenav-content {
+  height: 100vh;
+}
+
+
+
+.contenedor-padre {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.barra {
+  flex: 0 1 auto;
+}
+
+.contenido {
+  flex: 1 1 auto;
+}
+
+.padding-10 {
+  padding: 10px;
+}

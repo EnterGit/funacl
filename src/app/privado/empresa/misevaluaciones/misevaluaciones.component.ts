@@ -65,7 +65,8 @@ export class MisevaluacionesComponent implements  OnInit {
 
 
 obtenerConsultado(){
-  return this.servicioConsulta.getEvaluacionEmpresaEmpleado(this.rutEmpleado, this.rutEmpresa).
+  //return this.servicioConsulta.getEvaluacionEmpresaEmpleado(this.rutEmpleado, this.rutEmpresa).
+  return this.servicioConsulta.getEvaluacionEmpresaEmpleado(this.rutEmpleado, "1-9").
   subscribe((empleados: consultarempleado[]) => this.empleados = empleados);
   }
 

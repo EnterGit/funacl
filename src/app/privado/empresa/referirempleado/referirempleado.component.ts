@@ -121,13 +121,14 @@ onSubmit() {
   console.log(this.empleadoModel);
   let datoenviado;
 
-  //this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe();
-  this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe(() => {
-     
+    this.service.addEvaluacionEmpleado(this.empleadoModel).subscribe(() => {
+  
     this.snackBar.open('Evaluacion Guardada Correctamente', undefined, {
       duration: 1500,
+      
     });
-    datoenviado = this.empleadoModel.rutempleado +  "!" + this.empleadoModel.rutempresa;
+    //datoenviado = this.empleadoModel.rutempleado +  "!" + this.empleadoModel.rutempresa;
+    datoenviado = this.empleadoModel.rutempleado +  "!" + "1-9";
     this.router.navigate(['/accesoEmpresa/MisEvaluaciones/', datoenviado]);
     this.formReferido.reset();
   

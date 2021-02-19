@@ -14,7 +14,7 @@ export class RegistroempleadoService {
 
   addEvaluacionEmpleado(EvaluacionEmpleado: registroempleado) {
  
-    console.log(EvaluacionEmpleado);
+    console.log("Valor desde Servicio:" + EvaluacionEmpleado);
     return this.http.post(`${this.baseUrl}/Empresa/evaluarEmpleado/postEvaluarEmpleado.php`, EvaluacionEmpleado);
   }
 
