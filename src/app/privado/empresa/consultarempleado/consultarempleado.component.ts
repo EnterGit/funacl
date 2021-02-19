@@ -27,7 +27,7 @@ import {ConsultarempleadoService} from '../../../services/empresa/consultaremple
 export class ConsultarempleadoComponent implements OnInit {
   public rutConsultado;
   public  empleados: consultarempleado[] = [ 
-    new  consultarempleado ("1111","pruea", "11111", "empresa x", "2021-02-02", "2021-02-02","", "articulo", "","inciso","observacion", "si", "si")
+    new  consultarempleado ("11111","pruea", "11111", "empresa x", "2021-02-02", "2021-02-02","", "articulo", "","inciso","observacion", "si", "si")
   ];
   
   constructor(
@@ -42,6 +42,7 @@ export class ConsultarempleadoComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerConsultado();
   }
+
   obtenerConsultado(){
     console.log("Ejecuto" + this.rutConsultado);
       return this.servicioConsulta.

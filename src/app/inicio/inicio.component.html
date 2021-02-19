@@ -45,7 +45,9 @@
 
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let item of publicidades; index as i"><img
-              src="{{item.imagenUrl}}" class="img-thumbnail media"></ng-template>
+              [src]="'assets/upload/' +  item.imagenUrl" class="img-thumbnail media">
+              
+            </ng-template>
         </owl-carousel-o>
 
         
