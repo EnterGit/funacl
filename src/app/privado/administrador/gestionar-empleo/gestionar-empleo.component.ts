@@ -1,4 +1,6 @@
-import { PubempleosService } from './../../../services/admin/pubempleos/pubempleos.service';
+import { Globals } from './../../../globals';
+import { ApiService } from './../../../services/login/api.service';
+import { PubempleosService } from '../../../services/admin/pubempleos/pubempleos.service';
 import { Lparametros } from '../../../core/parametros/parametros';
 import { PostEmpleos } from '../../../core/admin/empleos';
 import { Lregiones, Lcomuna } from '../../../core/parametros/regiones.model';
@@ -7,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-gestionar-empleo',
@@ -36,7 +39,9 @@ export class GestionarEmpleoComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private regionService: LisregionesService,
-    private pubEmpleosService: PubempleosService
+    private pubEmpleosService: PubempleosService,
+    public apiservice: ApiService,
+    public global: Globals
   ) {
     this.creaFormEmpleo();
 
@@ -50,6 +55,10 @@ export class GestionarEmpleoComponent implements OnInit {
     this.obtenerEduacacion();
     this.obtenerTipoContrato();
     this.obtenerTurnos();
+
+
+    console.log("PRUEBAAA");
+    console.log(this.global.perfil);
    }
 
 
@@ -111,6 +120,12 @@ export class GestionarEmpleoComponent implements OnInit {
 
 
 
+  private nombreUsuario(nameuser: string): void {
+
+    console.log("PASO2");
+    console.log(nameuser);
+
+  }
 
 }
 

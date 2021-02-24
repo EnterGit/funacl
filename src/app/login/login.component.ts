@@ -1,7 +1,10 @@
+import { CifrarComponent } from './../components/cifrar/cifrar.component';
 import { AuthService } from './../core/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-login',

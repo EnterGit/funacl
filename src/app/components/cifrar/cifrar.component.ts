@@ -8,6 +8,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class CifrarComponent implements OnInit {
 
+
   enctexto: string;
   destexto: string;
   encPass: string;
@@ -18,7 +19,7 @@ export class CifrarComponent implements OnInit {
   constructor() { }
 
   convertirTexto(conversion: string) {
-     
+
     if (conversion === 'encriptar') {
       this.textoEncriptado = CryptoJS.AES.encrypt(this.enctexto.trim(), this.encPass.trim()).toString();
     } else {
@@ -27,11 +28,21 @@ export class CifrarComponent implements OnInit {
 
     console.log(this.textoEncriptado);
     console.log(this.textoDesencriptado);
-}
+  }
+
+
+  convertirTexto2(texto: string, password: string) {
+
+    this.textoEncriptado = CryptoJS.AES.encrypt(texto.trim(), password.trim()).toString();
+
+    console.log("ESTA ENCRIPTANDO");
+    console.log(this.textoEncriptado);
+
+  }
 
   ngOnInit(): void {
     this.convertirTexto;
-   
+
   }
 
 }

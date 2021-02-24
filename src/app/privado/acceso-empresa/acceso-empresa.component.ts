@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ApiService } from './../../services/login/api.service';
 import { Globals } from './../../globals';
 import { Component, OnInit } from '@angular/core';
@@ -14,18 +15,24 @@ export class AccesoEmpresaComponent implements OnInit {
 
   constructor(
     public globals: Globals,
-    public apiservice: ApiService
+    public apiservice: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    //Toggle Click Function
-    this.role = this.apiservice.getToken();
-    this.globals.role = this.role;
+    if (this.globals.perfil === "2") {
 
-    $(".btn-toggle-menu").click(function() {
-      $("#wrapper").toggleClass("toggled");
-  });
+      //Toggle Click Function
+      this.role = this.apiservice.getToken();
+      this.globals.role = this.role;
 
-    
+      $(".btn-toggle-menu").click(function () {
+        $("#wrapper").toggleClass("toggled");
+      });
+    }
+    else {
+      this.router.navigate(['/']);
+    }
+
   }
 }

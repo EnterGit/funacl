@@ -171,6 +171,11 @@ const routes: Routes= [
     Globals,
     ApiService
   ],
+  exports:[
+    ReactiveFormsModule
+    // CifrarComponent
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,7 +8,12 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Rout
 })
 
 export class AuthguardGuard implements CanActivate {
-    constructor(private dataService: ApiService, private router: Router) { }
+    constructor(
+        private dataService: ApiService,
+        private router: Router
+    ) { }
+
+
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {

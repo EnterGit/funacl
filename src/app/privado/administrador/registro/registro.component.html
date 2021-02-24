@@ -60,7 +60,8 @@
                                                             placeholder="Ingrese Rut Empresa"
                                                             formControlName="rutEmpresa" id="rutEmpresa"
                                                             name="rutEmpresa"
-                                                            [(ngModel)]="perfilempresaModel.rutEmpresa" />
+                                                            [(ngModel)]="perfilempresaModel.rutEmpresa"
+                                                            (blur)="validaRut(perfilempresaModel.rutEmpresa)" />
                                                         <p class="rutErrorEmp" id="validacion-live"></p>
                                                     </div>
 

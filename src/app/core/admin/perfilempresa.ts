@@ -12,3 +12,10 @@ export class PerfilEmpresa {
         public idEmpresa?: string,
     ){}
 }
+
+export class ExisteRutEmpresa{
+    constructor(
+        public existeRut: string,
+        public rutEmpresa: string,
+    ){}
+}

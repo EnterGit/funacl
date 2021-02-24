@@ -1,7 +1,10 @@
+import { Globals } from './../../globals';
 import { Empleo } from '../../core/admin/empleos';
 import { EmpleosService } from '../../services/publicidad/empleos.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { ConstantPool } from '@angular/compiler';
+
 
 declare var $: any;
 @Component({
@@ -23,7 +26,8 @@ export class PortalEmpleoComponent implements OnInit {
   title = 'app';
 
   constructor (
-    private empleoService: EmpleosService
+    private empleoService: EmpleosService,
+    public globals: Globals
   ) { }
 
   getRut(rut: string): void {
@@ -32,6 +36,8 @@ export class PortalEmpleoComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log("PORTAL EMPLEOS");
+    console.log(this.globals.email);
 
     this.obtenerEmpleos();
     // $(document).ready(function () {
