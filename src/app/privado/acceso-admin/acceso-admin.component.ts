@@ -4,6 +4,7 @@ import { Globals } from './../../globals';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
+// CCURIN
 @Component({
   selector: 'app-acceso-admin',
   templateUrl: './acceso-admin.component.html',
