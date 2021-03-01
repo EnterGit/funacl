@@ -75,7 +75,7 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
 
     $(document).ready(function () {
-      $("input#rutEmpresa").rut({   }).on('rutInvalido', function () {
+      $("input#rutEmpresa").rut({}).on('rutInvalido', function () {
         $(".rutErrorEmp").addClass("alert alert-danger")
         $(".rutErrorEmp").text("Rut inválido");
         $('input#rutEmpresa').val("");
@@ -142,15 +142,18 @@ export class RegistroComponent implements OnInit {
 
 
   validaRut(rut) {
-     return this.ingempresaService.verificaRutEmpresa(rut).subscribe((exiteRutEmpresa: ExisteRutEmpresa) => {
+    return this.ingempresaService.verificaRutEmpresa(rut).subscribe((exiteRutEmpresa: ExisteRutEmpresa) => {
       this.exiteRutEmpresa = exiteRutEmpresa
 
       console.log(exiteRutEmpresa.existeRut);
       console.log(exiteRutEmpresa.rutEmpresa);
 
-      alert("RUT YA EXISTE EN EL SISTEMA");
-      this.perfilempresaModel.rutEmpresa = null;
+      if (exiteRutEmpresa.existeRut === "0") {
 
+      } else {
+        alert("RUT YA EXISTE EN EL SISTEMA");
+        this.perfilempresaModel.rutEmpresa = null;
+      }
     })
   }
 
