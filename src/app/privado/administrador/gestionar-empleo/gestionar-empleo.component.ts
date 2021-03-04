@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-gestionar-empleo',
@@ -23,16 +23,24 @@ export class GestionarEmpleoComponent implements OnInit {
   curso: string;
   formGestionaEmpleos: FormGroup;
 
-  grupoParametros : number;
+  faTrashAlt = faTrashAlt;
+  faPencilAlt = faPencilAlt;
+
+  grupoParametros: number;
+
+  listarRegistro: boolean;
+  mostrarFormEmpleo: boolean;
 
   public regionesModel: Lregiones[] = [new Lregiones(0, "prueba")];
   public comunaModel: Lcomuna[] = [new Lcomuna(0, "")];
   public parametroModel: Lparametros[] = [new Lparametros(0, "", 0)];
-
-  public empleosModel : PostEmpleos = new PostEmpleos("","","","","","","","","","","","","","") ;
+  public parametroTipoContrato: Lparametros[] = [new Lparametros(0, "", 0)];
+  public parametroTurnos: Lparametros[] = [new Lparametros(0, "", 0)];
   
-  public parametroTipoContrato : Lparametros[] = [new Lparametros(0, "", 0)];
-  public parametroTurnos : Lparametros[] = [new Lparametros(0, "", 0)];
+  public empleosModel: PostEmpleos = new PostEmpleos("", "", "", "", "", "", "", "", "", "", "", "", "", "");
+  public listadoEmpleo: PostEmpleos[] = [new PostEmpleos("", "", "", "", "", "", "", "", "", "", "", "", "", "")];
+
+
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +49,8 @@ export class GestionarEmpleoComponent implements OnInit {
     private regionService: LisregionesService,
     private pubEmpleosService: PubempleosService,
     public apiservice: ApiService,
-    public global: Globals
+    public global: Globals,
+    private ruta: ActivatedRoute
   ) {
     this.creaFormEmpleo();
 
@@ -56,10 +65,11 @@ export class GestionarEmpleoComponent implements OnInit {
     this.obtenerTipoContrato();
     this.obtenerTurnos();
 
+    this.seteaBloques();
 
     console.log("PRUEBAAA");
     console.log(this.global.perfil);
-   }
+  }
 
 
   creaFormEmpleo() {
@@ -112,13 +122,40 @@ export class GestionarEmpleoComponent implements OnInit {
         this.router.navigate(['/accesoAdmin/GestionarEmpleo']);
         // this.formGestionaEmpleos.reset();
       })
-    } else
-    {
+    } else {
       alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
     }
   }
 
 
+  listadoEmpleos() {
+    return this.pubEmpleosService.listadoEmpleos().subscribe((listadoEmpleo: PostEmpleos[]) => {
+      this.listadoEmpleo = listadoEmpleo
+
+    });
+  }
+
+  seteaBloques() {
+    this.ruta.params.subscribe(params => {
+      switch (params['id']) {
+        case '1': {
+          this.listarRegistro = false;
+          this.mostrarFormEmpleo = true;
+          break;
+        }
+        case '2': {
+          this.listarRegistro = true;
+          this.mostrarFormEmpleo = false;
+          this.listadoEmpleos();
+          break;
+        }
+        default: {
+          this.router.navigate(['/accesoAdmin']);
+          break;
+        }
+      }
+    })
+  }
 
   private nombreUsuario(nameuser: string): void {
 

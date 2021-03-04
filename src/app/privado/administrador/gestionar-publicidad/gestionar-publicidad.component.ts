@@ -9,8 +9,12 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { RutService } from 'rut-chileno'
 
+import * as $ from 'jquery';
 
+declare var $: any;
+declare var jQuery: any;
 
 @Component({
   selector: 'app-gestionar-publicidad',
@@ -50,7 +54,8 @@ export class GestionarPublicidadComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private empleoService: EmpleosService
+    private empleoService: EmpleosService,
+    private rutService: RutService
   ) {
     this.seteaBloques();
     this.createForm();
@@ -60,6 +65,19 @@ export class GestionarPublicidadComponent implements OnInit {
   ngOnInit(): void {
     this.titulo = "Publicar Anuncio";
     this.imagenTitulo = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
+
+    $(document).ready(function () {
+      $("input#rutEmpresa").rut({ validateOn: 'blur' }).on('rutInvalido', function () {
+        $(".rutErrorEmp").addClass("alert alert-danger")
+        $(".rutErrorEmp").text("Rut inválido");
+        $('input#rutEmpresa').val("");
+
+      }).on('rutValido', function () {
+        $(".rutErrorEmp").removeClass("alert alert-danger ")
+        $(".rutErrorEmp").empty();
+      });
+    })
+
   }
 
 
@@ -89,7 +107,7 @@ export class GestionarPublicidadComponent implements OnInit {
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           console.log("Progreso :" + (event.loaded / event.total) * 100 + "%");
-          
+
         }
         else if (event.type === HttpEventType.Response) {
           console.log(event)
@@ -115,24 +133,20 @@ export class GestionarPublicidadComponent implements OnInit {
 
   onSubmit() {
     console.log(this.publicidadModel);
-   
+
     this.submitted = true;
 
-  //   if (this.formGestionPublicidad.invalid) {
-  //     return;
-  // }
-
     if (this.formGestionPublicidad.valid) {
-      
       console.log(this.formGestionPublicidad.value)
+
+      this.publicidadModel.rutEmpresa = String(this.rutService.getRutChile(2, this.publicidadModel.rutEmpresa));
 
       this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
         this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
         // this.formGestionPublicidad.reset();
       })
-    } else
-    {    
-      alert("FAVOR COMPLETAR TODOS LOS CAMPOS ");  
+    } else {
+      alert("FAVOR COMPLETAR TODOS LOS CAMPOS ");
       return;
     }
   }
@@ -221,5 +235,5 @@ export class GestionarPublicidadComponent implements OnInit {
     }
   }
 
- 
+
 }

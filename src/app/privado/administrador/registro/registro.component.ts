@@ -1,15 +1,16 @@
 import { IngempresaService } from './../../../services/admin/Ingempresa/ingempresa.service';
 import { PerfilEmpresa, ExisteRutEmpresa } from './../../../core/admin/perfilempresa';
 import { Component, OnInit, Input } from '@angular/core';
-// import { AuthService } from '../core/auth.service'
 
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { ConexionService } from './../../../services/conexion.service';
-import * as firebase from 'firebase/app';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { RutService } from 'rut-chileno'
+
 import * as $ from 'jquery';
 
 
@@ -43,6 +44,7 @@ export class RegistroComponent implements OnInit {
   mostrarFormEmpleo: boolean;
 
   rutBuscar: string;
+  out1_rut: String
 
   item: any = {
     name: '',
@@ -61,7 +63,8 @@ export class RegistroComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private service: ConexionService,
-    private afsAuth: AngularFireAuth
+    private afsAuth: AngularFireAuth,
+    private rutService: RutService
   ) {
 
     this.titulo = "Formulario de Registro Empresa";
@@ -75,7 +78,7 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
 
     $(document).ready(function () {
-      $("input#rutEmpresa").rut({}).on('rutInvalido', function () {
+      $("input#rutEmpresa").rut({ validateOn: 'blur' }).on('rutInvalido', function () {
         $(".rutErrorEmp").addClass("alert alert-danger")
         $(".rutErrorEmp").text("Rut inválido");
         $('input#rutEmpresa').val("");
@@ -85,7 +88,7 @@ export class RegistroComponent implements OnInit {
         $(".rutErrorEmp").empty();
       });
 
-      $("input#rutRepresentante").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () {
+      $("input#rutRepresentante").rut({ validateOn: 'blur' }).on('rutInvalido', function () {
         $(".rutErrorRep").addClass("alert alert-danger")
         $(".rutErrorRep").text("Rut inválido");
       }).on('rutValido', function () {
@@ -95,14 +98,12 @@ export class RegistroComponent implements OnInit {
     })
 
     this.seteaBloques();
-    // this.validaRut();
 
   }
 
   createForm() {
     this.formRegEmpresa = this.fb.group({
       rutEmpresa: ['', Validators.required],
-      rutEmpresa2: ['', Validators.required],
       nomEmpresa: ['', Validators.required],
       rutRepresentante: ['', Validators.required],
       nomRepresentante: ['', Validators.required],
@@ -111,18 +112,17 @@ export class RegistroComponent implements OnInit {
       passEmpresa: ['', Validators.required],
       passEmpresa1: ['', Validators.required],
       emailEmpresa: ['', Validators.required]
-      // password: ['', Validators.required],
-      // idUsuario: [''],
-      // name: [''],
-      // direccion: [''],
-      // nombre: ['']
     });
   }
 
 
   onSubmit() {
+    console.log(this.formRegEmpresa);
+
     if (this.formRegEmpresa.valid) {
       this.perfilempresaModel.passEmpresa = 'holahola';
+      this.perfilempresaModel.rutEmpresa = String(this.rutService.getRutChile(2, this.perfilempresaModel.rutEmpresa));
+      this.perfilempresaModel.rutRepresentante = String(this.rutService.getRutChile(2, this.perfilempresaModel.rutRepresentante));
 
       this.ingempresaService.addEmpresa(this.perfilempresaModel).subscribe(event => {
         if (event.type === HttpEventType.Response) {
@@ -131,8 +131,8 @@ export class RegistroComponent implements OnInit {
             alert("ERROR INGRESO");
           }
         }
-        this.router.navigate(['/accesoAdmin/RegistrarEmpresa']);
-        // this.formRegEmpresa.reset();
+        this.router.navigate(['/accesoAdmin/RegistrarEmpresa/1']);
+        this.formRegEmpresa.reset();
       })
     }
     else {
@@ -144,14 +144,10 @@ export class RegistroComponent implements OnInit {
   validaRut(rut) {
     return this.ingempresaService.verificaRutEmpresa(rut).subscribe((exiteRutEmpresa: ExisteRutEmpresa) => {
       this.exiteRutEmpresa = exiteRutEmpresa
-
-      console.log(exiteRutEmpresa.existeRut);
-      console.log(exiteRutEmpresa.rutEmpresa);
-
-      if (exiteRutEmpresa.existeRut === "0") {
-
-      } else {
-        alert("RUT YA EXISTE EN EL SISTEMA");
+      // console.log(exiteRutEmpresa.existeRut);
+      // console.log(exiteRutEmpresa.rutEmpresa);
+      if (exiteRutEmpresa.rutEmpresa) {
+        alert("USUARIO YA EXISTE EN EL SISTEMA");
         this.perfilempresaModel.rutEmpresa = null;
       }
     })
@@ -160,7 +156,10 @@ export class RegistroComponent implements OnInit {
 
 
   listadoEmpresas() {
-    return this.ingempresaService.listadoEmpresa().subscribe((listadoEmpresa: PerfilEmpresa[]) => this.listadoEmpresa = listadoEmpresa);
+    return this.ingempresaService.listadoEmpresa().subscribe((listadoEmpresa: PerfilEmpresa[]) => {
+      this.listadoEmpresa = listadoEmpresa
+
+    });
   }
 
 
@@ -170,7 +169,6 @@ export class RegistroComponent implements OnInit {
       .subscribe(() => {
         this.listadoEmpresas();
       });
-
     // console.log("REGISTRO ELIMINADO " + Item);
   }
 
@@ -178,7 +176,6 @@ export class RegistroComponent implements OnInit {
     this.eliminaEmpresa = idEmpresa;
     console.log(this.eliminaEmpresa);
   }
-
 
 
   onLogout() {
@@ -206,6 +203,11 @@ export class RegistroComponent implements OnInit {
         }
       }
     })
+  }
+
+
+  getRut(rut: string): void {
+    console.log(rut);
   }
 
 }

@@ -14,6 +14,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditPublicidadComponent } from '../administrador/edit-publicidad/edit-publicidad.component';
 
 
+import { RutModule } from 'rut-chileno';
+import { EditRegistroComponent } from '../administrador/edit-registro/edit-registro.component';
 
 const routes: Routes= [
   {path: 'accesoAdmin', component: AccesoAdminComponent, canActivate: [AuthguardGuard],
@@ -21,8 +23,9 @@ const routes: Routes= [
     {path: 'RegistrarEmpresa/:id', component: RegistroComponent, canActivate: [AuthguardGuard]},
     {path: 'AutorizarFuna', component: AutorizarFunaComponent, canActivate: [AuthguardGuard]},
     {path: 'GestionarPublicidad/:id', component: GestionarPublicidadComponent, canActivate: [AuthguardGuard]},
-    {path: 'GestionarEmpleo', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]},
-    {path: 'EditPublicidad/:id', component: EditPublicidadComponent, canActivate: [AuthguardGuard]}
+    {path: 'GestionarEmpleo/:id', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard]},
+    {path: 'EditPublicidad/:id', component: EditPublicidadComponent, canActivate: [AuthguardGuard]},
+    {path: 'EditRegistro/:idRegistro', component: EditRegistroComponent, canActivate: [AuthguardGuard]}
    
   ]}  
 ];
@@ -34,12 +37,14 @@ const routes: Routes= [
     AutorizarFunaComponent,
     GestionarPublicidadComponent,
     GestionarEmpleoComponent,
-    EditPublicidadComponent 
+    EditPublicidadComponent,
+    EditRegistroComponent 
   ],
   imports: [
     CommonModule,
     BrowserModule, RouterModule.forRoot(routes),
-    FormsModule, ReactiveFormsModule,FontAwesomeModule
+    FormsModule, ReactiveFormsModule,FontAwesomeModule,
+    RutModule
   ]
 })
 export class AccesoAdminModule { }

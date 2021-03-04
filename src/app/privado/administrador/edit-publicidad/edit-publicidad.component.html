@@ -53,6 +53,7 @@
                                                     <input type="text" class="form-control my-1"
                                                         formControlName="rutEmpresa" id="rutEmpresa"
                                                         [(ngModel)]="publicidadModel.rutEmpresa" />
+                                                        <p class="rutErrorEmp" id="validacion-live"></p>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="lblNombreEmpresa">Nombre Empresa</label>
@@ -158,11 +159,11 @@
                                         </div>
 
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-6 text-center">
                                                 <button type="submit"
                                                     class="btn btn-outline-primary">Actualizar</button>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-6 text-center">
                                                 <button class="btn btn-outline-primary" (click)="volver()">
                                                     Volver</button>
                                             </div>

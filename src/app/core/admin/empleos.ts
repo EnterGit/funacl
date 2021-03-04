@@ -67,5 +67,6 @@ export class PostEmpleos {
       public experiencia: string,
       public tipoContrato: string,
       public descEmpleo: string,
+      public idEmpleo?: string
     ){ }
 }

@@ -15,4 +15,9 @@ export class PubempleosService {
   addEmpleos(empleos: PostEmpleos) {
     return this.http.post(`${this.baseUrl}/empleos/postEmpleos.php`, empleos ,{observe: 'events'});
   }
+
+  listadoEmpleos() {
+    console.log("RUTA :" + this.baseUrl);
+    return this.http.get(`${this.baseUrl}/empleos/getAllEmpleos.php`);
+  }
 }
