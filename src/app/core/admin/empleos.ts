@@ -70,3 +70,28 @@ export class PostEmpleos {
       public idEmpleo?: string
     ){ }
 }
+
+export class ListEmpleos {
+    constructor(
+      public cargoEmpleo: string,
+      public profesion: string,
+      public vacantes: string,
+      public empresa: string,
+      public region_desc: string,
+      public region: string,
+      public comuna_desc: string,
+      public comuna: string,
+      public direccion: string,
+      public fecPostulacion: string,
+      public jornada_desc: string,
+      public jornada: string,
+      public sueldo: string,
+      public educacion_desc: string,
+      public educacion: string,
+      public experiencia: string,
+      public tipoContrato_desc: string,
+      public tipoContrato: string,
+      public descEmpleo: string,
+      public idEmpleo?: string
+    ){ }
+}

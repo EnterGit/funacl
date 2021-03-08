@@ -25,9 +25,9 @@ export class IngempresaService {
   }
 
 
-  verificaRutEmpresa(rutEmpresa: string | number) {
-    // console.log("LLAMA A CONSULTAR RUT :" + rutEmpresa);
-    return this.http.get(`${this.baseUrl}/ingEmpresa/verificaRutEmpresa.php?rutEmpresa=${rutEmpresa}`);
+  verificaRutEmpresa(rutEmpresa: string ) {
+    console.log("LLAMA A CONSULTAR RUT :" + rutEmpresa);
+    return this.http.get(`${this.baseUrl}/ingEmpresa/verificaRutEmpresa.php?rutEmpresa='${rutEmpresa}'`);
   }
 
   getEmpresa(id: string | number) {

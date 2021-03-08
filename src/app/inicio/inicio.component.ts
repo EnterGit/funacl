@@ -11,7 +11,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 // servicio
 import { Publicidad } from '../core/admin/empleos';
-import { EmpleosService } from '../services/publicidad/empleos.service';
+import { PublicidadService } from '../services/publicidad/publicidad.service';
 
 
 
@@ -38,7 +38,7 @@ export class InicioComponent implements OnInit {
 
   constructor(
     private db: AngularFirestore,
-    private empleoService: EmpleosService,
+    private empleoService: PublicidadService,
     protected dataService: ApiService,
     protected authAcceso: AuthguardGuard,
     private encriptar: EncriptarService

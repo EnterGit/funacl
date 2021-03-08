@@ -1,36 +1,27 @@
-import { Item } from './../../../services/conexion.service';
+import { ListEmpleos } from './../../../core/admin/empleos';
 import { Globals } from './../../../globals';
 import { ApiService } from './../../../services/login/api.service';
-import { PubempleosService } from '../../../services/admin/pubempleos/pubempleos.service';
-import { Lparametros } from '../../../core/parametros/parametros';
-import { PostEmpleos, ListEmpleos } from '../../../core/admin/empleos';
-import { Lregiones, Lcomuna } from '../../../core/parametros/regiones.model';
-import { LisregionesService } from '../../../services/parametros/lisregiones.service';
+import { PubempleosService } from './../../../services/admin/pubempleos/pubempleos.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
+import { Lparametros } from '../../../core/parametros/parametros';
+import { Lregiones, Lcomuna } from '../../../core/parametros/regiones.model';
+import { LisregionesService } from '../../../services/parametros/lisregiones.service';
 
 @Component({
-  selector: 'app-gestionar-empleo',
-  templateUrl: './gestionar-empleo.component.html',
-  styleUrls: ['./gestionar-empleo.component.css']
+  selector: 'app-edit-empleo',
+  templateUrl: './edit-empleo.component.html',
+  styleUrls: ['./edit-empleo.component.css']
 })
-export class GestionarEmpleoComponent implements OnInit {
+export class EditEmpleoComponent implements OnInit {
 
+  submitted = false;
+  formGestionaEmpleos: FormGroup;
   titulo: string;
   imagenTitulo: string;
-  curso: string;
-  formGestionaEmpleos: FormGroup;
-
-  faTrashAlt = faTrashAlt;
-  faPencilAlt = faPencilAlt;
-
   grupoParametros: number;
-
-  listarRegistro: boolean;
-  mostrarFormEmpleo: boolean;
 
   public regionesModel: Lregiones[] = [new Lregiones(0, "prueba")];
   public comunaModel: Lcomuna[] = [new Lcomuna(0, "")];
@@ -38,12 +29,7 @@ export class GestionarEmpleoComponent implements OnInit {
   public parametroTipoContrato: Lparametros[] = [new Lparametros(0, "", 0)];
   public parametroTurnos: Lparametros[] = [new Lparametros(0, "", 0)];
   
-  public empleosModel: PostEmpleos = new PostEmpleos("", "", "", "", "", "", "", "", "", "", "", "", "", "");
-  public listadoEmpleo: ListEmpleos[] = [new ListEmpleos("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")];
-
-  editarItem: any = {
-    idEmpleo: ''
-  }
+  public empleosModel: ListEmpleos = new ListEmpleos("", "", "", "", "","", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
   constructor(
     private fb: FormBuilder,
@@ -53,27 +39,39 @@ export class GestionarEmpleoComponent implements OnInit {
     private pubEmpleosService: PubempleosService,
     public apiservice: ApiService,
     public global: Globals,
-    private ruta: ActivatedRoute
-  ) {
+    private ruta: ActivatedRoute,
+    private cdRef:ChangeDetectorRef
+  ) { 
     this.creaFormEmpleo();
-
   }
 
+  ngAfterViewChecked()
+{
+  console.log( "! changement !" );
+  
+  this.cdRef.detectChanges();
+
+  console.log(this.cdRef);
+}
+
   ngOnInit(): void {
-    this.titulo = "Gestión Empleo";
+    this.titulo = "Editar Empleo";
     this.imagenTitulo = "https://pyme.emol.com/wp-content/uploads/2020/06/apoyo-al-empleo.jpg";
-    this.curso = "OS-10";
     this.obtenerRegiones();
     this.obtenerEduacacion();
     this.obtenerTipoContrato();
     this.obtenerTurnos();
 
-    this.seteaBloques();
+    let idEmpleo = this.ruta.snapshot.paramMap.get("idEmpleo");
+    this.pubEmpleosService.getOneEmpleo(idEmpleo)
+    .subscribe((empleosModel: ListEmpleos) => {
+      this.empleosModel = empleosModel
 
-    console.log("PRUEBAAA");
-    console.log(this.global.perfil);
+      this.onChangeComuna(this.empleosModel.region);
+    })
+
+ 
   }
-
 
   creaFormEmpleo() {
     this.formGestionaEmpleos = this.fb.group({
@@ -117,11 +115,15 @@ export class GestionarEmpleoComponent implements OnInit {
     return this.regionService.getParametros(this.grupoParametros).subscribe((parametroTurnos: Lparametros[]) => this.parametroTurnos = parametroTurnos);
   }
 
-
-
   onSubmit() {
+
+    console.log(this.formGestionaEmpleos);
+    console.log(this.empleosModel);
+
+    this.submitted = true;
+
     if (this.formGestionaEmpleos.valid) {
-      this.pubEmpleosService.addEmpleos(this.empleosModel).subscribe(() => {
+      this.pubEmpleosService.updateEmpleo(this.empleosModel).subscribe(() => {
         this.router.navigate(['/accesoAdmin/GestionarEmpleo/2']);
         this.formGestionaEmpleos.reset();
       })
@@ -130,56 +132,8 @@ export class GestionarEmpleoComponent implements OnInit {
     }
   }
 
-
-  listadoEmpleos() {
-    return this.pubEmpleosService.listadoEmpleos().subscribe((listadoEmpleo: ListEmpleos[]) => {
-      this.listadoEmpleo = listadoEmpleo
-    });
-  }
-
-  seteaBloques() {
-    this.ruta.params.subscribe(params => {
-      switch (params['id']) {
-        case '1': {
-          this.listarRegistro = false;
-          this.mostrarFormEmpleo = true;
-          break;
-        }
-        case '2': {
-          this.listarRegistro = true;
-          this.mostrarFormEmpleo = false;
-          this.listadoEmpleos();
-          break;
-        }
-        default: {
-          this.router.navigate(['/accesoAdmin']);
-          break;
-        }
-      }
-    })
-  }
-
-
-  editarEmpleo(editPubli) {
-    this.editarItem = editPubli;
-  }
-
-
-  eliminarEmpleo(Item){
-    this.pubEmpleosService
-    .deleteEmpleo(Item)
-    .subscribe(() => {
-      this.listadoEmpleos();
-    });
-  }
-
-  private nombreUsuario(nameuser: string): void {
-
-    console.log("PASO2");
-    console.log(nameuser);
-
+  volver() {
+    this.router.navigate(['/accesoAdmin/GestionarEmpleo/2']);
   }
 
 }
-
-

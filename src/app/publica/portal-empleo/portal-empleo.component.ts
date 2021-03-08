@@ -1,6 +1,6 @@
 import { Globals } from './../../globals';
 import { Empleo } from '../../core/admin/empleos';
-import { EmpleosService } from '../../services/publicidad/empleos.service';
+import { PublicidadService } from '../../services/publicidad/publicidad.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { ConstantPool } from '@angular/compiler';
@@ -26,7 +26,7 @@ export class PortalEmpleoComponent implements OnInit {
   title = 'app';
 
   constructor (
-    private empleoService: EmpleosService,
+    private publicidadService: PublicidadService,
     public globals: Globals
   ) { }
 
@@ -45,11 +45,10 @@ export class PortalEmpleoComponent implements OnInit {
     // });
 
 
-
   }
 
   obtenerEmpleos(){
-    return this.empleoService
+    return this.publicidadService
     .getEmpleos()
     .subscribe((empleos: Empleo[]) => this.empleos = empleos);
   }

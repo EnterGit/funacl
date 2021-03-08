@@ -1,6 +1,6 @@
 import { PostPublicidad } from '../../../core/admin/empleos';
 import { Publicidad } from '../../../core/admin/empleos';
-import { EmpleosService } from '../../../services/publicidad/empleos.service';
+import { PublicidadService } from '../../../services/publicidad/publicidad.service';
 
 import { environment } from './../../../../environments/environment';
 import { Router } from '@angular/router';
@@ -12,7 +12,6 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } 
 import { RutService } from 'rut-chileno'
 
 import * as $ from 'jquery';
-
 
 declare var $: any;
 declare var jQuery: any;
@@ -47,7 +46,7 @@ export class EditPublicidadComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private empleoService: EmpleosService,
+    private publicidadService: PublicidadService,
     private rutService: RutService
   ) {
     // this.seteaBloques();
@@ -73,7 +72,7 @@ export class EditPublicidadComponent implements OnInit {
     })
 
     let idpublicidad = this.ruta.snapshot.paramMap.get("id");
-    this.empleoService.getEmpleo(idpublicidad)
+    this.publicidadService.getEmpleo(idpublicidad)
       .subscribe((publicidadModel: PostPublicidad) => this.publicidadModel = publicidadModel)
   }
 
@@ -97,8 +96,12 @@ export class EditPublicidadComponent implements OnInit {
   get f() { return this.formGestionPublicidad.controls; }
 
   onSubmit() {
-    // console.log(this.publicidadModel);
-    // console.log(this.formGestionPublicidad);
+    console.log(this.publicidadModel);
+    console.log(this.formGestionPublicidad);
+
+
+    this.publicidadModel.rutEmpresa = String(this.rutService.getRutChile(2, this.publicidadModel.rutEmpresa));
+    console.log(this.publicidadModel.rutEmpresa);
 
     this.submitted = true;
     if (this.formGestionPublicidad.valid) {
@@ -106,7 +109,7 @@ export class EditPublicidadComponent implements OnInit {
       this.publicidadModel.rutEmpresa = String(this.rutService.getRutChile(2, this.publicidadModel.rutEmpresa));
       console.log(this.publicidadModel.rutEmpresa);
 
-      this.empleoService.updatePublicidad(this.publicidadModel).subscribe(() => {
+      this.publicidadService.updatePublicidad(this.publicidadModel).subscribe(() => {
         this.volver();
       });
 

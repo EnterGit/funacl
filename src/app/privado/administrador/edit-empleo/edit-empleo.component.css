@@ -2,7 +2,6 @@ body {
 	color: #000;
 	overflow-x: hidden;
 	height: 100%;
-	width: 1000px;
 	background-color: #EEEEEE;
 	background-repeat: no-repeat
 }
@@ -88,7 +87,15 @@ input {
 	letter-spacing: 1px
 }
 
-.input {
+input:focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: 1px solid #512DA8;
+	outline-width: 0
+}
+
+select {
 	padding: 10px 12px 10px 12px;
 	border: 1px solid lightgrey;
 	border-radius: 10px;
@@ -97,16 +104,20 @@ input {
 	width: 100%;
 	box-sizing: border-box;
 	color: #2C3E50;
-	font-size: 14px;
+	font-size: 13px;
 	letter-spacing: 1px
 }
 
-input:focus {
+select:focus {
 	-moz-box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 	border: 1px solid #512DA8;
 	outline-width: 0
+}
+
+select.s1{
+    height: 100px;
 }
 
 ::placeholder {
@@ -240,19 +251,9 @@ button:focus {
 	padding-left: 0.5em;
 }
 
-.ng-invalid{
-	border-left: 5px solid #a94442 !important; /* red */
-	border-color:  #a94442 !important; /* red */
-	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(169,68,66,.6) !important;
-  }
-
-  .ng-valid:not([disabled])  {
-	border-left: 5px solid #42A948; /* green */
+table.table td a.edit {
+    color: #FFC107;
 }
-
-.password-icon {
-	float: right;
-	position: relative;
-	margin: -25px 10px 0 0;
-	cursor: pointer;
+table.table td a.delete {
+    color: #F44336;
 }

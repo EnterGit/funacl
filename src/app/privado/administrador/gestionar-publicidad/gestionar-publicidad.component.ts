@@ -1,5 +1,5 @@
 import { environment } from './../../../../environments/environment';
-import { EmpleosService } from './../../../services/publicidad/empleos.service';
+import { PublicidadService } from '../../../services/publicidad/publicidad.service';
 import { Item } from './../../../services/conexion.service';
 import { PostPublicidad, ListPublicidad } from '../../../core/admin/empleos';
 // import { Publicidad } from '../../core/admin/empleos';
@@ -54,7 +54,7 @@ export class GestionarPublicidadComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private empleoService: EmpleosService,
+    private publicidadService: PublicidadService,
     private rutService: RutService
   ) {
     this.seteaBloques();
@@ -141,7 +141,7 @@ export class GestionarPublicidadComponent implements OnInit {
 
       this.publicidadModel.rutEmpresa = String(this.rutService.getRutChile(2, this.publicidadModel.rutEmpresa));
 
-      this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
+      this.publicidadService.addEmpleo(this.publicidadModel).subscribe(() => {
         this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
         // this.formGestionPublicidad.reset();
       })
@@ -153,11 +153,11 @@ export class GestionarPublicidadComponent implements OnInit {
 
 
   obtenerPublicidad() {
-    return this.empleoService.getPublicidad().subscribe((publicidades: ListPublicidad[]) => this.publicidades = publicidades);
+    return this.publicidadService.getPublicidad().subscribe((publicidades: ListPublicidad[]) => this.publicidades = publicidades);
   }
 
   eliminarPublicidad(Item) {
-    this.empleoService
+    this.publicidadService
       .deletePublicidad(Item)
       .subscribe(() => {
         this.obtenerPublicidad();

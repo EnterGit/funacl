@@ -57,7 +57,7 @@
                                                         <input type="text" class="form-control my-1" id="rutEmpresa"
                                                             formControlName="rutEmpresa"
                                                             [(ngModel)]="publicidadModel.rutEmpresa" />
-                                                            <p class="rutErrorEmp" id="validacion-live"></p>
+                                                        <p class="rutErrorEmp" id="validacion-live"></p>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="lblNombreEmpresa">Nombre Empresa</label>
@@ -189,51 +189,51 @@
         <div class="card card0 border-1">
             <div class="col-md-12 mt-3 ml-3 mb-2 mr-2">
                 <!-- <div class="card mb-1"> -->
-                    <div class="card-body">
-                        <div class="wrapper-editor">
-                            <h4>Listado de Publicidad</h4>
-                            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0"
-                                width="100%">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <!-- <th scope="col">ID</th> -->
-                                        <th scope="col">Rut</th>
-                                        <th scope="col">Nombre Empresa</th>
-                                        <th scope="col">Nombre Encargado</th>
-                                        <th scope="col">Fecha Inicio</th>
-                                        <th scope="col">Fecha Termino</th>
-                                        <th scope="col">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                <div class="card-body">
+                    <div class="wrapper-editor">
+                        <h4>Listado de Publicidad</h4>
+                        <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0"
+                            width="100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <!-- <th scope="col">ID</th> -->
+                                    <th scope="col">Rut</th>
+                                    <th scope="col">Nombre Empresa</th>
+                                    <th scope="col">Nombre Encargado</th>
+                                    <th scope="col">Fecha Inicio</th>
+                                    <th scope="col">Fecha Termino</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                                    <tr *ngFor="let item of publicidades; index as i">
-                                        <!-- <th scope="row">{{i+1}}</th> -->
-                                        <td>{{item.idpublicidad}}</td>
-                                        <td>{{item.rutEmpresa}}</td>
-                                        <td>{{item.nomEmpresa}}</td>
-                                        <td>{{item.nomContacto}}</td>
-                                        <td>{{item.fecIniPub}}</td>
-                                        <td>{{item.fecTerPub}}</td>
-                                        <td>
+                                <tr *ngFor="let item of publicidades; index as i">
+                                    <!-- <th scope="row">{{i+1}}</th> -->
+                                    <td>{{item.idpublicidad | uppercase}}</td>
+                                    <td>{{item.rutEmpresa | uppercase}}</td>
+                                    <td>{{item.nomEmpresa | uppercase}}</td>
+                                    <td>{{item.nomContacto | uppercase}}</td>
+                                    <td>{{item.fecIniPub | uppercase}}</td>
+                                    <td>{{item.fecTerPub | uppercase}}</td>
+                                    <td>
 
-                                            <a href="#editEmployeeModal" class="edit mr-2" data-toggle="modal"
-                                                [routerLink]="['/accesoAdmin/EditPublicidad', item.idpublicidad]">
-                                                <fa-icon [icon]="faPencilAlt"></fa-icon>
-                                            </a>
+                                        <a href="#editEmployeeModal" class="edit mr-2" data-toggle="modal"
+                                            [routerLink]="['/accesoAdmin/EditPublicidad', item.idpublicidad]">
+                                            <fa-icon [icon]="faPencilAlt"></fa-icon>
+                                        </a>
 
-                                            <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
-                                                (click)="editarPublicidad(item)">
-                                                <fa-icon [icon]="faTrashAlt"></fa-icon>
+                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
+                                            (click)="editarPublicidad(item)">
+                                            <fa-icon [icon]="faTrashAlt"></fa-icon>
 
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
                 <!-- </div> -->
             </div>
         </div>

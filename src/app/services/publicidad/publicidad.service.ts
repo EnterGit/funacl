@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class EmpleosService {
+export class PublicidadService {
   baseUrl = environment.baseUrl
 
   constructor(private http: HttpClient) { }

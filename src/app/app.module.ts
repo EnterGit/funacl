@@ -1,7 +1,10 @@
+import { ApiPostulanteService } from './services/login/apiPostulante.service';
 import { ApiService } from './services/login/api.service';
+
 import { Globals } from './globals';
 import { AccesoAdminModule } from './privado/acceso-admin/acceso-admin.module';
 import { AccesoEmpresaModule } from './privado/acceso-empresa/acceso-empresa.module';
+import { AccesoPostulanteModule } from './privado/acceso-postulante/acceso-postulante.module';
 
 
 import { RouterModule, Routes } from '@angular/router';
@@ -13,7 +16,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ConexionService } from './services/conexion.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -41,7 +44,7 @@ import { PostulaComponent } from './publica/postula/postula.component';
 import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component';
 import { PublicidadComponent } from './publica/publicidad/publicidad.component';
 import { PortalEmpleoComponent } from './publica/portal-empleo/portal-empleo.component';
-// import { EmpresaComponent } from './privado/empresa/empresa.component';
+
 
 
 // publicidad
@@ -54,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
 import { AuthguardGuard } from './core/authguard.guard';
+
 
 
 //Mensaje
@@ -78,6 +82,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { CifrarComponent } from './components/cifrar/cifrar.component';
 
 import { RutModule } from 'rut-chileno';
+
 
 
 const routes: Routes = [
@@ -148,6 +153,7 @@ const routes: Routes = [
     HttpClientModule,
     AccesoEmpresaModule,
     AccesoAdminModule,
+    AccesoPostulanteModule,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
@@ -171,7 +177,8 @@ const routes: Routes = [
     ApiuserService,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     Globals,
-    ApiService
+    ApiService,
+    ApiPostulanteService
   ],
   exports: [
     ReactiveFormsModule

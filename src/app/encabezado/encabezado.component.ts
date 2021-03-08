@@ -17,6 +17,7 @@ export class EncabezadoComponent implements OnInit {
   logoutbtn: boolean;
   perfilAdmin: boolean = false;
   perfilEmpresa: boolean = false;
+  perfilPostulante: boolean = false;
 
   constructor(
     protected dataService: ApiService,
@@ -54,12 +55,17 @@ export class EncabezadoComponent implements OnInit {
       if (this.globals.perfil == "2") {
         this.perfilEmpresa = true;
       }
+
+      if (this.globals.perfil == "3") {
+        this.perfilPostulante= true;
+      }
     }
     else {
       this.loginbtn = true;
       this.logoutbtn = false;
       this.perfilAdmin = false;
       this.perfilEmpresa = false;
+      this.perfilPostulante = false;
     }
   }
 
@@ -75,6 +81,10 @@ export class EncabezadoComponent implements OnInit {
     if (this.globals.perfil == "2") {
       this.perfilEmpresa = true;
     }
+
+    if (this.globals.perfil == "3") {
+      this.perfilPostulante = true;
+    }
   }
 
 
@@ -87,6 +97,12 @@ export class EncabezadoComponent implements OnInit {
     if (this.globals.perfil == "2") {
       this.perfilEmpresa = true;
     }
+
+    if (this.globals.perfil == "3") {
+      this.perfilPostulante = true;
+    }
+
+    
   }
 
 
@@ -97,6 +113,7 @@ export class EncabezadoComponent implements OnInit {
     this.loginbtn = true;
     this.perfilAdmin = false;
     this.perfilEmpresa = false;
+    this.perfilPostulante = false;
 
     this.router.navigate(['/inicio']);
     // window.location.reload();

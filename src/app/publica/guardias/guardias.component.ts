@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { ConexionService, Postulantes } from './../../services/conexion.service';
-import { PostulantesModel } from '../../core/postulantes.model';
+import { PostulantesModel } from '../../core/publico/postulantes.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBellSlash, faHandPaper, faUser } from '@fortawesome/free-regular-svg-icons';

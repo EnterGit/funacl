@@ -1,5 +1,5 @@
-import { Globals } from './../../globals';
-import { EncriptarService } from './../seguridad/encriptar.service';
+import { Globals } from '../../globals';
+import { EncriptarService } from '../seguridad/encriptar.service';
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { Users } from '../../core/users';
     providedIn: 'root'
 })
 
-export class ApiService {
+export class ApiPostulanteService {
     redirectUrl: string;
     baseUrl = environment.baseUrl + '/Login/'
 
@@ -28,6 +28,8 @@ export class ApiService {
             .pipe(map(Users => {
 
                 console.log(Users);
+
+
                 this.setToken(Users[0].name, Users[0].email, Users[0].password, Users[0].perfil, Users[0].rutEmpresa);
                 this.getLoggedInName.emit(true);
 
@@ -48,7 +50,7 @@ export class ApiService {
 
     //token
     setToken(token: string, mail: string, pass: string, perfil: string, rutEmp: string) {
-        localStorage.setItem('token', token);
+        localStorage.setItem('tokenpostulante', token);
         localStorage.setItem('mail', this.encriptar.encriptarDatos(mail));
         localStorage.setItem('password', this.encriptar.encriptarDatos(pass));
         localStorage.setItem('perfil', perfil);
@@ -75,7 +77,7 @@ export class ApiService {
     }
 
     getToken() {
-        return localStorage.getItem('token');
+        return localStorage.getItem('tokenpostulante');
     }
 
     getEmail() {
@@ -83,7 +85,7 @@ export class ApiService {
     }
 
     deleteToken() {
-        localStorage.removeItem('token');
+        localStorage.removeItem('tokenpostulante');
         localStorage.removeItem('mail');
         localStorage.removeItem('password');
         localStorage.removeItem('perfil');

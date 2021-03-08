@@ -142,6 +142,10 @@ export class RegistroComponent implements OnInit {
 
 
   validaRut(rut) {
+    rut = String(this.rutService.getRutChile(2, rut));
+
+    console.log(rut);
+
     return this.ingempresaService.verificaRutEmpresa(rut).subscribe((exiteRutEmpresa: ExisteRutEmpresa) => {
       this.exiteRutEmpresa = exiteRutEmpresa
       // console.log(exiteRutEmpresa.existeRut);
