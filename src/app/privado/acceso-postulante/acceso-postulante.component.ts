@@ -12,9 +12,11 @@ import * as $ from 'jquery';
 export class AccesoPostulanteComponent implements OnInit {
   private role: string;
 
-  constructor(public globals: Globals,
+  constructor(
+    public globals: Globals,
     public apiservice: ApiService,
-    private router: Router,) { }
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     console.log("this.globals.perfil");

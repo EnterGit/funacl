@@ -19,7 +19,6 @@ import { EditRegistroComponent } from '../administrador/edit-registro/edit-regis
 import { EditEmpleoComponent } from '../administrador/edit-empleo/edit-empleo.component';
 
 const routes: Routes = [
-  // { path: '**', redirectTo: '/portal', pathMatch: 'full' },
   {
     path: 'accesoAdmin', component: AccesoAdminComponent, canActivate: [AuthguardGuard],
     children: [
@@ -29,9 +28,7 @@ const routes: Routes = [
       { path: 'GestionarEmpleo/:id', component: GestionarEmpleoComponent, canActivate: [AuthguardGuard] },
       { path: 'EditPublicidad/:id', component: EditPublicidadComponent, canActivate: [AuthguardGuard] },
       { path: 'EditRegistro/:idRegistro', component: EditRegistroComponent, canActivate: [AuthguardGuard] },
-      { path: 'EditEmpleo/:idEmpleo', component: EditEmpleoComponent, canActivate: [AuthguardGuard] }
-      // ,
-      // { path: '**', redirectTo: '/404', pathMatch: 'full' }
+      { path: 'EditEmpleo/:idEmpleo', component: EditEmpleoComponent, canActivate: [AuthguardGuard] }     
     ]
   }
 ];

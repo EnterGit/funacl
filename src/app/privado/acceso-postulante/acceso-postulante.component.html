@@ -4,13 +4,48 @@
         <ul>
             <div class="sidebar-heading">
                 <div class="profile-card">
-                    <img src="https://www.myspacelogic.com/wp-content/uploads/2016/01/avatar-372-456324.png" alt="user" class="profile-photo">
+                    <img src="https://www.myspacelogic.com/wp-content/uploads/2016/01/avatar-372-456324.png" alt="user"
+                        class="profile-photo">
                     <h5><a href="#" class="text-white">{{globals.role}}</a></h5>
                     <h5><a href="#" class="text-white">{{globals.email}}</a></h5>
                     <a href="#" class="text-white">Postulantes</a>
                 </div>
-                <a routerLink="['/accesoAdmin']">Menu Postulante</a>
+                <a routerLink="['/accesoPostulante']">Menu Postulante</a>
+            </div>
+            <div class="list-group list-group-flush">
+
+                <li clas="fa fa-tachometer-alt">
+                    <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
+                        data-target=".navbar-collapse.show" routerLink="['/accesoPostulante']">Actualizar
+                        Perfil</a>
+                </li>
             </div>
         </ul>
     </div>
+
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+
+
+            <button class="btn-menu btn btn-success btn-toggle-menu" id="menu-toggle" type="button">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 </div>

@@ -217,16 +217,13 @@
                                     <td>{{item.fecIniPub | uppercase}}</td>
                                     <td>{{item.fecTerPub | uppercase}}</td>
                                     <td>
-
                                         <a href="#editEmployeeModal" class="edit mr-2" data-toggle="modal"
                                             [routerLink]="['/accesoAdmin/EditPublicidad', item.idpublicidad]">
                                             <fa-icon [icon]="faPencilAlt"></fa-icon>
                                         </a>
-
                                         <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"
                                             (click)="editarPublicidad(item)">
                                             <fa-icon [icon]="faTrashAlt"></fa-icon>
-
                                         </a>
                                     </td>
                                 </tr>

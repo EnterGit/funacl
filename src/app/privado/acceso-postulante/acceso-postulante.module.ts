@@ -23,7 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    // AccesoPostulanteComponent
+    AccesoPostulanteComponent
   ],
   imports: [
     CommonModule,

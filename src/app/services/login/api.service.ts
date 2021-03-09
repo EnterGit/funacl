@@ -57,6 +57,8 @@ export class ApiService {
         // this.globals.perfil = perfil;
         // this.globals.rutEmpresa = rutEmp;
 
+        // sessionStorage.setItem('token', token);
+
         console.log("PASOOOOOO");
         console.log(this.globals.perfil);
     }
@@ -87,6 +89,7 @@ export class ApiService {
         localStorage.removeItem('mail');
         localStorage.removeItem('password');
         localStorage.removeItem('perfil');
+        localStorage.removeItem('rutEmpresa');
     }
 
     isLoggedIn() {
