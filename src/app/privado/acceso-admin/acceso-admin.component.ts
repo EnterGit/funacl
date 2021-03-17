@@ -27,7 +27,6 @@ export class AccesoAdminComponent implements OnInit {
     console.log("this.globals.rutEmpresa");
     console.log(this.globals.rutEmpresa);
     
-
     if (this.globals.perfil == "1") {
       // this.role = this.apiservice.getToken();
       this.globals.role = this.apiservice.getToken(); //this.role;

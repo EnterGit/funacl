@@ -39,12 +39,10 @@ export class LoginPersonaComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          
+
           this.globals.perfil = this.dataService.getPerfil();
           console.log("estoy en login");
           console.log(this.globals.perfil);
-
-          // const redirect = ''; //this.dataService.redirectUrl ? this.dataService.redirectUrl : '/accesoEmpresa';
 
           if (this.globals.perfil == "1") {
             console.log("ENTRO A 1");

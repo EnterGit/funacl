@@ -140,12 +140,12 @@ export class RegistoPostulanteComponent implements OnInit {
   }
 
   obtenerNacionalidad() {
-    this.grupoParametros = 5;
+    this.grupoParametros = 9;
     return this.regionService.getParametros(this.grupoParametros).subscribe((parametroNacionalidad: Lparametros[]) => this.parametroNacionalidad = parametroNacionalidad);
   }
 
   obtenerEstadoCivil() {
-    this.grupoParametros = 4;
+    this.grupoParametros = 8;
     return this.regionService.getParametros(this.grupoParametros).subscribe((parametroEstadoCivil: Lparametros[]) => this.parametroEstadoCivil = parametroEstadoCivil);
   }
 

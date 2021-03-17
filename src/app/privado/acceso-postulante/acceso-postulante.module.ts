@@ -5,25 +5,24 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
-import { AccesoPostulanteComponent } from './acceso-postulante.component';
 import { AuthguardGuard } from 'src/app/core/authguard.guard';
 
-
+import { AccesoPostulanteComponent } from './acceso-postulante.component';
+import { GuardiasComponent } from '../postulantes/guardias/guardias.component';
 
 const routes: Routes = [
   {
     path: 'accesoPostulante', component: AccesoPostulanteComponent, canActivate: [AuthguardGuard],
     children: [
-      // { path: 'accesoPostulante', component: AccesoPostulanteComponent, canActivate: [AuthguardGuard] },
-      // { path: '**', redirectTo: '/portal', pathMatch: 'full' }
+      { path: 'guardias/:id', component: GuardiasComponent },
     ],
   }
 ];
 
 @NgModule({
   declarations: [
-    AccesoPostulanteComponent
+    AccesoPostulanteComponent,
+    GuardiasComponent
   ],
   imports: [
     CommonModule,

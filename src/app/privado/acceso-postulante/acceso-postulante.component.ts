@@ -19,11 +19,11 @@ export class AccesoPostulanteComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log("this.globals.perfil");
-    console.log(this.globals.perfil);
+      // console.log("this.globals.perfil");
+      // console.log(this.globals.perfil);
 
-    console.log("this.globals.rutEmpresa");
-    console.log(this.globals.rutEmpresa);
+      // console.log("this.globals.rutEmpresa");
+      // console.log(this.globals.rutEmpresa);
 
 
     if (this.globals.perfil == "3") {

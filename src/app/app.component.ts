@@ -20,6 +20,7 @@ export class AppComponent {
   loginbtn: boolean;
   logoutbtn: boolean;
 
+
   constructor(
     protected apiuserService: ApiuserService,
     private router: Router

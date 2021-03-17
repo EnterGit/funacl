@@ -39,9 +39,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioResolver } from './usuario/usuario.resolver';
 // import { RegistroComponent } from './registro/registro.component';
-import { GuardiasComponent } from './publica/guardias/guardias.component';
+// import { GuardiasComponent } from './publica/guardias/guardias.component';
 import { PostulaComponent } from './publica/postula/postula.component';
-import { ListaPostulantesComponent } from './privado/lista-postulantes/lista-postulantes.component';
 import { PublicidadComponent } from './publica/publicidad/publicidad.component';
 import { PortalEmpleoComponent } from './publica/portal-empleo/portal-empleo.component';
 
@@ -57,7 +56,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPersonaComponent } from './login-persona/login-persona.component';
 import { RegistoPostulanteComponent } from './registo-postulante/registo-postulante.component';
 import { AuthguardGuard } from './core/authguard.guard';
-
 
 
 //Mensaje
@@ -89,7 +87,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'loginPersona', component: LoginPersonaComponent, canActivate: [AuthGuard] },
   { path: 'inicio', component: InicioComponent },
-  { path: 'listaPostulantes', component: ListaPostulantesComponent, canActivate: [AuthguardGuard] },
   { path: 'usuario', component: UsuarioComponent, resolve: { data: UsuarioResolver } },
   { path: 'postula', component: PostulaComponent },
   { path: 'nosotros', component: NosotrosComponent, canActivate: [AuthguardGuard] },
@@ -98,7 +95,7 @@ const routes: Routes = [
   { path: 'registroPostulante', component: RegistoPostulanteComponent },
   // {path: 'empresas', component: EmpresaComponent},
 
-  { path: 'guardias/:id', component: GuardiasComponent, canActivate: [AuthguardGuard] },
+  // { path: 'guardias/:id', component: GuardiasComponent },
   // {path: 'registro', component: RegistroComponent},
   { path: 'lista', component: ListaComponent, resolve: { data: UsuarioResolver } },
   { path: 'lista-add', component: ListaAddComponent, resolve: { data: UsuarioResolver } },
@@ -124,9 +121,8 @@ const routes: Routes = [
     ListaAddComponent,
     UsuarioComponent,
     // RegistroComponent,
-    GuardiasComponent,
+    // GuardiasComponent,
     PostulaComponent,
-    ListaPostulantesComponent,
     PublicidadComponent,
     PortalEmpleoComponent,
     LoginPersonaComponent,

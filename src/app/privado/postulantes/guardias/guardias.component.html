@@ -1,11 +1,10 @@
 <form [formGroup]="formPostulantes" (ngSubmit)="agregaPostulantes('1')">
    <section id="guardiaPostula">
-      <div class="container py-2 mx-auto">
+      <div class="container2 py-2 mx-auto">
          <div class="card card0 border-0">
-            <div class="row d-flex">
-               <div class="container">
-                  <div class="main-body">
-                     <div class="row gutters-sm">
+            <div class="row">
+               <div class="container-fluid">
+                     <div class="row mx-3">
                         <div class="col-md-4 mt-2 ml-2 mb-2">
                            <div class="form-group card mt-2">
                               <div class="card-body">
@@ -51,7 +50,8 @@
                                           d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
                                        <circle cx="8" cy="4.5" r="1" />
                                     </svg>
-                                 </span></div>
+                                 </span>
+                              </div>
                               <div class="row">
                                  <div class="col-md-5 ml-1">
                                     <div class="custom-control custom-radio custom-control-inline ">
@@ -131,17 +131,22 @@
                            </div>
                         </div>
 
-                        <div class="col-md-7 mt-3 ml-3 mb-2">
-
+                        <div class="col-md-7 mt-3 ml-3 mr-1 mb-2">
                            <div class="card mb-1">
                               <div class="card-body">
 
                                  <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                       <label for="lbltRut">Rut</label>
+                                    <div class="form-group col-md-6 my-1">
+                                       <label for="lbltRut">RUT</label>
 
-                                       <input type="text" class="form-control" placeholder="Ingresa Rut"
-                                          formControlName="rut" id="rut" />
+                                       <!-- <input type="text" class="form-control" placeholder="Ingresa Rut"
+                                          formControlName="rut" id="rut" 
+                                          [(ngModel)]="postulanteModel.rut" /> -->
+                                       <br>
+                                       <div class="detalle my-1">
+                                          <label>{{postulanteModel.rut}}</label>
+                                       </div>
+      
                                        <div class="alert alert-danger"
                                           *ngIf="formPostulantes.get('rut').errors && formPostulantes.get('rut').touched">
 
@@ -150,33 +155,36 @@
                                           <p *ngIf="formPostulantes.get('rut').hasError('required')"> Campo Requerido
                                           </p>
                                        </div>
-                                       <p class="rutError" id="validacion-live" ></p>
-                                    
+                                       <p class="rutError" id="validacion-live"></p>
+
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 my-1">
                                        <label for="lblNombre">Nombre Completo</label>
-                                       <input type="text" class="form-control" id="Nombre" formControlName="nombre" />
+                                       <!-- <input type="text" class="form-control" id="Nombre" formControlName="nombre" 
+                                       [(ngModel)]="postulanteModel.nombreCompleto"/> -->
+                                       <br>
+                                       <div class="detalle my-1">
+                                          <label>{{postulanteModel.nombreCompleto}}</label>
+                                       </div>
                                     </div>
-                                    <!-- </div> -->
 
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 my-1">
                                        <label for="lblFechaNacimiento">Fecha de Nacimiento</label>
-                                       <div class="input-group">
-                                          <input type="date" class="form-control" id="Nombre"
-                                             formControlName="fechaNacimiento" />
-
+                                       <div class="detalle my-1">
+                                          <!-- <input type="date" class="form-control" id="Nombre"
+                                             formControlName="fechaNacimiento" 
+                                             [(ngModel)]="postulanteModel.fechaNacimiento" /> -->
+                                          <label>{{postulanteModel.fechaNacimiento}}</label>
                                        </div>
                                     </div>
 
 
-                                    <!-- </div> -->
-
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 my-1">
                                        <label for="lblSexo">Sexo</label>
                                        <br>
-                                       <div class="custom-control custom-radio custom-control-inline ">
+                                       <div class="custom-control custom-radio custom-control-inline my-1">
                                           <input type="radio" id="sexoMasculino" name="sexo"
-                                             class="custom-control-input" formControlName="sexo" value="Masculino">
+                                             class="custom-control-input my-1" formControlName="sexo" value="Masculino">
                                           <label class="custom-control-label" for="sexoMasculino">
                                              Masculino
                                           </label>
@@ -192,33 +200,60 @@
                                  </div>
                                  <hr />
                                  <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                       <label for="lblDireccion">Dirección</label>
-                                       <input type="text" class="form-control" id="inputDireccion"
-                                          formControlName="direccion" />
+                                    <div class="form-group col-md-6 my-1">
+                                       <label for="lblDireccion">Región</label>
+                                       <!-- <input type="text" class="form-control" id="inputDireccion"
+                                          formControlName="direccion" /> -->
+                                       <div class="detalle my-1">
+                                          <label>{{postulanteModel.region}}</label>
+                                       </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                       <label for="lblComuna">Comuna</label>
-                                       <select class="form-control" formControlName="comuna" formControlName="comuna">
-                                          <option value="" selected>Seleccione Comuna </option>
-                                          <option value="santiago" selected>Santiago</option>
-                                       </select>
+                                    <div class="form-group col-md-6 my-1">
+                                       <label for="lblDireccion">Comuna</label>
+                                       <!-- <input type="text" class="form-control" id="inputDireccion"
+                                          formControlName="direccion" /> -->
+                                       <div class="detalle my-1">
+                                          <label>{{postulanteModel.comuna}}</label>
+                                       </div>
+                                    </div>
+                                    <div class="form-group col-md-6 my-1">
+                                       <label for="lblDireccion">Dirección</label>
+                                       <!-- <input type="text" class="form-control" id="inputDireccion"
+                                          formControlName="direccion" /> -->
+                                       <div class="detalle my-1">
+                                          <label>{{postulanteModel.calle}}</label>
+                                       </div>
+                                    </div>
+                                    <div class="form-group col-md-6 my-1">
+                                       <label for="lblComuna">numero</label>
+                                       <div class="detalle my-1">
+                                          <label>{{postulanteModel.numero}}</label>
+                                       </div>
                                     </div>
                                     <hr />
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 my-1">
                                        <label for="lblTelefono">Telefono</label>
-                                       <input type="numer" class="form-control" id="inputFono"
-                                          formControlName="telefono" />
+                                       <!-- <input type="numer" class="form-control" id="inputFono"
+                                          formControlName="telefono" /> -->
+                                          <div class="detalle mt-1">
+                                             <label>{{postulanteModel.telefono}}</label>
+                                          </div>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6 my-1">
                                        <label for="lblCelular">Celular</label>
-                                       <input type="numer" class="form-control" id="inputCelular"
-                                          formControlName="celular" />
+                                       <!-- <input type="numer" class="form-control" id="inputCelular"
+                                          formControlName="celular" /> -->
+                                          <div class="detalle mt-1">
+                                             <label>{{postulanteModel.celular }}</label>
+                                          </div>
                                     </div>
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12 my-1">
                                        <label for="lblCelular">Correo Electronico</label>
-                                       <input type="email" class="form-control" id="inputemail"
-                                          formControlName="email" />
+                                       <!-- <input type="email" class="form-control" id="inputemail"
+                                          formControlName="email" /> -->
+                                          <div class="detalle mt-1">
+                                             <label>{{postulanteModel.email}}</label>
+                                          </div>
                                     </div>
 
                                     <div class="alert alert-danger"
@@ -245,7 +280,8 @@
                                           <label class="custom-control-label" for="customSwitch2">
                                              1 a 3 años
                                           </label>
-                                          <br /></div>
+                                          <br />
+                                       </div>
 
                                        <div class="custom-control custom-radio">
                                           <input type="radio" class="custom-control-input" id="customSwitch3"
@@ -273,7 +309,8 @@
                                           <label class="custom-control-label" for="locEmpresa">
                                              Empresa
                                           </label>
-                                          <br /></div>
+                                          <br />
+                                       </div>
 
                                        <div class="custom-control custom-checkbox">
                                           <input type="checkbox" class="custom-control-input" id="locRetail" />
@@ -289,7 +326,6 @@
                                  <div class="form-row">
                                     <div class="form-group col-md-6">
                                        <button type="submit" [disabled]="formPostulantes.valid"
-                                          (click)="agregaPostulantes(formPostulantes.value)"
                                           class="btn btn-primary">Postular</button>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -303,7 +339,7 @@
                            </div>
                         </div>
                      </div>
-                  </div>
+            
                </div>
             </div>
          </div>

@@ -20,7 +20,7 @@ export class ApiService {
 
     constructor(private httpClient: HttpClient,
         public encriptar: EncriptarService,
-        public globals : Globals
+        public globals: Globals
     ) { }
 
     public userlogin(username, password) {
@@ -30,6 +30,7 @@ export class ApiService {
                 console.log(Users);
                 this.setToken(Users[0].name, Users[0].email, Users[0].password, Users[0].perfil, Users[0].rutEmpresa);
                 this.getLoggedInName.emit(true);
+                this.getLoggedInPerfil.emit("999999");
 
                 this.globals.perfil = Users[0].perfil;
                 this.globals.rutEmpresa = Users[0].rutEmpresa;
@@ -57,10 +58,10 @@ export class ApiService {
         // this.globals.perfil = perfil;
         // this.globals.rutEmpresa = rutEmp;
 
-        // sessionStorage.setItem('token', token);
+        sessionStorage.setItem('token', token);
 
-        console.log("PASOOOOOO");
-        console.log(this.globals.perfil);
+        // console.log("PASOOOOOO");
+        // console.log(this.globals.perfil);
     }
 
 

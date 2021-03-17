@@ -1,6 +1,9 @@
+import { PostulantesModel } from './../../../core/publico/postulantes.model';
+import { PostulantesService } from './../../../services/admin/postulantes/postulantes.service';
+import { ApiService } from '../../../services/login/api.service';
 import { Router } from '@angular/router';
-import { ConexionService, Postulantes } from './../../services/conexion.service';
-import { PostulantesModel } from '../../core/publico/postulantes.model';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { ConexionService, Postulantes } from '../../../services/conexion.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBellSlash, faHandPaper, faUser } from '@fortawesome/free-regular-svg-icons';
@@ -8,6 +11,8 @@ import { faCoffee, faTrash, faTrashAlt, faPencilAlt, faTh, faCalendar, faCalenda
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
+
+
 import * as $ from 'jquery';
 
 export const validarQueSeanIguales: ValidatorFn = (
@@ -19,7 +24,6 @@ export const validarQueSeanIguales: ValidatorFn = (
     ? null
     : { noSonIguales: true }
 }
-
 
 declare var $: any;
 declare var jQuery: any;
@@ -50,17 +54,22 @@ export class GuardiasComponent implements OnInit {
 
   postulantes: any = {}
 
+  public postulanteModel: PostulantesModel = new PostulantesModel("","", "", "", "", "", "", "", "", "","","","","","","","","","","","","");
+
+
   constructor(
     faConfig: FaConfig,
     library: FaIconLibrary,
+    private http: HttpClient,
     private ruta: ActivatedRoute,
     private fb: FormBuilder,
     private service: ConexionService,
-    private router: Router
+    private router: Router,
+    public apiService: ApiService,
+    public postulanteService: PostulantesService
   ) {
     faConfig.defaultPrefix = 'far';
     library.addIcons(faUser, faHandPaper, faBellSlash);
-
 
     this.seteaPostulante();
     this.creaFormPostulantes();
@@ -68,15 +77,24 @@ export class GuardiasComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
     $(document).ready(function () {
-      $("input#rut").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () { 
+      $("input#rut").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () {
         $(".rutError").addClass("alert alert-danger")
         $(".rutError").text("Rut inválido");
-       }).on('rutValido', function () {
-           $(".rutError").removeClass("alert alert-danger ")
-           $(".rutError").empty();
-          });
+      }).on('rutValido', function () {
+        $(".rutError").removeClass("alert alert-danger ")
+        $(".rutError").empty();
+      });
     })
+
+    console.log(this.apiService.getRutEmpresa());
+    this.postulanteService.getOnePostulantes(this.apiService.getRutEmpresa())
+      .subscribe((postulanteModel: PostulantesModel) => {
+        this.postulanteModel = postulanteModel
+        console.log(this.postulanteModel);
+      })
   }
 
   seteaPostulante() {

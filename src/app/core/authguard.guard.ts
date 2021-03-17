@@ -13,14 +13,10 @@ export class AuthguardGuard implements CanActivate {
         private router: Router
     ) { }
 
-
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
         const routeurl: string = state.url;
-        console.log("canActivate");
-        console.log(routeurl);
-        
         return this.isLogin(routeurl);
     }
 
@@ -29,9 +25,9 @@ export class AuthguardGuard implements CanActivate {
             return true;
         }
         this.dataService.redirectUrl = routeurl;
+        console.log(routeurl);
         this.router.navigate(['/loginPersona'], { queryParams: { returnUrl: routeurl } });
     }
-
 
     isAuth() {
         if (this.dataService.isLoggedIn()) {

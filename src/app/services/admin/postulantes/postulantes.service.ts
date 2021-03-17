@@ -21,8 +21,8 @@ export class PostulantesService {
   }
 
   getOnePostulantes(id: string | number) {
-    console.log("llama empleo" + id);
-    return this.http.get(`${this.baseUrl}/postulantes/getOnePostulantes.php?idempleo=${id}`);
+    console.log("llama Postulante  " + id);
+    return this.http.get(`${this.baseUrl}/postulantes/getOnePostulante.php?Rut=${id}`);
   }
 
   updatePostulantes(empleo: PostulantesModel) {

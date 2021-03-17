@@ -10,13 +10,13 @@
                     <h5><a href="#" class="text-white">{{globals.email}}</a></h5>
                     <a href="#" class="text-white">Postulantes</a>
                 </div>
-                <a routerLink="['/accesoPostulante']">Menu Postulante</a>
+                <a [routerLink]="['/accesoPostulante']">Menu Postulante</a>
             </div>
             <div class="list-group list-group-flush">
 
                 <li clas="fa fa-tachometer-alt">
                     <a class="nav-link list-group-item list-group-item-action bg-light" data-toggle="collapse"
-                        data-target=".navbar-collapse.show" routerLink="['/accesoPostulante']">Actualizar
+                        data-target=".navbar-collapse.show" [routerLink]="['/accesoPostulante']">Actualizar
                         Perfil</a>
                 </li>
             </div>

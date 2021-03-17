@@ -42,7 +42,9 @@ export class GestionarEmpleoComponent implements OnInit {
   public listadoEmpleo: ListEmpleos[] = [new ListEmpleos("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")];
 
   editarItem: any = {
-    idEmpleo: ''
+    idEmpleo: '',
+    nombre:'CLAUDIO'
+
   }
 
   constructor(
@@ -162,6 +164,7 @@ export class GestionarEmpleoComponent implements OnInit {
 
   editarEmpleo(editPubli) {
     this.editarItem = editPubli;
+    this.editarItem
   }
 
 

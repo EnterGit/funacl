@@ -199,6 +199,14 @@ button:focus {
 	font-size: 14px
 }
 
+.container2 {
+	width: 100% !important;
+}
+
+.container1 {
+	width: 90% !important;
+}
+
 .social {
 	margin-top: 150px
 }
@@ -224,4 +232,10 @@ button:focus {
 .radio-inline label {
 	text-align: left;
 	padding-left: 0.5em;
+}
+
+.detalle {
+	color: #000;
+	font-size: 14px;
+	font-weight: bold;
 }
