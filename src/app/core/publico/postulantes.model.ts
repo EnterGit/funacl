@@ -22,7 +22,6 @@ export class PostulantesModel {
       public nacionalidad: string,
       public estadoCivil: string,
       public email: string
-
    ) {}
 }
 
@@ -32,5 +31,20 @@ export class ExisteRutPostulante{
        public existeRut: string,
        public rutPostulante: string,
    ){}
+}
+
+export class PostulantesLaboralModel {
+   constructor(
+      public rut: string,
+      public educacion: string,
+      public cursoAcreditacion: string,
+      public fechaAcreditacion: string,
+      public experiencia: string,
+      // public especialidad: string,
+      public nivelComputacion: string,
+      public turnos: string,
+      public puestotrabajo: string
+      // ,public locacion: string
+   ) {}
 }
 

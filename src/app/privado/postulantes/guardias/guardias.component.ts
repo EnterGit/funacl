@@ -1,4 +1,4 @@
-import { PostulantesModel } from './../../../core/publico/postulantes.model';
+import { PostulantesModel, PostulantesLaboralModel } from './../../../core/publico/postulantes.model';
 import { PostulantesService } from './../../../services/admin/postulantes/postulantes.service';
 import { ApiService } from '../../../services/login/api.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,9 @@ import { faBellSlash, faHandPaper, faUser } from '@fortawesome/free-regular-svg-
 import { faCoffee, faTrash, faTrashAlt, faPencilAlt, faTh, faCalendar, faCalendarAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { Lparametros } from '../../../core/parametros/parametros';
+import { Lregiones, Lcomuna } from '../../../core/parametros/regiones.model';
+import { LisregionesService } from '../../../services/parametros/lisregiones.service';
 import { debounceTime } from 'rxjs/operators';
 
 
@@ -49,13 +52,20 @@ export class GuardiasComponent implements OnInit {
   titulo: string;
   imagen: string;
   curso: string;
+  grupoParametros: number;
 
   formPostulantes: FormGroup;
 
   postulantes: any = {}
 
-  public postulanteModel: PostulantesModel = new PostulantesModel("","", "", "", "", "", "", "", "", "","","","","","","","","","","","","");
+  public postulanteModel: PostulantesModel = new PostulantesModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+  public postulanteLaboral: PostulantesLaboralModel = new PostulantesLaboralModel("", "", "", "", "", "", "", "");
 
+  public regionesModel: Lregiones[] = [new Lregiones(0, "prueba")];
+  public comunaModel: Lcomuna[] = [new Lcomuna(0, "")];
+  public parametroModel: Lparametros[] = [new Lparametros(0, "", 0)];
+  public parametroTipoComputacion: Lparametros[] = [new Lparametros(0, "", 0)];
+  public parametroTurnos: Lparametros[] = [new Lparametros(0, "", 0)];
 
   constructor(
     faConfig: FaConfig,
@@ -66,7 +76,8 @@ export class GuardiasComponent implements OnInit {
     private service: ConexionService,
     private router: Router,
     public apiService: ApiService,
-    public postulanteService: PostulantesService
+    public postulanteService: PostulantesService,
+    private regionService: LisregionesService
   ) {
     faConfig.defaultPrefix = 'far';
     library.addIcons(faUser, faHandPaper, faBellSlash);
@@ -78,6 +89,9 @@ export class GuardiasComponent implements OnInit {
   ngOnInit(): void {
 
 
+    this.obtenerEduacacion();
+    this.obtenerTipoComputacion();
+    this.obtenerTurnos();
 
     $(document).ready(function () {
       $("input#rut").rut({ formatOn: 'keyup', validateOn: 'keyup' }).on('rutInvalido', function () {
@@ -129,23 +143,40 @@ export class GuardiasComponent implements OnInit {
     })
   }
 
+
+  obtenerEduacacion() {
+    this.grupoParametros = 1;
+    return this.regionService.getParametros(this.grupoParametros).subscribe((parametroModel: Lparametros[]) => this.parametroModel = parametroModel);
+  }
+
+  obtenerTipoComputacion() {
+    this.grupoParametros = 10;
+    return this.regionService.getParametros(this.grupoParametros).subscribe((parametroTipoComputacion: Lparametros[]) => this.parametroTipoComputacion = parametroTipoComputacion);
+  }
+
+  obtenerTurnos() {
+    this.grupoParametros = 3;
+    return this.regionService.getParametros(this.grupoParametros).subscribe((parametroTurnos: Lparametros[]) => this.parametroTurnos = parametroTurnos);
+  }
+
   creaFormPostulantes() {
     this.formPostulantes = this.fb.group({
-      rut: ['', [Validators.required]],
-      nombre: ['', [Validators.required]],
       educacion: ['', [Validators.required]],
       cursoAcreditacion: ['', [Validators.required]],
-      fechaNacimiento: ['', [Validators.required]],
-      fechaAcreditacion: ['', [Validators.required]],
-      nivelComputacion: ['', [Validators.required]],
-      turnos: ['', [Validators.required]],
-      sexo: ['', [Validators.required]],
-      direccion: ['', [Validators.required]],
-      comuna: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
-      celular: ['', [Validators.required]],
       experiencia: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]]
+      fechaAcreditacion: ['', null],
+      nivelComputacion: ['', [Validators.required]],
+      turnos: ['', [Validators.required]]
+      // locacion: ['', [Validators.required]]
+      // rut: ['', [Validators.required]],
+      // nombre: ['', [Validators.required]],
+      // sexo: ['', [Validators.required]],
+      // fechaNacimiento: ['', [Validators.required]],
+      // direccion: ['', [Validators.required]],
+      // comuna: ['', [Validators.required]],
+      // telefono: ['', [Validators.required]],
+      // celular: ['', [Validators.required]],
+      // email: ['', [Validators.required, Validators.email]]
     }
     );
 
@@ -158,27 +189,45 @@ export class GuardiasComponent implements OnInit {
     //   });
   }
 
-  agregaPostulantes(value) {
+  agregaPostulantes() {
+    console.log(this.formPostulantes);
+    this.postulanteLaboral.rut = this.apiService.getRutEmpresa()
+
+    this.ruta.params.subscribe(params => {
+      console.log(params['id']);
+      this.postulanteLaboral.puestotrabajo = params['id'];
+
+      if (this.postulanteLaboral.cursoAcreditacion == "SI"){
+      this.postulanteLaboral.cursoAcreditacion = params['id'];
+      } else{
+        this.postulanteLaboral.cursoAcreditacion = "0";
+      }
+
+    })
+
+
+
+    console.log(this.postulanteLaboral);
 
     if (this.formPostulantes.valid) {
 
-      console.log(this.formPostulantes.value)
+      // console.log(this.formPostulantes.value)
 
-      this.postulantes.rut = value.rut;
-      this.postulantes.nombreCompleto = value.nombre;
-      this.postulantes.educacion = value.educacion;
-      this.postulantes.fechaAcreditacion = value.fechaAcreditacion;
-      this.postulantes.nivelComputacion = value.nivelComputacion;
-      this.postulantes.turnos = value.turnos;
-      this.postulantes.sexo = value.sexo;
-      this.postulantes.direccion = value.direccion;
-      this.postulantes.comuna = value.comuna;
-      this.postulantes.telefono = value.telefono;
-      this.postulantes.celular = value.celular;
-      this.postulantes.experiencia = value.experiencia;
-      this.postulantes.email = value.email;
+      // this.postulantes.rut = value.rut;
+      // this.postulantes.nombreCompleto = value.nombre;
+      // this.postulantes.educacion = value.educacion;
+      // this.postulantes.fechaAcreditacion = value.fechaAcreditacion;
+      // this.postulantes.nivelComputacion = value.nivelComputacion;
+      // this.postulantes.turnos = value.turnos;
+      // this.postulantes.sexo = value.sexo;
+      // this.postulantes.direccion = value.direccion;
+      // this.postulantes.comuna = value.comuna;
+      // this.postulantes.telefono = value.telefono;
+      // this.postulantes.celular = value.celular;
+      // this.postulantes.experiencia = value.experiencia;
+      // this.postulantes.email = value.email;
 
-      this.service.agregarPostulantes(this.postulantes);
+      // this.service.agregarPostulantes(this.postulantes);
     }
     else {
       alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
