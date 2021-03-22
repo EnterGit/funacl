@@ -8,7 +8,11 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Rout
 })
 
 export class AuthguardGuard implements CanActivate {
-    constructor(private dataService: ApiService, private router: Router) { }
+    constructor(
+        private dataService: ApiService,
+        private router: Router
+    ) { }
+
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
@@ -21,9 +25,9 @@ export class AuthguardGuard implements CanActivate {
             return true;
         }
         this.dataService.redirectUrl = routeurl;
+        console.log(routeurl);
         this.router.navigate(['/loginPersona'], { queryParams: { returnUrl: routeurl } });
     }
-
 
     isAuth() {
         if (this.dataService.isLoggedIn()) {

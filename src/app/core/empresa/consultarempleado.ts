@@ -1,6 +1,7 @@
 export class consultarempleado {
-   
+
     constructor(
+
         public idEvaluacion:string,
         public rutempleado:string,
         public nombreempleado:string,
@@ -15,10 +16,7 @@ export class consultarempleado {
         public autorizacion:string,
         public recomienda:string
 
-      
-  
-    
-    ){
-       }
-  }
-  
+
+    ) {
+    }
+}

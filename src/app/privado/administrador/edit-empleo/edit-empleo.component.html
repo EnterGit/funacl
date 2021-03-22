@@ -1,0 +1,211 @@
+<form [formGroup]="formGestionaEmpleos" (ngSubmit)="onSubmit()">
+    <section id="guardiaPostula">
+        <div class="container py-2 mx-auto">
+            <div class="card card0 border-0">
+                <div class="row d-flex">
+                    <div class="container">
+                        <div class="main-body">
+                            <div class="row gutters-sm">
+
+                                <div class="col-md-3 mt-2 ml-2 mr-2 mb-2">
+
+                                    <div class="form-group card mt-1">
+                                        <div class="card-body">
+                                            <div class="d-flex flex-column align-items-center text-center">
+                                                <img src="{{imagenTitulo}}" alt="Admin" class="rounded-circle"
+                                                    width="180" />
+                                                <div class="mt-2">
+                                                    <h4>{{titulo}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group card mt-4 mx-auto">
+                                        <div class="card-header">Descripción
+                                            <span class="float-right" ngbTooltip="Ayuda">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                    class="bi bi-info-circle" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                    <path
+                                                        d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+                                                    <circle cx="8" cy="4.5" r="1" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <p class="text-justify mx-auto" style="width: 90%;">Lorem ipsum dolor sit
+                                            amet
+                                            consectetur adipisicing elit. Facilis perspiciatis nam quod soluta odit
+                                            voluptatibus dicta a ipsam voluptates, eos at iure sunt tempora debitis
+                                            dignissimos! Quidem, non. Beatae doloribus aperiam ex at eius obcaecati
+                                            soluta voluptas culpa quidem dolor, dolorem sed voluptatum in magnam!
+                                            Sequi
+                                            autem animi non laudantium.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 mt-3 ml-3 mb-2 mr-2">
+                                    <div class="card mb-1">
+                                        <div class="card-body">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="lblCargoEmplei">Cargo Empleo </label>
+                                                    <input type="text" class="form-control my-1" id="cargoEmpleo"
+                                                        formControlName="cargoEmpleo"
+                                                        [(ngModel)]="empleosModel.cargoEmpleo"
+                                                        (ngModelChange)="empleosModel.cargoEmpleo = $event.toUpperCase()" />
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="lblProfesion">Profesión u Oficio</label>
+                                                    <input type="text" class="form-control my-1" id="profesion"
+                                                        formControlName="profesion"
+                                                        [(ngModel)]="empleosModel.profesion" />
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-3">
+                                                    <label for="lblVacantes">Vacantes</label>
+                                                    <input type="number" class="form-control my-1" id="vacantes"
+                                                        formControlName="vacantes"
+                                                        [(ngModel)]="empleosModel.vacantes" />
+                                                </div>
+                                                <div class="form-group col-md-9">
+                                                    <label for="lblCelular">Empresa</label>
+                                                    <input type="text" class="form-control my-1" id="empresa"
+                                                        formControlName="empresa"
+                                                        [(ngModel)]="empleosModel.empresa" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="lblRegion">Región</label>
+                                                    <select name="regiones" id="region" class="form-control my-1"
+                                                        ng-model="regiones"
+                                                        (change)="onChangeComuna($event.target.value)"
+                                                        formControlName="region" [(ngModel)]="empleosModel.region">
+                                                        <option value="">Seleccione Región</option>
+                                                        <option *ngFor="let regiones of regionesModel"
+                                                            value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE
+                                                            | uppercase}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="lblComuna">Comuna</label>
+                                                    <select name="comuna" id="comuna" class="form-control my-1 s1"
+                                                        ng-model="comuna" formControlName="comuna"
+                                                        [(ngModel)]="empleosModel.comuna">
+                                                        <option value="">Seleccione Comuna</option>
+                                                        <option *ngFor="let comuna of comunaModel"
+                                                            value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE |
+                                                            uppercase}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-10">
+                                                    <label for="lblDireccion">Dirección</label>
+                                                    <input type="text" class="form-control my-1" id="direccion"
+                                                        formControlName="direccion"
+                                                        [(ngModel)]="empleosModel.direccion" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="lblFecIniPub">Fecha Postulación</label>
+                                                    <input type="date" class="form-control my-1" id="fecPostulacion"
+                                                        formControlName="fecPostulacion"
+                                                        [(ngModel)]="empleosModel.fecPostulacion" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="lblJornada">Jornada</label>
+                                                    <select class="form-control my-1" formControlName="jornada"
+                                                        id="jornada" [(ngModel)]="empleosModel.jornada">
+                                                        <option value="" selected>Seleccione Turno</option>
+                                                        <option *ngFor="let turnos of parametroTurnos"
+                                                            value="{{turnos.pra_val}}">{{turnos.pra_des}}</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="lblSueldo">Sueldo</label>
+                                                    <input type="number" class="form-control my-1" id="sueldo"
+                                                        formControlName="sueldo"
+                                                        [(ngModel)]="empleosModel.sueldo" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="lblNivelEduacional">Nivel Educacional</label>
+                                                    <select class="form-control my-1" formControlName="educacion"
+                                                        [(ngModel)]="empleosModel.educacion">
+                                                        <option value="" selected>Seleccione Nivel Educacional
+                                                        </option>
+                                                        <option *ngFor="let nivelEdu of parametroModel"
+                                                            value="{{nivelEdu.pra_val}}">{{nivelEdu.pra_des}}
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="lblExperiencia">Experiencia (años)</label>
+                                                    <input type="email" class="form-control my-1" id="experiencia"
+                                                        formControlName="experiencia"
+                                                        [(ngModel)]="empleosModel.experiencia" />
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="lblJornada">Tipo Contrato</label>
+                                                    <select class="form-control my-1" formControlName="tipoContrato"
+                                                        id="tipoContrato" [(ngModel)]="empleosModel.tipoContrato">
+                                                        <option value="" selected>Seleccione Tipo Contrato</option>
+                                                        <option *ngFor="let tipoContrato of parametroTipoContrato"
+                                                            value="{{tipoContrato.pra_val}}">
+                                                            {{tipoContrato.pra_des}}
+                                                        </option>
+
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Descripción de
+                                                    Empleo</label>
+                                                <textarea class="form-control my-1" id="descEmpleo" rows="2"
+                                                    formControlName="descEmpleo"
+                                                    [(ngModel)]="empleosModel.descEmpleo"></textarea>
+                                            </div>
+                                            <hr />
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6 text-center">
+                                                    <button type="submit"
+                                                        class="btn btn-outline-primary">Actualizar</button>
+                                                </div>
+                                                <div class="form-group col-md-6 text-center">
+                                                    <button class="btn btn-outline-primary" (click)="volver()">
+                                                        Volver</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

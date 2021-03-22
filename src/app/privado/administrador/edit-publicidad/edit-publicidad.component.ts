@@ -1,6 +1,6 @@
 import { PostPublicidad } from '../../../core/admin/empleos';
 import { Publicidad } from '../../../core/admin/empleos';
-import { EmpleosService } from '../../../services/publicidad/empleos.service';
+import { PublicidadService } from '../../../services/publicidad/publicidad.service';
 
 import { environment } from './../../../../environments/environment';
 import { Router } from '@angular/router';
@@ -9,6 +9,12 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { RutService } from 'rut-chileno'
+
+import * as $ from 'jquery';
+
+declare var $: any;
+declare var jQuery: any;
 
 @Component({
   selector: 'app-edit-publicidad',
@@ -32,10 +38,6 @@ export class EditPublicidadComponent implements OnInit {
   baseUrl = environment.baseUrl + '/Upload/';
 
 
-  // public publicidades: Publicidad = new Publicidad("1", "1",1);
-
- 
-
   public publicidadModel: PostPublicidad = new PostPublicidad("", "", "", "", "", "", "", "", "");
 
 
@@ -44,7 +46,8 @@ export class EditPublicidadComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private empleoService: EmpleosService
+    private publicidadService: PublicidadService,
+    private rutService: RutService
   ) {
     // this.seteaBloques();
     this.createForm();
@@ -55,9 +58,22 @@ export class EditPublicidadComponent implements OnInit {
     this.titulo = "Editar Publicidad";
     this.imagenTitulo = "https://www.sgtpropiedades.cl/wp-content/uploads/2018/09/publicagratis.jpg";
 
+
+    $(document).ready(function () {
+      $("input#rutEmpresa").rut({ validateOn: 'blur' }).on('rutInvalido', function () {
+        $(".rutErrorEmp").addClass("alert alert-danger")
+        $(".rutErrorEmp").text("Rut inválido");
+        $('input#rutEmpresa').val("");
+
+      }).on('rutValido', function () {
+        $(".rutErrorEmp").removeClass("alert alert-danger ")
+        $(".rutErrorEmp").empty();
+      });
+    })
+
     let idpublicidad = this.ruta.snapshot.paramMap.get("id");
-    this.empleoService.getEmpleo(idpublicidad)
-    .subscribe((publicidadModel: PostPublicidad) => this.publicidadModel = publicidadModel)
+    this.publicidadService.getEmpleo(idpublicidad)
+      .subscribe((publicidadModel: PostPublicidad) => this.publicidadModel = publicidadModel)
   }
 
 
@@ -70,8 +86,8 @@ export class EditPublicidadComponent implements OnInit {
       fecIniPub: ['', Validators.required],
       fecTerPub: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      subirArchivo: [''],
       imagenUrl: ['', Validators.required],
-      subirArchivo: ['', Validators.required],
       descPublicidad: ['', Validators.required]
     })
   }
@@ -80,25 +96,28 @@ export class EditPublicidadComponent implements OnInit {
   get f() { return this.formGestionPublicidad.controls; }
 
   onSubmit() {
-
     console.log(this.publicidadModel);
+    console.log(this.formGestionPublicidad);
+
+
+    this.publicidadModel.rutEmpresa = String(this.rutService.getRutChile(2, this.publicidadModel.rutEmpresa));
+    console.log(this.publicidadModel.rutEmpresa);
+
     this.submitted = true;
-    
     if (this.formGestionPublicidad.valid) {
 
-    this.empleoService.updatePublicidad(this.publicidadModel).subscribe(() => {
-      this.volver();
-    });
+      this.publicidadModel.rutEmpresa = String(this.rutService.getRutChile(2, this.publicidadModel.rutEmpresa));
+      console.log(this.publicidadModel.rutEmpresa);
 
-  } else {
-    alert("FAVOR COMPLETAR TODOS LOS CAMPOS ");  
+      this.publicidadService.updatePublicidad(this.publicidadModel).subscribe(() => {
+        this.volver();
+      });
+
+    } else {
+      alert("FAVOR COMPLETAR TODOS LOS CAMPOS ");
       return;
-  }
+    }
 
-    // console.log(this.publicidadModel);
-    // this.empleoService.addEmpleo(this.publicidadModel).subscribe(() => {
-    //   this.router.navigate(['/accesoAdmin/GestionarPublicidad/1']);
-    // })
   }
 
   volver() {

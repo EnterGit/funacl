@@ -2,6 +2,7 @@ body {
 	color: #000;
 	overflow-x: hidden;
 	height: 100%;
+	width: 1000px;
 	background-color: #EEEEEE;
 	background-repeat: no-repeat
 }
@@ -75,6 +76,19 @@ a {
 }
 
 input {
+	padding: 10px 12px 10px 12px;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	margin-bottom: 25px;
+	margin-top: 2px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #2C3E50;
+	font-size: 14px;
+	letter-spacing: 1px
+}
+
+.input {
 	padding: 10px 12px 10px 12px;
 	border: 1px solid lightgrey;
 	border-radius: 10px;
@@ -224,4 +238,21 @@ button:focus {
 .radio-inline label {
 	text-align: left;
 	padding-left: 0.5em;
+}
+
+.ng-invalid{
+	border-left: 5px solid #a94442 !important; /* red */
+	border-color:  #a94442 !important; /* red */
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(169,68,66,.6) !important;
+  }
+
+  .ng-valid:not([disabled])  {
+	border-left: 5px solid #42A948; /* green */
+}
+
+.password-icon {
+	float: right;
+	position: relative;
+	margin: -25px 10px 0 0;
+	cursor: pointer;
 }

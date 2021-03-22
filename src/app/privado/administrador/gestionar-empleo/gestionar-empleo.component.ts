@@ -1,12 +1,16 @@
-import { PubempleosService } from './../../../services/admin/pubempleos/pubempleos.service';
+import { Item } from './../../../services/conexion.service';
+import { Globals } from './../../../globals';
+import { ApiService } from './../../../services/login/api.service';
+import { PubempleosService } from '../../../services/admin/pubempleos/pubempleos.service';
 import { Lparametros } from '../../../core/parametros/parametros';
-import { PostEmpleos } from '../../../core/admin/empleos';
+import { PostEmpleos, ListEmpleos } from '../../../core/admin/empleos';
 import { Lregiones, Lcomuna } from '../../../core/parametros/regiones.model';
 import { LisregionesService } from '../../../services/parametros/lisregiones.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-gestionar-empleo',
@@ -20,23 +24,38 @@ export class GestionarEmpleoComponent implements OnInit {
   curso: string;
   formGestionaEmpleos: FormGroup;
 
-  grupoParametros : number;
+  faTrashAlt = faTrashAlt;
+  faPencilAlt = faPencilAlt;
+
+  grupoParametros: number;
+
+  listarRegistro: boolean;
+  mostrarFormEmpleo: boolean;
 
   public regionesModel: Lregiones[] = [new Lregiones(0, "prueba")];
   public comunaModel: Lcomuna[] = [new Lcomuna(0, "")];
   public parametroModel: Lparametros[] = [new Lparametros(0, "", 0)];
-
-  public empleosModel : PostEmpleos = new PostEmpleos("","","","","","","","","","","","","","") ;
+  public parametroTipoContrato: Lparametros[] = [new Lparametros(0, "", 0)];
+  public parametroTurnos: Lparametros[] = [new Lparametros(0, "", 0)];
   
-  public parametroTipoContrato : Lparametros[] = [new Lparametros(0, "", 0)];
-  public parametroTurnos : Lparametros[] = [new Lparametros(0, "", 0)];
+  public empleosModel: PostEmpleos = new PostEmpleos("", "", "", "", "", "", "", "", "", "", "", "", "", "");
+  public listadoEmpleo: ListEmpleos[] = [new ListEmpleos("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")];
+
+  editarItem: any = {
+    idEmpleo: '',
+    nombre:'CLAUDIO'
+
+  }
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
     private regionService: LisregionesService,
-    private pubEmpleosService: PubempleosService
+    private pubEmpleosService: PubempleosService,
+    public apiservice: ApiService,
+    public global: Globals,
+    private ruta: ActivatedRoute
   ) {
     this.creaFormEmpleo();
 
@@ -50,7 +69,12 @@ export class GestionarEmpleoComponent implements OnInit {
     this.obtenerEduacacion();
     this.obtenerTipoContrato();
     this.obtenerTurnos();
-   }
+
+    this.seteaBloques();
+
+    console.log("PRUEBAAA");
+    console.log(this.global.perfil);
+  }
 
 
   creaFormEmpleo() {
@@ -100,17 +124,64 @@ export class GestionarEmpleoComponent implements OnInit {
   onSubmit() {
     if (this.formGestionaEmpleos.valid) {
       this.pubEmpleosService.addEmpleos(this.empleosModel).subscribe(() => {
-        this.router.navigate(['/accesoAdmin/GestionarEmpleo']);
-        // this.formGestionaEmpleos.reset();
+        this.router.navigate(['/accesoAdmin/GestionarEmpleo/2']);
+        this.formGestionaEmpleos.reset();
       })
-    } else
-    {
+    } else {
       alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
     }
   }
 
 
+  listadoEmpleos() {
+    return this.pubEmpleosService.listadoEmpleos().subscribe((listadoEmpleo: ListEmpleos[]) => {
+      this.listadoEmpleo = listadoEmpleo
+    });
+  }
 
+  seteaBloques() {
+    this.ruta.params.subscribe(params => {
+      switch (params['id']) {
+        case '1': {
+          this.listarRegistro = false;
+          this.mostrarFormEmpleo = true;
+          break;
+        }
+        case '2': {
+          this.listarRegistro = true;
+          this.mostrarFormEmpleo = false;
+          this.listadoEmpleos();
+          break;
+        }
+        default: {
+          this.router.navigate(['/accesoAdmin']);
+          break;
+        }
+      }
+    })
+  }
+
+
+  editarEmpleo(editPubli) {
+    this.editarItem = editPubli;
+    this.editarItem
+  }
+
+
+  eliminarEmpleo(Item){
+    this.pubEmpleosService
+    .deleteEmpleo(Item)
+    .subscribe(() => {
+      this.listadoEmpleos();
+    });
+  }
+
+  private nombreUsuario(nameuser: string): void {
+
+    console.log("PASO2");
+    console.log(nameuser);
+
+  }
 
 }
 

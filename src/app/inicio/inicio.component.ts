@@ -1,5 +1,6 @@
+import { EncriptarService } from './../services/seguridad/encriptar.service';
 import { AuthguardGuard } from './../core/authguard.guard';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app'
@@ -10,7 +11,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 // servicio
 import { Publicidad } from '../core/admin/empleos';
-import { EmpleosService } from '../services/publicidad/empleos.service';
+import { PublicidadService } from '../services/publicidad/publicidad.service';
+
+
+
 
 @Component({
   selector: 'app-inicio',
@@ -20,36 +24,53 @@ import { EmpleosService } from '../services/publicidad/empleos.service';
 export class InicioComponent implements OnInit {
 
   public publicidades: Publicidad[] = [
-    new Publicidad("1","")
+    new Publicidad("1", "")
   ];
 
   items: Observable<any[]>;
   loginbtn: boolean;
 
+  public salidaPassword: string = "";
+
+  nombreUsuario: string;
+
+
+
   constructor(
-    private db: AngularFirestore, 
-    private empleoService: EmpleosService,
+    private db: AngularFirestore,
+    private empleoService: PublicidadService,
     protected dataService: ApiService,
-    protected authAcceso: AuthguardGuard
-    ) {
+    protected authAcceso: AuthguardGuard,
+    private encriptar: EncriptarService
+  ) {
     // this.items = db.collection('items').valueChanges();
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
 
-    if (this.authAcceso.isAuth()){
+    if (this.authAcceso.isAuth()) {
       this.loginbtn = true;
     }
 
     this.obtenerPublicidad();
+    this.encriptarpassword();
+
+    console.log(this.nombreUsuario);
+    
   }
 
-  obtenerPublicidad(){
+  obtenerPublicidad() {
     return this.empleoService
-    .getPublicidad()
-    .subscribe((publicidad: Publicidad[]) => this.publicidades = publicidad);
+      .getPublicidad()
+      .subscribe((publicidad: Publicidad[]) => this.publicidades = publicidad);
   }
 
+  encriptarpassword() {
+    this.nombreUsuario = "HOLAqqqq";
+    return this.nombreUsuario = this.encriptar.encriptarDatos(this.nombreUsuario);
+  }
+
+ 
 
 
   customOptions: OwlOptions = {

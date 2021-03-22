@@ -15,4 +15,23 @@ export class PubempleosService {
   addEmpleos(empleos: PostEmpleos) {
     return this.http.post(`${this.baseUrl}/empleos/postEmpleos.php`, empleos ,{observe: 'events'});
   }
+
+  listadoEmpleos() {
+    console.log("RUTA :" + this.baseUrl);
+    return this.http.get(`${this.baseUrl}/empleos/getAllEmpleos.php`);
+  }
+
+  getOneEmpleo(id: string | number) {
+    console.log("llama empleo" + id);
+    return this.http.get(`${this.baseUrl}/empleos/getOneEmpleo.php?idempleo=${id}`);
+  }
+
+  updateEmpleo(empleo: PostEmpleos) {
+    return this.http.put(`${this.baseUrl}/empleos/updateEmpleos.php`, empleo);
+  }
+
+  deleteEmpleo(empleo: PostEmpleos) {
+    return this.http.delete(`${this.baseUrl}/empleos/deleteEmpleo.php?idEmpleos=${empleo}`);
+  }
+
 }

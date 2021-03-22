@@ -16,18 +16,20 @@ import { FormsModule } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 //Modeo
-import { Larticulos,Linciso, Lcausal } from './../../../core/empresa/comboempresa.model';
+import { Larticulos, Linciso, Lcausal } from './../../../core/empresa/comboempresa.model';
 import { registroempleado } from '../../../core/empresa/registroempleado';
 //Servicio
 import { RegistroempleadoService } from '../../../services/empresa/registroempleado/registroempleado.service';
-import {ComboempresaService}  from '../../../services/parametros/comboempresa.service';
+import { ComboempresaService } from '../../../services/parametros/comboempresa.service';
 //Material
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+
 import {DialogoconfirmacionComponent} from '../../../dialogoconfirmacion/dialogoconfirmacion.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -36,12 +38,14 @@ declare var $: any;
 declare var jQuery: any;
 declare var $: any;
 declare var jQuery: any;
+
 @Component({
     selector: 'app-referirempleado',
     templateUrl: './referirempleado.component.html',
     styleUrls: ['./referirempleado.component.css'],
 })
 export class ReferirempleadoComponent implements OnInit {
+
 
     datos;
     // Seleccionamos o iniciamos el valor '0' del <select>
@@ -244,3 +248,4 @@ export class ReferirempleadoComponent implements OnInit {
 
     }
 }
+

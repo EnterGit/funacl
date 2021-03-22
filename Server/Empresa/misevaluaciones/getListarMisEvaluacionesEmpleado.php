@@ -20,3 +20,6 @@ echo json_encode($evaluacion);
 
 
 
+//SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = '12345' and rutempresa= '678910'
+
+

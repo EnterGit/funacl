@@ -42,7 +42,7 @@ export class ConsultarempleadoComponent implements OnInit {
 public showSpinner = false;
 
   public  empleados: consultarempleado[] = [ 
-    new  consultarempleado ("1111","pruea", "11111", "empresa x", "2021-02-02", "2021-02-02","", "articulo", "","inciso","observacion", "si", "si")
+    new  consultarempleado ("11111","pruea", "11111", "empresa x", "2021-02-02", "2021-02-02","", "articulo", "","inciso","observacion", "si", "si")
   ];
 
   
@@ -60,6 +60,7 @@ public showSpinner = false;
   ngOnInit(): void {
     this.obtenerConsultado();
   }
+
 
 
 
@@ -131,5 +132,5 @@ onChange(enable: boolean) {
 
     
   }
-}
 
+}

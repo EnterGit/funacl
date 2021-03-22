@@ -22,8 +22,8 @@
               <h3>¿Quiere saber, a quien esta contratando?
                 contamos con la información que usted necesita</h3>
               <br>
-              <a href="#" class="appao-btn" [routerLink]="['/accesoEmpresa']">Ingreso Empresa</a>
-              <a href="#" class="appao-btn" [routerLink]="['/accesoAdmin']">Ingreso Administrador</a>
+              <a href="#" class="appao-btn" routerLink="/loginPersona">Ingreso Empresa</a>
+              <a href="#" class="appao-btn" routerLink="/loginPersona">Ingreso Administrador</a>
             </div>
           </div>
           <div class="col-lg-5">
@@ -45,12 +45,13 @@
 
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let item of publicidades; index as i"><img
-              src="{{item.imagenUrl}}" class="img-thumbnail media"></ng-template>
+              [src]="'/assets/upload/' +  item.imagenUrl" class="img-thumbnail media">
+
+          </ng-template>
         </owl-carousel-o>
 
-        
+
       </div>
     </div>
   </div>
 </section>
-
