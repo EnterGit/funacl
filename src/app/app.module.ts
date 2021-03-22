@@ -45,7 +45,6 @@ import { PublicidadComponent } from './publica/publicidad/publicidad.component';
 import { PortalEmpleoComponent } from './publica/portal-empleo/portal-empleo.component';
 
 
-
 // publicidad
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -77,15 +76,10 @@ import {MatPaginator} from '@angular/material/paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DetallemisevaluacionesComponent } from './privado/empresa/detallemisevaluaciones/detallemisevaluaciones.component';
 
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatPaginator } from '@angular/material/paginator';
+
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
-
 import { CifrarComponent } from './components/cifrar/cifrar.component';
-
 import { RutModule } from 'rut-chileno';
 
 

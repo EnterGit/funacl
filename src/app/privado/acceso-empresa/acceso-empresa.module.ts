@@ -4,18 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
 import { AccesoEmpresaComponent } from './acceso-empresa.component';
 import { ReferirempleadoComponent } from '../empresa/referirempleado/referirempleado.component';
 import { ConsultarempleadoComponent } from '../empresa/consultarempleado/consultarempleado.component';
 import { MisevaluacionesComponent } from '../empresa/misevaluaciones/misevaluaciones.component';
 import { BuscarempleadoComponent } from '../empresa/buscarempleado/buscarempleado.component';
-
 import {DetallemisevaluacionesComponent} from '../empresa/detallemisevaluaciones/detallemisevaluaciones.component';
-
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -29,12 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
-
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
