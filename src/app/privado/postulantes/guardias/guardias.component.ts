@@ -1,9 +1,8 @@
-import { PostulantesModel, PostulantesLaboralModel } from './../../../core/publico/postulantes.model';
+import { PostulantesModel, PostulantesLaboralModel, ValidaRutPuestoModel } from './../../../core/publico/postulantes.model';
 import { PostulantesService } from './../../../services/admin/postulantes/postulantes.service';
 import { ApiService } from '../../../services/login/api.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { ConexionService, Postulantes } from '../../../services/conexion.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBellSlash, faHandPaper, faUser } from '@fortawesome/free-regular-svg-icons';
@@ -14,7 +13,6 @@ import { Lparametros } from '../../../core/parametros/parametros';
 import { Lregiones, Lcomuna } from '../../../core/parametros/regiones.model';
 import { LisregionesService } from '../../../services/parametros/lisregiones.service';
 import { debounceTime } from 'rxjs/operators';
-
 
 import * as $ from 'jquery';
 
@@ -48,18 +46,17 @@ export class GuardiasComponent implements OnInit {
   faCalendar = faCalendar;
   faCalendarAlt = faCalendarAlt;
 
-
   titulo: string;
   imagen: string;
   curso: string;
   grupoParametros: number;
 
   formPostulantes: FormGroup;
-
   postulantes: any = {}
 
   public postulanteModel: PostulantesModel = new PostulantesModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
   public postulanteLaboral: PostulantesLaboralModel = new PostulantesLaboralModel("", "", "", "", "", "", "", "");
+  public validaRutPuesto: ValidaRutPuestoModel = new ValidaRutPuestoModel("","");
 
   public regionesModel: Lregiones[] = [new Lregiones(0, "prueba")];
   public comunaModel: Lcomuna[] = [new Lcomuna(0, "")];
@@ -67,13 +64,13 @@ export class GuardiasComponent implements OnInit {
   public parametroTipoComputacion: Lparametros[] = [new Lparametros(0, "", 0)];
   public parametroTurnos: Lparametros[] = [new Lparametros(0, "", 0)];
 
+
   constructor(
     faConfig: FaConfig,
     library: FaIconLibrary,
     private http: HttpClient,
     private ruta: ActivatedRoute,
     private fb: FormBuilder,
-    private service: ConexionService,
     private router: Router,
     public apiService: ApiService,
     public postulanteService: PostulantesService,
@@ -108,6 +105,25 @@ export class GuardiasComponent implements OnInit {
       .subscribe((postulanteModel: PostulantesModel) => {
         this.postulanteModel = postulanteModel
         console.log(this.postulanteModel);
+      })
+
+      this.ruta.params.subscribe(params => {
+        this.validaRutPuesto.puestotrabajo = params['id']
+      })
+      this.validaRutPuesto.rut = this.apiService.getRutEmpresa();
+
+      this.postulanteService.validaPuestoPostula(this.validaRutPuesto).subscribe(event => {
+        if (event.type === HttpEventType.Response) {
+          // console.log("With Parsed JSON :", event.body);
+          if (event.body['existeRut'] > 0){
+            alert("YA ESTA INGRESADO")
+            this.router.navigate(['/postula/']);
+          }       
+
+          if (event.body['resultado'] === false) {
+            alert("ERROR INGRESO");
+          }
+        }
       })
   }
 
@@ -197,37 +213,24 @@ export class GuardiasComponent implements OnInit {
       console.log(params['id']);
       this.postulanteLaboral.puestotrabajo = params['id'];
 
-      if (this.postulanteLaboral.cursoAcreditacion == "SI"){
-      this.postulanteLaboral.cursoAcreditacion = params['id'];
-      } else{
+      if (this.postulanteLaboral.cursoAcreditacion == "SI") {
+        this.postulanteLaboral.cursoAcreditacion = params['id'];
+      } else {
         this.postulanteLaboral.cursoAcreditacion = "0";
       }
-
     })
 
-
-
-    console.log(this.postulanteLaboral);
-
     if (this.formPostulantes.valid) {
-
-      // console.log(this.formPostulantes.value)
-
-      // this.postulantes.rut = value.rut;
-      // this.postulantes.nombreCompleto = value.nombre;
-      // this.postulantes.educacion = value.educacion;
-      // this.postulantes.fechaAcreditacion = value.fechaAcreditacion;
-      // this.postulantes.nivelComputacion = value.nivelComputacion;
-      // this.postulantes.turnos = value.turnos;
-      // this.postulantes.sexo = value.sexo;
-      // this.postulantes.direccion = value.direccion;
-      // this.postulantes.comuna = value.comuna;
-      // this.postulantes.telefono = value.telefono;
-      // this.postulantes.celular = value.celular;
-      // this.postulantes.experiencia = value.experiencia;
-      // this.postulantes.email = value.email;
-
-      // this.service.agregarPostulantes(this.postulantes);
+      console.log(this.postulanteLaboral);
+      this.postulanteService.addPostLaboral(this.postulanteLaboral).subscribe(event => {
+        this.router.navigate(['/accesoPostulante/']);
+        if (event.type === HttpEventType.Response) {
+          console.log("With Parsed JSON :", event.body);
+          if (event.body['resultado'] === false) {
+            alert("ERROR INGRESO");
+          }
+        }
+      })
     }
     else {
       alert("FAVOR COMPLETAR TODOS LOS CAMPOS ")
@@ -235,9 +238,9 @@ export class GuardiasComponent implements OnInit {
   }
 
 
-  checarSiSonIguales(): boolean {
-    return this.formPostulantes.hasError('noSonIguales') &&
-      this.formPostulantes.get('ruy').dirty;
-  }
+  // checarSiSonIguales(): boolean {
+  //   return this.formPostulantes.hasError('noSonIguales') &&
+  //     this.formPostulantes.get('ruy').dirty;
+  // }
 
 }

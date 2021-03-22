@@ -40,11 +40,15 @@ export class PostulantesLaboralModel {
       public cursoAcreditacion: string,
       public fechaAcreditacion: string,
       public experiencia: string,
-      // public especialidad: string,
       public nivelComputacion: string,
       public turnos: string,
       public puestotrabajo: string
-      // ,public locacion: string
    ) {}
 }
 
+export class ValidaRutPuestoModel {
+   constructor(
+      public rut: string,
+      public puestotrabajo: string
+   ) {}
+}

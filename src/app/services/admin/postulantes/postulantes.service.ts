@@ -1,4 +1,4 @@
-import { PostulantesModel } from './../../../core/publico/postulantes.model';
+import { PostulantesModel, PostulantesLaboralModel,ValidaRutPuestoModel } from './../../../core/publico/postulantes.model';
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -36,5 +36,13 @@ export class PostulantesService {
   verificaRutPostulante(rutPostulante: string) {
     console.log("LLAMA A CONSULTAR RUT :" + rutPostulante);
     return this.http.get(`${this.baseUrl}/postulantes/verificaRutPostulante.php?rutPostulante='${rutPostulante}'`);
+  }
+
+  addPostLaboral(empleos: PostulantesLaboralModel) {
+    return this.http.post(`${this.baseUrl}/postulantes/postPostulaLaboral.php`, empleos ,{observe: 'events'});
+  }
+
+  validaPuestoPostula(puesto: ValidaRutPuestoModel) {
+    return this.http.post(`${this.baseUrl}/postulantes/validaPuestoPostula.php`, puesto ,{observe: 'events'});
   }
 }
