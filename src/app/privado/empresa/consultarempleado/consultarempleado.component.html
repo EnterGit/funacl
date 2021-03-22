@@ -1,42 +1,116 @@
 <!-- <form (ngSubmit)="onSubmit()" [formGroup]="formConsultarEmpleado"> -->
 
-  <div class="container">
 
-    <h3 class="mb-1">Consultar Empleado</h3>
-    <p class="mb-4 text-sm"></p>
-    <div class="row">
-      <div class="col-lg-12 card-margin">
-        <div class="card search-form">
-          <div class="card-body p-0">
-            <div class="row">
-              <div class="col-12">
-                <div class="row no-gutters">
-  
-  
-                  <div class="col-lg-10 col-md-6 col-sm-12 p-0">
-  
-                    <input matInput name="rutConsultado" [(ngModel)]="rutConsultado" type="text"
-                      placeholder="Ingrese Rut del Empleado a Consultar ">
-  
-  
-  
-  
+    <div class="container">
+        <!-- <mat-progress-spinner></mat-progress-spinner> -->
+        <h3 class="mb-1">Consultar Empleado</h3>
+        <p class="mb-4 text-sm"></p>
+        <div class="row">
+          <div class="col-lg-12 card-margin">
+            <div class="card search-form">
+              <div class="card-body p-0">
+                <div class="row">
+                  <div class="col-lg-12 card-margin">
+                      <div class="card search-form">     
+                              <form id="search-form">
+                                  <div class="row">
+                                      <div class="col-12">
+                                          <div class="row no-gutters">
+                                              <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                                <label for="lblJornada">Traer todos</label>
+                                               
+                                                <div>
+                                                    <label for="lblNo" ngClass="labelBeforeSlide">NO</label>
+                                                 
+                                                    <mat-slide-toggle    formControlName="Todos" (change)="onChange($event.checked)">SI</mat-slide-toggle>
+                                                 </div>
+ 
+                                              </div>
+                                              <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                                                     <input matInput name="rutConsultado" [(ngModel)]="rutConsultado" type="text" [disabled]='disableTextbox'
+                                                  placeholder="Ingrese Rut del Empleado a Consultar ">
+                              
+                                                </div>
+                                              <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                                <button type="button" class="btn btn-base" (click)="obtenerConsultado()">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-search">
+                                                    <circle cx="11" cy="11" r="8"></circle>
+                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                  </svg>
+                                                </button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </form>
                   </div>
-                  <div class="col-lg-2 col-md-3 col-sm-12 p-0">
-                    <button type="button" class="btn btn-base" (click)="obtenerConsultado()">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-search">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+              </div>
+            
               </div>
             </div>
           </div>
         </div>
+
+      
+        <div class="row">
+
+            <!-- <mat-progress-spinner mode="determinate" value='66' diameter="45"></mat-progress-spinner>
+       -->
+  
+      
+       <h2>Listado de Evaluados en el sistema</h2>
+          <table mat-table [dataSource]="empleados" class="mat-elevation-z8" style="width:
+              100%;">
+               <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef>ID Evaluacion</th>
+                  <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.idEvaluacion}} </td>
+              </ng-container>
+              <ng-container matColumnDef="rut">
+                  <th mat-header-cell *matHeaderCellDef>Rut Empleado</th>
+                  <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.rutempleado}} </td>
+              </ng-container>
+              <ng-container matColumnDef="nombre">
+                  <th mat-header-cell *matHeaderCellDef>Nombre Empleado</th>
+                  <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.nombreempleado}} </td>
+              </ng-container>
+              <ng-container matColumnDef="articulo">
+                  <th mat-header-cell *matHeaderCellDef>Articulo</th>
+                  <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.nombrearticulo}} </td>
+              </ng-container>
+              <ng-container matColumnDef="inciso">
+                  <th mat-header-cell *matHeaderCellDef>Inciso</th>
+                  <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.nombreincisocorto}} </td>
+              </ng-container>
+              <ng-container matColumnDef="fechaingreso">
+                  <th mat-header-cell *matHeaderCellDef>fechaingreso</th>
+                  <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.fechaingreso}} </td>
+              </ng-container>
+              <ng-container matColumnDef="fechatermino">
+                  <th mat-header-cell *matHeaderCellDef>fechatermino</th>
+                  <td mat-cell *matCellDef="let consultarempleado"> {{consultarempleado.fechatermino}} </td>
+              </ng-container>
+              
+             
+              <ng-container matColumnDef="ver">
+                  <th mat-header-cell *matHeaderCellDef>ver Detalle</th>
+                  <td mat-cell *matCellDef="let consultarempleado">
+                     <button (click)="verDetalle(consultarempleado.idEvaluacion)" mat-icon-button>
+                        <mat-icon>launch</mat-icon>
+                    </button>
+                  </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="['id','rut', 'nombre', 'articulo','inciso', 'fechaingreso','fechatermino',
+                  'ver']"></tr>
+              <tr mat-row *matRowDef="let fila; columns: ['id','rut', 'nombre', 'articulo','inciso','fechaingreso','fechatermino',
+                   'ver'];"></tr>
+          </table>
+       
+      </div>
+      
+
       </div>
     </div>
     <div class="row">

@@ -1,3 +1,4 @@
+
 import { PostulantesService } from './../services/admin/postulantes/postulantes.service';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Lparametros } from './../core/parametros/parametros';
@@ -7,6 +8,7 @@ import { LisregionesService } from './../services/parametros/lisregiones.service
 
 
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';

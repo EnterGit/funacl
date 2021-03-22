@@ -1,6 +1,7 @@
 export class registroempleado {
 
   constructor(
+    public idEvaluacion: string,
     public rutempleado: string,
     public nombreempleado: string,
     public rutempresa: string,
@@ -8,13 +9,11 @@ export class registroempleado {
     public fechaingreso: string,
     public fechatermino: string,
     public idarticulo: string,
-    public nombrearticulo: string,
     public idinciso: string,
-    public nombreinciso: string,
     public Observacion: string,
     public autorizacion: string,
     public recomienda: string,
-    public idEvaluacion?: number
+//    public idEvaluacion?: number
   ) {
 
   }

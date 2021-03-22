@@ -1,10 +1,15 @@
 import { IngempresaService } from './../../../services/admin/Ingempresa/ingempresa.service';
-import { PerfilEmpresa, ExisteRutEmpresa } from './../../../core/admin/perfilempresa';
-import { Component, OnInit, Input } from '@angular/core';
 
-import { Router, Params, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { PerfilEmpresa } from './../../../core/admin/perfilempresa';
+import { Component, OnInit } from '@angular/core';
+// import { AuthService } from '../core/auth.service'
+import { Observable } from 'rxjs';
+import { Router, Params } from '@angular/router';
+
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+
 import { ConexionService } from './../../../services/conexion.service';
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -12,6 +17,12 @@ import { faCoffee, faTrash, faTrashAlt, faPencilAlt } from '@fortawesome/free-so
 import { RutService } from 'rut-chileno'
 
 import * as $ from 'jquery';
+
+
+
+
+
+
 
 
 declare var $: any;
@@ -76,6 +87,8 @@ export class RegistroComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+
 
     $(document).ready(function () {
       $("input#rutEmpresa").rut({ validateOn: 'blur' }).on('rutInvalido', function () {

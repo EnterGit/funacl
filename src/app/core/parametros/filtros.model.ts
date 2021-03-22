@@ -21,3 +21,11 @@ export class Lturnos {
         public descripcionturno: string, 
     ){}
 }
+
+export class LSexo {
+    constructor(
+        public idSexo: number, 
+        public nombreSezo: string,
+        public descripcionturno: string, 
+    ){}
+}

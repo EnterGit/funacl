@@ -70,6 +70,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatPaginator} from '@angular/material/paginator';
+//import {MatSort} from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { DetallemisevaluacionesComponent } from './privado/empresa/detallemisevaluaciones/detallemisevaluaciones.component';
+
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -128,12 +135,19 @@ const routes: Routes = [
     LoginPersonaComponent,
     RegistoPostulanteComponent,
     DialogoconfirmacionComponent,
+
+    DetallemisevaluacionesComponent,
+ 
+ 
+    
+
     CifrarComponent
     //ReferirempleadoComponent
     // EvaluarempleadoComponent,
     // BuscarempleadoComponent,
     // ConsultarempleadoComponent
     // EmpresaComponent,
+
 
 
   ],
@@ -160,8 +174,14 @@ const routes: Routes = [
     MatTableModule,
     MatDialogModule,
     MatSnackBarModule,
+
+    //MatPaginatorModule,
+    //MatPaginator,
+    //MatSort,
+
     MatPaginatorModule,
     RutModule
+
   ],
   providers: [
     AuthService,

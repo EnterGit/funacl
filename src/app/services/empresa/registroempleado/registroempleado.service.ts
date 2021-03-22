@@ -14,9 +14,23 @@ export class RegistroempleadoService {
 
   addEvaluacionEmpleado(EvaluacionEmpleado: registroempleado) {
  
-    console.log(EvaluacionEmpleado);
-    return this.http.post(`${this.baseUrl}/Empresa/evaluarEmpleado/postEvaluarEmpleado.php`, EvaluacionEmpleado);
+   // console.log("Valor desde Servicio:" + EvaluacionEmpleado);
+    //return this.http.post(`${this.baseUrl}/Empresa/evaluarEmpleado/postEvaluarEmpleado.php`, EvaluacionEmpleado);
+    return this.http.post(`${this.baseUrl}/Empresa/evaluarEmpleado/postEvaluarEmpleado.php`, EvaluacionEmpleado,{observe: 'events'});
+    
   }
 
+  ActualizarEvaluacion(EvaluacionEmpleado: registroempleado) {
+  
+    return this.http.post(`${this.baseUrl}/Empresa/evaluarEmpleado/postActualizarEvaluacion.php`, EvaluacionEmpleado,{observe: 'events'});
 
+  }
+
+//Se utiliza, cuando se requiere editar la evaluación
+getEditarEvaluacion(IDevaluacion: string | number) {
+  console.log("Servicio Editar" + IDevaluacion);
+  return this.http.get(`${this.baseUrl}/Empresa/evaluarEmpleado/getEditarEvaluacion.php?IDevaluacion=${IDevaluacion}`);
+
+  
+}
 }

@@ -16,6 +16,28 @@
     
   }
 
+
+
+ /* .CampoIncorrecto{
+    border-left: 5px solid red;
+  }
+  .CampoCorrecto{
+    border-color: rgb(38, 223, 38); 
+    border-left: 5px solid rgb(38, 223, 38);
+    
+  } */
+
   .error{
     color: red;
   }
+
+
+  .primary-color {
+    color: red; 
+}
+
+
+
+.primary-color {
+  color: red; 
+}
