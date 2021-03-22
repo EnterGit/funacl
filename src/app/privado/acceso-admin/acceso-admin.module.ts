@@ -3,16 +3,13 @@ import { GestionarEmpleoComponent } from '../administrador/gestionar-empleo/gest
 import { GestionarPublicidadComponent } from '../administrador/gestionar-publicidad/gestionar-publicidad.component';
 import { AutorizarFunaComponent } from '../administrador/autorizar-funa/autorizar-funa.component';
 import { AccesoAdminComponent } from './acceso-admin.component';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
 import { EditPublicidadComponent } from '../administrador/edit-publicidad/edit-publicidad.component';
-
 import { AuthguardGuard } from './../../core/authguard.guard';
 import { RutModule } from 'rut-chileno';
 import { EditRegistroComponent } from '../administrador/edit-registro/edit-registro.component';
