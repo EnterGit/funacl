@@ -5,26 +5,12 @@ header('Access-Control-Allow-Credentials: true');
 header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-if (empty($_GET["empleado"])) {
-    exit("No hay id de empleado");
-}
-
- if (empty($_GET["empresa"])) {
-        exit("No hay rut Empresa");
-}
-
-$rutempleado = $_GET["empleado"];
-$rutEmpresa = $_GET["empresa"];
+$rutempleado = $_GET["rutEmpleado"];
 
 
 
 $bd = include_once "../../bd.php";
-$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = $rutempleado and rutempresa= $rutEmpresa");
-//$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado, rutempresa, nombreempresa, fechaingreso, fechatermino, idarticulo, nombrearticulo,   Observacion, autorizacion, recomienda from evaluacion  where  rutempleado = $rutempleado and rutempresa= $rutEmpresa");
-//SELECT idEvaluacion, rutempleado, nombreempleado,rutempresa,nombreempresa,fechaingreso,fechatermino,nombreinciso,Observacion,autorizacion, inciso.idarticulo, articulo.nombrearticulo, inciso.nombreincisocorto FROM evaluacion, inciso, articulo WHERE evaluacion.idarticulo = articulo.idarticulo and evaluacion.idinciso = inciso.idinciso AND rutempleado = '12345' and rutempresa= '678910'
+$sentencia = $bd->query("SELECT idEvaluacion, rutempleado, nombreempleado, rutempresa, nombreempresa, fechaingreso, fechatermino, articulo.idarticulo, articulo.nombrearticulo, inciso.idinciso, inciso.nombreincisocorto, Observacion, autorizacion, recomienda,estado FROM evaluacion inner join articulo ON (evaluacion.idarticulo = articulo.idarticulo) inner join inciso ON (inciso.idarticulo = articulo.idarticulo AND evaluacion.idinciso = inciso.idinciso) WHERE rutempleado = '$rutempleado' order by evaluacion.idEvaluacion");
 $sentencia->execute();
 $evaluacion = $sentencia->fetchAll(PDO::FETCH_OBJ);
 echo json_encode($evaluacion);
-
-
-

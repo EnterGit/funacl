@@ -1,7 +1,6 @@
 export class consultarempleado {
    
     constructor(
-             public nombreincisocorto: string,
         public idEvaluacion:string,
         public rutempleado:string,
         public nombreempleado:string,
@@ -11,6 +10,7 @@ export class consultarempleado {
         public fechatermino:string,
         public idarticulo:string,
         public nombrearticulo:string,
+        public nombreincisocorto: string,
         public Observacion:string,
         public autorizacion:string,
         public recomienda:string

@@ -28,6 +28,8 @@ export class buscarperfil {
         this.NombreTurno = "";
         this.Clasificacion = "";
 
+        
+
 
 }
 }

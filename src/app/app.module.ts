@@ -70,11 +70,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+//import {MatSort} from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-
+import { DetallemisevaluacionesComponent } from './privado/empresa/detallemisevaluaciones/detallemisevaluaciones.component';
 
 const routes: Routes= [
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
@@ -122,6 +120,9 @@ const routes: Routes= [
     LoginPersonaComponent,
     RegistoPostulanteComponent,
     DialogoconfirmacionComponent,
+    DetallemisevaluacionesComponent,
+ 
+ 
     
 
   ],
@@ -147,8 +148,10 @@ const routes: Routes= [
     MatTableModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatPaginatorModule,
-
+    //MatPaginatorModule,
+    //MatPaginator,
+    //MatSort,
+  
   ],
   providers: [
     AuthService,

@@ -28,4 +28,10 @@ export class ComboempresaService {
   getListaCausal(id: string | number) {
     //return this.http.get(`${this.baseUrl}/Empresa/evaluarEmpleado/getListaInciso.php?idarticulo=${id}`);
   }
+
+  getListarCombo(id: string | number) {
+    return this.http.get(`${this.baseUrl}/parametros/getParametros.php?codgrupo=${id}`);
+  }
+
+
 }

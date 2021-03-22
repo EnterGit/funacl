@@ -1,4 +1,5 @@
-<form [formGroup]="formBuscar">
+
+<form (ngSubmit)="onSubmit()" [formGroup]="formBuscar">
     <section id="BuscarEmpleado">
         <div class="container py-2 mx-auto">
             <div class="card card0 border-0">
@@ -45,34 +46,32 @@
                                     
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
-                                                <label for="lblSueldo">Seleccione Genero</label>
-                                                <select class="form-control my-1" formControlName="jornada"
-                                                id="jornada">
-                                                <option value="" selected>Seleccione Genero</option>
-                                                <option value="Completa">Femenino</option>
-                                                <option value="Mañana">Masculino</option>
+                                                <label for="lblFecIniPub">cargo </label>
+                                                <select name="cargo" id="cargo" class="form-control my-1" ng-model="cargo" (change)="onChangecargo($event.target.value)">
+                                                <option value="">Seleccione Cargo</option>
+                                                <option *ngFor="let cargos of cargoModel"
+                                                    value="{{cargos.pra_val}}">{{cargos.pra_des}}
+                                                </option>
                                             </select>
+
                                             </div>
 
                                             <div class="form-group col-md-4">
-                                                <label for="lblFecIniPub">Seleccione Región</label>
-                                                <select name="regiones" id="region" class="form-control my-1" ng-model="regiones"
-                                                (change)="onChangeComuna($event.target.value)" formCon
-                                                rolName="region">
-                                                <option value="">Seleccione Región</option>
-                                                <option *ngFor="let regiones of regionesModel"
-                                                    value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE}}
+                                                <label for="lblFecIniPub">Cursos</label>
+                                                <select name="curso" id="curso" class="form-control my-1" ng-model="curso" (change)="onChangecurso($event.target.value)">
+                                                <option value="">Seleccione Cursos</option>
+                                                <option *ngFor="let cursos of cursoModel"
+                                                    value="{{cursos.pra_val}}">{{cursos.pra_des}}
                                                 </option>
                                             </select>
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="lblJornada">Seleccione Comuna</label>
-                                                <select name="comuna" id="comuna" class="form-control my-1" ng-model="comuna" 
-                                                formControlName="comuna">
-                                                <option value="">Seleccione Comuna</option>
-                                                <option *ngFor="let comuna of comunaModel"
-                                                    value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE}}
-                                                </option>
+                                                <label for="lblJornada">Sexo Empleado</label>
+                                                <select name="sexo" id="sexo" class="form-control my-1" ng-model="sexo"  (change)="onChangesexo($event.target.value)">
+                                                <option value="">Seleccione Sexo</option>
+                                                <option *ngFor="let Sexos of SexoModel"
+                                                value="{{Sexos.pra_val}}">{{Sexos.pra_des}}
+                                            </option>
                                             </select>
                                             </div>
                                           
@@ -80,10 +79,9 @@
 
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
-                                                <label for="lblFecIniPub">Tipo Cargo</label>
+                                                <label for="lblFecIniPub">Region</label>
                                                 <select name="regiones" id="region" class="form-control my-1" ng-model="regiones"
-                                                (change)="onChangeComuna($event.target.value)" formCon
-                                                rolName="region">
+                                                (change)="onChangeComuna($event.target.value)">
                                                 <option value="">Seleccione Región</option>
                                                 <option *ngFor="let regiones of regionesModel"
                                                     value="{{regiones.REGION_ID}}">{{regiones.REGION_NOMBRE}}
@@ -91,32 +89,31 @@
                                             </select>
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label for="lblJornada">Jornada</label>
-                                                <select name="comuna" id="comuna" class="form-control my-1" ng-model="comuna" 
-                                                formControlName="comuna">
+                                                <label for="lblJornada">Comuna</label>
+                                                <select name="comuna" id="comuna" class="form-control my-1" ng-model="comuna"  (change)="onChangecomuna($event.target.value)">onChangecomuna
                                                 <option value="">Seleccione Comuna</option>
                                                 <option *ngFor="let comuna of comunaModel"
                                                     value="{{comuna.COMUNA_ID}}">{{comuna.COMUNA_NOMBRE}}
                                                 </option>
                                             </select>
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="lblSueldo">Turno</label>
-                                                <select class="form-control my-1" formControlName="jornada"
-                                                id="jornada">
-                                                <option value="" selected>Seleccione Turno</option>
-                                                <option value="Completa">Completa</option>
-                                                <option value="Mañana">Mañana</option>
-                                                <option value="Tarde">Tarde</option>
-                                                <option value="Noche">Noche</option>
-                                            </select>
-                                            </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="lblFecIniPub">Turno </label>
+                                            <select name="turno" id="turno" class="form-control my-1" ng-model="turno"  (change)="onChangeturno($event.target.value)"> 
+                                            <option value="">Seleccione Turno</option>
+                                            <option *ngFor="let turnos of turnoModel"
+                                                value="{{turnos.pra_val}}">{{turnos.pra_des}}
+                                            </option>
+                                        </select>
+                                        </div>
                                         </div>
                                         <div class="form-row">
+                                         
                                             <div class="form-group col-md-6 text-center">
-                                                <button type="submit"
-                                                    class="btn btn-outline-primary">Buscar</button>
+                                                <div class="col-md-6"><button type="submit" class="btn btn-blue text-center mb-1 py-2" >Buscar</button></div>
                                             </div>
+
+
                                             <div class="form-group col-md-6 text-center">
                                                 <button class="btn btn-outline-primary">Limpiar</button>
                                             </div>
@@ -129,85 +126,99 @@
                 </div>
             </div>
             <br>
-            <div>
-                <div class="row">
-
-            
-                    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="width:
+            <div class="row">
+      
+                <h2>Listado de Perfiles</h2>
+                <table mat-table [dataSource]="buscarperfil" class="mat-elevation-z8" style="width:
                     100%;">
-          
-          
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-          
-                    <!-- Position Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
-              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-            </ng-container>
-          
-          
-          
-            <ng-container matColumnDef="rut">
-              <th mat-header-cell *matHeaderCellDef> rut </th>
-              <td mat-cell *matCellDef="let element"> {{element.rut}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="nombreCompleto">
-              <th mat-header-cell *matHeaderCellDef> nombreCompleto </th>
-              <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="rutEmpresa">
-              <th mat-header-cell *matHeaderCellDef> rutEmpresa </th>
-              <td mat-cell *matCellDef="let element"> {{element.rutEmpresa}} </td>
-            </ng-container>
-            
-            <ng-container matColumnDef="nombreEmpresa">
-              <th mat-header-cell *matHeaderCellDef> nombreEmpresa </th>
-              <td mat-cell *matCellDef="let element"> {{element.nombreEmpresa}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="fechaIngreso">
-              <th mat-header-cell *matHeaderCellDef> fechaIngreso </th>
-              <td mat-cell *matCellDef="let element"> {{element.fechaIngreso}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="fechaFin">
-              <th mat-header-cell *matHeaderCellDef> fechaFin </th>
-              <td mat-cell *matCellDef="let element"> {{element.fechaFin}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="nombreArticulo">
-              <th mat-header-cell *matHeaderCellDef> nombreArticulo </th>
-              <td mat-cell *matCellDef="let element"> {{element.nombreArticulo}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="nombreInciso">
-              <th mat-header-cell *matHeaderCellDef> nombreInciso </th>
-              <td mat-cell *matCellDef="let element"> {{element.nombreInciso}} </td>
-            </ng-container>
-          
-            <ng-container matColumnDef="observacion">
-              <th mat-header-cell *matHeaderCellDef> observacion </th>
-              <td mat-cell *matCellDef="let element"> {{element.observacion}} </td>
-            </ng-container>
-            
-            
-            
-            
-            
-            
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" style="width:
-           100%;"></mat-paginator> 
-          
-                  </div>
-                          
+                    <ng-container matColumnDef="idPerfil">
+                        <th mat-header-cell *matHeaderCellDef>idEvaluacion</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.idPerfil}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="rutempleado">
+                        <th mat-header-cell *matHeaderCellDef>rutempleado</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.rutempleado}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="nombreempleado">
+                        <th mat-header-cell *matHeaderCellDef>nombreempleado</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.nombreempleado}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cargo">
+                        <th mat-header-cell *matHeaderCellDef>cargo</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.cargo}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cursos">
+                        <th mat-header-cell *matHeaderCellDef>cursos</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.cursos}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="sexo">
+                        <th mat-header-cell *matHeaderCellDef>sexo</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.sexo}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="educacion">
+                        <th mat-header-cell *matHeaderCellDef>educacion</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.educacion}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nivelcomputacional">
+                        <th mat-header-cell *matHeaderCellDef>nivelcomputacional</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.nivelcomputacional}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="comuna">
+                        <th mat-header-cell *matHeaderCellDef>comuna</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.comuna}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="turno">
+                        <th mat-header-cell *matHeaderCellDef>turno</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.turno}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="experiencia">
+                        <th mat-header-cell *matHeaderCellDef>experiencia</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.experiencia}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef>email</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.email}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="telefono">
+                        <th mat-header-cell *matHeaderCellDef>telefono</th>
+                        <td mat-cell *matCellDef="let perfil"> {{perfil.telefono}} </td>
+                    </ng-container>
+
+               
+
+                    <tr mat-header-row *matHeaderRowDef="[
+                    'idPerfil',
+                    'rutempleado',
+                    'nombreempleado',
+                    'cargo',
+                    'cursos',
+                    'sexo',
+                    'educacion',
+                    'nivelcomputacional',
+                    'comuna',
+                    'turno',
+                    'experiencia',
+                    'email',
+                    'telefono'
+                    ]"></tr>
+                    <tr mat-row *matRowDef="let fila; columns: [
+                    'idPerfil',
+                    'rutempleado',
+                    'nombreempleado',
+                    'cargo',
+                    'cursos',
+                    'sexo',
+                    'educacion',
+                    'nivelcomputacional',
+                    'comuna',
+                    'turno',
+                    'experiencia',
+                    'email',
+                    'telefono'                        
+                    ];"></tr>
+                </table>
+             
             </div>
         </div>
 

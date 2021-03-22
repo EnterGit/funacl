@@ -11,8 +11,10 @@ import * as $ from 'jquery';
 
 //Modelo
 import {buscarperfil} from '../../../core/empresa/buscarperfil';
+import {consultarperfil} from '../../../core/empresa/consultarperfil';
 import { Lregiones, Lcomuna } from '../../../core/parametros/regiones.model';
-import {Lturnos,Lcargo,Lcursos} from '../../../core/parametros/filtros.model';
+import {Lturnos,Lcargo,Lcursos, LSexo} from '../../../core/parametros/filtros.model';
+import {perfil} from  '../../../core/empresa/perfil';
 //Servicio
 import {BuscarempleadoService} from "../../../services/empresa/buscarempleado/buscarempleado.service";
 import { LisregionesService } from '../../../services/parametros/lisregiones.service';
@@ -25,38 +27,13 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { importType } from '@angular/compiler/src/output/output_ast';
 
-export interface EmpleadoTST{
-  id: string;
-  rut : string,
-  nombreCompleto : string,
-  rutEmpresa: string,
-  nombreEmpresa : string,
-  fechaIngreso : string,
-  fechaFin: string,
-  idArticulo : string,
-  nombreArticulo : string,
-  idInciso : string,
-  nombreInciso : string,
-  observacion : string,
-  autorizacion : string,
-  recomienda : string
-
-}
-
-const ELEMENT_DATA2: EmpleadoTST[] = [
-  {id: '1', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '2', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '3', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '4', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '5', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '6', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '7', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '8', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '9', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
-  {id: '10', rut: '1111111-1',nombreCompleto:'JuanPerez',rutEmpresa:'33333-3',nombreEmpresa:'empresa 1', fechaIngreso:'2012-11-01', fechaFin:'2013-10.12', idArticulo:'1',nombreArticulo:'necesidades empresa', idInciso:'1', nombreInciso:'articulo', observacion:'Sin obs', autorizacion:'Si', recomienda:'Si'},
- 
-];
+Component({
+  selector: 'app-buscarempleado',
+  templateUrl: './buscarempleado.component.html',
+  styleUrls: ['./buscarempleado.component.css']
+})
 
 @Component({
   selector: 'app-buscarempleado',
@@ -70,85 +47,255 @@ export class BuscarempleadoComponent implements OnInit {
   titulo: string;
   imagenTitulo: string;
   curso: string;
-  
+
+  //Valores Seleccionados
+  public idCargo: string;
+  public idCurso: string;
+  public idSexo: string;
+  public idRegion: string;
+  public idComuna: string;
+  public idTurno: string;
+
   public regionesModel: Lregiones[] = [new Lregiones(0, "prueba")];
   public comunaModel: Lcomuna[] = [new Lcomuna(0, "algo")];
   public cursoModel: Lcursos[] = [new Lcursos(0, "prueba", "")];
   public cargoModel: Lcargo[] = [new Lcargo(0, "prueba", "")];
   public turnoModel: Lturnos[] = [new Lturnos(0, "prueba", "")];
+  public SexoModel: LSexo[] = [new LSexo(0, "prueba", "")];
+  public buscarperfil: perfil[] = [
+      new perfil(
+          '1',
+          '1-7',
+          'Juan Perez',
+          'Guardia',
+          'OS-10',
+          'Masculino',
+          'Media',
+          'basico',
+          'Estacion Central',
+          'Completo',
+          'Más de 5 años',
+          'emaiñ@email.com',
+          '222222',
+      ),
 
-  displayedColumns: string[] = ['id', 'rut', 'nombreCompleto', 'rutEmpresa','nombreEmpresa', 'fechaIngreso','fechaFin','nombreArticulo','nombreInciso', 'observacion' ];
-  dataSource = new MatTableDataSource<EmpleadoTST>(ELEMENT_DATA2);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+      new perfil(
+          '1',
+          '1-9',
+          'Juan Perez',
+          'Guardia',
+          'OS-10',
+          'Masculino',
+          'Media',
+          'basico',
+          'Estacion Central',
+          'Completo',
+          'Más de 5 años',
+          'emaiñ@email.com',
+          '222222',
+      ),
+      new perfil(
+          '2',
+          '1-9',
+          'Juan Perez',
+          'Guardia',
+          'OS-10',
+          'Masculino',
+          'Media',
+          'basico',
+          'Estacion Central',
+          'Completo',
+          'Más de 5 años',
+          'emaiñ@email.com',
+          '222222',
+      ),
+      new perfil(
+          '3',
+          '1-9',
+          'Juan Perez',
+          'Guardia',
+          'OS-10',
+          'Masculino',
+          'Media',
+          'basico',
+          'Estacion Central',
+          'Completo',
+          'Más de 5 años',
+          'emaiñ@email.com',
+          '222222',
+      ),
+
+  ];
+
+  
 
 
- 
+
+  displayedColumns: string[] = [
+      'idEvaluacion',
+      'rutempleado',
+      'nombreempleado',
+      'cargo',
+      'cursos',
+      'sexo',
+      'educacion',
+      'nivelcomputacional',
+      'comuna',
+      'turno',
+      'experiencia',
+      'email',
+      'telefono'
+  ];
+
 
 
   constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private regionService: LisregionesService,
-    private comboService: FiltrosService,
-    private dialogo: MatDialog,
-    private snackBar: MatSnackBar
+      private fb: FormBuilder,
+      private http: HttpClient,
+      private regionService: LisregionesService,
+      private buscarPerfilServices: BuscarempleadoService,
+      private comboService: FiltrosService,
+      private dialogo: MatDialog,
+      private snackBar: MatSnackBar
   ) {
-    this.creaFormBuscarPerfil();
-   }
+      this.creaFormBuscarPerfil();
+  }
 
   ngOnInit(): void {
-    this.obtenerRegiones();
+      this.obtenerRegiones();
+      this.obtenerCargo();
+      this.obtenerCursos();
+      this.obtenerSexo();
+      this.obtenerTurno();
   }
 
 
   creaFormBuscarPerfil() {
-    this.formBuscar = this.fb.group({
-      idcardo: ['', Validators.required],
-      nombrecargo: ['', Validators.required],
-      idcurso: ['', Validators.required],
-      nombrecurso: ['', Validators.required],
-      idsexo: ['', Validators.required],
-      nombresexo: ['', Validators.required],
-      idregion: ['', Validators.required],
-      nombreregion: ['', Validators.required],
-      idcomuna: ['', Validators.required],
-      nombrecomuna: ['', Validators.required],
-      idturno: ['', Validators.required],
-      nombreturno: ['', Validators.required]
-    })
+      this.formBuscar = this.fb.group({
+          // idcardo: ['', Validators.required],
+          // idcurso: ['', Validators.required],
+          // idsexo: ['', Validators.required],
+          // idregion: ['', Validators.required],
+          // idcomuna: ['', Validators.required],
+          // idturno: ['', Validators.required],
+
+      })
   }
 
   obtenerRegiones() {
-    return this.regionService.getRegiones().subscribe((regionesModel: Lregiones[]) => this.regionesModel = regionesModel);
+      return this.regionService.getRegiones().subscribe((regionesModel: Lregiones[]) => this.regionesModel = regionesModel);
   }
   onChangeComuna(value) {
-    return this.regionService.getComunas(value).subscribe((comunaModel: Lcomuna[]) => this.comunaModel = comunaModel);
+      this.idRegion = value;
+      console.log("valor region" + this.idRegion);
+      return this.
+      regionService.getComunas(value).subscribe((comunaModel: Lcomuna[]) => this.comunaModel = comunaModel);
   }
-  
+
   obtenerCargo() {
-    return this.comboService.getListarCargo().subscribe((cargoModel: Lcargo[]) => this.cargoModel = this.cargoModel);
+      return this.regionService.getParametros("4").subscribe((cargoModel: Lcargo[]) => this.cargoModel = cargoModel);
+
   }
+  obtenerCursos() {
+      return this.regionService.getParametros("5").subscribe((cursoModel: Lcursos[]) => this.cursoModel = cursoModel);
+
+  }
+
+  obtenerSexo() {
+      return this.regionService.getParametros("6").subscribe((SexoModel: LSexo[]) => this.SexoModel = SexoModel);
+
+  }
+
+
   obtenerTurno() {
-    return this.comboService.getListarTurno().subscribe((turnoModel: Lturnos[]) => this.turnoModel = this.turnoModel);
+      return this.regionService.getParametros("3").subscribe((turnoModel: Lturnos[]) => this.turnoModel = turnoModel);
+
+  }
+  // onChangeCurso(value) {
+  //   return this.comboService.getListaCursos(value).subscribe((cursoModel: Lcursos[]) => this.cursoModel = cursoModel);
+  // }
+
+  ListarPerfiles() {
+
+  }
+  //Valores seleciconados
+  onChangecargo(value) {
+      this.idCargo = value;
+      console.log("Valor del cargo" + this.idCargo);
   }
 
-  onChangeCurso(value) {
-    return this.comboService.getListaCursos(value).subscribe((cursoModel: Lcursos[]) => this.cursoModel = cursoModel);
+  onChangecurso(value) {
+      this.idCurso = value;
+      console.log("Valor del idCurso" + this.idCurso);
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
-    
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-    }
+  onChangesexo(value) {
+      this.idSexo = value;
+      console.log("Valor del idSexo" + this.idSexo);
+  }
+
+  onChangecomuna(value) {
+      this.idComuna = value;
+      console.log("Valor del idComuna" + this.idComuna);
+  }
+
+  onChangeturno(value) {
+      this.idTurno = value;
+      console.log("Valor del idTurno" + this.idTurno);
+  }
+
+
+
+
+  onSubmit() {
+
+
+
+if (this.idCargo = "0") 
+{
+    this.idCargo = "0";
+}
+if (this.idCurso = "0") 
+{
+    this.idCurso = "0";
+}
+if (this.idSexo = "0") 
+{
+    this.idSexo = "0";
+}
+if (this.idRegion =  "0") 
+{
+    this.idRegion= "0";
+}
+if (this.idComuna = "0") 
+{
+    this.idComuna = "0";
+}
+
+if (this.idTurno = "0") 
+{
+    this.idTurno = "0";
+}
+
+console.log("cargo:"  + this.idCargo);
+console.log("curso:"  + this.idCurso);
+console.log("sexo:"  + this.idSexo);
+console.log("region:"  + this.idRegion);
+console.log("comuna:"  + this.idComuna);
+console.log("turno:"  + this.idTurno);
+
+// public idCargo:string;
+      // public idCurso:string;
+      // public idSexo:string;
+      // public idRegion:string;
+      // public idComuna:string;
+      // public idTurno:string;
+
+      return this.buscarPerfilServices.getBuscarEmpleado(this.idCargo,this.idCurso,this.idSexo,this.idRegion, this.idComuna, this.idTurno).
+          subscribe((buscarperfil: perfil[]) => this.buscarperfil = buscarperfil);
+  }
+
+
+
 
 }

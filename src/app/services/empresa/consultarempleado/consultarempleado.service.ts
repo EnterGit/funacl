@@ -13,25 +13,39 @@ export class ConsultarempleadoService {
   baseUrl = environment.baseUrl
   constructor(private http:HttpClient) { }
 
-   ConsultarEmpleado(rutConsultado) {
-   return this.http.get(`${this.baseUrl}/get.php?rut=${rutConsultado}`);
-
+   ConsultarEmpleado(rutEmpleado: string | number) {
+  return this.http.get(`${this.baseUrl}/Empresa/consultarempleado/getListarEvaluacionEmpleado.php?rutEmpleado=${rutEmpleado}`);
    
   }
+//Lista todos los evaluados
+  ListarTodosLosEvaluados() {
+    return this.http.get(`${this.baseUrl}/Empresa/consultarempleado/getListasTodosLosEvaluados.php?`);
+     
+    }
 
-getEvaluacionEmpresaEmpleado(rutEmpleado: string | number, rutEmpresa: string | number)
+//getEvaluacionEmpresaEmpleado(rutEmpleado: string | number, rutEmpresa: string | number, idarticulo: string | number, idinciso: string | number)
+getEvaluacionEmpresaEmpleado(rutEmpleado: string | number, rutEmpresa: string | number, )
 {
-  console.log("Servicio MisReferidos, Rut empleado" + rutEmpleado);
-  console.log("Servicio MisReferidos, Rut empresa" +  rutEmpresa);
+console.log("Ejecuto desde ebvaluacion empresa1234");
+console.log(rutEmpresa);
+console.log(rutEmpleado);
+  return this.http.get(`${this.baseUrl}/Empresa/misevaluaciones/getListarMisEvaluacionesEmpleado.php?rutEmpleado=${rutEmpleado}&rutEmpresa=${rutEmpresa}`);
 
-  return this.http.get(`${this.baseUrl}/Empresa/misevaluaciones/getListarMisEvaluacionesEmpleado.php?empleado=${rutEmpleado}&empresa=${rutEmpresa}`);
+
 }
 
   getListaEvaluacionEmpleado(rutEmpleado: string | number) {
     console.log("Servicio ConsultarEmpleado" + rutEmpleado);
     return this.http.get(`${this.baseUrl}/Empresa/consultarempleado/getListarEvaluacionEmpleado.php?empleado=${rutEmpleado}`);
-
-    
+   
   }
+
+
+  
+  deleteEvaluacion(idEvaluacion: string | number) {
+    console.log("eliminar desde servicio" +  idEvaluacion);
+    return this.http.delete(`${this.baseUrl}/Empresa/evaluarEmpleado/deleteEvaluacion.php?IDevaluacion=${idEvaluacion}`);
+  }
+
   
 }

@@ -11,8 +11,7 @@ import {ReferirempleadoComponent} from '../empresa/referirempleado/referiremplea
 import {ConsultarempleadoComponent} from '../empresa/consultarempleado/consultarempleado.component';
 import {MisevaluacionesComponent} from '../empresa/misevaluaciones/misevaluaciones.component';
 import { BuscarempleadoComponent } from '../empresa/buscarempleado/buscarempleado.component';
-
-
+import {DetallemisevaluacionesComponent} from '../empresa/detallemisevaluaciones/detallemisevaluaciones.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,13 +32,23 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatGridListModule} from '@angular/material/grid-list';
+// import {MatSortModule} from '@angular/material/sort';
+
+
+
 const routes: Routes= [
   {path: 'accesoEmpresa', component: AccesoEmpresaComponent, canActivate: [AuthguardGuard],
   children: [
     {path: 'BuscarEmpleado', component: BuscarempleadoComponent, canActivate: [AuthguardGuard]},
-    {path: 'ReferirEmpleado', component:ReferirempleadoComponent, canActivate: [AuthguardGuard]},
+    {path: 'ReferirEmpleado/:id', component:ReferirempleadoComponent, canActivate: [AuthguardGuard]},
     {path: 'ConsultarEmpleado', component: ConsultarempleadoComponent, canActivate: [AuthguardGuard]},
-    {path: 'MisEvaluaciones/:id', component: MisevaluacionesComponent, canActivate: [AuthguardGuard]}
+    {path: 'MisEvaluaciones/:id', component: MisevaluacionesComponent, canActivate: [AuthguardGuard]},
+    {path: 'Detallemisevaluaciones/:id', component: DetallemisevaluacionesComponent, canActivate: [AuthguardGuard]}
   ]}  
 ];
 
@@ -70,11 +79,16 @@ const routes: Routes= [
     MatPaginatorModule,
     ReactiveFormsModule,
     BrowserModule,
-
+    MatNativeDateModule,
+    MatInputModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
      RouterModule.forRoot(routes),
-     MatDatepickerModule
+     MatDatepickerModule,
+     MatProgressSpinnerModule,
+     MatProgressBarModule,
+     MatGridListModule,
+    //  MatSortModule
 
   ]
 })
